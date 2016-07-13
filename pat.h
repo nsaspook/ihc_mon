@@ -96,7 +96,7 @@ union Obits2 {
 #define IHC_CODE1H      900
 #define IHC_CODE1L      200
 #define IHC_CODE2       'f' // filament current
-#define IHC_CODE2H      900
+#define IHC_CODE2H      930
 #define IHC_CODE2L      300
 #define IHC_CODE3       'u' // cathode voltage, u is EU for voltage
 #define IHC_CODE3H      1050

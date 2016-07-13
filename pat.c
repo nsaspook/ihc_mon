@@ -300,10 +300,10 @@ int16_t sw_work(void) {
             //                    IHC Source OK, ALL GREEN and steady, ihc_data[0] is the key parameter
             blink_led(0, ON, OFF); // led #,on/off, blink
             blink_led(1, OFF, OFF); //     DISPLAY LEDS
-            blink_led(2, ON, OFF); // [0..1]Cath V X  X Cath I [4..5]
+            blink_led(2, ON, OFF); // [0..1]Cath V  X  X Cath I [4..5]
             blink_led(3, OFF, OFF); // [2..3]Fila V X  X Fila I [6..7]
-            blink_led(4, ON, OFF); //              X  X
-            blink_led(5, OFF, OFF); //       Com er X  X Regulation Fine Mode
+            blink_led(4, ON, OFF); //               X  X
+            blink_led(5, OFF, OFF); //    Glitch er X  X Regulation Fine Mode
             blink_led(6, ON, OFF);
             blink_led(7, OFF, OFF);
             V.inreg = TRUE; // tighten the limits when in regulation
