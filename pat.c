@@ -135,13 +135,13 @@ void tm_handler(void) // timer/serial functions are handled here
             ibs_data[ibs_d] = ibs_stream_file & 0x3f;
             ibs_d++; // index to store the data stream
             if (ibs_d > MAX_DATA) ibs_d = 1; // reset on overrun
-        } else { // stream codes for source paramters
+        } else { // stream codes for source parameters
             ibs_d = 1;
             ihc_d = ((ibs_data[1]&0x0f) << 6)+(ibs_data[2]); // convert the 10 bit data from the stream
             ibs_data[0] = ibs_stream_file; // store the stream code
             // parse the stream codes
             switch (ibs_stream_file_prev) {
-                case IHC_CODE0: // extraction requlation
+                case IHC_CODE0: // extraction regulation
                     if (++ihc_count[0] > IHC_SAMPLES) V.ihc_data0 = FALSE; // in range preset to false
                     if ((ihc_d > IHC_CODE0L) && (ihc_d < IHC_CODE0H)) {
                         V.ihc_data0 = TRUE; // set range code to true
@@ -297,20 +297,20 @@ int16_t sw_work(void) {
             blink_led(1, ON, OFF);
         }
         if ((V.ihc_data0 & V.ihc_data1 & V.ihc_data2 & V.ihc_data3 & V.ihc_data4) && (V.ihc_d_abs <= IHC_CODE0_TUNE)) { // all good and in rough regulation
-            //                    IHC Source OK, ALL GREEN and steady, ihc_data[0] is the key parameter
-            blink_led(0, ON, OFF); // led #,on/off, blink
+            // IHC Source OK, ALL GREEN and steady, ihc_data[0] is the key parameter
+            blink_led(0, ON, OFF);  // led #,on/off, blink
             blink_led(1, OFF, OFF); //     DISPLAY LEDS
-            blink_led(2, ON, OFF); // [0..1]Cath V  X  X Cath I [4..5]
-            blink_led(3, OFF, OFF); // [2..3]Fila V X  X Fila I [6..7]
-            blink_led(4, ON, OFF); //               X  X
-            blink_led(5, OFF, OFF); //    Glitch er X  X Regulation Fine Mode
+            blink_led(2, ON, OFF);  // [0..1]Cath V  X  X Cath I [4..5]
+            blink_led(3, OFF, OFF); // [2..3]Fila V  X  X Fila I [6..7]
+            blink_led(4, ON, OFF);  //               X  X
+            blink_led(5, OFF, OFF); //    Glitch     X  X Regulation Fine Mode
             blink_led(6, ON, OFF);
             blink_led(7, OFF, OFF);
             V.inreg = TRUE; // tighten the limits when in regulation
         } else {
             V.inreg = FALSE;
             blink_speed = TIMERFAST;
-            //                    IHC Source out of regulation or IHC parameters out of range
+            // IHC Source out of regulation or IHC parameters out of range
             if (V.ihc_data3) { // green and blinking if this is IN range
                 blink_led(0, ON, ON);
                 blink_led(1, OFF, OFF);
