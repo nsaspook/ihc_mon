@@ -1,5 +1,5 @@
 MPLINK 4.48, Linker
-Linker Map File - Created Wed Apr 30 10:49:59 2014
+Linker Map File - Created Mon Dec 26 09:28:00 2016
 
                                  Section Info
                   Section       Type    Address   Location Size(Bytes)
@@ -8,45 +8,45 @@ Linker Map File - Created Wed Apr 30 10:49:59 2014
            .code___init.o       code   0x000006    program   0x000002
              tm_interrupt       code   0x000008    program   0x000006
                    .cinit    romdata   0x00000e    program   0x00000e
-              .code_pat.o       code   0x00001c    program   0x0007fc
-          .code_blinker.o       code   0x000818    program   0x000170
-               _cinit_scn       code   0x000988    program   0x00009e
-            .code_uopen.o       code   0x000a26    program   0x00008a
-          .code_write_B.o       code   0x000ab0    program   0x000066
-           .code_read_B.o       code   0x000b16    program   0x000044
-           .code_t1open.o       code   0x000b5a    program   0x000042
-          .code_t1write.o       code   0x000b9c    program   0x000038
-          .code_t0write.o       code   0x000bd4    program   0x000038
-           .code_t0open.o       code   0x000c0c    program   0x000038
-                    .code       code   0x000c44    program   0x000020
-             _startup_scn       code   0x000c64    program   0x00001c
-             .stringtable    romdata   0x000c80    program   0x000015
-        .romdata___init.o    romdata   0x000c95    program   0x000000
-        .idata_t1open.o_i    romdata   0x000c95    program   0x000000
-        .romdata_t1open.o    romdata   0x000c95    program   0x000000
-         .idata_uopen.o_i    romdata   0x000c95    program   0x000000
-        .idata___init.o_i    romdata   0x000c95    program   0x000000
-         .romdata_uopen.o    romdata   0x000c95    program   0x000000
-        .idata_read_B.o_i    romdata   0x000c95    program   0x000000
-        .romdata_read_B.o    romdata   0x000c95    program   0x000000
-       .romdata_write_B.o    romdata   0x000c95    program   0x000000
-       .idata_t0write.o_i    romdata   0x000c95    program   0x000000
-       .romdata_t0write.o    romdata   0x000c95    program   0x000000
-       .idata_write_B.o_i    romdata   0x000c95    program   0x000000
-       .idata_t1write.o_i    romdata   0x000c95    program   0x000000
-       .romdata_t1write.o    romdata   0x000c95    program   0x000000
-         .idata_c018i.o_i    romdata   0x000c95    program   0x000000
-         .romdata_c018i.o    romdata   0x000c95    program   0x000000
-           .romdata_pat.o    romdata   0x000c95    program   0x000000
-       .idata_blinker.o_i    romdata   0x000c95    program   0x000000
-       .romdata_blinker.o    romdata   0x000c95    program   0x000000
-        .romdata_t0open.o    romdata   0x000c95    program   0x000000
-        .idata_t0open.o_i    romdata   0x000c95    program   0x000000
-      .romdata_busy_eep.o    romdata   0x000c95    program   0x000000
-      .idata_busy_eep.o_i    romdata   0x000c95    program   0x000000
-         .code_busy_eep.o       code   0x000c96    program   0x000006
-            .code_c018i.o       code   0x000c96    program   0x000000
-           .idata_pat.o_i    romdata   0x000c9c    program   0x000025
+              .code_pat.o       code   0x00001c    program   0x00081c
+          .code_blinker.o       code   0x000838    program   0x000170
+               _cinit_scn       code   0x0009a8    program   0x00009e
+            .code_uopen.o       code   0x000a46    program   0x00008a
+          .code_write_B.o       code   0x000ad0    program   0x000066
+           .code_read_B.o       code   0x000b36    program   0x000044
+           .code_t1open.o       code   0x000b7a    program   0x000042
+          .code_t1write.o       code   0x000bbc    program   0x000038
+          .code_t0write.o       code   0x000bf4    program   0x000038
+           .code_t0open.o       code   0x000c2c    program   0x000038
+                    .code       code   0x000c64    program   0x000020
+             _startup_scn       code   0x000c84    program   0x00001c
+             .stringtable    romdata   0x000ca0    program   0x000015
+        .romdata___init.o    romdata   0x000cb5    program   0x000000
+        .idata_t1open.o_i    romdata   0x000cb5    program   0x000000
+        .romdata_t1open.o    romdata   0x000cb5    program   0x000000
+         .idata_uopen.o_i    romdata   0x000cb5    program   0x000000
+        .idata___init.o_i    romdata   0x000cb5    program   0x000000
+         .romdata_uopen.o    romdata   0x000cb5    program   0x000000
+        .idata_read_B.o_i    romdata   0x000cb5    program   0x000000
+        .romdata_read_B.o    romdata   0x000cb5    program   0x000000
+       .romdata_write_B.o    romdata   0x000cb5    program   0x000000
+       .idata_t0write.o_i    romdata   0x000cb5    program   0x000000
+       .romdata_t0write.o    romdata   0x000cb5    program   0x000000
+       .idata_write_B.o_i    romdata   0x000cb5    program   0x000000
+       .idata_t1write.o_i    romdata   0x000cb5    program   0x000000
+       .romdata_t1write.o    romdata   0x000cb5    program   0x000000
+         .idata_c018i.o_i    romdata   0x000cb5    program   0x000000
+         .romdata_c018i.o    romdata   0x000cb5    program   0x000000
+           .romdata_pat.o    romdata   0x000cb5    program   0x000000
+       .idata_blinker.o_i    romdata   0x000cb5    program   0x000000
+       .romdata_blinker.o    romdata   0x000cb5    program   0x000000
+        .romdata_t0open.o    romdata   0x000cb5    program   0x000000
+        .idata_t0open.o_i    romdata   0x000cb5    program   0x000000
+      .romdata_busy_eep.o    romdata   0x000cb5    program   0x000000
+      .idata_busy_eep.o_i    romdata   0x000cb5    program   0x000000
+         .code_busy_eep.o       code   0x000cb6    program   0x000006
+            .code_c018i.o       code   0x000cb6    program   0x000000
+           .idata_pat.o_i    romdata   0x000cbc    program   0x000025
      .config_300001_pat.o    romdata   0x300001    program   0x000001
      .config_300002_pat.o    romdata   0x300002    program   0x000001
      .config_300003_pat.o    romdata   0x300003    program   0x000001
@@ -64,29 +64,29 @@ Linker Map File - Created Wed Apr 30 10:49:59 2014
                ACCESSBANK      udata   0x000008       data   0x000002
                    .stack      udata   0x000080       data   0x000040
              .idata_pat.o      idata   0x0000c0       data   0x000025
-             .udata_pat.o      udata   0x0000e5       data   0x00000f
-           .udata_c018i.o      udata   0x0000f4       data   0x00000a
-           .idata_c018i.o      idata   0x0000fe       data   0x000000
-          .idata___init.o      idata   0x0000fe       data   0x000000
-          .udata___init.o      udata   0x0000fe       data   0x000000
-         .idata_write_B.o      idata   0x0000fe       data   0x000000
-         .udata_write_B.o      udata   0x0000fe       data   0x000000
-         .idata_t1write.o      idata   0x0000fe       data   0x000000
-         .udata_t1write.o      udata   0x0000fe       data   0x000000
-         .idata_t0write.o      idata   0x0000fe       data   0x000000
-         .udata_t0write.o      udata   0x0000fe       data   0x000000
-          .idata_read_B.o      idata   0x0000fe       data   0x000000
-          .udata_read_B.o      udata   0x0000fe       data   0x000000
-           .idata_uopen.o      idata   0x0000fe       data   0x000000
-           .udata_uopen.o      udata   0x0000fe       data   0x000000
-          .idata_t1open.o      idata   0x0000fe       data   0x000000
-          .udata_t1open.o      udata   0x0000fe       data   0x000000
-          .idata_t0open.o      idata   0x0000fe       data   0x000000
-          .udata_t0open.o      udata   0x0000fe       data   0x000000
-        .idata_busy_eep.o      idata   0x0000fe       data   0x000000
-        .udata_busy_eep.o      udata   0x0000fe       data   0x000000
-         .idata_blinker.o      idata   0x0000fe       data   0x000000
-         .udata_blinker.o      udata   0x0000fe       data   0x000000
+             .udata_pat.o      udata   0x0000e5       data   0x000010
+           .udata_c018i.o      udata   0x0000f5       data   0x00000a
+           .idata_c018i.o      idata   0x0000ff       data   0x000000
+          .idata___init.o      idata   0x0000ff       data   0x000000
+          .udata___init.o      udata   0x0000ff       data   0x000000
+         .idata_write_B.o      idata   0x0000ff       data   0x000000
+         .udata_write_B.o      udata   0x0000ff       data   0x000000
+         .idata_t1write.o      idata   0x0000ff       data   0x000000
+         .udata_t1write.o      udata   0x0000ff       data   0x000000
+         .idata_t0write.o      idata   0x0000ff       data   0x000000
+         .udata_t0write.o      udata   0x0000ff       data   0x000000
+          .idata_read_B.o      idata   0x0000ff       data   0x000000
+          .udata_read_B.o      udata   0x0000ff       data   0x000000
+           .idata_uopen.o      idata   0x0000ff       data   0x000000
+           .udata_uopen.o      udata   0x0000ff       data   0x000000
+          .idata_t1open.o      idata   0x0000ff       data   0x000000
+          .udata_t1open.o      udata   0x0000ff       data   0x000000
+          .idata_t0open.o      idata   0x0000ff       data   0x000000
+          .udata_t0open.o      udata   0x0000ff       data   0x000000
+        .idata_busy_eep.o      idata   0x0000ff       data   0x000000
+        .udata_busy_eep.o      udata   0x0000ff       data   0x000000
+         .idata_blinker.o      idata   0x0000ff       data   0x000000
+         .udata_blinker.o      udata   0x0000ff       data   0x000000
             SFR_UNBANKED0      udata   0x000f80       data   0x000080
 
 
@@ -94,32 +94,32 @@ Linker Map File - Created Wed Apr 30 10:49:59 2014
                               Program Memory Usage 
                                Start         End      
                            ---------   ---------      
-                            0x000000    0x000c94      
-                            0x000c96    0x000cc0      
+                            0x000000    0x000cb4      
+                            0x000cb6    0x000ce0      
                             0x300001    0x300003      
                             0x300005    0x300006      
                             0x300008    0x30000d      
-            3275 out of 8472 program addresses used, program memory utilization is 38%
+            3307 out of 8472 program addresses used, program memory utilization is 39%
 
 
 
                               Symbols - Sorted by Name
                      Name    Address   Location    Storage File                     
                 ---------  ---------  ---------  --------- ---------                
-               Blink_Init   0x00094c    program     extern X:\ibs_monitor\pat\blinker.c
-                 Busy_eep   0x000c96    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\EEP\busy_eep.c
-               OpenTimer0   0x000c0c    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\Timers\t0open.c
-               OpenTimer1   0x000b5a    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\Timers\t1open.c
-                OpenUSART   0x000a26    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\USART\uopen.c
-               Read_b_eep   0x000b16    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\EEP\read_B.c
-              WriteTimer0   0x000bd4    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\Timers\t0write.c
-              WriteTimer1   0x000b9c    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\Timers\t1write.c
-              Write_b_eep   0x000ab0    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\EEP\write_B.c
+               Blink_Init   0x00096c    program     extern X:\ibs_monitor\pat\blinker.c
+                 Busy_eep   0x000cb6    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\EEP\busy_eep.c
+               OpenTimer0   0x000c2c    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\Timers\t0open.c
+               OpenTimer1   0x000b7a    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\Timers\t1open.c
+                OpenUSART   0x000a46    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\USART\uopen.c
+               Read_b_eep   0x000b36    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\EEP\read_B.c
+              WriteTimer0   0x000bf4    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\Timers\t0write.c
+              WriteTimer1   0x000bbc    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\Timers\t1write.c
+              Write_b_eep   0x000ad0    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\EEP\write_B.c
        ___return_lbl00000   0x000004    program     static                          
-       ___return_lbl00000   0x000b4e    program     static                          
+       ___return_lbl00000   0x000b6e    program     static                          
        ___return_lbl00000   0x00000c    program     static                          
-       ___return_lbl00001   0x000c7e    program     static                          
-       ___return_lbl00002   0x000a24    program     static                          
+       ___return_lbl00001   0x000c9e    program     static                          
+       ___return_lbl00002   0x000a44    program     static                          
                __config_0   0x300001    program     static X:\ibs_monitor\pat\pat.c 
                __config_1   0x300002    program     static X:\ibs_monitor\pat\pat.c 
               __config_10   0x30000d    program     static X:\ibs_monitor\pat\pat.c 
@@ -132,46 +132,47 @@ Linker Map File - Created Wed Apr 30 10:49:59 2014
                __config_8   0x30000b    program     static X:\ibs_monitor\pat\pat.c 
                __config_9   0x30000c    program     static X:\ibs_monitor\pat\pat.c 
                    __init   0x000006    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\__init.c
-                   __pa_0   0x000960    program     static X:\ibs_monitor\pat\blinker.c
-                   __pa_0   0x0007a2    program     static X:\ibs_monitor\pat\pat.c 
-                   __pa_1   0x00096e    program     static X:\ibs_monitor\pat\blinker.c
-                   __pa_1   0x0007b0    program     static X:\ibs_monitor\pat\pat.c 
-                   __pa_2   0x000978    program     static X:\ibs_monitor\pat\blinker.c
-                   __pa_2   0x0007c0    program     static X:\ibs_monitor\pat\pat.c 
-                   __pa_3   0x000980    program     static X:\ibs_monitor\pat\blinker.c
-                   __pa_3   0x0007d2    program     static X:\ibs_monitor\pat\pat.c 
-                   __pa_4   0x0007e4    program     static X:\ibs_monitor\pat\pat.c 
-                   __pa_5   0x0007f6    program     static X:\ibs_monitor\pat\pat.c 
-                   __pa_6   0x000800    program     static X:\ibs_monitor\pat\pat.c 
-                   __pa_7   0x00080a    program     static X:\ibs_monitor\pat\pat.c 
-                   __pa_8   0x000812    program     static X:\ibs_monitor\pat\pat.c 
-               __string_0   0x000c89    program     static X:\ibs_monitor\pat\pat.c 
-               __string_1   0x000c80    program     static X:\ibs_monitor\pat\pat.c 
-            __zero_memory   0x000c44    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
-                _do_cinit   0x000988    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
+                   __pa_0   0x000980    program     static X:\ibs_monitor\pat\blinker.c
+                   __pa_0   0x0007b6    program     static X:\ibs_monitor\pat\pat.c 
+                   __pa_1   0x00098e    program     static X:\ibs_monitor\pat\blinker.c
+                   __pa_1   0x0007c4    program     static X:\ibs_monitor\pat\pat.c 
+                   __pa_2   0x000998    program     static X:\ibs_monitor\pat\blinker.c
+                   __pa_2   0x0007d4    program     static X:\ibs_monitor\pat\pat.c 
+                   __pa_3   0x0007e6    program     static X:\ibs_monitor\pat\pat.c 
+                   __pa_3   0x0009a0    program     static X:\ibs_monitor\pat\blinker.c
+                   __pa_4   0x0007f8    program     static X:\ibs_monitor\pat\pat.c 
+                   __pa_5   0x00080a    program     static X:\ibs_monitor\pat\pat.c 
+                   __pa_6   0x000814    program     static X:\ibs_monitor\pat\pat.c 
+                   __pa_7   0x00081e    program     static X:\ibs_monitor\pat\pat.c 
+                   __pa_8   0x000826    program     static X:\ibs_monitor\pat\pat.c 
+                   __pa_9   0x00082c    program     static X:\ibs_monitor\pat\pat.c 
+               __string_0   0x000ca9    program     static X:\ibs_monitor\pat\pat.c 
+               __string_1   0x000ca0    program     static X:\ibs_monitor\pat\pat.c 
+            __zero_memory   0x000c64    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
+                _do_cinit   0x0009a8    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
                    _entry   0x000000    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
-                 _startup   0x000c64    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
-                blink_led   0x000818    program     extern X:\ibs_monitor\pat\blinker.c
-            blink_led_alt   0x000912    program     extern X:\ibs_monitor\pat\blinker.c
-                compare_l   0x000c5a    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
-                copy_loop   0x0009fa    program     static                          
-            copy_one_byte   0x000a00    program     static                          
-                do_config   0x000622    program     extern X:\ibs_monitor\pat\pat.c 
-                     done   0x000a24    program     static                          
-             done_copying   0x000a0e    program     static                          
-              init_ihcmon   0x0006bc    program     extern X:\ibs_monitor\pat\pat.c 
-       init_stream_params   0x000730    program     extern X:\ibs_monitor\pat\pat.c 
-          is_led_blinking   0x0008f6    program     extern X:\ibs_monitor\pat\blinker.c
-                is_led_on   0x000930    program     extern X:\ibs_monitor\pat\blinker.c
-                     loop   0x000c74    program     static                          
-                   loop_h   0x000c52    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
-                   loop_l   0x000c5c    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
-                     main   0x000794    program     extern X:\ibs_monitor\pat\pat.c 
-                  sw_work   0x0004b4    program     extern X:\ibs_monitor\pat\pat.c 
-                     test   0x0009a2    program     static                          
+                 _startup   0x000c84    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
+                blink_led   0x000838    program     extern X:\ibs_monitor\pat\blinker.c
+            blink_led_alt   0x000932    program     extern X:\ibs_monitor\pat\blinker.c
+                compare_l   0x000c7a    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
+                copy_loop   0x000a1a    program     static                          
+            copy_one_byte   0x000a20    program     static                          
+                do_config   0x000636    program     extern X:\ibs_monitor\pat\pat.c 
+                     done   0x000a44    program     static                          
+             done_copying   0x000a2e    program     static                          
+              init_ihcmon   0x0006d0    program     extern X:\ibs_monitor\pat\pat.c 
+       init_stream_params   0x000744    program     extern X:\ibs_monitor\pat\pat.c 
+          is_led_blinking   0x000916    program     extern X:\ibs_monitor\pat\blinker.c
+                is_led_on   0x000950    program     extern X:\ibs_monitor\pat\blinker.c
+                     loop   0x000c94    program     static                          
+                   loop_h   0x000c72    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
+                   loop_l   0x000c7c    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
+                     main   0x0007a8    program     extern X:\ibs_monitor\pat\pat.c 
+                  sw_work   0x0004c4    program     extern X:\ibs_monitor\pat\pat.c 
+                     test   0x0009c2    program     static                          
                tm_handler   0x00001c    program     extern X:\ibs_monitor\pat\pat.c 
                    tm_int   0x000008    program     extern X:\ibs_monitor\pat\pat.c 
-               zero_block   0x000c52    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
+               zero_block   0x000c72    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
                    ADCON0   0x000fc2       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
                ADCON0bits   0x000fc2       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
                    ADCON1   0x000fc1       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
@@ -226,7 +227,7 @@ Linker Map File - Created Wed Apr 30 10:49:59 2014
                  LATAbits   0x000f89       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
                      LATB   0x000f8a       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
                  LATBbits   0x000f8a       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
-                     LEDS   0x0000f0       data     extern X:\ibs_monitor\pat\pat.c 
+                     LEDS   0x0000f1       data     extern X:\ibs_monitor\pat\pat.c 
                    LVDCON   0x000fd2       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
                LVDCONbits   0x000fd2       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
                    OSCCON   0x000fd3       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
@@ -328,21 +329,21 @@ Linker Map File - Created Wed Apr 30 10:49:59 2014
                build_time   0x0000dd       data     extern X:\ibs_monitor\pat\pat.c 
                   c_error   0x0000e2       data     static X:\ibs_monitor\pat\pat.c 
              config_found   0x0000e1       data     static X:\ibs_monitor\pat\pat.c 
-                curr_byte   0x0000f7       data     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
-               curr_entry   0x0000f9       data     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
-                 data_ptr   0x0000fb       data     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
+                curr_byte   0x0000f8       data     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
+               curr_entry   0x0000fa       data     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
+                 data_ptr   0x0000fc       data     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
              glitch_count   0x0000d7       data     extern X:\ibs_monitor\pat\pat.c 
                     ibs_d   0x0000d8       data     extern X:\ibs_monitor\pat\pat.c 
                  ibs_data   0x0000c3       data     extern X:\ibs_monitor\pat\pat.c 
-          ibs_stream_file   0x0000f1       data     extern X:\ibs_monitor\pat\pat.c 
+          ibs_stream_file   0x0000f2       data     extern X:\ibs_monitor\pat\pat.c 
      ibs_stream_file_prev   0x0000c0       data     extern X:\ibs_monitor\pat\pat.c 
                 ihc_count   0x0000d1       data     extern X:\ibs_monitor\pat\pat.c 
-                    ihc_d   0x0000f2       data     extern X:\ibs_monitor\pat\pat.c 
+                    ihc_d   0x0000f3       data     extern X:\ibs_monitor\pat\pat.c 
                ihc_d_prev   0x0000e3       data     static X:\ibs_monitor\pat\pat.c 
                 led_cache   0x0000e0       data     static X:\ibs_monitor\pat\pat.c 
                link_count   0x0000cf       data     extern X:\ibs_monitor\pat\pat.c 
                   link_ok   0x0000d6       data     extern X:\ibs_monitor\pat\pat.c 
-                     prom   0x0000f4       data     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
+                     prom   0x0000f5       data     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
                timer0_off   0x0000c1       data     extern X:\ibs_monitor\pat\pat.c 
 
 
@@ -356,55 +357,56 @@ Linker Map File - Created Wed Apr 30 10:49:59 2014
                    tm_int   0x000008    program     extern X:\ibs_monitor\pat\pat.c 
        ___return_lbl00000   0x00000c    program     static                          
                tm_handler   0x00001c    program     extern X:\ibs_monitor\pat\pat.c 
-                  sw_work   0x0004b4    program     extern X:\ibs_monitor\pat\pat.c 
-                do_config   0x000622    program     extern X:\ibs_monitor\pat\pat.c 
-              init_ihcmon   0x0006bc    program     extern X:\ibs_monitor\pat\pat.c 
-       init_stream_params   0x000730    program     extern X:\ibs_monitor\pat\pat.c 
-                     main   0x000794    program     extern X:\ibs_monitor\pat\pat.c 
-                   __pa_0   0x0007a2    program     static X:\ibs_monitor\pat\pat.c 
-                   __pa_1   0x0007b0    program     static X:\ibs_monitor\pat\pat.c 
-                   __pa_2   0x0007c0    program     static X:\ibs_monitor\pat\pat.c 
-                   __pa_3   0x0007d2    program     static X:\ibs_monitor\pat\pat.c 
-                   __pa_4   0x0007e4    program     static X:\ibs_monitor\pat\pat.c 
-                   __pa_5   0x0007f6    program     static X:\ibs_monitor\pat\pat.c 
-                   __pa_6   0x000800    program     static X:\ibs_monitor\pat\pat.c 
-                   __pa_7   0x00080a    program     static X:\ibs_monitor\pat\pat.c 
-                   __pa_8   0x000812    program     static X:\ibs_monitor\pat\pat.c 
-                blink_led   0x000818    program     extern X:\ibs_monitor\pat\blinker.c
-          is_led_blinking   0x0008f6    program     extern X:\ibs_monitor\pat\blinker.c
-            blink_led_alt   0x000912    program     extern X:\ibs_monitor\pat\blinker.c
-                is_led_on   0x000930    program     extern X:\ibs_monitor\pat\blinker.c
-               Blink_Init   0x00094c    program     extern X:\ibs_monitor\pat\blinker.c
-                   __pa_0   0x000960    program     static X:\ibs_monitor\pat\blinker.c
-                   __pa_1   0x00096e    program     static X:\ibs_monitor\pat\blinker.c
-                   __pa_2   0x000978    program     static X:\ibs_monitor\pat\blinker.c
-                   __pa_3   0x000980    program     static X:\ibs_monitor\pat\blinker.c
-                _do_cinit   0x000988    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
-                     test   0x0009a2    program     static                          
-                copy_loop   0x0009fa    program     static                          
-            copy_one_byte   0x000a00    program     static                          
-             done_copying   0x000a0e    program     static                          
-                     done   0x000a24    program     static                          
-       ___return_lbl00002   0x000a24    program     static                          
-                OpenUSART   0x000a26    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\USART\uopen.c
-              Write_b_eep   0x000ab0    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\EEP\write_B.c
-               Read_b_eep   0x000b16    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\EEP\read_B.c
-       ___return_lbl00000   0x000b4e    program     static                          
-               OpenTimer1   0x000b5a    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\Timers\t1open.c
-              WriteTimer1   0x000b9c    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\Timers\t1write.c
-              WriteTimer0   0x000bd4    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\Timers\t0write.c
-               OpenTimer0   0x000c0c    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\Timers\t0open.c
-            __zero_memory   0x000c44    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
-                   loop_h   0x000c52    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
-               zero_block   0x000c52    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
-                compare_l   0x000c5a    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
-                   loop_l   0x000c5c    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
-                 _startup   0x000c64    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
-                     loop   0x000c74    program     static                          
-       ___return_lbl00001   0x000c7e    program     static                          
-               __string_1   0x000c80    program     static X:\ibs_monitor\pat\pat.c 
-               __string_0   0x000c89    program     static X:\ibs_monitor\pat\pat.c 
-                 Busy_eep   0x000c96    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\EEP\busy_eep.c
+                  sw_work   0x0004c4    program     extern X:\ibs_monitor\pat\pat.c 
+                do_config   0x000636    program     extern X:\ibs_monitor\pat\pat.c 
+              init_ihcmon   0x0006d0    program     extern X:\ibs_monitor\pat\pat.c 
+       init_stream_params   0x000744    program     extern X:\ibs_monitor\pat\pat.c 
+                     main   0x0007a8    program     extern X:\ibs_monitor\pat\pat.c 
+                   __pa_0   0x0007b6    program     static X:\ibs_monitor\pat\pat.c 
+                   __pa_1   0x0007c4    program     static X:\ibs_monitor\pat\pat.c 
+                   __pa_2   0x0007d4    program     static X:\ibs_monitor\pat\pat.c 
+                   __pa_3   0x0007e6    program     static X:\ibs_monitor\pat\pat.c 
+                   __pa_4   0x0007f8    program     static X:\ibs_monitor\pat\pat.c 
+                   __pa_5   0x00080a    program     static X:\ibs_monitor\pat\pat.c 
+                   __pa_6   0x000814    program     static X:\ibs_monitor\pat\pat.c 
+                   __pa_7   0x00081e    program     static X:\ibs_monitor\pat\pat.c 
+                   __pa_8   0x000826    program     static X:\ibs_monitor\pat\pat.c 
+                   __pa_9   0x00082c    program     static X:\ibs_monitor\pat\pat.c 
+                blink_led   0x000838    program     extern X:\ibs_monitor\pat\blinker.c
+          is_led_blinking   0x000916    program     extern X:\ibs_monitor\pat\blinker.c
+            blink_led_alt   0x000932    program     extern X:\ibs_monitor\pat\blinker.c
+                is_led_on   0x000950    program     extern X:\ibs_monitor\pat\blinker.c
+               Blink_Init   0x00096c    program     extern X:\ibs_monitor\pat\blinker.c
+                   __pa_0   0x000980    program     static X:\ibs_monitor\pat\blinker.c
+                   __pa_1   0x00098e    program     static X:\ibs_monitor\pat\blinker.c
+                   __pa_2   0x000998    program     static X:\ibs_monitor\pat\blinker.c
+                   __pa_3   0x0009a0    program     static X:\ibs_monitor\pat\blinker.c
+                _do_cinit   0x0009a8    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
+                     test   0x0009c2    program     static                          
+                copy_loop   0x000a1a    program     static                          
+            copy_one_byte   0x000a20    program     static                          
+             done_copying   0x000a2e    program     static                          
+       ___return_lbl00002   0x000a44    program     static                          
+                     done   0x000a44    program     static                          
+                OpenUSART   0x000a46    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\USART\uopen.c
+              Write_b_eep   0x000ad0    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\EEP\write_B.c
+               Read_b_eep   0x000b36    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\EEP\read_B.c
+       ___return_lbl00000   0x000b6e    program     static                          
+               OpenTimer1   0x000b7a    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\Timers\t1open.c
+              WriteTimer1   0x000bbc    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\Timers\t1write.c
+              WriteTimer0   0x000bf4    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\Timers\t0write.c
+               OpenTimer0   0x000c2c    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\Timers\t0open.c
+            __zero_memory   0x000c64    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
+                   loop_h   0x000c72    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
+               zero_block   0x000c72    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
+                compare_l   0x000c7a    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
+                   loop_l   0x000c7c    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
+                 _startup   0x000c84    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
+                     loop   0x000c94    program     static                          
+       ___return_lbl00001   0x000c9e    program     static                          
+               __string_1   0x000ca0    program     static X:\ibs_monitor\pat\pat.c 
+               __string_0   0x000ca9    program     static X:\ibs_monitor\pat\pat.c 
+                 Busy_eep   0x000cb6    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\EEP\busy_eep.c
                __config_0   0x300001    program     static X:\ibs_monitor\pat\pat.c 
                __config_1   0x300002    program     static X:\ibs_monitor\pat\pat.c 
                __config_2   0x300003    program     static X:\ibs_monitor\pat\pat.c 
@@ -441,13 +443,13 @@ Linker Map File - Created Wed Apr 30 10:49:59 2014
                   c_error   0x0000e2       data     static X:\ibs_monitor\pat\pat.c 
                ihc_d_prev   0x0000e3       data     static X:\ibs_monitor\pat\pat.c 
                         V   0x0000e5       data     extern X:\ibs_monitor\pat\pat.c 
-                     LEDS   0x0000f0       data     extern X:\ibs_monitor\pat\pat.c 
-          ibs_stream_file   0x0000f1       data     extern X:\ibs_monitor\pat\pat.c 
-                    ihc_d   0x0000f2       data     extern X:\ibs_monitor\pat\pat.c 
-                     prom   0x0000f4       data     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
-                curr_byte   0x0000f7       data     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
-               curr_entry   0x0000f9       data     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
-                 data_ptr   0x0000fb       data     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
+                     LEDS   0x0000f1       data     extern X:\ibs_monitor\pat\pat.c 
+          ibs_stream_file   0x0000f2       data     extern X:\ibs_monitor\pat\pat.c 
+                    ihc_d   0x0000f3       data     extern X:\ibs_monitor\pat\pat.c 
+                     prom   0x0000f5       data     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
+                curr_byte   0x0000f8       data     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
+               curr_entry   0x0000fa       data     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
+                 data_ptr   0x0000fc       data     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
                 PORTAbits   0x000f80       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
                     PORTA   0x000f80       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
                     PORTB   0x000f81       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm

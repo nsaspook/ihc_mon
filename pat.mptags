@@ -7,7 +7,7 @@
 !_TAG_REVISION_NAME	MCHPTags	//
 !_TAG_REVISION_VERSION	6.0.1	//
 BLINKER_H	X:\ibs_monitor\pat\blinker.h	9;"	d	line:9
-Blink_Init	X:\ibs_monitor\pat\blinker.c	40;"	f	line:40	signature:(void)
+Blink_Init	X:\ibs_monitor\pat\blinker.c	38;"	f	line:38	signature:(void)
 Blink_Init	X:\ibs_monitor\pat\blinker.h	13;"	p	line:13	signature:(void)
 COMM_ENABLE::LATBbits.LATB3	X:\ibs_monitor\pat\pat.h	80;"	d	line:80
 CONFIG_CHAR::'?'	X:\ibs_monitor\pat\pat.h	110;"	d	line:110
@@ -29,8 +29,8 @@ IHC_CODE1::'e'	X:\ibs_monitor\pat\pat.h	95;"	d	line:95
 IHC_CODE1H::900	X:\ibs_monitor\pat\pat.h	96;"	d	line:96
 IHC_CODE1L::200	X:\ibs_monitor\pat\pat.h	97;"	d	line:97
 IHC_CODE2::'f'	X:\ibs_monitor\pat\pat.h	98;"	d	line:98
-IHC_CODE2H::900	X:\ibs_monitor\pat\pat.h	99;"	d	line:99
-IHC_CODE2L::300	X:\ibs_monitor\pat\pat.h	100;"	d	line:100
+IHC_CODE2H::1030	X:\ibs_monitor\pat\pat.h	99;"	d	line:99
+IHC_CODE2L::200	X:\ibs_monitor\pat\pat.h	100;"	d	line:100
 IHC_CODE3::'u'	X:\ibs_monitor\pat\pat.h	101;"	d	line:101
 IHC_CODE3H::1050	X:\ibs_monitor\pat\pat.h	102;"	d	line:102
 IHC_CODE3L::700	X:\ibs_monitor\pat\pat.h	103;"	d	line:103
@@ -80,16 +80,16 @@ blink	X:\ibs_monitor\pat\pat.h	22;"	m	line:22	struct:V_data
 blink_alt	X:\ibs_monitor\pat\pat.h	22;"	m	line:22	struct:V_data
 blink_led	X:\ibs_monitor\pat\blinker.c	3;"	f	line:3	signature:(uint8_t led, uint8_t on_led, uint8_t start)
 blink_led	X:\ibs_monitor\pat\blinker.h	14;"	p	line:14	signature:(uint8_t, uint8_t, uint8_t)
-blink_led_alt	X:\ibs_monitor\pat\blinker.c	28;"	f	line:28	signature:(uint8_t alt)
+blink_led_alt	X:\ibs_monitor\pat\blinker.c	27;"	f	line:27	signature:(uint8_t alt)
 blink_led_alt	X:\ibs_monitor\pat\blinker.h	15;"	p	line:15	signature:(uint8_t)
 blink_out	X:\ibs_monitor\pat\pat.h	22;"	m	line:22	struct:V_data
 blink_speed	X:\ibs_monitor\pat\pat.c	89;"	v	line:89
 build_date	X:\ibs_monitor\pat\pat.c	91;"	v	line:91
 build_time	X:\ibs_monitor\pat\pat.c	91;"	v	line:91
-c_error	X:\ibs_monitor\pat\pat.c	104;"	l	line:104	file:
+c_error	X:\ibs_monitor\pat\pat.c	105;"	l	line:105	file:
 config	X:\ibs_monitor\pat\pat.h	31;"	m	line:31	struct:V_data
-config_found	X:\ibs_monitor\pat\pat.c	104;"	l	line:104	file:
-do_config	X:\ibs_monitor\pat\pat.c	359;"	f	line:359	signature:(void)
+config_found	X:\ibs_monitor\pat\pat.c	105;"	l	line:105	file:
+do_config	X:\ibs_monitor\pat\pat.c	367;"	f	line:367	signature:(void)
 do_config	X:\ibs_monitor\pat\pat.c	76;"	p	line:76	file:	signature:(void)
 fine	X:\ibs_monitor\pat\pat.h	22;"	m	line:22	struct:V_data
 glitch_count	X:\ibs_monitor\pat\pat.c	87;"	v	line:87
@@ -101,16 +101,16 @@ ibs_stream_file_prev	X:\ibs_monitor\pat\pat.c	83;"	v	line:83
 ihc_count	X:\ibs_monitor\pat\pat.c	87;"	v	line:87
 ihc_d	X:\ibs_monitor\pat\pat.c	84;"	v	line:84
 ihc_d_abs	X:\ibs_monitor\pat\pat.h	23;"	m	line:23	struct:V_data
-ihc_d_prev	X:\ibs_monitor\pat\pat.c	105;"	l	line:105	file:
-ihc_d_roc	X:\ibs_monitor\pat\pat.c	106;"	l	line:106
+ihc_d_prev	X:\ibs_monitor\pat\pat.c	106;"	l	line:106	file:
+ihc_d_roc	X:\ibs_monitor\pat\pat.c	107;"	l	line:107
 ihc_data0	X:\ibs_monitor\pat\pat.h	26;"	m	line:26	struct:V_data
 ihc_data1	X:\ibs_monitor\pat\pat.h	27;"	m	line:27	struct:V_data
 ihc_data2	X:\ibs_monitor\pat\pat.h	28;"	m	line:28	struct:V_data
 ihc_data3	X:\ibs_monitor\pat\pat.h	29;"	m	line:29	struct:V_data
 ihc_data4	X:\ibs_monitor\pat\pat.h	30;"	m	line:30	struct:V_data
-init_ihcmon	X:\ibs_monitor\pat\pat.c	398;"	f	line:398	signature:(void)
+init_ihcmon	X:\ibs_monitor\pat\pat.c	407;"	f	line:407	signature:(void)
 init_ihcmon	X:\ibs_monitor\pat\pat.c	77;"	p	line:77	file:	signature:(void)
-init_stream_params	X:\ibs_monitor\pat\pat.c	446;"	f	line:446	signature:(void)
+init_stream_params	X:\ibs_monitor\pat\pat.c	456;"	f	line:456	signature:(void)
 init_stream_params	X:\ibs_monitor\pat\pat.c	78;"	p	line:78	file:	signature:(void)
 inreg	X:\ibs_monitor\pat\pat.h	24;"	m	line:24	struct:V_data
 int16_t	X:\ibs_monitor\pat\pat.h	16;"	t	line:16
@@ -119,20 +119,20 @@ int64_t	X:\ibs_monitor\pat\pat.h	18;"	t	line:18
 int8_t	X:\ibs_monitor\pat\pat.h	15;"	t	line:15
 is_led_blinking	X:\ibs_monitor\pat\blinker.c	23;"	f	line:23	signature:(uint8_t led)
 is_led_blinking	X:\ibs_monitor\pat\blinker.h	16;"	p	line:16	signature:(uint8_t)
-is_led_on	X:\ibs_monitor\pat\blinker.c	35;"	f	line:35	signature:(uint8_t led)
+is_led_on	X:\ibs_monitor\pat\blinker.c	34;"	f	line:34	signature:(uint8_t led)
 is_led_on	X:\ibs_monitor\pat\blinker.h	17;"	p	line:17	signature:(uint8_t)
-led_cache	X:\ibs_monitor\pat\pat.c	104;"	l	line:104	file:
+led_cache	X:\ibs_monitor\pat\pat.c	105;"	l	line:105	file:
 link_count	X:\ibs_monitor\pat\pat.c	86;"	v	line:86
 link_ok	X:\ibs_monitor\pat\pat.c	87;"	v	line:87
-main	X:\ibs_monitor\pat\pat.c	473;"	f	line:473	signature:(void)
-old_alt	X:\ibs_monitor\pat\blinker.c	30;"	l	line:30
+main	X:\ibs_monitor\pat\pat.c	484;"	f	line:484	signature:(void)
+old_alt	X:\ibs_monitor\pat\blinker.c	29;"	l	line:29
 out_bits	X:\ibs_monitor\pat\pat.h	48;"	m	line:48	union:Obits2
 out_byte	X:\ibs_monitor\pat\pat.h	47;"	m	line:47	union:Obits2
 stable	X:\ibs_monitor\pat\pat.h	32;"	m	line:32	struct:V_data
-sw_work	X:\ibs_monitor\pat\pat.c	292;"	f	line:292	signature:(void)
+sw_work	X:\ibs_monitor\pat\pat.c	299;"	f	line:299	signature:(void)
 sw_work	X:\ibs_monitor\pat\pat.c	75;"	p	line:75	file:	signature:(void)
 timer0_off	X:\ibs_monitor\pat\pat.c	86;"	v	line:86
-tm_handler	X:\ibs_monitor\pat\pat.c	102;"	f	line:102	signature:(void)
+tm_handler	X:\ibs_monitor\pat\pat.c	103;"	f	line:103	signature:(void)
 tm_handler	X:\ibs_monitor\pat\pat.c	74;"	p	line:74	file:	signature:(void)
 tm_int	X:\ibs_monitor\pat\pat.c	95;"	f	line:95	signature:(void)
 uint16_t	X:\ibs_monitor\pat\pat.h	11;"	t	line:11

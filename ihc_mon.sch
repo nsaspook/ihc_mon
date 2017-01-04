@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="7.6.0">
+<eagle version="7.7.0">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -62,7 +62,7 @@
 <libraries>
 <library name="microchip">
 <description>&lt;b&gt;Microchip PIC Microcontrollers and other Devices&lt;/b&gt;&lt;p&gt;
-Based on the following sources :
+                        Based on the following sources :
 &lt;ul&gt;
 &lt;li&gt;Microchip Data Book, 1993
 &lt;li&gt;THE EMERGING WORLD STANDARD, 1995/1996
@@ -73,7 +73,7 @@ Based on the following sources :
 <packages>
 <package name="DIL18">
 <description>&lt;B&gt;Dual In Line&lt;/B&gt;&lt;p&gt;
-package type P</description>
+                                package type P</description>
 <wire x1="-11.43" y1="-0.635" x2="-11.43" y2="-2.54" width="0.1524" layer="21"/>
 <wire x1="-11.43" y1="-0.635" x2="-11.43" y2="0.635" width="0.1524" layer="21" curve="180"/>
 <wire x1="11.43" y1="-2.54" x2="-11.43" y2="-2.54" width="0.1524" layer="21"/>
@@ -103,7 +103,7 @@ package type P</description>
 </package>
 <package name="SO-18W">
 <description>&lt;B&gt;Small Outline Wide Plastic Gull Wing&lt;/B&gt;&lt;p&gt;
-300-mil body, package type SO</description>
+                                300-mil body, package type SO</description>
 <wire x1="-5.6642" y1="-3.6957" x2="5.6388" y2="-3.6957" width="0.1524" layer="21"/>
 <wire x1="5.6388" y1="-3.6957" x2="5.6388" y2="3.6703" width="0.1524" layer="21"/>
 <wire x1="5.6388" y1="3.6703" x2="-5.6642" y2="3.6703" width="0.1524" layer="21"/>
@@ -180,9 +180,9 @@ package type P</description>
 <devicesets>
 <deviceset name="PIC18F1*20" prefix="IC">
 <description>&lt;b&gt;18/20/28-Pin High-Performance, Enhanced Flash Microcontrollers&lt;/b&gt;&lt;br&gt;
-with 10-bit A/D and nanoWatt Technology&lt;p&gt;
+                                with 10-bit A/D and nanoWatt Technology&lt;p&gt;
 
-Source: ww1.microchip.com/downloads/en/DeviceDoc/39605c.pdf</description>
+                                Source: ww1.microchip.com/downloads/en/DeviceDoc/39605c.pdf</description>
 <gates>
 <gate name="G$1" symbol="PIC18F1220" x="0" y="0"/>
 </gates>
@@ -855,7 +855,7 @@ Source: ww1.microchip.com/downloads/en/DeviceDoc/39605c.pdf</description>
 </library>
 <library name="resistor">
 <description>&lt;b&gt;Resistors, Capacitors, Inductors&lt;/b&gt;&lt;p&gt;
-Based on the previous libraries:
+                        Based on the previous libraries:
 &lt;ul&gt;
 &lt;li&gt;r.lbr
 &lt;li&gt;cap.lbr 
@@ -864,15 +864,15 @@ Based on the previous libraries:
 &lt;li&gt;polcap.lbr
 &lt;li&gt;ipc-smd.lbr
 &lt;/ul&gt;
-All SMD packages are defined according to the IPC specifications and  CECC&lt;p&gt;
+                        All SMD packages are defined according to the IPC specifications and  CECC&lt;p&gt;
 &lt;author&gt;Created by librarian@cadsoft.de&lt;/author&gt;&lt;p&gt;
 &lt;p&gt;
-for Electrolyt Capacitors see also :&lt;p&gt;
-www.bccomponents.com &lt;p&gt;
-www.panasonic.com&lt;p&gt;
-www.kemet.com&lt;p&gt;
+                        for Electrolyt Capacitors see also :&lt;p&gt;
+                        www.bccomponents.com &lt;p&gt;
+                        www.panasonic.com&lt;p&gt;
+                        www.kemet.com&lt;p&gt;
 &lt;p&gt;
-for trimmer refence see : &lt;u&gt;www.electrospec-inc.com/cross_references/trimpotcrossref.asp&lt;/u&gt;&lt;p&gt;
+                        for trimmer refence see : &lt;u&gt;www.electrospec-inc.com/cross_references/trimpotcrossref.asp&lt;/u&gt;&lt;p&gt;
 
 &lt;map name="nav_main"&gt;
 &lt;area shape="rect" coords="0,1,140,23" href="../military_specs.asp" title=""&gt;
@@ -953,140 +953,140 @@ for trimmer refence see : &lt;u&gt;www.electrospec-inc.com/cross_references/trim
   &lt;/TR&gt;
   &lt;TR&gt;
     &lt;TD BGCOLOR="#cccccc" ALIGN=CENTER&gt;&lt;FONT FACE=ARIAL SIZE=3 &gt;
-      3005P&lt;BR&gt;
-      3006P&lt;BR&gt;
-      3006W&lt;BR&gt;
-      3006Y&lt;BR&gt;
-      3009P&lt;BR&gt;
-      3009W&lt;BR&gt;
-      3009Y&lt;BR&gt;
-      3057J&lt;BR&gt;
-      3057L&lt;BR&gt;
-      3057P&lt;BR&gt;
-      3057Y&lt;BR&gt;
-      3059J&lt;BR&gt;
-      3059L&lt;BR&gt;
-      3059P&lt;BR&gt;
-      3059Y&lt;BR&gt;&lt;/FONT&gt;
+                        3005P&lt;BR&gt;
+                        3006P&lt;BR&gt;
+                        3006W&lt;BR&gt;
+                        3006Y&lt;BR&gt;
+                        3009P&lt;BR&gt;
+                        3009W&lt;BR&gt;
+                        3009Y&lt;BR&gt;
+                        3057J&lt;BR&gt;
+                        3057L&lt;BR&gt;
+                        3057P&lt;BR&gt;
+                        3057Y&lt;BR&gt;
+                        3059J&lt;BR&gt;
+                        3059L&lt;BR&gt;
+                        3059P&lt;BR&gt;
+                        3059Y&lt;BR&gt;&lt;/FONT&gt;
     &lt;/TD&gt;
     &lt;TD BGCOLOR="#cccccc" ALIGN=CENTER&gt;&lt;FONT FACE=ARIAL SIZE=3&gt;
-      -&lt;BR&gt;
-      89P&lt;BR&gt;
-      89W&lt;BR&gt;
-      89X&lt;BR&gt;
-      89PH&lt;BR&gt;
-      76P&lt;BR&gt;
-      89XH&lt;BR&gt;
-      78SLT&lt;BR&gt;
-      78L&amp;nbsp;ALT&lt;BR&gt;
-      56P&amp;nbsp;ALT&lt;BR&gt;
-      78P&amp;nbsp;ALT&lt;BR&gt;
-      T8S&lt;BR&gt;
-      78L&lt;BR&gt;
-      56P&lt;BR&gt;
-      78P&lt;BR&gt;&lt;/FONT&gt;
+                        -&lt;BR&gt;
+                        89P&lt;BR&gt;
+                        89W&lt;BR&gt;
+                        89X&lt;BR&gt;
+                        89PH&lt;BR&gt;
+                        76P&lt;BR&gt;
+                        89XH&lt;BR&gt;
+                        78SLT&lt;BR&gt;
+                        78L&amp;nbsp;ALT&lt;BR&gt;
+                        56P&amp;nbsp;ALT&lt;BR&gt;
+                        78P&amp;nbsp;ALT&lt;BR&gt;
+                        T8S&lt;BR&gt;
+                        78L&lt;BR&gt;
+                        56P&lt;BR&gt;
+                        78P&lt;BR&gt;&lt;/FONT&gt;
     &lt;/TD&gt;
     &lt;TD BGCOLOR="#cccccc" ALIGN=CENTER&gt;&lt;FONT FACE=ARIAL SIZE=3&gt;
-      -&lt;BR&gt;
-      T18/784&lt;BR&gt;
-      783&lt;BR&gt;
-      781&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      2199&lt;BR&gt;
-      1697/1897&lt;BR&gt;
-      1680/1880&lt;BR&gt;
-      2187&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;&lt;/FONT&gt;
+                        -&lt;BR&gt;
+                        T18/784&lt;BR&gt;
+                        783&lt;BR&gt;
+                        781&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        2199&lt;BR&gt;
+                        1697/1897&lt;BR&gt;
+                        1680/1880&lt;BR&gt;
+                        2187&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;&lt;/FONT&gt;
     &lt;/TD&gt;
     &lt;TD BGCOLOR="#cccccc" ALIGN=CENTER&gt;&lt;FONT FACE=ARIAL SIZE=3&gt;
-      -&lt;BR&gt;
-      8035EKP/CT20/RJ-20P&lt;BR&gt;
-      -&lt;BR&gt;
-      RJ-20X&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      1211L&lt;BR&gt;
-      8012EKQ&amp;nbsp;ALT&lt;BR&gt;
-      8012EKR&amp;nbsp;ALT&lt;BR&gt;
-      1211P&lt;BR&gt;
-      8012EKJ&lt;BR&gt;
-      8012EKL&lt;BR&gt;
-      8012EKQ&lt;BR&gt;
-      8012EKR&lt;BR&gt;&lt;/FONT&gt;
+                        -&lt;BR&gt;
+                        8035EKP/CT20/RJ-20P&lt;BR&gt;
+                        -&lt;BR&gt;
+                        RJ-20X&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        1211L&lt;BR&gt;
+                        8012EKQ&amp;nbsp;ALT&lt;BR&gt;
+                        8012EKR&amp;nbsp;ALT&lt;BR&gt;
+                        1211P&lt;BR&gt;
+                        8012EKJ&lt;BR&gt;
+                        8012EKL&lt;BR&gt;
+                        8012EKQ&lt;BR&gt;
+                        8012EKR&lt;BR&gt;&lt;/FONT&gt;
     &lt;/TD&gt;
     &lt;TD BGCOLOR="#cccccc" ALIGN=CENTER&gt;&lt;FONT FACE=ARIAL SIZE=3&gt;
-      -&lt;BR&gt;
-      2101P&lt;BR&gt;
-      2101W&lt;BR&gt;
-      2101Y&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      2102L&lt;BR&gt;
-      2102S&lt;BR&gt;
-      2102Y&lt;BR&gt;&lt;/FONT&gt;
+                        -&lt;BR&gt;
+                        2101P&lt;BR&gt;
+                        2101W&lt;BR&gt;
+                        2101Y&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        2102L&lt;BR&gt;
+                        2102S&lt;BR&gt;
+                        2102Y&lt;BR&gt;&lt;/FONT&gt;
     &lt;/TD&gt;
     &lt;TD BGCOLOR="#cccccc" ALIGN=CENTER&gt;&lt;FONT FACE=ARIAL SIZE=3&gt;
-      -&lt;BR&gt;
-      EVMCOG&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;&lt;/FONT&gt;
+                        -&lt;BR&gt;
+                        EVMCOG&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;&lt;/FONT&gt;
     &lt;/TD&gt;
     &lt;TD BGCOLOR="#cccccc" ALIGN=CENTER&gt;&lt;FONT FACE=ARIAL SIZE=3&gt;
-      -&lt;BR&gt;
-      43P&lt;BR&gt;
-      43W&lt;BR&gt;
-      43Y&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      40L&lt;BR&gt;
-      40P&lt;BR&gt;
-      40Y&lt;BR&gt;
-      70Y-T602&lt;BR&gt;
-      70L&lt;BR&gt;
-      70P&lt;BR&gt;
-      70Y&lt;BR&gt;&lt;/FONT&gt;
+                        -&lt;BR&gt;
+                        43P&lt;BR&gt;
+                        43W&lt;BR&gt;
+                        43Y&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        40L&lt;BR&gt;
+                        40P&lt;BR&gt;
+                        40Y&lt;BR&gt;
+                        70Y-T602&lt;BR&gt;
+                        70L&lt;BR&gt;
+                        70P&lt;BR&gt;
+                        70Y&lt;BR&gt;&lt;/FONT&gt;
     &lt;/TD&gt;
     &lt;TD BGCOLOR="#cccccc" ALIGN=CENTER&gt;&lt;FONT FACE=ARIAL SIZE=3&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      RT/RTR12&lt;BR&gt;
-      RT/RTR12&lt;BR&gt;
-      RT/RTR12&lt;BR&gt;
-      -&lt;BR&gt;
-      RJ/RJR12&lt;BR&gt;
-      RJ/RJR12&lt;BR&gt;
-      RJ/RJR12&lt;BR&gt;&lt;/FONT&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        RT/RTR12&lt;BR&gt;
+                        RT/RTR12&lt;BR&gt;
+                        RT/RTR12&lt;BR&gt;
+                        -&lt;BR&gt;
+                        RJ/RJR12&lt;BR&gt;
+                        RJ/RJR12&lt;BR&gt;
+                        RJ/RJR12&lt;BR&gt;&lt;/FONT&gt;
     &lt;/TD&gt;
   &lt;/TR&gt;
   &lt;TR&gt;
@@ -1126,276 +1126,276 @@ for trimmer refence see : &lt;u&gt;www.electrospec-inc.com/cross_references/trim
   &lt;/TR&gt;
   &lt;TR&gt;
     &lt;TD BGCOLOR="#cccccc" ALIGN=CENTER&gt;&lt;FONT FACE=ARIAL SIZE=3&gt;
-      3250L&lt;BR&gt;
-      3250P&lt;BR&gt;
-      3250W&lt;BR&gt;
-      3250X&lt;BR&gt;
-      3252P&lt;BR&gt;
-      3252W&lt;BR&gt;
-      3252X&lt;BR&gt;
-      3260P&lt;BR&gt;
-      3260W&lt;BR&gt;
-      3260X&lt;BR&gt;
-      3262P&lt;BR&gt;
-      3262W&lt;BR&gt;
-      3262X&lt;BR&gt;
-      3266P&lt;BR&gt;
-      3266W&lt;BR&gt;
-      3266X&lt;BR&gt;
-      3290H&lt;BR&gt;
-      3290P&lt;BR&gt;
-      3290W&lt;BR&gt;
-      3292P&lt;BR&gt;
-      3292W&lt;BR&gt;
-      3292X&lt;BR&gt;
-      3296P&lt;BR&gt;
-      3296W&lt;BR&gt;
-      3296X&lt;BR&gt;
-      3296Y&lt;BR&gt;
-      3296Z&lt;BR&gt;
-      3299P&lt;BR&gt;
-      3299W&lt;BR&gt;
-      3299X&lt;BR&gt;
-      3299Y&lt;BR&gt;
-      3299Z&lt;BR&gt;&lt;/FONT&gt;
+                        3250L&lt;BR&gt;
+                        3250P&lt;BR&gt;
+                        3250W&lt;BR&gt;
+                        3250X&lt;BR&gt;
+                        3252P&lt;BR&gt;
+                        3252W&lt;BR&gt;
+                        3252X&lt;BR&gt;
+                        3260P&lt;BR&gt;
+                        3260W&lt;BR&gt;
+                        3260X&lt;BR&gt;
+                        3262P&lt;BR&gt;
+                        3262W&lt;BR&gt;
+                        3262X&lt;BR&gt;
+                        3266P&lt;BR&gt;
+                        3266W&lt;BR&gt;
+                        3266X&lt;BR&gt;
+                        3290H&lt;BR&gt;
+                        3290P&lt;BR&gt;
+                        3290W&lt;BR&gt;
+                        3292P&lt;BR&gt;
+                        3292W&lt;BR&gt;
+                        3292X&lt;BR&gt;
+                        3296P&lt;BR&gt;
+                        3296W&lt;BR&gt;
+                        3296X&lt;BR&gt;
+                        3296Y&lt;BR&gt;
+                        3296Z&lt;BR&gt;
+                        3299P&lt;BR&gt;
+                        3299W&lt;BR&gt;
+                        3299X&lt;BR&gt;
+                        3299Y&lt;BR&gt;
+                        3299Z&lt;BR&gt;&lt;/FONT&gt;
     &lt;/TD&gt;
     &lt;TD BGCOLOR="#cccccc" ALIGN=CENTER&gt;&lt;FONT FACE=ARIAL SIZE=3&gt;
-      -&lt;BR&gt;
-      66P&amp;nbsp;ALT&lt;BR&gt;
-      66W&amp;nbsp;ALT&lt;BR&gt;
-      66X&amp;nbsp;ALT&lt;BR&gt;
-      66P&amp;nbsp;ALT&lt;BR&gt;
-      66W&amp;nbsp;ALT&lt;BR&gt;
-      66X&amp;nbsp;ALT&lt;BR&gt;
-      -&lt;BR&gt;
-      64W&amp;nbsp;ALT&lt;BR&gt;
-      -&lt;BR&gt;
-      64P&amp;nbsp;ALT&lt;BR&gt;
-      64W&amp;nbsp;ALT&lt;BR&gt;
-      64X&amp;nbsp;ALT&lt;BR&gt;
-      64P&lt;BR&gt;
-      64W&lt;BR&gt;
-      64X&lt;BR&gt;
-      66X&amp;nbsp;ALT&lt;BR&gt;
-      66P&amp;nbsp;ALT&lt;BR&gt;
-      66W&amp;nbsp;ALT&lt;BR&gt;
-      66P&lt;BR&gt;
-      66W&lt;BR&gt;
-      66X&lt;BR&gt;
-      67P&lt;BR&gt;
-      67W&lt;BR&gt;
-      67X&lt;BR&gt;
-      67Y&lt;BR&gt;
-      67Z&lt;BR&gt;
-      68P&lt;BR&gt;
-      68W&lt;BR&gt;
-      68X&lt;BR&gt;
-      67Y&amp;nbsp;ALT&lt;BR&gt;
-      67Z&amp;nbsp;ALT&lt;BR&gt;&lt;/FONT&gt;
+                        -&lt;BR&gt;
+                        66P&amp;nbsp;ALT&lt;BR&gt;
+                        66W&amp;nbsp;ALT&lt;BR&gt;
+                        66X&amp;nbsp;ALT&lt;BR&gt;
+                        66P&amp;nbsp;ALT&lt;BR&gt;
+                        66W&amp;nbsp;ALT&lt;BR&gt;
+                        66X&amp;nbsp;ALT&lt;BR&gt;
+                        -&lt;BR&gt;
+                        64W&amp;nbsp;ALT&lt;BR&gt;
+                        -&lt;BR&gt;
+                        64P&amp;nbsp;ALT&lt;BR&gt;
+                        64W&amp;nbsp;ALT&lt;BR&gt;
+                        64X&amp;nbsp;ALT&lt;BR&gt;
+                        64P&lt;BR&gt;
+                        64W&lt;BR&gt;
+                        64X&lt;BR&gt;
+                        66X&amp;nbsp;ALT&lt;BR&gt;
+                        66P&amp;nbsp;ALT&lt;BR&gt;
+                        66W&amp;nbsp;ALT&lt;BR&gt;
+                        66P&lt;BR&gt;
+                        66W&lt;BR&gt;
+                        66X&lt;BR&gt;
+                        67P&lt;BR&gt;
+                        67W&lt;BR&gt;
+                        67X&lt;BR&gt;
+                        67Y&lt;BR&gt;
+                        67Z&lt;BR&gt;
+                        68P&lt;BR&gt;
+                        68W&lt;BR&gt;
+                        68X&lt;BR&gt;
+                        67Y&amp;nbsp;ALT&lt;BR&gt;
+                        67Z&amp;nbsp;ALT&lt;BR&gt;&lt;/FONT&gt;
     &lt;/TD&gt;
     &lt;TD BGCOLOR="#cccccc" ALIGN=CENTER&gt;&lt;FONT FACE=ARIAL SIZE=3&gt;
-      5050&lt;BR&gt;
-      5091&lt;BR&gt;
-      5080&lt;BR&gt;
-      5087&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      T63YB&lt;BR&gt;
-      T63XB&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      5887&lt;BR&gt;
-      5891&lt;BR&gt;
-      5880&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      T93Z&lt;BR&gt;
-      T93YA&lt;BR&gt;
-      T93XA&lt;BR&gt;
-      T93YB&lt;BR&gt;
-      T93XB&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;&lt;/FONT&gt;
+                        5050&lt;BR&gt;
+                        5091&lt;BR&gt;
+                        5080&lt;BR&gt;
+                        5087&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        T63YB&lt;BR&gt;
+                        T63XB&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        5887&lt;BR&gt;
+                        5891&lt;BR&gt;
+                        5880&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        T93Z&lt;BR&gt;
+                        T93YA&lt;BR&gt;
+                        T93XA&lt;BR&gt;
+                        T93YB&lt;BR&gt;
+                        T93XB&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;&lt;/FONT&gt;
     &lt;/TD&gt;
     &lt;TD BGCOLOR="#cccccc" ALIGN=CENTER&gt;&lt;FONT FACE=ARIAL SIZE=3&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      8026EKP&lt;BR&gt;
-      8026EKW&lt;BR&gt;
-      8026EKM&lt;BR&gt;
-      8026EKP&lt;BR&gt;
-      8026EKB&lt;BR&gt;
-      8026EKM&lt;BR&gt;
-      1309X&lt;BR&gt;
-      1309P&lt;BR&gt;
-      1309W&lt;BR&gt;
-      8024EKP&lt;BR&gt;
-      8024EKW&lt;BR&gt;
-      8024EKN&lt;BR&gt;
-      RJ-9P/CT9P&lt;BR&gt;
-      RJ-9W&lt;BR&gt;
-      RJ-9X&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;&lt;/FONT&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        8026EKP&lt;BR&gt;
+                        8026EKW&lt;BR&gt;
+                        8026EKM&lt;BR&gt;
+                        8026EKP&lt;BR&gt;
+                        8026EKB&lt;BR&gt;
+                        8026EKM&lt;BR&gt;
+                        1309X&lt;BR&gt;
+                        1309P&lt;BR&gt;
+                        1309W&lt;BR&gt;
+                        8024EKP&lt;BR&gt;
+                        8024EKW&lt;BR&gt;
+                        8024EKN&lt;BR&gt;
+                        RJ-9P/CT9P&lt;BR&gt;
+                        RJ-9W&lt;BR&gt;
+                        RJ-9X&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;&lt;/FONT&gt;
     &lt;/TD&gt;
     &lt;TD BGCOLOR="#cccccc" ALIGN=CENTER&gt;&lt;FONT FACE=ARIAL SIZE=3&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      3103P&lt;BR&gt;
-      3103Y&lt;BR&gt;
-      3103Z&lt;BR&gt;
-      3103P&lt;BR&gt;
-      3103Y&lt;BR&gt;
-      3103Z&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      3105P/3106P&lt;BR&gt;
-      3105W/3106W&lt;BR&gt;
-      3105X/3106X&lt;BR&gt;
-      3105Y/3106Y&lt;BR&gt;
-      3105Z/3105Z&lt;BR&gt;
-      3102P&lt;BR&gt;
-      3102W&lt;BR&gt;
-      3102X&lt;BR&gt;
-      3102Y&lt;BR&gt;
-      3102Z&lt;BR&gt;&lt;/FONT&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        3103P&lt;BR&gt;
+                        3103Y&lt;BR&gt;
+                        3103Z&lt;BR&gt;
+                        3103P&lt;BR&gt;
+                        3103Y&lt;BR&gt;
+                        3103Z&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        3105P/3106P&lt;BR&gt;
+                        3105W/3106W&lt;BR&gt;
+                        3105X/3106X&lt;BR&gt;
+                        3105Y/3106Y&lt;BR&gt;
+                        3105Z/3105Z&lt;BR&gt;
+                        3102P&lt;BR&gt;
+                        3102W&lt;BR&gt;
+                        3102X&lt;BR&gt;
+                        3102Y&lt;BR&gt;
+                        3102Z&lt;BR&gt;&lt;/FONT&gt;
     &lt;/TD&gt;
     &lt;TD BGCOLOR="#cccccc" ALIGN=CENTER&gt;&lt;FONT FACE=ARIAL SIZE=3&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      EVMCBG&lt;BR&gt;
-      EVMCCG&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;&lt;/FONT&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        EVMCBG&lt;BR&gt;
+                        EVMCCG&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;&lt;/FONT&gt;
     &lt;/TD&gt;
     &lt;TD BGCOLOR="#cccccc" ALIGN=CENTER&gt;&lt;FONT FACE=ARIAL SIZE=3&gt;
-      55-1-X&lt;BR&gt;
-      55-4-X&lt;BR&gt;
-      55-3-X&lt;BR&gt;
-      55-2-X&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      50-2-X&lt;BR&gt;
-      50-4-X&lt;BR&gt;
-      50-3-X&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      64P&lt;BR&gt;
-      64W&lt;BR&gt;
-      64X&lt;BR&gt;
-      64Y&lt;BR&gt;
-      64Z&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;&lt;/FONT&gt;
+                        55-1-X&lt;BR&gt;
+                        55-4-X&lt;BR&gt;
+                        55-3-X&lt;BR&gt;
+                        55-2-X&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        50-2-X&lt;BR&gt;
+                        50-4-X&lt;BR&gt;
+                        50-3-X&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        64P&lt;BR&gt;
+                        64W&lt;BR&gt;
+                        64X&lt;BR&gt;
+                        64Y&lt;BR&gt;
+                        64Z&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;&lt;/FONT&gt;
     &lt;/TD&gt;
     &lt;TD BGCOLOR="#cccccc" ALIGN=CENTER&gt;&lt;FONT FACE=ARIAL SIZE=3&gt;
-      RT/RTR22&lt;BR&gt;
-      RT/RTR22&lt;BR&gt;
-      RT/RTR22&lt;BR&gt;
-      RT/RTR22&lt;BR&gt;
-      RJ/RJR22&lt;BR&gt;
-      RJ/RJR22&lt;BR&gt;
-      RJ/RJR22&lt;BR&gt;
-      RT/RTR26&lt;BR&gt;
-      RT/RTR26&lt;BR&gt;
-      RT/RTR26&lt;BR&gt;
-      RJ/RJR26&lt;BR&gt;
-      RJ/RJR26&lt;BR&gt;
-      RJ/RJR26&lt;BR&gt;
-      RJ/RJR26&lt;BR&gt;
-      RJ/RJR26&lt;BR&gt;
-      RJ/RJR26&lt;BR&gt;
-      RT/RTR24&lt;BR&gt;
-      RT/RTR24&lt;BR&gt;
-      RT/RTR24&lt;BR&gt;
-      RJ/RJR24&lt;BR&gt;
-      RJ/RJR24&lt;BR&gt;
-      RJ/RJR24&lt;BR&gt;
-      RJ/RJR24&lt;BR&gt;
-      RJ/RJR24&lt;BR&gt;
-      RJ/RJR24&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;&lt;/FONT&gt;
+                        RT/RTR22&lt;BR&gt;
+                        RT/RTR22&lt;BR&gt;
+                        RT/RTR22&lt;BR&gt;
+                        RT/RTR22&lt;BR&gt;
+                        RJ/RJR22&lt;BR&gt;
+                        RJ/RJR22&lt;BR&gt;
+                        RJ/RJR22&lt;BR&gt;
+                        RT/RTR26&lt;BR&gt;
+                        RT/RTR26&lt;BR&gt;
+                        RT/RTR26&lt;BR&gt;
+                        RJ/RJR26&lt;BR&gt;
+                        RJ/RJR26&lt;BR&gt;
+                        RJ/RJR26&lt;BR&gt;
+                        RJ/RJR26&lt;BR&gt;
+                        RJ/RJR26&lt;BR&gt;
+                        RJ/RJR26&lt;BR&gt;
+                        RT/RTR24&lt;BR&gt;
+                        RT/RTR24&lt;BR&gt;
+                        RT/RTR24&lt;BR&gt;
+                        RJ/RJR24&lt;BR&gt;
+                        RJ/RJR24&lt;BR&gt;
+                        RJ/RJR24&lt;BR&gt;
+                        RJ/RJR24&lt;BR&gt;
+                        RJ/RJR24&lt;BR&gt;
+                        RJ/RJR24&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;&lt;/FONT&gt;
     &lt;/TD&gt;
   &lt;/TR&gt;
   &lt;TR&gt;
@@ -1435,292 +1435,292 @@ for trimmer refence see : &lt;u&gt;www.electrospec-inc.com/cross_references/trim
   &lt;/TR&gt;
   &lt;TR&gt;
     &lt;TD BGCOLOR="#cccccc" ALIGN=CENTER&gt;&lt;FONT FACE=ARIAL SIZE=3&gt;
-      3323P&lt;BR&gt;
-      3323S&lt;BR&gt;
-      3323W&lt;BR&gt;
-      3329H&lt;BR&gt;
-      3329P&lt;BR&gt;
-      3329W&lt;BR&gt;
-      3339H&lt;BR&gt;
-      3339P&lt;BR&gt;
-      3339W&lt;BR&gt;
-      3352E&lt;BR&gt;
-      3352H&lt;BR&gt;
-      3352K&lt;BR&gt;
-      3352P&lt;BR&gt;
-      3352T&lt;BR&gt;
-      3352V&lt;BR&gt;
-      3352W&lt;BR&gt;
-      3362H&lt;BR&gt;
-      3362M&lt;BR&gt;
-      3362P&lt;BR&gt;
-      3362R&lt;BR&gt;
-      3362S&lt;BR&gt;
-      3362U&lt;BR&gt;
-      3362W&lt;BR&gt;
-      3362X&lt;BR&gt;
-      3386B&lt;BR&gt;
-      3386C&lt;BR&gt;
-      3386F&lt;BR&gt;
-      3386H&lt;BR&gt;
-      3386K&lt;BR&gt;
-      3386M&lt;BR&gt;
-      3386P&lt;BR&gt;
-      3386S&lt;BR&gt;
-      3386W&lt;BR&gt;
-      3386X&lt;BR&gt;&lt;/FONT&gt;
+                        3323P&lt;BR&gt;
+                        3323S&lt;BR&gt;
+                        3323W&lt;BR&gt;
+                        3329H&lt;BR&gt;
+                        3329P&lt;BR&gt;
+                        3329W&lt;BR&gt;
+                        3339H&lt;BR&gt;
+                        3339P&lt;BR&gt;
+                        3339W&lt;BR&gt;
+                        3352E&lt;BR&gt;
+                        3352H&lt;BR&gt;
+                        3352K&lt;BR&gt;
+                        3352P&lt;BR&gt;
+                        3352T&lt;BR&gt;
+                        3352V&lt;BR&gt;
+                        3352W&lt;BR&gt;
+                        3362H&lt;BR&gt;
+                        3362M&lt;BR&gt;
+                        3362P&lt;BR&gt;
+                        3362R&lt;BR&gt;
+                        3362S&lt;BR&gt;
+                        3362U&lt;BR&gt;
+                        3362W&lt;BR&gt;
+                        3362X&lt;BR&gt;
+                        3386B&lt;BR&gt;
+                        3386C&lt;BR&gt;
+                        3386F&lt;BR&gt;
+                        3386H&lt;BR&gt;
+                        3386K&lt;BR&gt;
+                        3386M&lt;BR&gt;
+                        3386P&lt;BR&gt;
+                        3386S&lt;BR&gt;
+                        3386W&lt;BR&gt;
+                        3386X&lt;BR&gt;&lt;/FONT&gt;
     &lt;/TD&gt;
     &lt;TD BGCOLOR="#cccccc" ALIGN=CENTER&gt;&lt;FONT FACE=ARIAL SIZE=3&gt;
-      25P&lt;BR&gt;
-      25S&lt;BR&gt;
-      25RX&lt;BR&gt;
-      82P&lt;BR&gt;
-      82M&lt;BR&gt;
-      82PA&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      91E&lt;BR&gt;
-      91X&lt;BR&gt;
-      91T&lt;BR&gt;
-      91B&lt;BR&gt;
-      91A&lt;BR&gt;
-      91V&lt;BR&gt;
-      91W&lt;BR&gt;
-      25W&lt;BR&gt;
-      25V&lt;BR&gt;
-      25P&lt;BR&gt;
-      -&lt;BR&gt;
-      25S&lt;BR&gt;
-      25U&lt;BR&gt;
-      25RX&lt;BR&gt;
-      25X&lt;BR&gt;
-      72XW&lt;BR&gt;
-      72XL&lt;BR&gt;
-      72PM&lt;BR&gt;
-      72RX&lt;BR&gt;
-      -&lt;BR&gt;
-      72PX&lt;BR&gt;
-      72P&lt;BR&gt;
-      72RXW&lt;BR&gt;
-      72RXL&lt;BR&gt;
-      72X&lt;BR&gt;&lt;/FONT&gt;
+                        25P&lt;BR&gt;
+                        25S&lt;BR&gt;
+                        25RX&lt;BR&gt;
+                        82P&lt;BR&gt;
+                        82M&lt;BR&gt;
+                        82PA&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        91E&lt;BR&gt;
+                        91X&lt;BR&gt;
+                        91T&lt;BR&gt;
+                        91B&lt;BR&gt;
+                        91A&lt;BR&gt;
+                        91V&lt;BR&gt;
+                        91W&lt;BR&gt;
+                        25W&lt;BR&gt;
+                        25V&lt;BR&gt;
+                        25P&lt;BR&gt;
+                        -&lt;BR&gt;
+                        25S&lt;BR&gt;
+                        25U&lt;BR&gt;
+                        25RX&lt;BR&gt;
+                        25X&lt;BR&gt;
+                        72XW&lt;BR&gt;
+                        72XL&lt;BR&gt;
+                        72PM&lt;BR&gt;
+                        72RX&lt;BR&gt;
+                        -&lt;BR&gt;
+                        72PX&lt;BR&gt;
+                        72P&lt;BR&gt;
+                        72RXW&lt;BR&gt;
+                        72RXL&lt;BR&gt;
+                        72X&lt;BR&gt;&lt;/FONT&gt;
     &lt;/TD&gt;
     &lt;TD BGCOLOR="#cccccc" ALIGN=CENTER&gt;&lt;FONT FACE=ARIAL SIZE=3&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      T7YB&lt;BR&gt;
-      T7YA&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      TXD&lt;BR&gt;
-      TYA&lt;BR&gt;
-      TYP&lt;BR&gt;
-      -&lt;BR&gt;
-      TYD&lt;BR&gt;
-      TX&lt;BR&gt;
-      -&lt;BR&gt;
-      150SX&lt;BR&gt;
-      100SX&lt;BR&gt;
-      102T&lt;BR&gt;
-      101S&lt;BR&gt;
-      190T&lt;BR&gt;
-      150TX&lt;BR&gt;
-      101&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      101SX&lt;BR&gt;&lt;/FONT&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        T7YB&lt;BR&gt;
+                        T7YA&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        TXD&lt;BR&gt;
+                        TYA&lt;BR&gt;
+                        TYP&lt;BR&gt;
+                        -&lt;BR&gt;
+                        TYD&lt;BR&gt;
+                        TX&lt;BR&gt;
+                        -&lt;BR&gt;
+                        150SX&lt;BR&gt;
+                        100SX&lt;BR&gt;
+                        102T&lt;BR&gt;
+                        101S&lt;BR&gt;
+                        190T&lt;BR&gt;
+                        150TX&lt;BR&gt;
+                        101&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        101SX&lt;BR&gt;&lt;/FONT&gt;
     &lt;/TD&gt;
     &lt;TD BGCOLOR="#cccccc" ALIGN=CENTER&gt;&lt;FONT FACE=ARIAL SIZE=3&gt;
-      ET6P&lt;BR&gt;
-      ET6S&lt;BR&gt;
-      ET6X&lt;BR&gt;
-      RJ-6W/8014EMW&lt;BR&gt;
-      RJ-6P/8014EMP&lt;BR&gt;
-      RJ-6X/8014EMX&lt;BR&gt;
-      TM7W&lt;BR&gt;
-      TM7P&lt;BR&gt;
-      TM7X&lt;BR&gt;
-      -&lt;BR&gt;
-      8017SMS&lt;BR&gt;
-      -&lt;BR&gt;
-      8017SMB&lt;BR&gt;
-      8017SMA&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      CT-6W&lt;BR&gt;
-      CT-6H&lt;BR&gt;
-      CT-6P&lt;BR&gt;
-      CT-6R&lt;BR&gt;
-      -&lt;BR&gt;
-      CT-6V&lt;BR&gt;
-      CT-6X&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      8038EKV&lt;BR&gt;
-      -&lt;BR&gt;
-      8038EKX&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      8038EKP&lt;BR&gt;
-      8038EKZ&lt;BR&gt;
-      8038EKW&lt;BR&gt;
-      -&lt;BR&gt;&lt;/FONT&gt;
+                        ET6P&lt;BR&gt;
+                        ET6S&lt;BR&gt;
+                        ET6X&lt;BR&gt;
+                        RJ-6W/8014EMW&lt;BR&gt;
+                        RJ-6P/8014EMP&lt;BR&gt;
+                        RJ-6X/8014EMX&lt;BR&gt;
+                        TM7W&lt;BR&gt;
+                        TM7P&lt;BR&gt;
+                        TM7X&lt;BR&gt;
+                        -&lt;BR&gt;
+                        8017SMS&lt;BR&gt;
+                        -&lt;BR&gt;
+                        8017SMB&lt;BR&gt;
+                        8017SMA&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        CT-6W&lt;BR&gt;
+                        CT-6H&lt;BR&gt;
+                        CT-6P&lt;BR&gt;
+                        CT-6R&lt;BR&gt;
+                        -&lt;BR&gt;
+                        CT-6V&lt;BR&gt;
+                        CT-6X&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        8038EKV&lt;BR&gt;
+                        -&lt;BR&gt;
+                        8038EKX&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        8038EKP&lt;BR&gt;
+                        8038EKZ&lt;BR&gt;
+                        8038EKW&lt;BR&gt;
+                        -&lt;BR&gt;&lt;/FONT&gt;
     &lt;/TD&gt;
     &lt;TD BGCOLOR="#cccccc" ALIGN=CENTER&gt;&lt;FONT FACE=ARIAL SIZE=3&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      3321H&lt;BR&gt;
-      3321P&lt;BR&gt;
-      3321N&lt;BR&gt;
-      1102H&lt;BR&gt;
-      1102P&lt;BR&gt;
-      1102T&lt;BR&gt;
-      RVA0911V304A&lt;BR&gt;
-      -&lt;BR&gt;
-      RVA0911H413A&lt;BR&gt;
-      RVG0707V100A&lt;BR&gt;
-      RVA0607V(H)306A&lt;BR&gt;
-      RVA1214H213A&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      3104B&lt;BR&gt;
-      3104C&lt;BR&gt;
-      3104F&lt;BR&gt;
-      3104H&lt;BR&gt;
-      -&lt;BR&gt;
-      3104M&lt;BR&gt;
-      3104P&lt;BR&gt;
-      3104S&lt;BR&gt;
-      3104W&lt;BR&gt;
-      3104X&lt;BR&gt;&lt;/FONT&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        3321H&lt;BR&gt;
+                        3321P&lt;BR&gt;
+                        3321N&lt;BR&gt;
+                        1102H&lt;BR&gt;
+                        1102P&lt;BR&gt;
+                        1102T&lt;BR&gt;
+                        RVA0911V304A&lt;BR&gt;
+                        -&lt;BR&gt;
+                        RVA0911H413A&lt;BR&gt;
+                        RVG0707V100A&lt;BR&gt;
+                        RVA0607V(H)306A&lt;BR&gt;
+                        RVA1214H213A&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        3104B&lt;BR&gt;
+                        3104C&lt;BR&gt;
+                        3104F&lt;BR&gt;
+                        3104H&lt;BR&gt;
+                        -&lt;BR&gt;
+                        3104M&lt;BR&gt;
+                        3104P&lt;BR&gt;
+                        3104S&lt;BR&gt;
+                        3104W&lt;BR&gt;
+                        3104X&lt;BR&gt;&lt;/FONT&gt;
     &lt;/TD&gt;
     &lt;TD BGCOLOR="#cccccc" ALIGN=CENTER&gt;&lt;FONT FACE=ARIAL SIZE=3&gt;
-      EVMQ0G&lt;BR&gt;
-      EVMQIG&lt;BR&gt;
-      EVMQ3G&lt;BR&gt;
-      EVMS0G&lt;BR&gt;
-      EVMQ0G&lt;BR&gt;
-      EVMG0G&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      EVMK4GA00B&lt;BR&gt;
-      EVM30GA00B&lt;BR&gt;
-      EVMK0GA00B&lt;BR&gt;
-      EVM38GA00B&lt;BR&gt;
-      EVMB6&lt;BR&gt;
-      EVLQ0&lt;BR&gt;
-      -&lt;BR&gt;
-      EVMMSG&lt;BR&gt;
-      EVMMBG&lt;BR&gt;
-      EVMMAG&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      EVMMCS&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      EVMM1&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      EVMM0&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      EVMM3&lt;BR&gt;&lt;/FONT&gt;
+                        EVMQ0G&lt;BR&gt;
+                        EVMQIG&lt;BR&gt;
+                        EVMQ3G&lt;BR&gt;
+                        EVMS0G&lt;BR&gt;
+                        EVMQ0G&lt;BR&gt;
+                        EVMG0G&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        EVMK4GA00B&lt;BR&gt;
+                        EVM30GA00B&lt;BR&gt;
+                        EVMK0GA00B&lt;BR&gt;
+                        EVM38GA00B&lt;BR&gt;
+                        EVMB6&lt;BR&gt;
+                        EVLQ0&lt;BR&gt;
+                        -&lt;BR&gt;
+                        EVMMSG&lt;BR&gt;
+                        EVMMBG&lt;BR&gt;
+                        EVMMAG&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        EVMMCS&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        EVMM1&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        EVMM0&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        EVMM3&lt;BR&gt;&lt;/FONT&gt;
     &lt;/TD&gt;
     &lt;TD BGCOLOR="#cccccc" ALIGN=CENTER&gt;&lt;FONT FACE=ARIAL SIZE=3&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      62-3-1&lt;BR&gt;
-      62-1-2&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      67R&lt;BR&gt;
-      -&lt;BR&gt;
-      67P&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      67X&lt;BR&gt;
-      63V&lt;BR&gt;
-      63S&lt;BR&gt;
-      63M&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      63H&lt;BR&gt;
-      63P&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      63X&lt;BR&gt;&lt;/FONT&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        62-3-1&lt;BR&gt;
+                        62-1-2&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        67R&lt;BR&gt;
+                        -&lt;BR&gt;
+                        67P&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        67X&lt;BR&gt;
+                        63V&lt;BR&gt;
+                        63S&lt;BR&gt;
+                        63M&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        63H&lt;BR&gt;
+                        63P&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        63X&lt;BR&gt;&lt;/FONT&gt;
     &lt;/TD&gt;
     &lt;TD BGCOLOR="#cccccc" ALIGN=CENTER&gt;&lt;FONT FACE=ARIAL SIZE=3&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      RJ/RJR50&lt;BR&gt;
-      RJ/RJR50&lt;BR&gt;
-      RJ/RJR50&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;&lt;/FONT&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        RJ/RJR50&lt;BR&gt;
+                        RJ/RJR50&lt;BR&gt;
+                        RJ/RJR50&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;&lt;/FONT&gt;
     &lt;/TD&gt;
   &lt;/TR&gt;
 &lt;/TABLE&gt;
@@ -1758,60 +1758,60 @@ for trimmer refence see : &lt;u&gt;www.electrospec-inc.com/cross_references/trim
   &lt;/TR&gt;
   &lt;TR&gt;
     &lt;TD BGCOLOR="#cccccc" ALIGN=CENTER&gt;&lt;FONT FACE=ARIAL SIZE=3&gt;
-      3224G&lt;BR&gt;
-      3224J&lt;BR&gt;
-      3224W&lt;BR&gt;
-      3269P&lt;BR&gt;
-      3269W&lt;BR&gt;
-      3269X&lt;BR&gt;&lt;/FONT&gt;
+                        3224G&lt;BR&gt;
+                        3224J&lt;BR&gt;
+                        3224W&lt;BR&gt;
+                        3269P&lt;BR&gt;
+                        3269W&lt;BR&gt;
+                        3269X&lt;BR&gt;&lt;/FONT&gt;
     &lt;/TD&gt;
     &lt;TD BGCOLOR="#cccccc" ALIGN=CENTER&gt;&lt;FONT FACE=ARIAL SIZE=3&gt;
-      44G&lt;BR&gt;
-      44J&lt;BR&gt;
-      44W&lt;BR&gt;
-      84P&lt;BR&gt;
-      84W&lt;BR&gt;
-      84X&lt;BR&gt;&lt;/FONT&gt;
+                        44G&lt;BR&gt;
+                        44J&lt;BR&gt;
+                        44W&lt;BR&gt;
+                        84P&lt;BR&gt;
+                        84W&lt;BR&gt;
+                        84X&lt;BR&gt;&lt;/FONT&gt;
     &lt;/TD&gt;
     &lt;TD BGCOLOR="#cccccc" ALIGN=CENTER&gt;&lt;FONT FACE=ARIAL SIZE=3&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      ST63Z&lt;BR&gt;
-      ST63Y&lt;BR&gt;
-      -&lt;BR&gt;&lt;/FONT&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        ST63Z&lt;BR&gt;
+                        ST63Y&lt;BR&gt;
+                        -&lt;BR&gt;&lt;/FONT&gt;
     &lt;/TD&gt;
     &lt;TD BGCOLOR="#cccccc" ALIGN=CENTER&gt;&lt;FONT FACE=ARIAL SIZE=3&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      ST5P&lt;BR&gt;
-      ST5W&lt;BR&gt;
-      ST5X&lt;BR&gt;&lt;/FONT&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        ST5P&lt;BR&gt;
+                        ST5W&lt;BR&gt;
+                        ST5X&lt;BR&gt;&lt;/FONT&gt;
     &lt;/TD&gt;
     &lt;TD BGCOLOR="#cccccc" ALIGN=CENTER&gt;&lt;FONT FACE=ARIAL SIZE=3&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;&lt;/FONT&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;&lt;/FONT&gt;
     &lt;/TD&gt;
     &lt;TD BGCOLOR="#cccccc" ALIGN=CENTER&gt;&lt;FONT FACE=ARIAL SIZE=3&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;&lt;/FONT&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;&lt;/FONT&gt;
     &lt;/TD&gt;
     &lt;TD BGCOLOR="#cccccc" ALIGN=CENTER&gt;&lt;FONT FACE=ARIAL SIZE=3&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;&lt;/FONT&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;&lt;/FONT&gt;
     &lt;/TD&gt;
   &lt;/TR&gt;
   &lt;TR&gt;
@@ -1848,67 +1848,67 @@ for trimmer refence see : &lt;u&gt;www.electrospec-inc.com/cross_references/trim
   &lt;/TR&gt;
   &lt;TR&gt;
     &lt;TD BGCOLOR="#cccccc" ALIGN=CENTER&gt;&lt;FONT FACE=ARIAL SIZE=3&gt;
-      3314G&lt;BR&gt;
-      3314J&lt;BR&gt;
-      3364A/B&lt;BR&gt;
-      3364C/D&lt;BR&gt;
-      3364W/X&lt;BR&gt;
-      3313G&lt;BR&gt;
-      3313J&lt;BR&gt;&lt;/FONT&gt;
+                        3314G&lt;BR&gt;
+                        3314J&lt;BR&gt;
+                        3364A/B&lt;BR&gt;
+                        3364C/D&lt;BR&gt;
+                        3364W/X&lt;BR&gt;
+                        3313G&lt;BR&gt;
+                        3313J&lt;BR&gt;&lt;/FONT&gt;
     &lt;/TD&gt;
     &lt;TD BGCOLOR="#cccccc" ALIGN=CENTER&gt;&lt;FONT FACE=ARIAL SIZE=3&gt;
-      23B&lt;BR&gt;
-      23A&lt;BR&gt;
-      21X&lt;BR&gt;
-      21W&lt;BR&gt;
-      -&lt;BR&gt;
-      22B&lt;BR&gt;
-      22A&lt;BR&gt;&lt;/FONT&gt;
+                        23B&lt;BR&gt;
+                        23A&lt;BR&gt;
+                        21X&lt;BR&gt;
+                        21W&lt;BR&gt;
+                        -&lt;BR&gt;
+                        22B&lt;BR&gt;
+                        22A&lt;BR&gt;&lt;/FONT&gt;
     &lt;/TD&gt;
     &lt;TD BGCOLOR="#cccccc" ALIGN=CENTER&gt;&lt;FONT FACE=ARIAL SIZE=3&gt;
-      ST5YL/ST53YL&lt;BR&gt;
-      ST5YJ/5T53YJ&lt;BR&gt;
-      ST-23A&lt;BR&gt;
-      ST-22B&lt;BR&gt;
-      ST-22&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;&lt;/FONT&gt;
+                        ST5YL/ST53YL&lt;BR&gt;
+                        ST5YJ/5T53YJ&lt;BR&gt;
+                        ST-23A&lt;BR&gt;
+                        ST-22B&lt;BR&gt;
+                        ST-22&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;&lt;/FONT&gt;
     &lt;/TD&gt;
     &lt;TD BGCOLOR="#cccccc" ALIGN=CENTER&gt;&lt;FONT FACE=ARIAL SIZE=3&gt;
-      ST-4B&lt;BR&gt;
-      ST-4A&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      ST-3B&lt;BR&gt;
-      ST-3A&lt;BR&gt;&lt;/FONT&gt;
+                        ST-4B&lt;BR&gt;
+                        ST-4A&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        ST-3B&lt;BR&gt;
+                        ST-3A&lt;BR&gt;&lt;/FONT&gt;
     &lt;/TD&gt;
     &lt;TD BGCOLOR="#cccccc" ALIGN=CENTER&gt;&lt;FONT FACE=ARIAL SIZE=3&gt;
-      -&lt;BR&gt;
-      EVM-6YS&lt;BR&gt;
-      EVM-1E&lt;BR&gt;
-      EVM-1G&lt;BR&gt;
-      EVM-1D&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;&lt;/FONT&gt;
+                        -&lt;BR&gt;
+                        EVM-6YS&lt;BR&gt;
+                        EVM-1E&lt;BR&gt;
+                        EVM-1G&lt;BR&gt;
+                        EVM-1D&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;&lt;/FONT&gt;
     &lt;/TD&gt;
     &lt;TD BGCOLOR="#cccccc" ALIGN=CENTER&gt;&lt;FONT FACE=ARIAL SIZE=3&gt;
-      G4B&lt;BR&gt;
-      G4A&lt;BR&gt;
-      TR04-3S1&lt;BR&gt;
-      TRG04-2S1&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;&lt;/FONT&gt;
+                        G4B&lt;BR&gt;
+                        G4A&lt;BR&gt;
+                        TR04-3S1&lt;BR&gt;
+                        TRG04-2S1&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;&lt;/FONT&gt;
     &lt;/TD&gt;
     &lt;TD BGCOLOR="#cccccc" ALIGN=CENTER&gt;&lt;FONT FACE=ARIAL SIZE=3&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;
-      DVR-43A&lt;BR&gt;
-      CVR-42C&lt;BR&gt;
-      CVR-42A/C&lt;BR&gt;
-      -&lt;BR&gt;
-      -&lt;BR&gt;&lt;/FONT&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;
+                        DVR-43A&lt;BR&gt;
+                        CVR-42C&lt;BR&gt;
+                        CVR-42A/C&lt;BR&gt;
+                        -&lt;BR&gt;
+                        -&lt;BR&gt;&lt;/FONT&gt;
     &lt;/TD&gt;
   &lt;/TR&gt;
 &lt;/TABLE&gt;
@@ -1925,7 +1925,7 @@ for trimmer refence see : &lt;u&gt;www.electrospec-inc.com/cross_references/trim
 <packages>
 <package name="R0402">
 <description>&lt;b&gt;RESISTOR&lt;/b&gt;&lt;p&gt;
-chip</description>
+                                chip</description>
 <wire x1="-0.245" y1="0.224" x2="0.245" y2="0.224" width="0.1524" layer="51"/>
 <wire x1="0.245" y1="-0.224" x2="-0.245" y2="-0.224" width="0.1524" layer="51"/>
 <wire x1="-1.473" y1="0.483" x2="1.473" y2="0.483" width="0.0508" layer="39"/>
@@ -1942,7 +1942,7 @@ chip</description>
 </package>
 <package name="R0603">
 <description>&lt;b&gt;RESISTOR&lt;/b&gt;&lt;p&gt;
-chip</description>
+                                chip</description>
 <wire x1="-0.432" y1="-0.356" x2="0.432" y2="-0.356" width="0.1524" layer="51"/>
 <wire x1="0.432" y1="0.356" x2="-0.432" y2="0.356" width="0.1524" layer="51"/>
 <wire x1="-1.473" y1="0.983" x2="1.473" y2="0.983" width="0.0508" layer="39"/>
@@ -1959,7 +1959,7 @@ chip</description>
 </package>
 <package name="R0805">
 <description>&lt;b&gt;RESISTOR&lt;/b&gt;&lt;p&gt;
-chip</description>
+                                chip</description>
 <wire x1="-0.41" y1="0.635" x2="0.41" y2="0.635" width="0.1524" layer="51"/>
 <wire x1="-0.41" y1="-0.635" x2="0.41" y2="-0.635" width="0.1524" layer="51"/>
 <wire x1="-1.973" y1="0.983" x2="1.973" y2="0.983" width="0.0508" layer="39"/>
@@ -1976,7 +1976,7 @@ chip</description>
 </package>
 <package name="R0805W">
 <description>&lt;b&gt;RESISTOR&lt;/b&gt;&lt;p&gt;
-chip, wave soldering</description>
+                                chip, wave soldering</description>
 <wire x1="-0.41" y1="0.635" x2="0.41" y2="0.635" width="0.1524" layer="51"/>
 <wire x1="-0.41" y1="-0.635" x2="0.41" y2="-0.635" width="0.1524" layer="51"/>
 <wire x1="-1.973" y1="0.983" x2="1.973" y2="0.983" width="0.0508" layer="39"/>
@@ -1993,7 +1993,7 @@ chip, wave soldering</description>
 </package>
 <package name="R1005">
 <description>&lt;b&gt;RESISTOR&lt;/b&gt;&lt;p&gt;
-chip</description>
+                                chip</description>
 <wire x1="-0.245" y1="0.224" x2="0.245" y2="0.224" width="0.1524" layer="51"/>
 <wire x1="0.245" y1="-0.224" x2="-0.245" y2="-0.224" width="0.1524" layer="51"/>
 <wire x1="-1.473" y1="0.483" x2="1.473" y2="0.483" width="0.0508" layer="39"/>
@@ -2010,7 +2010,7 @@ chip</description>
 </package>
 <package name="R1206">
 <description>&lt;b&gt;RESISTOR&lt;/b&gt;&lt;p&gt;
-chip</description>
+                                chip</description>
 <wire x1="0.9525" y1="-0.8128" x2="-0.9652" y2="-0.8128" width="0.1524" layer="51"/>
 <wire x1="0.9525" y1="0.8128" x2="-0.9652" y2="0.8128" width="0.1524" layer="51"/>
 <wire x1="-2.473" y1="0.983" x2="2.473" y2="0.983" width="0.0508" layer="39"/>
@@ -2027,7 +2027,7 @@ chip</description>
 </package>
 <package name="R1206W">
 <description>&lt;b&gt;RESISTOR&lt;/b&gt;&lt;p&gt;
-chip, wave soldering</description>
+                                chip, wave soldering</description>
 <wire x1="-0.913" y1="0.8" x2="0.888" y2="0.8" width="0.1524" layer="21"/>
 <wire x1="-0.913" y1="-0.8" x2="0.888" y2="-0.8" width="0.1524" layer="21"/>
 <wire x1="-2.473" y1="0.983" x2="2.473" y2="0.983" width="0.0508" layer="39"/>
@@ -2044,7 +2044,7 @@ chip, wave soldering</description>
 </package>
 <package name="R1210">
 <description>&lt;b&gt;RESISTOR&lt;/b&gt;&lt;p&gt;
-chip</description>
+                                chip</description>
 <wire x1="-0.913" y1="1.219" x2="0.939" y2="1.219" width="0.1524" layer="51"/>
 <wire x1="-0.913" y1="-1.219" x2="0.939" y2="-1.219" width="0.1524" layer="51"/>
 <wire x1="-2.473" y1="1.483" x2="2.473" y2="1.483" width="0.0508" layer="39"/>
@@ -2061,7 +2061,7 @@ chip</description>
 </package>
 <package name="R1210W">
 <description>&lt;b&gt;RESISTOR&lt;/b&gt;&lt;p&gt;
-chip, wave soldering</description>
+                                chip, wave soldering</description>
 <wire x1="-0.913" y1="1.219" x2="0.939" y2="1.219" width="0.1524" layer="21"/>
 <wire x1="-0.913" y1="-1.219" x2="0.939" y2="-1.219" width="0.1524" layer="21"/>
 <wire x1="-2.473" y1="1.483" x2="2.473" y2="1.483" width="0.0508" layer="39"/>
@@ -2078,7 +2078,7 @@ chip, wave soldering</description>
 </package>
 <package name="R2010">
 <description>&lt;b&gt;RESISTOR&lt;/b&gt;&lt;p&gt;
-chip</description>
+                                chip</description>
 <wire x1="-1.662" y1="1.245" x2="1.662" y2="1.245" width="0.1524" layer="51"/>
 <wire x1="-1.637" y1="-1.245" x2="1.687" y2="-1.245" width="0.1524" layer="51"/>
 <wire x1="-3.473" y1="1.483" x2="3.473" y2="1.483" width="0.0508" layer="39"/>
@@ -2096,7 +2096,7 @@ chip</description>
 </package>
 <package name="R2010W">
 <description>&lt;b&gt;RESISTOR&lt;/b&gt;&lt;p&gt;
-chip, wave soldering</description>
+                                chip, wave soldering</description>
 <wire x1="-1.662" y1="1.245" x2="1.662" y2="1.245" width="0.1524" layer="21"/>
 <wire x1="-1.637" y1="-1.245" x2="1.687" y2="-1.245" width="0.1524" layer="21"/>
 <wire x1="-3.473" y1="1.483" x2="3.473" y2="1.483" width="0.0508" layer="39"/>
@@ -2112,7 +2112,7 @@ chip, wave soldering</description>
 </package>
 <package name="R2012">
 <description>&lt;b&gt;RESISTOR&lt;/b&gt;&lt;p&gt;
-chip</description>
+                                chip</description>
 <wire x1="-0.41" y1="0.635" x2="0.41" y2="0.635" width="0.1524" layer="51"/>
 <wire x1="-0.41" y1="-0.635" x2="0.41" y2="-0.635" width="0.1524" layer="51"/>
 <wire x1="-1.973" y1="0.983" x2="1.973" y2="0.983" width="0.0508" layer="39"/>
@@ -2129,7 +2129,7 @@ chip</description>
 </package>
 <package name="R2012W">
 <description>&lt;b&gt;RESISTOR&lt;/b&gt;&lt;p&gt;
-chip, wave soldering</description>
+                                chip, wave soldering</description>
 <wire x1="-0.41" y1="0.635" x2="0.41" y2="0.635" width="0.1524" layer="51"/>
 <wire x1="-0.41" y1="-0.635" x2="0.41" y2="-0.635" width="0.1524" layer="51"/>
 <wire x1="-1.973" y1="0.983" x2="1.973" y2="0.983" width="0.0508" layer="39"/>
@@ -2146,7 +2146,7 @@ chip, wave soldering</description>
 </package>
 <package name="R2512">
 <description>&lt;b&gt;RESISTOR&lt;/b&gt;&lt;p&gt;
-chip</description>
+                                chip</description>
 <wire x1="-2.362" y1="1.473" x2="2.387" y2="1.473" width="0.1524" layer="51"/>
 <wire x1="-2.362" y1="-1.473" x2="2.387" y2="-1.473" width="0.1524" layer="51"/>
 <wire x1="-3.973" y1="1.983" x2="3.973" y2="1.983" width="0.0508" layer="39"/>
@@ -2165,7 +2165,7 @@ chip</description>
 </package>
 <package name="R2512W">
 <description>&lt;b&gt;RESISTOR&lt;/b&gt;&lt;p&gt;
-chip, wave soldering</description>
+                                chip, wave soldering</description>
 <wire x1="-2.362" y1="1.473" x2="2.387" y2="1.473" width="0.1524" layer="21"/>
 <wire x1="-2.362" y1="-1.473" x2="2.387" y2="-1.473" width="0.1524" layer="21"/>
 <wire x1="-3.973" y1="1.983" x2="3.973" y2="1.983" width="0.0508" layer="39"/>
@@ -2182,7 +2182,7 @@ chip, wave soldering</description>
 </package>
 <package name="R3216">
 <description>&lt;b&gt;RESISTOR&lt;/b&gt;&lt;p&gt;
-chip</description>
+                                chip</description>
 <wire x1="-0.913" y1="0.8" x2="0.888" y2="0.8" width="0.1524" layer="51"/>
 <wire x1="-0.913" y1="-0.8" x2="0.888" y2="-0.8" width="0.1524" layer="51"/>
 <wire x1="-2.473" y1="0.983" x2="2.473" y2="0.983" width="0.0508" layer="39"/>
@@ -2199,7 +2199,7 @@ chip</description>
 </package>
 <package name="R3216W">
 <description>&lt;b&gt;RESISTOR&lt;/b&gt;&lt;p&gt;
-chip, wave soldering</description>
+                                chip, wave soldering</description>
 <wire x1="-0.913" y1="0.8" x2="0.888" y2="0.8" width="0.1524" layer="21"/>
 <wire x1="-0.913" y1="-0.8" x2="0.888" y2="-0.8" width="0.1524" layer="21"/>
 <wire x1="-2.473" y1="0.983" x2="2.473" y2="0.983" width="0.0508" layer="39"/>
@@ -2216,7 +2216,7 @@ chip, wave soldering</description>
 </package>
 <package name="R3225">
 <description>&lt;b&gt;RESISTOR&lt;/b&gt;&lt;p&gt;
-chip</description>
+                                chip</description>
 <wire x1="-0.913" y1="1.219" x2="0.939" y2="1.219" width="0.1524" layer="51"/>
 <wire x1="-0.913" y1="-1.219" x2="0.939" y2="-1.219" width="0.1524" layer="51"/>
 <wire x1="-2.473" y1="1.483" x2="2.473" y2="1.483" width="0.0508" layer="39"/>
@@ -2233,7 +2233,7 @@ chip</description>
 </package>
 <package name="R3225W">
 <description>&lt;b&gt;RESISTOR&lt;/b&gt;&lt;p&gt;
-chip, wave soldering</description>
+                                chip, wave soldering</description>
 <wire x1="-0.913" y1="1.219" x2="0.939" y2="1.219" width="0.1524" layer="21"/>
 <wire x1="-0.913" y1="-1.219" x2="0.939" y2="-1.219" width="0.1524" layer="21"/>
 <wire x1="-2.473" y1="1.483" x2="2.473" y2="1.483" width="0.0508" layer="39"/>
@@ -2250,7 +2250,7 @@ chip, wave soldering</description>
 </package>
 <package name="R5025">
 <description>&lt;b&gt;RESISTOR&lt;/b&gt;&lt;p&gt;
-chip</description>
+                                chip</description>
 <wire x1="-1.662" y1="1.245" x2="1.662" y2="1.245" width="0.1524" layer="51"/>
 <wire x1="-1.637" y1="-1.245" x2="1.687" y2="-1.245" width="0.1524" layer="51"/>
 <wire x1="-3.473" y1="1.483" x2="3.473" y2="1.483" width="0.0508" layer="39"/>
@@ -2269,7 +2269,7 @@ chip</description>
 </package>
 <package name="R5025W">
 <description>&lt;b&gt;RESISTOR&lt;/b&gt;&lt;p&gt;
-chip, wave soldering</description>
+                                chip, wave soldering</description>
 <wire x1="-1.662" y1="1.245" x2="1.662" y2="1.245" width="0.1524" layer="21"/>
 <wire x1="-1.637" y1="-1.245" x2="1.687" y2="-1.245" width="0.1524" layer="21"/>
 <wire x1="-3.473" y1="1.483" x2="3.473" y2="1.483" width="0.0508" layer="39"/>
@@ -2286,7 +2286,7 @@ chip, wave soldering</description>
 </package>
 <package name="R6332">
 <description>&lt;b&gt;RESISTOR&lt;/b&gt;&lt;p&gt;
-chip</description>
+                                chip</description>
 <wire x1="-2.362" y1="1.473" x2="2.387" y2="1.473" width="0.1524" layer="51"/>
 <wire x1="-2.362" y1="-1.473" x2="2.387" y2="-1.473" width="0.1524" layer="51"/>
 <wire x1="-3.973" y1="1.983" x2="3.973" y2="1.983" width="0.0508" layer="39"/>
@@ -2305,7 +2305,7 @@ chip</description>
 </package>
 <package name="R6332W">
 <description>&lt;b&gt;RESISTOR&lt;/b&gt;&lt;p&gt;
-chip, wave soldering</description>
+                                chip, wave soldering</description>
 <wire x1="-2.362" y1="1.473" x2="2.387" y2="1.473" width="0.1524" layer="21"/>
 <wire x1="-2.362" y1="-1.473" x2="2.387" y2="-1.473" width="0.1524" layer="21"/>
 <wire x1="-3.973" y1="1.983" x2="3.973" y2="1.983" width="0.0508" layer="39"/>
@@ -2322,7 +2322,7 @@ chip, wave soldering</description>
 </package>
 <package name="M0805">
 <description>&lt;b&gt;RESISTOR&lt;/b&gt;&lt;p&gt;
-MELF 0.10 W</description>
+                                MELF 0.10 W</description>
 <wire x1="-1.973" y1="0.983" x2="1.973" y2="0.983" width="0.0508" layer="39"/>
 <wire x1="1.973" y1="-0.983" x2="-1.973" y2="-0.983" width="0.0508" layer="39"/>
 <wire x1="-1.973" y1="-0.983" x2="-1.973" y2="0.983" width="0.0508" layer="39"/>
@@ -2339,7 +2339,7 @@ MELF 0.10 W</description>
 </package>
 <package name="M1206">
 <description>&lt;b&gt;RESISTOR&lt;/b&gt;&lt;p&gt;
-MELF 0.25 W</description>
+                                MELF 0.25 W</description>
 <wire x1="-2.473" y1="1.483" x2="2.473" y2="1.483" width="0.0508" layer="39"/>
 <wire x1="2.473" y1="-1.483" x2="-2.473" y2="-1.483" width="0.0508" layer="39"/>
 <wire x1="-2.473" y1="-1.483" x2="-2.473" y2="1.483" width="0.0508" layer="39"/>
@@ -2356,7 +2356,7 @@ MELF 0.25 W</description>
 </package>
 <package name="M1406">
 <description>&lt;b&gt;RESISTOR&lt;/b&gt;&lt;p&gt;
-MELF 0.12 W</description>
+                                MELF 0.12 W</description>
 <wire x1="-2.973" y1="0.983" x2="2.973" y2="0.983" width="0.0508" layer="39"/>
 <wire x1="2.973" y1="-0.983" x2="-2.973" y2="-0.983" width="0.0508" layer="39"/>
 <wire x1="-2.973" y1="-0.983" x2="-2.973" y2="0.983" width="0.0508" layer="39"/>
@@ -2375,7 +2375,7 @@ MELF 0.12 W</description>
 </package>
 <package name="M2012">
 <description>&lt;b&gt;RESISTOR&lt;/b&gt;&lt;p&gt;
-MELF 0.10 W</description>
+                                MELF 0.10 W</description>
 <wire x1="-1.973" y1="0.983" x2="1.973" y2="0.983" width="0.0508" layer="39"/>
 <wire x1="1.973" y1="-0.983" x2="-1.973" y2="-0.983" width="0.0508" layer="39"/>
 <wire x1="-1.973" y1="-0.983" x2="-1.973" y2="0.983" width="0.0508" layer="39"/>
@@ -2392,7 +2392,7 @@ MELF 0.10 W</description>
 </package>
 <package name="M2309">
 <description>&lt;b&gt;RESISTOR&lt;/b&gt;&lt;p&gt;
-MELF 0.25 W</description>
+                                MELF 0.25 W</description>
 <wire x1="-4.473" y1="1.483" x2="4.473" y2="1.483" width="0.0508" layer="39"/>
 <wire x1="4.473" y1="-1.483" x2="-4.473" y2="-1.483" width="0.0508" layer="39"/>
 <wire x1="-4.473" y1="-1.483" x2="-4.473" y2="1.483" width="0.0508" layer="39"/>
@@ -2411,7 +2411,7 @@ MELF 0.25 W</description>
 </package>
 <package name="M3216">
 <description>&lt;b&gt;RESISTOR&lt;/b&gt;&lt;p&gt;
-MELF 0.25 W</description>
+                                MELF 0.25 W</description>
 <wire x1="-2.473" y1="1.483" x2="2.473" y2="1.483" width="0.0508" layer="39"/>
 <wire x1="2.473" y1="-1.483" x2="-2.473" y2="-1.483" width="0.0508" layer="39"/>
 <wire x1="-2.473" y1="-1.483" x2="-2.473" y2="1.483" width="0.0508" layer="39"/>
@@ -2428,7 +2428,7 @@ MELF 0.25 W</description>
 </package>
 <package name="M3516">
 <description>&lt;b&gt;RESISTOR&lt;/b&gt;&lt;p&gt;
-MELF 0.12 W</description>
+                                MELF 0.12 W</description>
 <wire x1="-2.973" y1="0.983" x2="2.973" y2="0.983" width="0.0508" layer="39"/>
 <wire x1="2.973" y1="-0.983" x2="-2.973" y2="-0.983" width="0.0508" layer="39"/>
 <wire x1="-2.973" y1="-0.983" x2="-2.973" y2="0.983" width="0.0508" layer="39"/>
@@ -2447,7 +2447,7 @@ MELF 0.12 W</description>
 </package>
 <package name="M5923">
 <description>&lt;b&gt;RESISTOR&lt;/b&gt;&lt;p&gt;
-MELF 0.25 W</description>
+                                MELF 0.25 W</description>
 <wire x1="-4.473" y1="1.483" x2="4.473" y2="1.483" width="0.0508" layer="39"/>
 <wire x1="4.473" y1="-1.483" x2="-4.473" y2="-1.483" width="0.0508" layer="39"/>
 <wire x1="-4.473" y1="-1.483" x2="-4.473" y2="1.483" width="0.0508" layer="39"/>
@@ -2466,7 +2466,7 @@ MELF 0.25 W</description>
 </package>
 <package name="0204/5">
 <description>&lt;b&gt;RESISTOR&lt;/b&gt;&lt;p&gt;
-type 0204, grid 5 mm</description>
+                                type 0204, grid 5 mm</description>
 <wire x1="2.54" y1="0" x2="2.032" y2="0" width="0.508" layer="51"/>
 <wire x1="-2.54" y1="0" x2="-2.032" y2="0" width="0.508" layer="51"/>
 <wire x1="-1.778" y1="0.635" x2="-1.524" y2="0.889" width="0.1524" layer="21" curve="-90"/>
@@ -2494,7 +2494,7 @@ type 0204, grid 5 mm</description>
 </package>
 <package name="0204/7">
 <description>&lt;b&gt;RESISTOR&lt;/b&gt;&lt;p&gt;
-type 0204, grid 7.5 mm</description>
+                                type 0204, grid 7.5 mm</description>
 <wire x1="3.81" y1="0" x2="2.921" y2="0" width="0.508" layer="51"/>
 <wire x1="-3.81" y1="0" x2="-2.921" y2="0" width="0.508" layer="51"/>
 <wire x1="-2.54" y1="0.762" x2="-2.286" y2="1.016" width="0.1524" layer="21" curve="-90"/>
@@ -2522,7 +2522,7 @@ type 0204, grid 7.5 mm</description>
 </package>
 <package name="0207/10">
 <description>&lt;b&gt;RESISTOR&lt;/b&gt;&lt;p&gt;
-type 0207, grid 10 mm</description>
+                                type 0207, grid 10 mm</description>
 <wire x1="5.08" y1="0" x2="4.064" y2="0" width="0.6096" layer="51"/>
 <wire x1="-5.08" y1="0" x2="-4.064" y2="0" width="0.6096" layer="51"/>
 <wire x1="-3.175" y1="0.889" x2="-2.921" y2="1.143" width="0.1524" layer="21" curve="-90"/>
@@ -2550,7 +2550,7 @@ type 0207, grid 10 mm</description>
 </package>
 <package name="0207/12">
 <description>&lt;b&gt;RESISTOR&lt;/b&gt;&lt;p&gt;
-type 0207, grid 12 mm</description>
+                                type 0207, grid 12 mm</description>
 <wire x1="6.35" y1="0" x2="5.334" y2="0" width="0.6096" layer="51"/>
 <wire x1="-6.35" y1="0" x2="-5.334" y2="0" width="0.6096" layer="51"/>
 <wire x1="-3.175" y1="0.889" x2="-2.921" y2="1.143" width="0.1524" layer="21" curve="-90"/>
@@ -2582,7 +2582,7 @@ type 0207, grid 12 mm</description>
 </package>
 <package name="0207/15">
 <description>&lt;b&gt;RESISTOR&lt;/b&gt;&lt;p&gt;
-type 0207, grid 15mm</description>
+                                type 0207, grid 15mm</description>
 <wire x1="7.62" y1="0" x2="6.604" y2="0" width="0.6096" layer="51"/>
 <wire x1="-7.62" y1="0" x2="-6.604" y2="0" width="0.6096" layer="51"/>
 <wire x1="-3.175" y1="0.889" x2="-2.921" y2="1.143" width="0.1524" layer="21" curve="-90"/>
@@ -2614,7 +2614,7 @@ type 0207, grid 15mm</description>
 </package>
 <package name="0207/2V">
 <description>&lt;b&gt;RESISTOR&lt;/b&gt;&lt;p&gt;
-type 0207, grid 2.5 mm</description>
+                                type 0207, grid 2.5 mm</description>
 <wire x1="-1.27" y1="0" x2="-0.381" y2="0" width="0.6096" layer="51"/>
 <wire x1="-0.254" y1="0" x2="0.254" y2="0" width="0.6096" layer="21"/>
 <wire x1="0.381" y1="0" x2="1.27" y2="0" width="0.6096" layer="51"/>
@@ -2627,7 +2627,7 @@ type 0207, grid 2.5 mm</description>
 </package>
 <package name="0207/5V">
 <description>&lt;b&gt;RESISTOR&lt;/b&gt;&lt;p&gt;
-type 0207, grid 5 mm</description>
+                                type 0207, grid 5 mm</description>
 <wire x1="-2.54" y1="0" x2="-0.889" y2="0" width="0.6096" layer="51"/>
 <wire x1="-0.762" y1="0" x2="0.762" y2="0" width="0.6096" layer="21"/>
 <wire x1="0.889" y1="0" x2="2.54" y2="0" width="0.6096" layer="51"/>
@@ -2640,7 +2640,7 @@ type 0207, grid 5 mm</description>
 </package>
 <package name="0207/7">
 <description>&lt;b&gt;RESISTOR&lt;/b&gt;&lt;p&gt;
-type 0207, grid 7.5 mm</description>
+                                type 0207, grid 7.5 mm</description>
 <wire x1="-3.81" y1="0" x2="-3.429" y2="0" width="0.6096" layer="51"/>
 <wire x1="-3.175" y1="0.889" x2="-2.921" y2="1.143" width="0.1524" layer="21" curve="-90"/>
 <wire x1="-3.175" y1="-0.889" x2="-2.921" y2="-1.143" width="0.1524" layer="21" curve="90"/>
@@ -2668,7 +2668,7 @@ type 0207, grid 7.5 mm</description>
 </package>
 <package name="0309/10">
 <description>&lt;b&gt;RESISTOR&lt;/b&gt;&lt;p&gt;
-type 0309, grid 10mm</description>
+                                type 0309, grid 10mm</description>
 <wire x1="-4.699" y1="0" x2="-5.08" y2="0" width="0.6096" layer="51"/>
 <wire x1="-4.318" y1="1.27" x2="-4.064" y2="1.524" width="0.1524" layer="21" curve="-90"/>
 <wire x1="-4.318" y1="-1.27" x2="-4.064" y2="-1.524" width="0.1524" layer="21" curve="90"/>
@@ -2696,7 +2696,7 @@ type 0309, grid 10mm</description>
 </package>
 <package name="0309/12">
 <description>&lt;b&gt;RESISTOR&lt;/b&gt;&lt;p&gt;
-type 0309, grid 12.5 mm</description>
+                                type 0309, grid 12.5 mm</description>
 <wire x1="6.35" y1="0" x2="5.08" y2="0" width="0.6096" layer="51"/>
 <wire x1="-6.35" y1="0" x2="-5.08" y2="0" width="0.6096" layer="51"/>
 <wire x1="-4.318" y1="1.27" x2="-4.064" y2="1.524" width="0.1524" layer="21" curve="-90"/>
@@ -2724,7 +2724,7 @@ type 0309, grid 12.5 mm</description>
 </package>
 <package name="0411/12">
 <description>&lt;b&gt;RESISTOR&lt;/b&gt;&lt;p&gt;
-type 0411, grid 12.5 mm</description>
+                                type 0411, grid 12.5 mm</description>
 <wire x1="6.35" y1="0" x2="5.461" y2="0" width="0.762" layer="51"/>
 <wire x1="-6.35" y1="0" x2="-5.461" y2="0" width="0.762" layer="51"/>
 <wire x1="5.08" y1="-1.651" x2="5.08" y2="1.651" width="0.1524" layer="21"/>
@@ -2752,7 +2752,7 @@ type 0411, grid 12.5 mm</description>
 </package>
 <package name="0411/15">
 <description>&lt;b&gt;RESISTOR&lt;/b&gt;&lt;p&gt;
-type 0411, grid 15 mm</description>
+                                type 0411, grid 15 mm</description>
 <wire x1="5.08" y1="-1.651" x2="5.08" y2="1.651" width="0.1524" layer="21"/>
 <wire x1="4.699" y1="2.032" x2="5.08" y2="1.651" width="0.1524" layer="21" curve="-90"/>
 <wire x1="-5.08" y1="-1.651" x2="-4.699" y2="-2.032" width="0.1524" layer="21" curve="90"/>
@@ -2780,7 +2780,7 @@ type 0411, grid 15 mm</description>
 </package>
 <package name="0411V">
 <description>&lt;b&gt;RESISTOR&lt;/b&gt;&lt;p&gt;
-type 0411, grid 3.81 mm</description>
+                                type 0411, grid 3.81 mm</description>
 <wire x1="1.27" y1="0" x2="0.3048" y2="0" width="0.762" layer="51"/>
 <wire x1="-1.5748" y1="0" x2="-2.54" y2="0" width="0.762" layer="51"/>
 <circle x="-2.54" y="0" radius="2.032" width="0.1524" layer="21"/>
@@ -2793,7 +2793,7 @@ type 0411, grid 3.81 mm</description>
 </package>
 <package name="0414/15">
 <description>&lt;b&gt;RESISTOR&lt;/b&gt;&lt;p&gt;
-type 0414, grid 15 mm</description>
+                                type 0414, grid 15 mm</description>
 <wire x1="7.62" y1="0" x2="6.604" y2="0" width="0.8128" layer="51"/>
 <wire x1="-7.62" y1="0" x2="-6.604" y2="0" width="0.8128" layer="51"/>
 <wire x1="-6.096" y1="1.905" x2="-5.842" y2="2.159" width="0.1524" layer="21" curve="-90"/>
@@ -2821,7 +2821,7 @@ type 0414, grid 15 mm</description>
 </package>
 <package name="0414V">
 <description>&lt;b&gt;RESISTOR&lt;/b&gt;&lt;p&gt;
-type 0414, grid 5 mm</description>
+                                type 0414, grid 5 mm</description>
 <wire x1="2.54" y1="0" x2="1.397" y2="0" width="0.8128" layer="51"/>
 <wire x1="-2.54" y1="0" x2="-1.397" y2="0" width="0.8128" layer="51"/>
 <circle x="-2.54" y="0" radius="2.159" width="0.1524" layer="21"/>
@@ -2834,7 +2834,7 @@ type 0414, grid 5 mm</description>
 </package>
 <package name="0617/17">
 <description>&lt;b&gt;RESISTOR&lt;/b&gt;&lt;p&gt;
-type 0617, grid 17.5 mm</description>
+                                type 0617, grid 17.5 mm</description>
 <wire x1="-8.89" y1="0" x2="-8.636" y2="0" width="0.8128" layer="51"/>
 <wire x1="-7.874" y1="3.048" x2="-6.985" y2="3.048" width="0.1524" layer="21"/>
 <wire x1="-6.731" y1="2.794" x2="-6.985" y2="3.048" width="0.1524" layer="21"/>
@@ -2866,7 +2866,7 @@ type 0617, grid 17.5 mm</description>
 </package>
 <package name="0617/22">
 <description>&lt;b&gt;RESISTOR&lt;/b&gt;&lt;p&gt;
-type 0617, grid 22.5 mm</description>
+                                type 0617, grid 22.5 mm</description>
 <wire x1="-10.287" y1="0" x2="-11.43" y2="0" width="0.8128" layer="51"/>
 <wire x1="-8.255" y1="-2.667" x2="-8.255" y2="2.667" width="0.1524" layer="21"/>
 <wire x1="-7.874" y1="3.048" x2="-6.985" y2="3.048" width="0.1524" layer="21"/>
@@ -2894,7 +2894,7 @@ type 0617, grid 22.5 mm</description>
 </package>
 <package name="0617V">
 <description>&lt;b&gt;RESISTOR&lt;/b&gt;&lt;p&gt;
-type 0617, grid 5 mm</description>
+                                type 0617, grid 5 mm</description>
 <wire x1="-2.54" y1="0" x2="-1.27" y2="0" width="0.8128" layer="51"/>
 <wire x1="1.27" y1="0" x2="2.54" y2="0" width="0.8128" layer="51"/>
 <circle x="-2.54" y="0" radius="3.048" width="0.1524" layer="21"/>
@@ -2907,7 +2907,7 @@ type 0617, grid 5 mm</description>
 </package>
 <package name="0922/22">
 <description>&lt;b&gt;RESISTOR&lt;/b&gt;&lt;p&gt;
-type 0922, grid 22.5 mm</description>
+                                type 0922, grid 22.5 mm</description>
 <wire x1="11.43" y1="0" x2="10.795" y2="0" width="0.8128" layer="51"/>
 <wire x1="-11.43" y1="0" x2="-10.795" y2="0" width="0.8128" layer="51"/>
 <wire x1="-10.16" y1="-4.191" x2="-10.16" y2="4.191" width="0.1524" layer="21"/>
@@ -2937,7 +2937,7 @@ type 0922, grid 22.5 mm</description>
 </package>
 <package name="P0613V">
 <description>&lt;b&gt;RESISTOR&lt;/b&gt;&lt;p&gt;
-type 0613, grid 5 mm</description>
+                                type 0613, grid 5 mm</description>
 <wire x1="2.54" y1="0" x2="1.397" y2="0" width="0.8128" layer="51"/>
 <wire x1="-2.54" y1="0" x2="-1.397" y2="0" width="0.8128" layer="51"/>
 <circle x="-2.54" y="0" radius="2.286" width="0.1524" layer="21"/>
@@ -2950,7 +2950,7 @@ type 0613, grid 5 mm</description>
 </package>
 <package name="P0613/15">
 <description>&lt;b&gt;RESISTOR&lt;/b&gt;&lt;p&gt;
-type 0613, grid 15 mm</description>
+                                type 0613, grid 15 mm</description>
 <wire x1="7.62" y1="0" x2="6.985" y2="0" width="0.8128" layer="51"/>
 <wire x1="-7.62" y1="0" x2="-6.985" y2="0" width="0.8128" layer="51"/>
 <wire x1="-6.477" y1="2.032" x2="-6.223" y2="2.286" width="0.1524" layer="21" curve="-90"/>
@@ -2982,7 +2982,7 @@ type 0613, grid 15 mm</description>
 </package>
 <package name="P0817/22">
 <description>&lt;b&gt;RESISTOR&lt;/b&gt;&lt;p&gt;
-type 0817, grid 22.5 mm</description>
+                                type 0817, grid 22.5 mm</description>
 <wire x1="-10.414" y1="0" x2="-11.43" y2="0" width="0.8128" layer="51"/>
 <wire x1="-8.509" y1="-3.429" x2="-8.509" y2="3.429" width="0.1524" layer="21"/>
 <wire x1="-8.128" y1="3.81" x2="-7.239" y2="3.81" width="0.1524" layer="21"/>
@@ -3011,7 +3011,7 @@ type 0817, grid 22.5 mm</description>
 </package>
 <package name="P0817V">
 <description>&lt;b&gt;RESISTOR&lt;/b&gt;&lt;p&gt;
-type 0817, grid 6.35 mm</description>
+                                type 0817, grid 6.35 mm</description>
 <wire x1="-3.81" y1="0" x2="-5.08" y2="0" width="0.8128" layer="51"/>
 <wire x1="1.27" y1="0" x2="0" y2="0" width="0.8128" layer="51"/>
 <circle x="-5.08" y="0" radius="3.81" width="0.1524" layer="21"/>
@@ -3025,7 +3025,7 @@ type 0817, grid 6.35 mm</description>
 </package>
 <package name="V234/12">
 <description>&lt;b&gt;RESISTOR&lt;/b&gt;&lt;p&gt;
-type V234, grid 12.5 mm</description>
+                                type V234, grid 12.5 mm</description>
 <wire x1="-4.953" y1="1.524" x2="-4.699" y2="1.778" width="0.1524" layer="21" curve="-90"/>
 <wire x1="4.699" y1="1.778" x2="4.953" y2="1.524" width="0.1524" layer="21" curve="-90"/>
 <wire x1="4.699" y1="-1.778" x2="4.953" y2="-1.524" width="0.1524" layer="21" curve="90"/>
@@ -3045,7 +3045,7 @@ type V234, grid 12.5 mm</description>
 </package>
 <package name="V235/17">
 <description>&lt;b&gt;RESISTOR&lt;/b&gt;&lt;p&gt;
-type V235, grid 17.78 mm</description>
+                                type V235, grid 17.78 mm</description>
 <wire x1="-6.731" y1="2.921" x2="6.731" y2="2.921" width="0.1524" layer="21"/>
 <wire x1="-7.112" y1="2.54" x2="-7.112" y2="-2.54" width="0.1524" layer="21"/>
 <wire x1="6.731" y1="-2.921" x2="-6.731" y2="-2.921" width="0.1524" layer="21"/>
@@ -3065,7 +3065,7 @@ type V235, grid 17.78 mm</description>
 </package>
 <package name="V526-0">
 <description>&lt;b&gt;RESISTOR&lt;/b&gt;&lt;p&gt;
-type V526-0, grid 2.5 mm</description>
+                                type V526-0, grid 2.5 mm</description>
 <wire x1="-2.54" y1="1.016" x2="-2.286" y2="1.27" width="0.1524" layer="21" curve="-90"/>
 <wire x1="2.286" y1="1.27" x2="2.54" y2="1.016" width="0.1524" layer="21" curve="-90"/>
 <wire x1="2.286" y1="-1.27" x2="2.54" y2="-1.016" width="0.1524" layer="21" curve="90"/>
@@ -3091,7 +3091,7 @@ type V526-0, grid 2.5 mm</description>
 </package>
 <package name="0922V">
 <description>&lt;b&gt;RESISTOR&lt;/b&gt;&lt;p&gt;
-type 0922, grid 7.5 mm</description>
+                                type 0922, grid 7.5 mm</description>
 <wire x1="2.54" y1="0" x2="1.397" y2="0" width="0.8128" layer="51"/>
 <wire x1="-5.08" y1="0" x2="-3.81" y2="0" width="0.8128" layer="51"/>
 <circle x="-5.08" y="0" radius="4.572" width="0.1524" layer="21"/>
@@ -3105,7 +3105,7 @@ type 0922, grid 7.5 mm</description>
 </package>
 <package name="MINI_MELF-0102R">
 <description>&lt;b&gt;CECC Size RC2211&lt;/b&gt; Reflow Soldering&lt;p&gt;
-source Beyschlag</description>
+                                source Beyschlag</description>
 <wire x1="-1" y1="-0.5" x2="1" y2="-0.5" width="0.2032" layer="51"/>
 <wire x1="1" y1="-0.5" x2="1" y2="0.5" width="0.2032" layer="51"/>
 <wire x1="1" y1="0.5" x2="-1" y2="0.5" width="0.2032" layer="51"/>
@@ -3117,7 +3117,7 @@ source Beyschlag</description>
 </package>
 <package name="MINI_MELF-0102W">
 <description>&lt;b&gt;CECC Size RC2211&lt;/b&gt; Wave Soldering&lt;p&gt;
-source Beyschlag</description>
+                                source Beyschlag</description>
 <wire x1="-1" y1="-0.5" x2="1" y2="-0.5" width="0.2032" layer="51"/>
 <wire x1="1" y1="-0.5" x2="1" y2="0.5" width="0.2032" layer="51"/>
 <wire x1="1" y1="0.5" x2="-1" y2="0.5" width="0.2032" layer="51"/>
@@ -3129,7 +3129,7 @@ source Beyschlag</description>
 </package>
 <package name="MINI_MELF-0204R">
 <description>&lt;b&gt;CECC Size RC3715&lt;/b&gt; Reflow Soldering&lt;p&gt;
-source Beyschlag</description>
+                                source Beyschlag</description>
 <wire x1="-1.7" y1="-0.6" x2="1.7" y2="-0.6" width="0.2032" layer="51"/>
 <wire x1="1.7" y1="-0.6" x2="1.7" y2="0.6" width="0.2032" layer="51"/>
 <wire x1="1.7" y1="0.6" x2="-1.7" y2="0.6" width="0.2032" layer="51"/>
@@ -3141,7 +3141,7 @@ source Beyschlag</description>
 </package>
 <package name="MINI_MELF-0204W">
 <description>&lt;b&gt;CECC Size RC3715&lt;/b&gt; Wave Soldering&lt;p&gt;
-source Beyschlag</description>
+                                source Beyschlag</description>
 <wire x1="-1.7" y1="-0.6" x2="1.7" y2="-0.6" width="0.2032" layer="51"/>
 <wire x1="1.7" y1="-0.6" x2="1.7" y2="0.6" width="0.2032" layer="51"/>
 <wire x1="1.7" y1="0.6" x2="-1.7" y2="0.6" width="0.2032" layer="51"/>
@@ -3153,7 +3153,7 @@ source Beyschlag</description>
 </package>
 <package name="MINI_MELF-0207R">
 <description>&lt;b&gt;CECC Size RC6123&lt;/b&gt; Reflow Soldering&lt;p&gt;
-source Beyschlag</description>
+                                source Beyschlag</description>
 <wire x1="-2.8" y1="-1" x2="2.8" y2="-1" width="0.2032" layer="51"/>
 <wire x1="2.8" y1="-1" x2="2.8" y2="1" width="0.2032" layer="51"/>
 <wire x1="2.8" y1="1" x2="-2.8" y2="1" width="0.2032" layer="51"/>
@@ -3165,7 +3165,7 @@ source Beyschlag</description>
 </package>
 <package name="MINI_MELF-0207W">
 <description>&lt;b&gt;CECC Size RC6123&lt;/b&gt; Wave Soldering&lt;p&gt;
-source Beyschlag</description>
+                                source Beyschlag</description>
 <wire x1="-2.8" y1="-1" x2="2.8" y2="-1" width="0.2032" layer="51"/>
 <wire x1="2.8" y1="-1" x2="2.8" y2="1" width="0.2032" layer="51"/>
 <wire x1="2.8" y1="1" x2="-2.8" y2="1" width="0.2032" layer="51"/>
@@ -3177,7 +3177,7 @@ source Beyschlag</description>
 </package>
 <package name="RDH/15">
 <description>&lt;b&gt;RESISTOR&lt;/b&gt;&lt;p&gt;
-type RDH, grid 15 mm</description>
+                                type RDH, grid 15 mm</description>
 <wire x1="-7.62" y1="0" x2="-6.858" y2="0" width="0.8128" layer="51"/>
 <wire x1="-6.096" y1="3.048" x2="-5.207" y2="3.048" width="0.1524" layer="21"/>
 <wire x1="-4.953" y1="2.794" x2="-5.207" y2="3.048" width="0.1524" layer="21"/>
@@ -3210,7 +3210,7 @@ type RDH, grid 15 mm</description>
 </package>
 <package name="0204V">
 <description>&lt;b&gt;RESISTOR&lt;/b&gt;&lt;p&gt;
-type 0204, grid 2.5 mm</description>
+                                type 0204, grid 2.5 mm</description>
 <wire x1="-1.27" y1="0" x2="1.27" y2="0" width="0.508" layer="51"/>
 <wire x1="-0.127" y1="0" x2="0.127" y2="0" width="0.508" layer="21"/>
 <circle x="-1.27" y="0" radius="0.889" width="0.1524" layer="51"/>
@@ -3222,7 +3222,7 @@ type 0204, grid 2.5 mm</description>
 </package>
 <package name="0309V">
 <description>&lt;b&gt;RESISTOR&lt;/b&gt;&lt;p&gt;
-type 0309, grid 2.5 mm</description>
+                                type 0309, grid 2.5 mm</description>
 <wire x1="1.27" y1="0" x2="0.635" y2="0" width="0.6096" layer="51"/>
 <wire x1="-0.635" y1="0" x2="-1.27" y2="0" width="0.6096" layer="51"/>
 <circle x="-1.27" y="0" radius="1.524" width="0.1524" layer="21"/>
@@ -3237,7 +3237,7 @@ type 0309, grid 2.5 mm</description>
 </package>
 <package name="C0402">
 <description>&lt;b&gt;CAPACITOR&lt;/b&gt;&lt;p&gt;
-chip</description>
+                                chip</description>
 <wire x1="-0.245" y1="0.224" x2="0.245" y2="0.224" width="0.1524" layer="51"/>
 <wire x1="0.245" y1="-0.224" x2="-0.245" y2="-0.224" width="0.1524" layer="51"/>
 <wire x1="-1.473" y1="0.483" x2="1.473" y2="0.483" width="0.0508" layer="39"/>
@@ -3254,7 +3254,7 @@ chip</description>
 </package>
 <package name="C0504">
 <description>&lt;b&gt;CAPACITOR&lt;/b&gt;&lt;p&gt;
-chip</description>
+                                chip</description>
 <wire x1="-1.473" y1="0.983" x2="1.473" y2="0.983" width="0.0508" layer="39"/>
 <wire x1="1.473" y1="0.983" x2="1.473" y2="-0.983" width="0.0508" layer="39"/>
 <wire x1="1.473" y1="-0.983" x2="-1.473" y2="-0.983" width="0.0508" layer="39"/>
@@ -3271,7 +3271,7 @@ chip</description>
 </package>
 <package name="C0603">
 <description>&lt;b&gt;CAPACITOR&lt;/b&gt;&lt;p&gt;
-chip</description>
+                                chip</description>
 <wire x1="-1.473" y1="0.983" x2="1.473" y2="0.983" width="0.0508" layer="39"/>
 <wire x1="1.473" y1="0.983" x2="1.473" y2="-0.983" width="0.0508" layer="39"/>
 <wire x1="1.473" y1="-0.983" x2="-1.473" y2="-0.983" width="0.0508" layer="39"/>
@@ -3288,7 +3288,7 @@ chip</description>
 </package>
 <package name="C0805">
 <description>&lt;b&gt;CAPACITOR&lt;/b&gt;&lt;p&gt;
-chip</description>
+                                chip</description>
 <wire x1="-1.973" y1="0.983" x2="1.973" y2="0.983" width="0.0508" layer="39"/>
 <wire x1="1.973" y1="-0.983" x2="-1.973" y2="-0.983" width="0.0508" layer="39"/>
 <wire x1="-1.973" y1="-0.983" x2="-1.973" y2="0.983" width="0.0508" layer="39"/>
@@ -3305,7 +3305,7 @@ chip</description>
 </package>
 <package name="C1005">
 <description>&lt;b&gt;CAPACITOR&lt;/b&gt;&lt;p&gt;
-chip</description>
+                                chip</description>
 <wire x1="-0.245" y1="0.224" x2="0.245" y2="0.224" width="0.1524" layer="51"/>
 <wire x1="0.245" y1="-0.224" x2="-0.245" y2="-0.224" width="0.1524" layer="51"/>
 <wire x1="-1.473" y1="0.483" x2="1.473" y2="0.483" width="0.0508" layer="39"/>
@@ -3322,7 +3322,7 @@ chip</description>
 </package>
 <package name="C1206">
 <description>&lt;b&gt;CAPACITOR&lt;/b&gt;&lt;p&gt;
-chip</description>
+                                chip</description>
 <wire x1="-2.473" y1="0.983" x2="2.473" y2="0.983" width="0.0508" layer="39"/>
 <wire x1="2.473" y1="-0.983" x2="-2.473" y2="-0.983" width="0.0508" layer="39"/>
 <wire x1="-2.473" y1="-0.983" x2="-2.473" y2="0.983" width="0.0508" layer="39"/>
@@ -3339,7 +3339,7 @@ chip</description>
 </package>
 <package name="C1210">
 <description>&lt;b&gt;CAPACITOR&lt;/b&gt;&lt;p&gt;
-chip</description>
+                                chip</description>
 <wire x1="-2.473" y1="1.483" x2="2.473" y2="1.483" width="0.0508" layer="39"/>
 <wire x1="2.473" y1="-1.483" x2="-2.473" y2="-1.483" width="0.0508" layer="39"/>
 <wire x1="-2.473" y1="-1.483" x2="-2.473" y2="1.483" width="0.0508" layer="39"/>
@@ -3356,7 +3356,7 @@ chip</description>
 </package>
 <package name="C1310">
 <description>&lt;b&gt;CAPACITOR&lt;/b&gt;&lt;p&gt;
-chip</description>
+                                chip</description>
 <wire x1="-1.473" y1="0.983" x2="1.473" y2="0.983" width="0.0508" layer="39"/>
 <wire x1="1.473" y1="0.983" x2="1.473" y2="-0.983" width="0.0508" layer="39"/>
 <wire x1="1.473" y1="-0.983" x2="-1.473" y2="-0.983" width="0.0508" layer="39"/>
@@ -3373,7 +3373,7 @@ chip</description>
 </package>
 <package name="C1608">
 <description>&lt;b&gt;CAPACITOR&lt;/b&gt;&lt;p&gt;
-chip</description>
+                                chip</description>
 <wire x1="-1.473" y1="0.983" x2="1.473" y2="0.983" width="0.0508" layer="39"/>
 <wire x1="1.473" y1="0.983" x2="1.473" y2="-0.983" width="0.0508" layer="39"/>
 <wire x1="1.473" y1="-0.983" x2="-1.473" y2="-0.983" width="0.0508" layer="39"/>
@@ -3390,7 +3390,7 @@ chip</description>
 </package>
 <package name="C1812">
 <description>&lt;b&gt;CAPACITOR&lt;/b&gt;&lt;p&gt;
-chip</description>
+                                chip</description>
 <wire x1="-2.973" y1="1.983" x2="2.973" y2="1.983" width="0.0508" layer="39"/>
 <wire x1="2.973" y1="-1.983" x2="-2.973" y2="-1.983" width="0.0508" layer="39"/>
 <wire x1="-2.973" y1="-1.983" x2="-2.973" y2="1.983" width="0.0508" layer="39"/>
@@ -3407,7 +3407,7 @@ chip</description>
 </package>
 <package name="C1825">
 <description>&lt;b&gt;CAPACITOR&lt;/b&gt;&lt;p&gt;
-chip</description>
+                                chip</description>
 <wire x1="-2.973" y1="3.483" x2="2.973" y2="3.483" width="0.0508" layer="39"/>
 <wire x1="2.973" y1="-3.483" x2="-2.973" y2="-3.483" width="0.0508" layer="39"/>
 <wire x1="-2.973" y1="-3.483" x2="-2.973" y2="3.483" width="0.0508" layer="39"/>
@@ -3424,7 +3424,7 @@ chip</description>
 </package>
 <package name="C2012">
 <description>&lt;b&gt;CAPACITOR&lt;/b&gt;&lt;p&gt;
-chip</description>
+                                chip</description>
 <wire x1="-1.973" y1="0.983" x2="1.973" y2="0.983" width="0.0508" layer="39"/>
 <wire x1="1.973" y1="0.983" x2="1.973" y2="-0.983" width="0.0508" layer="39"/>
 <wire x1="1.973" y1="-0.983" x2="-1.973" y2="-0.983" width="0.0508" layer="39"/>
@@ -3441,7 +3441,7 @@ chip</description>
 </package>
 <package name="C3216">
 <description>&lt;b&gt;CAPACITOR&lt;/b&gt;&lt;p&gt;
-chip</description>
+                                chip</description>
 <wire x1="-2.473" y1="0.983" x2="2.473" y2="0.983" width="0.0508" layer="39"/>
 <wire x1="2.473" y1="-0.983" x2="-2.473" y2="-0.983" width="0.0508" layer="39"/>
 <wire x1="-2.473" y1="-0.983" x2="-2.473" y2="0.983" width="0.0508" layer="39"/>
@@ -3458,7 +3458,7 @@ chip</description>
 </package>
 <package name="C3225">
 <description>&lt;b&gt;CAPACITOR&lt;/b&gt;&lt;p&gt;
-chip</description>
+                                chip</description>
 <wire x1="-2.473" y1="1.483" x2="2.473" y2="1.483" width="0.0508" layer="39"/>
 <wire x1="2.473" y1="-1.483" x2="-2.473" y2="-1.483" width="0.0508" layer="39"/>
 <wire x1="-2.473" y1="-1.483" x2="-2.473" y2="1.483" width="0.0508" layer="39"/>
@@ -3475,7 +3475,7 @@ chip</description>
 </package>
 <package name="C4532">
 <description>&lt;b&gt;CAPACITOR&lt;/b&gt;&lt;p&gt;
-chip</description>
+                                chip</description>
 <wire x1="-2.973" y1="1.983" x2="2.973" y2="1.983" width="0.0508" layer="39"/>
 <wire x1="2.973" y1="-1.983" x2="-2.973" y2="-1.983" width="0.0508" layer="39"/>
 <wire x1="-2.973" y1="-1.983" x2="-2.973" y2="1.983" width="0.0508" layer="39"/>
@@ -3492,7 +3492,7 @@ chip</description>
 </package>
 <package name="C4564">
 <description>&lt;b&gt;CAPACITOR&lt;/b&gt;&lt;p&gt;
-chip</description>
+                                chip</description>
 <wire x1="-2.973" y1="3.483" x2="2.973" y2="3.483" width="0.0508" layer="39"/>
 <wire x1="2.973" y1="-3.483" x2="-2.973" y2="-3.483" width="0.0508" layer="39"/>
 <wire x1="-2.973" y1="-3.483" x2="-2.973" y2="3.483" width="0.0508" layer="39"/>
@@ -3509,7 +3509,7 @@ chip</description>
 </package>
 <package name="C025-024X044">
 <description>&lt;b&gt;CAPACITOR&lt;/b&gt;&lt;p&gt;
-grid 2.5 mm, outline 2.4 x 4.4 mm</description>
+                                grid 2.5 mm, outline 2.4 x 4.4 mm</description>
 <wire x1="-2.159" y1="-0.635" x2="-2.159" y2="0.635" width="0.1524" layer="21"/>
 <wire x1="-2.159" y1="0.635" x2="-1.651" y2="1.143" width="0.1524" layer="21" curve="-90"/>
 <wire x1="-2.159" y1="-0.635" x2="-1.651" y2="-1.143" width="0.1524" layer="21" curve="90"/>
@@ -3529,7 +3529,7 @@ grid 2.5 mm, outline 2.4 x 4.4 mm</description>
 </package>
 <package name="C025-025X050">
 <description>&lt;b&gt;CAPACITOR&lt;/b&gt;&lt;p&gt;
-grid 2.5 mm, outline 2.5 x 5 mm</description>
+                                grid 2.5 mm, outline 2.5 x 5 mm</description>
 <wire x1="-2.159" y1="1.27" x2="2.159" y2="1.27" width="0.1524" layer="21"/>
 <wire x1="2.159" y1="-1.27" x2="-2.159" y2="-1.27" width="0.1524" layer="21"/>
 <wire x1="2.413" y1="1.016" x2="2.413" y2="-1.016" width="0.1524" layer="21"/>
@@ -3553,7 +3553,7 @@ grid 2.5 mm, outline 2.5 x 5 mm</description>
 </package>
 <package name="C025-030X050">
 <description>&lt;b&gt;CAPACITOR&lt;/b&gt;&lt;p&gt;
-grid 2.5 mm, outline 3 x 5 mm</description>
+                                grid 2.5 mm, outline 3 x 5 mm</description>
 <wire x1="-2.159" y1="1.524" x2="2.159" y2="1.524" width="0.1524" layer="21"/>
 <wire x1="2.159" y1="-1.524" x2="-2.159" y2="-1.524" width="0.1524" layer="21"/>
 <wire x1="2.413" y1="1.27" x2="2.413" y2="-1.27" width="0.1524" layer="21"/>
@@ -3577,7 +3577,7 @@ grid 2.5 mm, outline 3 x 5 mm</description>
 </package>
 <package name="C025-040X050">
 <description>&lt;b&gt;CAPACITOR&lt;/b&gt;&lt;p&gt;
-grid 2.5 mm, outline 4 x 5 mm</description>
+                                grid 2.5 mm, outline 4 x 5 mm</description>
 <wire x1="-2.159" y1="1.905" x2="2.159" y2="1.905" width="0.1524" layer="21"/>
 <wire x1="2.159" y1="-1.905" x2="-2.159" y2="-1.905" width="0.1524" layer="21"/>
 <wire x1="2.413" y1="1.651" x2="2.413" y2="-1.651" width="0.1524" layer="21"/>
@@ -3601,7 +3601,7 @@ grid 2.5 mm, outline 4 x 5 mm</description>
 </package>
 <package name="C025-050X050">
 <description>&lt;b&gt;CAPACITOR&lt;/b&gt;&lt;p&gt;
-grid 2.5 mm, outline 5 x 5 mm</description>
+                                grid 2.5 mm, outline 5 x 5 mm</description>
 <wire x1="-2.159" y1="2.286" x2="2.159" y2="2.286" width="0.1524" layer="21"/>
 <wire x1="2.159" y1="-2.286" x2="-2.159" y2="-2.286" width="0.1524" layer="21"/>
 <wire x1="2.413" y1="2.032" x2="2.413" y2="-2.032" width="0.1524" layer="21"/>
@@ -3625,7 +3625,7 @@ grid 2.5 mm, outline 5 x 5 mm</description>
 </package>
 <package name="C025-060X050">
 <description>&lt;b&gt;CAPACITOR&lt;/b&gt;&lt;p&gt;
-grid 2.5 mm, outline 6 x 5 mm</description>
+                                grid 2.5 mm, outline 6 x 5 mm</description>
 <wire x1="-2.159" y1="2.794" x2="2.159" y2="2.794" width="0.1524" layer="21"/>
 <wire x1="2.159" y1="-2.794" x2="-2.159" y2="-2.794" width="0.1524" layer="21"/>
 <wire x1="2.413" y1="2.54" x2="2.413" y2="-2.54" width="0.1524" layer="21"/>
@@ -3649,7 +3649,7 @@ grid 2.5 mm, outline 6 x 5 mm</description>
 </package>
 <package name="C025_050-024X070">
 <description>&lt;b&gt;CAPACITOR&lt;/b&gt;&lt;p&gt;
-grid 2.5 mm + 5 mm, outline 2.4 x 7 mm</description>
+                                grid 2.5 mm + 5 mm, outline 2.4 x 7 mm</description>
 <wire x1="-2.159" y1="-0.635" x2="-2.159" y2="0.635" width="0.1524" layer="51"/>
 <wire x1="-2.159" y1="0.635" x2="-1.651" y2="1.143" width="0.1524" layer="21" curve="-90"/>
 <wire x1="-2.159" y1="-0.635" x2="-1.651" y2="-1.143" width="0.1524" layer="21" curve="90"/>
@@ -3677,7 +3677,7 @@ grid 2.5 mm + 5 mm, outline 2.4 x 7 mm</description>
 </package>
 <package name="C025_050-025X075">
 <description>&lt;b&gt;CAPACITOR&lt;/b&gt;&lt;p&gt;
-grid 2.5 + 5 mm, outline 2.5 x 7.5 mm</description>
+                                grid 2.5 + 5 mm, outline 2.5 x 7.5 mm</description>
 <wire x1="-2.159" y1="1.27" x2="2.159" y2="1.27" width="0.1524" layer="21"/>
 <wire x1="2.159" y1="-1.27" x2="-2.159" y2="-1.27" width="0.1524" layer="21"/>
 <wire x1="-2.413" y1="1.016" x2="-2.413" y2="-1.016" width="0.1524" layer="21"/>
@@ -3712,7 +3712,7 @@ grid 2.5 + 5 mm, outline 2.5 x 7.5 mm</description>
 </package>
 <package name="C025_050-035X075">
 <description>&lt;b&gt;CAPACITOR&lt;/b&gt;&lt;p&gt;
-grid 2.5 + 5 mm, outline 3.5 x 7.5 mm</description>
+                                grid 2.5 + 5 mm, outline 3.5 x 7.5 mm</description>
 <wire x1="-2.159" y1="1.778" x2="2.159" y2="1.778" width="0.1524" layer="21"/>
 <wire x1="2.159" y1="-1.778" x2="-2.159" y2="-1.778" width="0.1524" layer="21"/>
 <wire x1="-2.413" y1="1.524" x2="-2.413" y2="-1.524" width="0.1524" layer="21"/>
@@ -3747,7 +3747,7 @@ grid 2.5 + 5 mm, outline 3.5 x 7.5 mm</description>
 </package>
 <package name="C025_050-045X075">
 <description>&lt;b&gt;CAPACITOR&lt;/b&gt;&lt;p&gt;
-grid 2.5 + 5 mm, outline 4.5 x 7.5 mm</description>
+                                grid 2.5 + 5 mm, outline 4.5 x 7.5 mm</description>
 <wire x1="-2.159" y1="2.286" x2="2.159" y2="2.286" width="0.1524" layer="21"/>
 <wire x1="2.159" y1="-2.286" x2="-2.159" y2="-2.286" width="0.1524" layer="21"/>
 <wire x1="-2.413" y1="2.032" x2="-2.413" y2="-2.032" width="0.1524" layer="21"/>
@@ -3782,7 +3782,7 @@ grid 2.5 + 5 mm, outline 4.5 x 7.5 mm</description>
 </package>
 <package name="C025_050-055X075">
 <description>&lt;b&gt;CAPACITOR&lt;/b&gt;&lt;p&gt;
-grid 2.5 + 5 mm, outline 5.5 x 7.5 mm</description>
+                                grid 2.5 + 5 mm, outline 5.5 x 7.5 mm</description>
 <wire x1="-2.159" y1="2.794" x2="2.159" y2="2.794" width="0.1524" layer="21"/>
 <wire x1="2.159" y1="-2.794" x2="-2.159" y2="-2.794" width="0.1524" layer="21"/>
 <wire x1="-2.413" y1="2.54" x2="-2.413" y2="-2.54" width="0.1524" layer="21"/>
@@ -3817,7 +3817,7 @@ grid 2.5 + 5 mm, outline 5.5 x 7.5 mm</description>
 </package>
 <package name="C050-024X044">
 <description>&lt;b&gt;CAPACITOR&lt;/b&gt;&lt;p&gt;
-grid 5 mm, outline 2.4 x 4.4 mm</description>
+                                grid 5 mm, outline 2.4 x 4.4 mm</description>
 <wire x1="-2.159" y1="-0.635" x2="-2.159" y2="0.635" width="0.1524" layer="51"/>
 <wire x1="-2.159" y1="0.635" x2="-1.651" y2="1.143" width="0.1524" layer="21" curve="-90"/>
 <wire x1="-2.159" y1="-0.635" x2="-1.651" y2="-1.143" width="0.1524" layer="21" curve="90"/>
@@ -3841,7 +3841,7 @@ grid 5 mm, outline 2.4 x 4.4 mm</description>
 </package>
 <package name="C050-025X075">
 <description>&lt;b&gt;CAPACITOR&lt;/b&gt;&lt;p&gt;
-grid 5 mm, outline 2.5 x 7.5 mm</description>
+                                grid 5 mm, outline 2.5 x 7.5 mm</description>
 <wire x1="-0.3048" y1="0.635" x2="-0.3048" y2="0" width="0.3048" layer="21"/>
 <wire x1="-0.3048" y1="0" x2="-0.3048" y2="-0.635" width="0.3048" layer="21"/>
 <wire x1="-0.3048" y1="0" x2="-1.524" y2="0" width="0.1524" layer="21"/>
@@ -3863,7 +3863,7 @@ grid 5 mm, outline 2.5 x 7.5 mm</description>
 </package>
 <package name="C050-045X075">
 <description>&lt;b&gt;CAPACITOR&lt;/b&gt;&lt;p&gt;
-grid 5 mm, outline 4.5 x 7.5 mm</description>
+                                grid 5 mm, outline 4.5 x 7.5 mm</description>
 <wire x1="-0.3048" y1="0.635" x2="-0.3048" y2="0" width="0.3048" layer="21"/>
 <wire x1="-0.3048" y1="0" x2="-0.3048" y2="-0.635" width="0.3048" layer="21"/>
 <wire x1="-0.3048" y1="0" x2="-1.524" y2="0" width="0.1524" layer="21"/>
@@ -3885,7 +3885,7 @@ grid 5 mm, outline 4.5 x 7.5 mm</description>
 </package>
 <package name="C050-030X075">
 <description>&lt;b&gt;CAPACITOR&lt;/b&gt;&lt;p&gt;
-grid 5 mm, outline 3 x 7.5 mm</description>
+                                grid 5 mm, outline 3 x 7.5 mm</description>
 <wire x1="-0.3048" y1="0.635" x2="-0.3048" y2="0" width="0.3048" layer="21"/>
 <wire x1="-0.3048" y1="0" x2="-0.3048" y2="-0.635" width="0.3048" layer="21"/>
 <wire x1="-0.3048" y1="0" x2="-1.524" y2="0" width="0.1524" layer="21"/>
@@ -3907,7 +3907,7 @@ grid 5 mm, outline 3 x 7.5 mm</description>
 </package>
 <package name="C050-050X075">
 <description>&lt;b&gt;CAPACITOR&lt;/b&gt;&lt;p&gt;
-grid 5 mm, outline 5 x 7.5 mm</description>
+                                grid 5 mm, outline 5 x 7.5 mm</description>
 <wire x1="-0.3048" y1="0.635" x2="-0.3048" y2="0" width="0.3048" layer="21"/>
 <wire x1="-0.3048" y1="0" x2="-0.3048" y2="-0.635" width="0.3048" layer="21"/>
 <wire x1="-0.3048" y1="0" x2="-1.524" y2="0" width="0.1524" layer="21"/>
@@ -3929,7 +3929,7 @@ grid 5 mm, outline 5 x 7.5 mm</description>
 </package>
 <package name="C050-055X075">
 <description>&lt;b&gt;CAPACITOR&lt;/b&gt;&lt;p&gt;
-grid 5 mm, outline 5.5 x 7.5 mm</description>
+                                grid 5 mm, outline 5.5 x 7.5 mm</description>
 <wire x1="-0.3048" y1="0.635" x2="-0.3048" y2="0" width="0.3048" layer="21"/>
 <wire x1="-0.3048" y1="0" x2="-0.3048" y2="-0.635" width="0.3048" layer="21"/>
 <wire x1="-0.3048" y1="0" x2="-1.524" y2="0" width="0.1524" layer="21"/>
@@ -3951,7 +3951,7 @@ grid 5 mm, outline 5.5 x 7.5 mm</description>
 </package>
 <package name="C050-075X075">
 <description>&lt;b&gt;CAPACITOR&lt;/b&gt;&lt;p&gt;
-grid 5 mm, outline 7.5 x 7.5 mm</description>
+                                grid 5 mm, outline 7.5 x 7.5 mm</description>
 <wire x1="-1.524" y1="0" x2="-0.4572" y2="0" width="0.1524" layer="21"/>
 <wire x1="-0.4572" y1="0" x2="-0.4572" y2="0.762" width="0.4064" layer="21"/>
 <wire x1="-0.4572" y1="0" x2="-0.4572" y2="-0.762" width="0.4064" layer="21"/>
@@ -3973,7 +3973,7 @@ grid 5 mm, outline 7.5 x 7.5 mm</description>
 </package>
 <package name="C050H075X075">
 <description>&lt;b&gt;CAPACITOR&lt;/b&gt;&lt;p&gt;
-Horizontal, grid 5 mm, outline 7.5 x 7.5 mm</description>
+                                Horizontal, grid 5 mm, outline 7.5 x 7.5 mm</description>
 <wire x1="-3.683" y1="7.112" x2="-3.683" y2="0.508" width="0.1524" layer="21"/>
 <wire x1="-3.683" y1="0.508" x2="-3.302" y2="0.508" width="0.1524" layer="21"/>
 <wire x1="-3.302" y1="0.508" x2="-1.778" y2="0.508" width="0.1524" layer="51"/>
@@ -4001,7 +4001,7 @@ Horizontal, grid 5 mm, outline 7.5 x 7.5 mm</description>
 </package>
 <package name="C075-032X103">
 <description>&lt;b&gt;CAPACITOR&lt;/b&gt;&lt;p&gt;
-grid 7.5 mm, outline 3.2 x 10.3 mm</description>
+                                grid 7.5 mm, outline 3.2 x 10.3 mm</description>
 <wire x1="4.826" y1="1.524" x2="-4.826" y2="1.524" width="0.1524" layer="21"/>
 <wire x1="-5.08" y1="1.27" x2="-5.08" y2="-1.27" width="0.1524" layer="21"/>
 <wire x1="-4.826" y1="-1.524" x2="4.826" y2="-1.524" width="0.1524" layer="21"/>
@@ -4023,7 +4023,7 @@ grid 7.5 mm, outline 3.2 x 10.3 mm</description>
 </package>
 <package name="C075-042X103">
 <description>&lt;b&gt;CAPACITOR&lt;/b&gt;&lt;p&gt;
-grid 7.5 mm, outline 4.2 x 10.3 mm</description>
+                                grid 7.5 mm, outline 4.2 x 10.3 mm</description>
 <wire x1="4.826" y1="2.032" x2="-4.826" y2="2.032" width="0.1524" layer="21"/>
 <wire x1="-5.08" y1="1.778" x2="-5.08" y2="-1.778" width="0.1524" layer="21"/>
 <wire x1="-4.826" y1="-2.032" x2="4.826" y2="-2.032" width="0.1524" layer="21"/>
@@ -4045,7 +4045,7 @@ grid 7.5 mm, outline 4.2 x 10.3 mm</description>
 </package>
 <package name="C075-052X106">
 <description>&lt;b&gt;CAPACITOR&lt;/b&gt;&lt;p&gt;
-grid 7.5 mm, outline 5.2 x 10.6 mm</description>
+                                grid 7.5 mm, outline 5.2 x 10.6 mm</description>
 <wire x1="4.953" y1="2.54" x2="-4.953" y2="2.54" width="0.1524" layer="21"/>
 <wire x1="-5.207" y1="2.286" x2="-5.207" y2="-2.286" width="0.1524" layer="21"/>
 <wire x1="-4.953" y1="-2.54" x2="4.953" y2="-2.54" width="0.1524" layer="21"/>
@@ -4067,7 +4067,7 @@ grid 7.5 mm, outline 5.2 x 10.6 mm</description>
 </package>
 <package name="C102-043X133">
 <description>&lt;b&gt;CAPACITOR&lt;/b&gt;&lt;p&gt;
-grid 10.2 mm, outline 4.3 x 13.3 mm</description>
+                                grid 10.2 mm, outline 4.3 x 13.3 mm</description>
 <wire x1="-3.175" y1="1.27" x2="-3.175" y2="0" width="0.4064" layer="21"/>
 <wire x1="-2.286" y1="1.27" x2="-2.286" y2="0" width="0.4064" layer="21"/>
 <wire x1="3.81" y1="0" x2="-2.286" y2="0" width="0.1524" layer="21"/>
@@ -4089,7 +4089,7 @@ grid 10.2 mm, outline 4.3 x 13.3 mm</description>
 </package>
 <package name="C102-054X133">
 <description>&lt;b&gt;CAPACITOR&lt;/b&gt;&lt;p&gt;
-grid 10.2 mm, outline 5.4 x 13.3 mm</description>
+                                grid 10.2 mm, outline 5.4 x 13.3 mm</description>
 <wire x1="-3.175" y1="1.27" x2="-3.175" y2="0" width="0.4064" layer="21"/>
 <wire x1="-2.286" y1="1.27" x2="-2.286" y2="0" width="0.4064" layer="21"/>
 <wire x1="3.81" y1="0" x2="-2.286" y2="0" width="0.1524" layer="21"/>
@@ -4111,7 +4111,7 @@ grid 10.2 mm, outline 5.4 x 13.3 mm</description>
 </package>
 <package name="C102-064X133">
 <description>&lt;b&gt;CAPACITOR&lt;/b&gt;&lt;p&gt;
-grid 10.2 mm, outline 6.4 x 13.3 mm</description>
+                                grid 10.2 mm, outline 6.4 x 13.3 mm</description>
 <wire x1="-3.175" y1="1.27" x2="-3.175" y2="0" width="0.4064" layer="21"/>
 <wire x1="-2.286" y1="1.27" x2="-2.286" y2="0" width="0.4064" layer="21"/>
 <wire x1="3.81" y1="0" x2="-2.286" y2="0" width="0.1524" layer="21"/>
@@ -4133,7 +4133,7 @@ grid 10.2 mm, outline 6.4 x 13.3 mm</description>
 </package>
 <package name="C102_152-062X184">
 <description>&lt;b&gt;CAPACITOR&lt;/b&gt;&lt;p&gt;
-grid 10.2 mm + 15.2 mm, outline 6.2 x 18.4 mm</description>
+                                grid 10.2 mm + 15.2 mm, outline 6.2 x 18.4 mm</description>
 <wire x1="-2.286" y1="1.27" x2="-2.286" y2="0" width="0.4064" layer="21"/>
 <wire x1="-2.286" y1="0" x2="-2.286" y2="-1.27" width="0.4064" layer="21"/>
 <wire x1="-3.175" y1="1.27" x2="-3.175" y2="0" width="0.4064" layer="21"/>
@@ -4162,7 +4162,7 @@ grid 10.2 mm + 15.2 mm, outline 6.2 x 18.4 mm</description>
 </package>
 <package name="C150-054X183">
 <description>&lt;b&gt;CAPACITOR&lt;/b&gt;&lt;p&gt;
-grid 15 mm, outline 5.4 x 18.3 mm</description>
+                                grid 15 mm, outline 5.4 x 18.3 mm</description>
 <wire x1="-5.08" y1="1.27" x2="-5.08" y2="0" width="0.4064" layer="21"/>
 <wire x1="-5.08" y1="0" x2="-5.08" y2="-1.27" width="0.4064" layer="21"/>
 <wire x1="-4.191" y1="1.27" x2="-4.191" y2="0" width="0.4064" layer="21"/>
@@ -4184,7 +4184,7 @@ grid 15 mm, outline 5.4 x 18.3 mm</description>
 </package>
 <package name="C150-064X183">
 <description>&lt;b&gt;CAPACITOR&lt;/b&gt;&lt;p&gt;
-grid 15 mm, outline 6.4 x 18.3 mm</description>
+                                grid 15 mm, outline 6.4 x 18.3 mm</description>
 <wire x1="-5.08" y1="1.27" x2="-5.08" y2="0" width="0.4064" layer="21"/>
 <wire x1="-5.08" y1="0" x2="-5.08" y2="-1.27" width="0.4064" layer="21"/>
 <wire x1="-4.191" y1="1.27" x2="-4.191" y2="0" width="0.4064" layer="21"/>
@@ -4206,7 +4206,7 @@ grid 15 mm, outline 6.4 x 18.3 mm</description>
 </package>
 <package name="C150-072X183">
 <description>&lt;b&gt;CAPACITOR&lt;/b&gt;&lt;p&gt;
-grid 15 mm, outline 7.2 x 18.3 mm</description>
+                                grid 15 mm, outline 7.2 x 18.3 mm</description>
 <wire x1="-5.08" y1="1.27" x2="-5.08" y2="0" width="0.4064" layer="21"/>
 <wire x1="-5.08" y1="0" x2="-5.08" y2="-1.27" width="0.4064" layer="21"/>
 <wire x1="-4.191" y1="1.27" x2="-4.191" y2="0" width="0.4064" layer="21"/>
@@ -4228,7 +4228,7 @@ grid 15 mm, outline 7.2 x 18.3 mm</description>
 </package>
 <package name="C150-084X183">
 <description>&lt;b&gt;CAPACITOR&lt;/b&gt;&lt;p&gt;
-grid 15 mm, outline 8.4 x 18.3 mm</description>
+                                grid 15 mm, outline 8.4 x 18.3 mm</description>
 <wire x1="-5.08" y1="1.27" x2="-5.08" y2="0" width="0.4064" layer="21"/>
 <wire x1="-5.08" y1="0" x2="-5.08" y2="-1.27" width="0.4064" layer="21"/>
 <wire x1="-4.191" y1="1.27" x2="-4.191" y2="0" width="0.4064" layer="21"/>
@@ -4250,7 +4250,7 @@ grid 15 mm, outline 8.4 x 18.3 mm</description>
 </package>
 <package name="C150-091X182">
 <description>&lt;b&gt;CAPACITOR&lt;/b&gt;&lt;p&gt;
-grid 15 mm, outline 9.1 x 18.2 mm</description>
+                                grid 15 mm, outline 9.1 x 18.2 mm</description>
 <wire x1="-5.08" y1="1.27" x2="-5.08" y2="0" width="0.4064" layer="21"/>
 <wire x1="-5.08" y1="0" x2="-5.08" y2="-1.27" width="0.4064" layer="21"/>
 <wire x1="-4.191" y1="1.27" x2="-4.191" y2="0" width="0.4064" layer="21"/>
@@ -4272,7 +4272,7 @@ grid 15 mm, outline 9.1 x 18.2 mm</description>
 </package>
 <package name="C225-062X268">
 <description>&lt;b&gt;CAPACITOR&lt;/b&gt;&lt;p&gt;
-grid 22.5 mm, outline 6.2 x 26.8 mm</description>
+                                grid 22.5 mm, outline 6.2 x 26.8 mm</description>
 <wire x1="-12.827" y1="3.048" x2="12.827" y2="3.048" width="0.1524" layer="21"/>
 <wire x1="13.335" y1="2.54" x2="13.335" y2="-2.54" width="0.1524" layer="21"/>
 <wire x1="12.827" y1="-3.048" x2="-12.827" y2="-3.048" width="0.1524" layer="21"/>
@@ -4294,7 +4294,7 @@ grid 22.5 mm, outline 6.2 x 26.8 mm</description>
 </package>
 <package name="C225-074X268">
 <description>&lt;b&gt;CAPACITOR&lt;/b&gt;&lt;p&gt;
-grid 22.5 mm, outline 7.4 x 26.8 mm</description>
+                                grid 22.5 mm, outline 7.4 x 26.8 mm</description>
 <wire x1="-12.827" y1="3.556" x2="12.827" y2="3.556" width="0.1524" layer="21"/>
 <wire x1="13.335" y1="3.048" x2="13.335" y2="-3.048" width="0.1524" layer="21"/>
 <wire x1="12.827" y1="-3.556" x2="-12.827" y2="-3.556" width="0.1524" layer="21"/>
@@ -4316,7 +4316,7 @@ grid 22.5 mm, outline 7.4 x 26.8 mm</description>
 </package>
 <package name="C225-087X268">
 <description>&lt;b&gt;CAPACITOR&lt;/b&gt;&lt;p&gt;
-grid 22.5 mm, outline 8.7 x 26.8 mm</description>
+                                grid 22.5 mm, outline 8.7 x 26.8 mm</description>
 <wire x1="-12.827" y1="4.318" x2="12.827" y2="4.318" width="0.1524" layer="21"/>
 <wire x1="13.335" y1="3.81" x2="13.335" y2="-3.81" width="0.1524" layer="21"/>
 <wire x1="12.827" y1="-4.318" x2="-12.827" y2="-4.318" width="0.1524" layer="21"/>
@@ -4338,7 +4338,7 @@ grid 22.5 mm, outline 8.7 x 26.8 mm</description>
 </package>
 <package name="C225-108X268">
 <description>&lt;b&gt;CAPACITOR&lt;/b&gt;&lt;p&gt;
-grid 22.5 mm, outline 10.8 x 26.8 mm</description>
+                                grid 22.5 mm, outline 10.8 x 26.8 mm</description>
 <wire x1="-12.827" y1="5.334" x2="12.827" y2="5.334" width="0.1524" layer="21"/>
 <wire x1="13.335" y1="4.826" x2="13.335" y2="-4.826" width="0.1524" layer="21"/>
 <wire x1="12.827" y1="-5.334" x2="-12.827" y2="-5.334" width="0.1524" layer="21"/>
@@ -4360,7 +4360,7 @@ grid 22.5 mm, outline 10.8 x 26.8 mm</description>
 </package>
 <package name="C225-113X268">
 <description>&lt;b&gt;CAPACITOR&lt;/b&gt;&lt;p&gt;
-grid 22.5 mm, outline 11.3 x 26.8 mm</description>
+                                grid 22.5 mm, outline 11.3 x 26.8 mm</description>
 <wire x1="-12.827" y1="5.588" x2="12.827" y2="5.588" width="0.1524" layer="21"/>
 <wire x1="13.335" y1="5.08" x2="13.335" y2="-5.08" width="0.1524" layer="21"/>
 <wire x1="12.827" y1="-5.588" x2="-12.827" y2="-5.588" width="0.1524" layer="21"/>
@@ -4382,7 +4382,7 @@ grid 22.5 mm, outline 11.3 x 26.8 mm</description>
 </package>
 <package name="C275-093X316">
 <description>&lt;b&gt;CAPACITOR&lt;/b&gt;&lt;p&gt;
-grid 27.5 mm, outline 9.3 x 31.6 mm</description>
+                                grid 27.5 mm, outline 9.3 x 31.6 mm</description>
 <wire x1="-15.24" y1="4.572" x2="15.24" y2="4.572" width="0.1524" layer="21"/>
 <wire x1="15.748" y1="4.064" x2="15.748" y2="-4.064" width="0.1524" layer="21"/>
 <wire x1="15.24" y1="-4.572" x2="-15.24" y2="-4.572" width="0.1524" layer="21"/>
@@ -4404,7 +4404,7 @@ grid 27.5 mm, outline 9.3 x 31.6 mm</description>
 </package>
 <package name="C275-113X316">
 <description>&lt;b&gt;CAPACITOR&lt;/b&gt;&lt;p&gt;
-grid 27.5 mm, outline 11.3 x 31.6 mm</description>
+                                grid 27.5 mm, outline 11.3 x 31.6 mm</description>
 <wire x1="-15.24" y1="5.588" x2="15.24" y2="5.588" width="0.1524" layer="21"/>
 <wire x1="15.748" y1="5.08" x2="15.748" y2="-5.08" width="0.1524" layer="21"/>
 <wire x1="15.24" y1="-5.588" x2="-15.24" y2="-5.588" width="0.1524" layer="21"/>
@@ -4426,7 +4426,7 @@ grid 27.5 mm, outline 11.3 x 31.6 mm</description>
 </package>
 <package name="C275-134X316">
 <description>&lt;b&gt;CAPACITOR&lt;/b&gt;&lt;p&gt;
-grid 27.5 mm, outline 13.4 x 31.6 mm</description>
+                                grid 27.5 mm, outline 13.4 x 31.6 mm</description>
 <wire x1="-15.24" y1="6.604" x2="15.24" y2="6.604" width="0.1524" layer="21"/>
 <wire x1="15.748" y1="6.096" x2="15.748" y2="-6.096" width="0.1524" layer="21"/>
 <wire x1="15.24" y1="-6.604" x2="-15.24" y2="-6.604" width="0.1524" layer="21"/>
@@ -4448,7 +4448,7 @@ grid 27.5 mm, outline 13.4 x 31.6 mm</description>
 </package>
 <package name="C275-205X316">
 <description>&lt;b&gt;CAPACITOR&lt;/b&gt;&lt;p&gt;
-grid 27.5 mm, outline 20.5 x 31.6 mm</description>
+                                grid 27.5 mm, outline 20.5 x 31.6 mm</description>
 <wire x1="-15.24" y1="10.16" x2="15.24" y2="10.16" width="0.1524" layer="21"/>
 <wire x1="15.748" y1="9.652" x2="15.748" y2="-9.652" width="0.1524" layer="21"/>
 <wire x1="15.24" y1="-10.16" x2="-15.24" y2="-10.16" width="0.1524" layer="21"/>
@@ -4470,7 +4470,7 @@ grid 27.5 mm, outline 20.5 x 31.6 mm</description>
 </package>
 <package name="C325-137X374">
 <description>&lt;b&gt;CAPACITOR&lt;/b&gt;&lt;p&gt;
-grid 32.5 mm, outline 13.7 x 37.4 mm</description>
+                                grid 32.5 mm, outline 13.7 x 37.4 mm</description>
 <wire x1="-14.2748" y1="0" x2="-12.7" y2="0" width="0.1524" layer="21"/>
 <wire x1="-12.7" y1="1.905" x2="-12.7" y2="0" width="0.4064" layer="21"/>
 <wire x1="-11.811" y1="1.905" x2="-11.811" y2="0" width="0.4064" layer="21"/>
@@ -4488,7 +4488,7 @@ grid 32.5 mm, outline 13.7 x 37.4 mm</description>
 </package>
 <package name="C325-162X374">
 <description>&lt;b&gt;CAPACITOR&lt;/b&gt;&lt;p&gt;
-grid 32.5 mm, outline 16.2 x 37.4 mm</description>
+                                grid 32.5 mm, outline 16.2 x 37.4 mm</description>
 <wire x1="-14.2748" y1="0" x2="-12.7" y2="0" width="0.1524" layer="21"/>
 <wire x1="-12.7" y1="1.905" x2="-12.7" y2="0" width="0.4064" layer="21"/>
 <wire x1="-11.811" y1="1.905" x2="-11.811" y2="0" width="0.4064" layer="21"/>
@@ -4506,7 +4506,7 @@ grid 32.5 mm, outline 16.2 x 37.4 mm</description>
 </package>
 <package name="C325-182X374">
 <description>&lt;b&gt;CAPACITOR&lt;/b&gt;&lt;p&gt;
-grid 32.5 mm, outline 18.2 x 37.4 mm</description>
+                                grid 32.5 mm, outline 18.2 x 37.4 mm</description>
 <wire x1="-14.2748" y1="0" x2="-12.7" y2="0" width="0.1524" layer="21"/>
 <wire x1="-12.7" y1="1.905" x2="-12.7" y2="0" width="0.4064" layer="21"/>
 <wire x1="-11.811" y1="1.905" x2="-11.811" y2="0" width="0.4064" layer="21"/>
@@ -4524,7 +4524,7 @@ grid 32.5 mm, outline 18.2 x 37.4 mm</description>
 </package>
 <package name="C375-192X418">
 <description>&lt;b&gt;CAPACITOR&lt;/b&gt;&lt;p&gt;
-grid 37.5 mm, outline 19.2 x 41.8 mm</description>
+                                grid 37.5 mm, outline 19.2 x 41.8 mm</description>
 <wire x1="-20.32" y1="8.509" x2="20.32" y2="8.509" width="0.1524" layer="21"/>
 <wire x1="20.828" y1="8.001" x2="20.828" y2="-8.001" width="0.1524" layer="21"/>
 <wire x1="20.32" y1="-8.509" x2="-20.32" y2="-8.509" width="0.1524" layer="21"/>
@@ -4546,7 +4546,7 @@ grid 37.5 mm, outline 19.2 x 41.8 mm</description>
 </package>
 <package name="C375-203X418">
 <description>&lt;b&gt;CAPACITOR&lt;/b&gt;&lt;p&gt;
-grid 37.5 mm, outline 20.3 x 41.8 mm</description>
+                                grid 37.5 mm, outline 20.3 x 41.8 mm</description>
 <wire x1="-20.32" y1="10.16" x2="20.32" y2="10.16" width="0.1524" layer="21"/>
 <wire x1="20.828" y1="9.652" x2="20.828" y2="-9.652" width="0.1524" layer="21"/>
 <wire x1="20.32" y1="-10.16" x2="-20.32" y2="-10.16" width="0.1524" layer="21"/>
@@ -4568,7 +4568,7 @@ grid 37.5 mm, outline 20.3 x 41.8 mm</description>
 </package>
 <package name="C050-035X075">
 <description>&lt;b&gt;CAPACITOR&lt;/b&gt;&lt;p&gt;
-grid 5 mm, outline 3.5 x 7.5 mm</description>
+                                grid 5 mm, outline 3.5 x 7.5 mm</description>
 <wire x1="-0.3048" y1="0.635" x2="-0.3048" y2="0" width="0.3048" layer="21"/>
 <wire x1="-0.3048" y1="0" x2="-0.3048" y2="-0.635" width="0.3048" layer="21"/>
 <wire x1="-0.3048" y1="0" x2="-1.524" y2="0" width="0.1524" layer="21"/>
@@ -4590,7 +4590,7 @@ grid 5 mm, outline 3.5 x 7.5 mm</description>
 </package>
 <package name="C375-155X418">
 <description>&lt;b&gt;CAPACITOR&lt;/b&gt;&lt;p&gt;
-grid 37.5 mm, outline 15.5 x 41.8 mm</description>
+                                grid 37.5 mm, outline 15.5 x 41.8 mm</description>
 <wire x1="-20.32" y1="7.62" x2="20.32" y2="7.62" width="0.1524" layer="21"/>
 <wire x1="20.828" y1="7.112" x2="20.828" y2="-7.112" width="0.1524" layer="21"/>
 <wire x1="20.32" y1="-7.62" x2="-20.32" y2="-7.62" width="0.1524" layer="21"/>
@@ -4612,7 +4612,7 @@ grid 37.5 mm, outline 15.5 x 41.8 mm</description>
 </package>
 <package name="C075-063X106">
 <description>&lt;b&gt;CAPACITOR&lt;/b&gt;&lt;p&gt;
-grid 7.5 mm, outline 6.3 x 10.6 mm</description>
+                                grid 7.5 mm, outline 6.3 x 10.6 mm</description>
 <wire x1="4.953" y1="3.048" x2="-4.953" y2="3.048" width="0.1524" layer="21"/>
 <wire x1="-5.207" y1="2.794" x2="-5.207" y2="-2.794" width="0.1524" layer="21"/>
 <wire x1="-4.953" y1="-3.048" x2="4.953" y2="-3.048" width="0.1524" layer="21"/>
@@ -4634,7 +4634,7 @@ grid 7.5 mm, outline 6.3 x 10.6 mm</description>
 </package>
 <package name="C275-154X316">
 <description>&lt;b&gt;CAPACITOR&lt;/b&gt;&lt;p&gt;
-grid 27.5 mm, outline 15.4 x 31.6 mm</description>
+                                grid 27.5 mm, outline 15.4 x 31.6 mm</description>
 <wire x1="-15.24" y1="7.62" x2="15.24" y2="7.62" width="0.1524" layer="21"/>
 <wire x1="15.748" y1="7.112" x2="15.748" y2="-7.112" width="0.1524" layer="21"/>
 <wire x1="15.24" y1="-7.62" x2="-15.24" y2="-7.62" width="0.1524" layer="21"/>
@@ -4656,7 +4656,7 @@ grid 27.5 mm, outline 15.4 x 31.6 mm</description>
 </package>
 <package name="C275-173X316">
 <description>&lt;b&gt;CAPACITOR&lt;/b&gt;&lt;p&gt;
-grid 27.5 mm, outline 17.3 x 31.6 mm</description>
+                                grid 27.5 mm, outline 17.3 x 31.6 mm</description>
 <wire x1="-15.24" y1="8.509" x2="15.24" y2="8.509" width="0.1524" layer="21"/>
 <wire x1="15.748" y1="8.001" x2="15.748" y2="-8.001" width="0.1524" layer="21"/>
 <wire x1="15.24" y1="-8.509" x2="-15.24" y2="-8.509" width="0.1524" layer="21"/>
@@ -4678,7 +4678,7 @@ grid 27.5 mm, outline 17.3 x 31.6 mm</description>
 </package>
 <package name="C0402K">
 <description>&lt;b&gt;Ceramic Chip Capacitor KEMET 0204 Reflow solder&lt;/b&gt;&lt;p&gt;
-Metric Code Size 1005</description>
+                                Metric Code Size 1005</description>
 <wire x1="-0.425" y1="0.2" x2="0.425" y2="0.2" width="0.1016" layer="51"/>
 <wire x1="0.425" y1="-0.2" x2="-0.425" y2="-0.2" width="0.1016" layer="51"/>
 <smd name="1" x="-0.6" y="0" dx="0.925" dy="0.74" layer="1"/>
@@ -4690,7 +4690,7 @@ Metric Code Size 1005</description>
 </package>
 <package name="C0603K">
 <description>&lt;b&gt;Ceramic Chip Capacitor KEMET 0603 Reflow solder&lt;/b&gt;&lt;p&gt;
-Metric Code Size 1608</description>
+                                Metric Code Size 1608</description>
 <wire x1="-0.725" y1="0.35" x2="0.725" y2="0.35" width="0.1016" layer="51"/>
 <wire x1="0.725" y1="-0.35" x2="-0.725" y2="-0.35" width="0.1016" layer="51"/>
 <smd name="1" x="-0.875" y="0" dx="1.05" dy="1.08" layer="1"/>
@@ -4702,7 +4702,7 @@ Metric Code Size 1608</description>
 </package>
 <package name="C0805K">
 <description>&lt;b&gt;Ceramic Chip Capacitor KEMET 0805 Reflow solder&lt;/b&gt;&lt;p&gt;
-Metric Code Size 2012</description>
+                                Metric Code Size 2012</description>
 <wire x1="-0.925" y1="0.6" x2="0.925" y2="0.6" width="0.1016" layer="51"/>
 <wire x1="0.925" y1="-0.6" x2="-0.925" y2="-0.6" width="0.1016" layer="51"/>
 <smd name="1" x="-1" y="0" dx="1.3" dy="1.6" layer="1"/>
@@ -4714,7 +4714,7 @@ Metric Code Size 2012</description>
 </package>
 <package name="C1206K">
 <description>&lt;b&gt;Ceramic Chip Capacitor KEMET 1206 Reflow solder&lt;/b&gt;&lt;p&gt;
-Metric Code Size 3216</description>
+                                Metric Code Size 3216</description>
 <wire x1="-1.525" y1="0.75" x2="1.525" y2="0.75" width="0.1016" layer="51"/>
 <wire x1="1.525" y1="-0.75" x2="-1.525" y2="-0.75" width="0.1016" layer="51"/>
 <smd name="1" x="-1.5" y="0" dx="1.5" dy="2" layer="1"/>
@@ -4726,7 +4726,7 @@ Metric Code Size 3216</description>
 </package>
 <package name="C1210K">
 <description>&lt;b&gt;Ceramic Chip Capacitor KEMET 1210 Reflow solder&lt;/b&gt;&lt;p&gt;
-Metric Code Size 3225</description>
+                                Metric Code Size 3225</description>
 <wire x1="-1.525" y1="1.175" x2="1.525" y2="1.175" width="0.1016" layer="51"/>
 <wire x1="1.525" y1="-1.175" x2="-1.525" y2="-1.175" width="0.1016" layer="51"/>
 <smd name="1" x="-1.5" y="0" dx="1.5" dy="2.9" layer="1"/>
@@ -4738,7 +4738,7 @@ Metric Code Size 3225</description>
 </package>
 <package name="C1812K">
 <description>&lt;b&gt;Ceramic Chip Capacitor KEMET 1812 Reflow solder&lt;/b&gt;&lt;p&gt;
-Metric Code Size 4532</description>
+                                Metric Code Size 4532</description>
 <wire x1="-2.175" y1="1.525" x2="2.175" y2="1.525" width="0.1016" layer="51"/>
 <wire x1="2.175" y1="-1.525" x2="-2.175" y2="-1.525" width="0.1016" layer="51"/>
 <smd name="1" x="-2.05" y="0" dx="1.8" dy="3.7" layer="1"/>
@@ -4750,7 +4750,7 @@ Metric Code Size 4532</description>
 </package>
 <package name="C1825K">
 <description>&lt;b&gt;Ceramic Chip Capacitor KEMET 1825 Reflow solder&lt;/b&gt;&lt;p&gt;
-Metric Code Size 4564</description>
+                                Metric Code Size 4564</description>
 <wire x1="-1.525" y1="3.125" x2="1.525" y2="3.125" width="0.1016" layer="51"/>
 <wire x1="1.525" y1="-3.125" x2="-1.525" y2="-3.125" width="0.1016" layer="51"/>
 <smd name="1" x="-1.5" y="0" dx="1.8" dy="6.9" layer="1"/>
@@ -4762,7 +4762,7 @@ Metric Code Size 4564</description>
 </package>
 <package name="C2220K">
 <description>&lt;b&gt;Ceramic Chip Capacitor KEMET 2220 Reflow solder&lt;/b&gt;&lt;p&gt;
-Metric Code Size 5650</description>
+                                Metric Code Size 5650</description>
 <wire x1="-2.725" y1="2.425" x2="2.725" y2="2.425" width="0.1016" layer="51"/>
 <wire x1="2.725" y1="-2.425" x2="-2.725" y2="-2.425" width="0.1016" layer="51"/>
 <smd name="1" x="-2.55" y="0" dx="1.85" dy="5.5" layer="1"/>
@@ -4774,7 +4774,7 @@ Metric Code Size 5650</description>
 </package>
 <package name="C2225K">
 <description>&lt;b&gt;Ceramic Chip Capacitor KEMET 2225 Reflow solder&lt;/b&gt;&lt;p&gt;
-Metric Code Size 5664</description>
+                                Metric Code Size 5664</description>
 <wire x1="-2.725" y1="3.075" x2="2.725" y2="3.075" width="0.1016" layer="51"/>
 <wire x1="2.725" y1="-3.075" x2="-2.725" y2="-3.075" width="0.1016" layer="51"/>
 <smd name="1" x="-2.55" y="0" dx="1.85" dy="6.8" layer="1"/>
@@ -6178,11 +6178,11 @@ Metric Code Size 5664</description>
 </library>
 <library name="supply1">
 <description>&lt;b&gt;Supply Symbols&lt;/b&gt;&lt;p&gt;
- GND, VCC, 0V, +5V, -5V, etc.&lt;p&gt;
- Please keep in mind, that these devices are necessary for the
- automatic wiring of the supply signals.&lt;p&gt;
- The pin name defined in the symbol is identical to the net which is to be wired automatically.&lt;p&gt;
- In this library the device names are the same as the pin names of the symbols, therefore the correct signal names appear next to the supply symbols in the schematic.&lt;p&gt;
+                        GND, VCC, 0V, +5V, -5V, etc.&lt;p&gt;
+                        Please keep in mind, that these devices are necessary for the
+                        automatic wiring of the supply signals.&lt;p&gt;
+                        The pin name defined in the symbol is identical to the net which is to be wired automatically.&lt;p&gt;
+                        In this library the device names are the same as the pin names of the symbols, therefore the correct signal names appear next to the supply symbols in the schematic.&lt;p&gt;
  &lt;author&gt;Created by librarian@cadsoft.de&lt;/author&gt;</description>
 <packages>
 </packages>
@@ -6271,6 +6271,9 @@ Metric Code Size 5664</description>
 <part name="VDD2" library="supply1" deviceset="VDD" device=""/>
 <part name="VSS1" library="supply1" deviceset="VSS" device=""/>
 <part name="VSS2" library="supply1" deviceset="VSS" device=""/>
+<part name="X2" library="con-molex" deviceset="22-23-2021" device=""/>
+<part name="VSS3" library="supply1" deviceset="VSS" device=""/>
+<part name="VSS4" library="supply1" deviceset="VSS" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -6306,6 +6309,10 @@ Metric Code Size 5664</description>
 <instance part="VDD2" gate="G$1" x="17.78" y="60.96"/>
 <instance part="VSS1" gate="G$1" x="99.06" y="-15.24"/>
 <instance part="VSS2" gate="G$1" x="-17.78" y="-17.78"/>
+<instance part="X2" gate="-1" x="119.38" y="27.94"/>
+<instance part="X2" gate="-2" x="119.38" y="25.4"/>
+<instance part="VSS3" gate="G$1" x="111.76" y="22.86"/>
+<instance part="VSS4" gate="G$1" x="45.72" y="-22.86"/>
 </instances>
 <busses>
 </busses>
@@ -6344,23 +6351,6 @@ Metric Code Size 5664</description>
 <pinref part="R5" gate="G$1" pin="2"/>
 <wire x1="15.24" y1="30.48" x2="17.78" y2="30.48" width="0.1524" layer="91"/>
 <junction x="17.78" y="30.48"/>
-</segment>
-</net>
-<net name="N$6" class="0">
-<segment>
-<pinref part="R5" gate="G$1" pin="1"/>
-<pinref part="R6" gate="G$1" pin="2"/>
-<pinref part="C2" gate="G$1" pin="1"/>
-<junction x="5.08" y="30.48"/>
-<pinref part="C2" gate="G$1" pin="1"/>
-<wire x1="5.08" y1="30.48" x2="7.62" y2="33.02" width="0.1524" layer="91"/>
-<wire x1="7.62" y1="33.02" x2="-12.7" y2="33.02" width="0.1524" layer="91"/>
-<wire x1="-12.7" y1="33.02" x2="-12.7" y2="17.78" width="0.1524" layer="91"/>
-<wire x1="-12.7" y1="17.78" x2="111.76" y2="17.78" width="0.1524" layer="91"/>
-<pinref part="JP1" gate="A" pin="1"/>
-<wire x1="111.76" y1="17.78" x2="111.76" y2="15.24" width="0.1524" layer="91"/>
-<junction x="5.08" y="30.48"/>
-<junction x="111.76" y="15.24"/>
 </segment>
 </net>
 <net name="N$7" class="0">
@@ -6702,6 +6692,51 @@ Metric Code Size 5664</description>
 <junction x="99.06" y="-12.7"/>
 <pinref part="VSS2" gate="G$1" pin="VSS"/>
 <junction x="-17.78" y="-15.24"/>
+</segment>
+<segment>
+<pinref part="X2" gate="-2" pin="S"/>
+<wire x1="116.84" y1="25.4" x2="111.76" y2="25.4" width="0.1524" layer="91"/>
+<pinref part="VSS3" gate="G$1" pin="VSS"/>
+</segment>
+<segment>
+<pinref part="D2" gate="G$1" pin="4"/>
+<pinref part="D2" gate="G$1" pin="1"/>
+<wire x1="35.56" y1="-20.32" x2="35.56" y2="-22.86" width="0.1524" layer="91"/>
+<wire x1="35.56" y1="-20.32" x2="45.72" y2="-20.32" width="0.1524" layer="91"/>
+<wire x1="45.72" y1="-20.32" x2="45.72" y2="-15.24" width="0.1524" layer="91"/>
+<pinref part="D1" gate="G$1" pin="GND@1"/>
+<pinref part="D1" gate="G$1" pin="GND"/>
+<wire x1="53.34" y1="-15.24" x2="53.34" y2="-17.78" width="0.1524" layer="91"/>
+<wire x1="45.72" y1="-15.24" x2="53.34" y2="-15.24" width="0.1524" layer="91"/>
+<pinref part="VSS4" gate="G$1" pin="VSS"/>
+<junction x="45.72" y="-20.32"/>
+<junction x="53.34" y="-15.24"/>
+<junction x="35.56" y="-20.32"/>
+</segment>
+</net>
+<net name="N$10" class="0">
+<segment>
+<pinref part="IC1" gate="G$1" pin="INT2/P1B/RB2"/>
+<wire x1="76.2" y1="45.72" x2="114.3" y2="45.72" width="0.1524" layer="91"/>
+<wire x1="114.3" y1="45.72" x2="114.3" y2="27.94" width="0.1524" layer="91"/>
+<pinref part="X2" gate="-1" pin="S"/>
+<wire x1="114.3" y1="27.94" x2="116.84" y2="27.94" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$12" class="0">
+<segment>
+<pinref part="R5" gate="G$1" pin="1"/>
+<pinref part="R6" gate="G$1" pin="2"/>
+<pinref part="C2" gate="G$1" pin="1"/>
+<junction x="5.08" y="30.48"/>
+<junction x="5.08" y="30.48"/>
+<wire x1="5.08" y1="30.48" x2="5.08" y2="33.02" width="0.1524" layer="91"/>
+<wire x1="-12.7" y1="33.02" x2="-12.7" y2="17.78" width="0.1524" layer="91"/>
+<wire x1="-12.7" y1="17.78" x2="111.76" y2="17.78" width="0.1524" layer="91"/>
+<pinref part="JP1" gate="A" pin="1"/>
+<wire x1="111.76" y1="17.78" x2="111.76" y2="15.24" width="0.1524" layer="91"/>
+<junction x="111.76" y="15.24"/>
+<wire x1="5.08" y1="33.02" x2="-12.7" y2="33.02" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>

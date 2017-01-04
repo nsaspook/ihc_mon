@@ -11,7 +11,7 @@ LanguageToolLocation=C:\Program Files\Microchip\mplabc18\v3.46\bin\mcc18.exe
 PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)|C:\Program Files (x86)\Microchip\mplabc18\v3.38\h||$(LIBDIR)|C:\Program Files (x86)\Microchip\mplabc18\v3.38\lib||$(LKRDIR)|C:\Program Files (x86)\Microchip\mplabc18\v3.38\bin\LKR||
 SOLK=<src>|pat.c|blinker.c||<obj>||<lib>||<lkr>|18f1320_g.lkr||
 SuiteArgsString=
-ToolArgsString=-mL
+ToolArgsString=-mL -pa=5
 TraceCmdString=
 DebugOptions=
 [File001]
@@ -24,7 +24,7 @@ LanguageToolLocation=C:\Program Files\Microchip\mplabc18\v3.46\bin\mcc18.exe
 PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)|C:\Program Files (x86)\Microchip\mplabc18\v3.38\h||$(LIBDIR)|C:\Program Files (x86)\Microchip\mplabc18\v3.38\lib||$(LKRDIR)|C:\Program Files (x86)\Microchip\mplabc18\v3.38\bin\LKR||
 SOLK=<src>|pat.c|blinker.c||<obj>||<lib>||<lkr>|18f1320_g.lkr||
 SuiteArgsString=
-ToolArgsString=-mL
+ToolArgsString=-mL -pa=5
 TraceCmdString=
 DebugOptions=
 [File002]

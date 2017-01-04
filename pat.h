@@ -65,7 +65,7 @@ union Obits2 {
 #define IBSPORTA	TRISA
 #define IBSPORTB	TRISB
 #define IBSPORT_IOA	0b00000000		//
-#define IBSPORT_IOB	0b00010010		// Rs-232 receive on B4
+#define IBSPORT_IOB	0b00010010		// RS-232 receive on B4
 
 #define LED0		LATAbits.LATA0
 #define LED1		LATAbits.LATA1
@@ -96,8 +96,8 @@ union Obits2 {
 #define IHC_CODE1H      900
 #define IHC_CODE1L      200
 #define IHC_CODE2       'f' // filament current
-#define IHC_CODE2H      930
-#define IHC_CODE2L      300
+#define IHC_CODE2H      1030
+#define IHC_CODE2L      200
 #define IHC_CODE3       'u' // cathode voltage, u is EU for voltage
 #define IHC_CODE3H      1050
 #define IHC_CODE3L      700
