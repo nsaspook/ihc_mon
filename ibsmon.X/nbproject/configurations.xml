@@ -6,6 +6,7 @@
                    projectFiles="true">
       <itemPath>../blinker.h</itemPath>
       <itemPath>../ibsmon.h</itemPath>
+      <itemPath>../ihc_vector.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -16,6 +17,7 @@
                    projectFiles="true">
       <itemPath>../blinker.c</itemPath>
       <itemPath>../ibsmon.c</itemPath>
+      <itemPath>../ihc_vector.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -152,6 +154,7 @@
         <property key="ToolFirmwareFilePath"
                   value="Press to browse for a specific firmware version"/>
         <property key="ToolFirmwareOption.UseLatestFirmware" value="true"/>
+        <property key="firmware.download.all" value="false"/>
         <property key="hwtoolclock.frcindebug" value="false"/>
         <property key="memories.aux" value="false"/>
         <property key="memories.bootflash" value="true"/>

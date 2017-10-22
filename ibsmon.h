@@ -61,6 +61,7 @@ union Obits2 {
 
 #define MAX_DATA        6
 #define MAX_GLITCH      3
+#define MAX_PARAMS      5
 
 #define IBSPORTA	TRISA
 #define IBSPORTB	TRISB
