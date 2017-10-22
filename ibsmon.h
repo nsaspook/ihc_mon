@@ -80,17 +80,18 @@ union Obits2 {
 #define COMM_ENABLE	LATBbits.LATB3
 #define GLITCH_ERROR	LATAbits.LATA4
 
-// regulation feedback 0 center 600 = nom.
+// regulation feedback +- 0 center=512 600 = nom. 650 = +2.5volts
 // filament voltage, 700 = nom.
 // cathode current, 600 = nom.
 // cathode voltage 600v = 1023
 // filament current, 425 is nom.
+// numbers are 10-bit ADC counts
 
 #define IHC_CODE0       'r'  // extraction current regulation
 #define IHC_CODE0_TUNE  30
 #define IHC_CODE0_FINE	5
 #define IHC_CODE0_VFINE	1
-#define IHC_CODE0H      800
+#define IHC_CODE0H      650
 #define IHC_CODE0L      400
 #define IHC_CODE1       'e'  // filament voltage
 #define IHC_CODE1H      900

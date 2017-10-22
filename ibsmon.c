@@ -61,6 +61,7 @@
  * 0.4  Adjust comm error and code settings.
  * 0.5  Add Glitch error for red led instead of comm error
  * 0.6  Clean up Glitch code, open filament data limits and code style fixes
+ * 0.7	refactor names and functions
  */
 
 #include <p18f1320.h>
@@ -69,11 +70,11 @@
 #include <usart.h>
 #include <stdio.h>
 #include <EEP.h>
-#include "pat.h"
+#include "ibsmon.h"
 #include "blinker.h"
 
 void tm_handler(void);
-int16_t sw_work(void);
+int16_t display_work(void);
 uint8_t do_config(void);
 void init_ihcmon(void);
 uint8_t init_stream_params(void);
@@ -89,7 +90,7 @@ volatile uint8_t ihc_count[5] = {0}, link_ok = FALSE, glitch_count = 0;
 volatile int16_t ibs_d = 1;
 near uint16_t blink_speed;
 
-const rom uint8_t *build_date = __DATE__, *build_time = __TIME__;
+const rom uint8_t *build_date = __DATE__, *build_time = __TIME__, build_version[5]="0.7";
 
 #pragma code tm_interrupt = 0x8
 
@@ -295,7 +296,7 @@ void tm_handler(void) // timer/serial functions are handled here
 }
 
 /* this is the two color red/green HID controller */
-int16_t sw_work(void)
+int16_t display_work(void)
 {
 	if (V.ibs_block_done) {
 		if (GLITCH_ERROR == LEDON) {
@@ -366,33 +367,10 @@ uint8_t do_config(void)
 {
 	INTCONbits.GIEH = 0;
 	if (Read_b_eep(0) == '?') { // use default options
-		while (!TXSTAbits.TRMT);
-		TXREG = '\r'; // echo
-		while (!TXSTAbits.TRMT);
-		TXREG = '\n'; // echo
-		while (!TXSTAbits.TRMT);
-		TXREG = 'N'; // echo
-		while (!TXSTAbits.TRMT);
-		TXREG = 'O'; // echo
-		while (!TXSTAbits.TRMT);
-		TXREG = 'R'; // echo
-		while (!TXSTAbits.TRMT);
-		TXREG = 'M'; // echo
 		V.fine = IHC_CODE0_FINE;
 		Write_b_eep(0, 'D'); // write into EEPROM
 	} else { // set FINE options.
 		V.fine = IHC_CODE0_VFINE;
-		TXREG = '\r'; // echo
-		while (!TXSTAbits.TRMT);
-		TXREG = '\n'; // echo
-		while (!TXSTAbits.TRMT);
-		TXREG = 'F'; // echo
-		while (!TXSTAbits.TRMT);
-		TXREG = 'I'; // echo
-		while (!TXSTAbits.TRMT);
-		TXREG = 'N'; // echo
-		while (!TXSTAbits.TRMT);
-		TXREG = 'E'; // echo
 		Write_b_eep(0, '?'); // write into EEPROM
 	}
 	Busy_eep();
@@ -459,23 +437,6 @@ uint8_t init_stream_params(void)
 	V.config = FALSE;
 	V.fine = IHC_CODE0_FINE;
 	if (Read_b_eep(0) == '?') V.fine = IHC_CODE0_VFINE;
-	while (!TXSTAbits.TRMT); // Send BOOT message to light-link
-	TXREG = 'F'; // echo
-	while (!TXSTAbits.TRMT);
-	TXREG = 'G'; // echo
-	while (!TXSTAbits.TRMT);
-	TXREG = 'B'; // echo
-	while (!TXSTAbits.TRMT);
-	TXREG = '@'; // echo
-	while (!TXSTAbits.TRMT);
-	TXREG = 'M'; // echo
-	while (!TXSTAbits.TRMT);
-	TXREG = 'C'; // echo
-	while (!TXSTAbits.TRMT);
-	TXREG = 'H'; // echo
-	while (!TXSTAbits.TRMT);
-	TXREG = 'P'; // echo
-	while (!TXSTAbits.TRMT);
 	return V.fine;
 }
 
@@ -484,7 +445,7 @@ void main(void)
 	init_ihcmon();
 	/* Loop forever */
 	while (TRUE) { // busy work
-		sw_work(); // Show the status of the IHC controller and source
+		display_work(); // Show the status of the IHC controller and source
 		if (V.config)
 			do_config();
 	}
