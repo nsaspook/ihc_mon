@@ -1,6 +1,8 @@
 #include "ihc_vector.h"
 
-#pragma interrupt tm_handler
+#pragma tmpdata ISRHtmpdata
+
+#pragma interrupt tm_handler nosave=section (".tmpdata")
 
 void tm_handler(void) // timer/serial functions are handled here
 {
@@ -18,7 +20,8 @@ void tm_handler(void) // timer/serial functions are handled here
 			if (c_error++>MAX_C_ERROR)
 				c_error = 0;
 		} else {
-			if (!V.config) TXREG = ibs_stream_file; // echo
+			if (!V.config)
+				TXREG = ibs_stream_file; // echo
 		}
 		if (ibs_stream_file == 0x00) // this is bad data in the stream
 			ibs_d = 1; // reset at bad data
@@ -33,7 +36,8 @@ void tm_handler(void) // timer/serial functions are handled here
 		if (ibs_stream_file & 0x80) { // stream data bit 7 set
 			ibs_data[ibs_d] = ibs_stream_file & 0x3f;
 			ibs_d++; // index to store the data stream
-			if (ibs_d > MAX_DATA) ibs_d = 1; // reset on overrun
+			if (ibs_d > MAX_DATA)
+				ibs_d = 1; // reset on overrun
 		} else { // stream codes for source parameters
 			ibs_d = 1;
 			ihc_d = ((ibs_data[1]&0x0f) << 6)+(ibs_data[2]); // convert the 10 bit data from the stream
@@ -154,6 +158,7 @@ void tm_handler(void) // timer/serial functions are handled here
 			} else {
 				LED0 = LEDOFF;
 			}
+			//			LED0 = (LEDS.out_bits.b0 ? LEDON : LEDOFF); // this way generates nasty C18 code
 			if (LEDS.out_bits.b1) {
 				LED1 = LEDON;
 			} else {
@@ -194,3 +199,4 @@ void tm_handler(void) // timer/serial functions are handled here
 		/* End Led Blink Code */
 	}
 }
+#pragma	tmpdata

@@ -105,7 +105,7 @@ ${OBJECTDIR}/_ext/1472/blinker.o: ../blinker.c  nbproject/Makefile-${CND_CONF}.m
 	@${MKDIR} "${OBJECTDIR}/_ext/1472" 
 	@${RM} ${OBJECTDIR}/_ext/1472/blinker.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1472/blinker.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1 -p$(MP_PROCESSOR_OPTION) --verbose -I"../C:/Program Files (x86)/Microchip/mplabc18/v3.38/h" -I".." -I"." -ml -oa-  -I ${MP_CC_DIR}/../h  -fo ${OBJECTDIR}/_ext/1472/blinker.o   ../blinker.c 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1 -p$(MP_PROCESSOR_OPTION) --verbose -I"../C:/Program Files (x86)/Microchip/mplabc18/v3.38/h" -I".." -I"." -ms -oa-  -I ${MP_CC_DIR}/../h  -fo ${OBJECTDIR}/_ext/1472/blinker.o   ../blinker.c 
 	@${DEP_GEN} -d ${OBJECTDIR}/_ext/1472/blinker.o 
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1472/blinker.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
 	
@@ -113,7 +113,7 @@ ${OBJECTDIR}/_ext/1472/ibsmon.o: ../ibsmon.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1472" 
 	@${RM} ${OBJECTDIR}/_ext/1472/ibsmon.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1472/ibsmon.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1 -p$(MP_PROCESSOR_OPTION) --verbose -I"../C:/Program Files (x86)/Microchip/mplabc18/v3.38/h" -I".." -I"." -ml -oa-  -I ${MP_CC_DIR}/../h  -fo ${OBJECTDIR}/_ext/1472/ibsmon.o   ../ibsmon.c 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1 -p$(MP_PROCESSOR_OPTION) --verbose -I"../C:/Program Files (x86)/Microchip/mplabc18/v3.38/h" -I".." -I"." -ms -oa-  -I ${MP_CC_DIR}/../h  -fo ${OBJECTDIR}/_ext/1472/ibsmon.o   ../ibsmon.c 
 	@${DEP_GEN} -d ${OBJECTDIR}/_ext/1472/ibsmon.o 
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1472/ibsmon.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
 	
@@ -121,7 +121,7 @@ ${OBJECTDIR}/_ext/1472/ihc_vector.o: ../ihc_vector.c  nbproject/Makefile-${CND_C
 	@${MKDIR} "${OBJECTDIR}/_ext/1472" 
 	@${RM} ${OBJECTDIR}/_ext/1472/ihc_vector.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1472/ihc_vector.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1 -p$(MP_PROCESSOR_OPTION) --verbose -I"../C:/Program Files (x86)/Microchip/mplabc18/v3.38/h" -I".." -I"." -ml -oa-  -I ${MP_CC_DIR}/../h  -fo ${OBJECTDIR}/_ext/1472/ihc_vector.o   ../ihc_vector.c 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1 -p$(MP_PROCESSOR_OPTION) --verbose -I"../C:/Program Files (x86)/Microchip/mplabc18/v3.38/h" -I".." -I"." -ms -oa-  -I ${MP_CC_DIR}/../h  -fo ${OBJECTDIR}/_ext/1472/ihc_vector.o   ../ihc_vector.c 
 	@${DEP_GEN} -d ${OBJECTDIR}/_ext/1472/ihc_vector.o 
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1472/ihc_vector.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
 	
@@ -130,7 +130,7 @@ ${OBJECTDIR}/_ext/1472/blinker.o: ../blinker.c  nbproject/Makefile-${CND_CONF}.m
 	@${MKDIR} "${OBJECTDIR}/_ext/1472" 
 	@${RM} ${OBJECTDIR}/_ext/1472/blinker.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1472/blinker.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -p$(MP_PROCESSOR_OPTION) --verbose -I"../C:/Program Files (x86)/Microchip/mplabc18/v3.38/h" -I".." -I"." -ml -oa-  -I ${MP_CC_DIR}/../h  -fo ${OBJECTDIR}/_ext/1472/blinker.o   ../blinker.c 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -p$(MP_PROCESSOR_OPTION) --verbose -I"../C:/Program Files (x86)/Microchip/mplabc18/v3.38/h" -I".." -I"." -ms -oa-  -I ${MP_CC_DIR}/../h  -fo ${OBJECTDIR}/_ext/1472/blinker.o   ../blinker.c 
 	@${DEP_GEN} -d ${OBJECTDIR}/_ext/1472/blinker.o 
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1472/blinker.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
 	
@@ -138,7 +138,7 @@ ${OBJECTDIR}/_ext/1472/ibsmon.o: ../ibsmon.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1472" 
 	@${RM} ${OBJECTDIR}/_ext/1472/ibsmon.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1472/ibsmon.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -p$(MP_PROCESSOR_OPTION) --verbose -I"../C:/Program Files (x86)/Microchip/mplabc18/v3.38/h" -I".." -I"." -ml -oa-  -I ${MP_CC_DIR}/../h  -fo ${OBJECTDIR}/_ext/1472/ibsmon.o   ../ibsmon.c 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -p$(MP_PROCESSOR_OPTION) --verbose -I"../C:/Program Files (x86)/Microchip/mplabc18/v3.38/h" -I".." -I"." -ms -oa-  -I ${MP_CC_DIR}/../h  -fo ${OBJECTDIR}/_ext/1472/ibsmon.o   ../ibsmon.c 
 	@${DEP_GEN} -d ${OBJECTDIR}/_ext/1472/ibsmon.o 
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1472/ibsmon.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
 	
@@ -146,7 +146,7 @@ ${OBJECTDIR}/_ext/1472/ihc_vector.o: ../ihc_vector.c  nbproject/Makefile-${CND_C
 	@${MKDIR} "${OBJECTDIR}/_ext/1472" 
 	@${RM} ${OBJECTDIR}/_ext/1472/ihc_vector.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1472/ihc_vector.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -p$(MP_PROCESSOR_OPTION) --verbose -I"../C:/Program Files (x86)/Microchip/mplabc18/v3.38/h" -I".." -I"." -ml -oa-  -I ${MP_CC_DIR}/../h  -fo ${OBJECTDIR}/_ext/1472/ihc_vector.o   ../ihc_vector.c 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -p$(MP_PROCESSOR_OPTION) --verbose -I"../C:/Program Files (x86)/Microchip/mplabc18/v3.38/h" -I".." -I"." -ms -oa-  -I ${MP_CC_DIR}/../h  -fo ${OBJECTDIR}/_ext/1472/ihc_vector.o   ../ihc_vector.c 
 	@${DEP_GEN} -d ${OBJECTDIR}/_ext/1472/ihc_vector.o 
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1472/ihc_vector.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
 	

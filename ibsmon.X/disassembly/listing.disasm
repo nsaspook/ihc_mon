@@ -1,0 +1,2077 @@
+Disassembly Listing for ibsmon
+Generated From:
+/old_os/mplabx/ihc_mon/ibsmon.X/dist/default/production/ibsmon.X.production.cof
+Oct 22, 2017 7:31:28 PM
+
+---  /old_os/mplabx/ihc_mon/ihc_vector.c  ---------------------------------------------------------------
+1:             #include "ihc_vector.h"
+2:             
+3:             #pragma tmpdata ISRHtmpdata
+4:             
+5:             #pragma interrupt tm_handler nosave=section (".tmpdata")
+6:             
+7:             void tm_handler(void) // timer/serial functions are handled here
+0028  CFDA     MOVFF FSR2H, PREINC1
+002A  FFE4     NOP
+002C  CFE2     MOVFF FSR1H, FSR2H
+002E  FFDA     NOP
+0030  CFE9     MOVFF FSR0, PREINC1
+0032  FFE4     NOP
+0034  CFEA     MOVFF FSR0H, PREINC1
+0036  FFE4     NOP
+0038  CFF6     MOVFF TBLPTR, PREINC1
+003A  FFE4     NOP
+003C  CFF7     MOVFF TBLPTRH, PREINC1
+003E  FFE4     NOP
+0040  CFF5     MOVFF TABLAT, PREINC1
+0042  FFE4     NOP
+0044  CFF3     MOVFF PROD, PREINC1
+0046  FFE4     NOP
+0048  CFF4     MOVFF PRODH, PREINC1
+004A  FFE4     NOP
+004C  CFFA     MOVFF PCLATH, PREINC1
+004E  FFE4     NOP
+0050  EE00     LFSR 0, 0x6
+0052  F006     NOP
+0054  0E02     MOVLW 0x2
+0056  04E8     DECF WREG, W, ACCESS
+0058  E303     BNC 0x60
+005A  CFEE     MOVFF POSTINC0, PREINC1
+005C  FFE4     NOP
+005E  D7FB     BRA 0x56
+0060  52E6     MOVF POSTINC1, F, ACCESS
+0062  CFD9     MOVFF FSR2, POSTINC1
+0064  FFE6     NOP
+0066  CFE1     MOVFF FSR1, FSR2
+0068  FFD9     NOP
+006A  0E02     MOVLW 0x2
+006C  26E1     ADDWF FSR1, F, ACCESS
+8:             {
+9:             	static uint8_t led_cache = 0xff, config_found = 0, c_error = 0;
+10:            	static int16_t ihc_d_prev = 0;
+11:            	int16_t ihc_d_roc;
+12:            
+13:            	if (PIR1bits.RCIF) { // is data from host light link via RS-232 port
+006E  AA9E     BTFSS PIR1, 5, ACCESS
+0070  D157     BRA 0x320
+14:            		link_count++;
+0072  0100     MOVLB 0x0
+0074  2BCF     INCF link_count, F, BANKED
+0076  0E00     MOVLW 0x0
+0078  23D0     ADDWFC 0xD0, F, BANKED
+15:            		ibs_stream_file = RCREG;
+007A  CFAE     MOVFF RCREG, ibs_stream_file
+007C  F0EB     NOP
+16:            		if (RCSTAbits.OERR || RCSTAbits.FERR) {
+007E  50AB     MOVF RCSTA, W, ACCESS
+0080  0B02     ANDLW 0x2
+0082  E103     BNZ 0x8A
+0084  50AB     MOVF RCSTA, W, ACCESS
+0086  0B04     ANDLW 0x4
+0088  E00B     BZ 0xA0
+17:            			ibs_stream_file = 0x00; // nulls for data on errors
+008A  0100     MOVLB 0x0
+008C  6BEB     CLRF ibs_stream_file, BANKED
+18:            			RCSTAbits.CREN = FALSE; // clear overrun
+008E  98AB     BCF RCSTA, 4, ACCESS
+19:            			RCSTAbits.CREN = TRUE; // re-enable
+0090  88AB     BSF RCSTA, 4, ACCESS
+20:            			if (c_error++>MAX_C_ERROR)
+0092  0100     MOVLB 0x0
+0094  51FA     MOVF c_error, W, BANKED
+0096  2BFA     INCF c_error, F, BANKED
+0098  0803     SUBLW 0x3
+009A  E207     BC 0xAA
+21:            				c_error = 0;
+009C  6BFA     CLRF c_error, BANKED
+22:            		} else {
+009E  D005     BRA 0xAA
+23:            			if (!V.config)
+00A0  0100     MOVLB 0x0
+00A2  BFE8     BTFSC 0xE8, 7, BANKED
+00A4  D002     BRA 0xAA
+24:            				TXREG = ibs_stream_file; // echo
+00A6  C0EB     MOVFF ibs_stream_file, TXREG
+00A8  FFAD     NOP
+25:            		}
+26:            		if (ibs_stream_file == 0x00) // this is bad data in the stream
+00AA  0100     MOVLB 0x0
+00AC  51EB     MOVF ibs_stream_file, W, BANKED
+00AE  E104     BNZ 0xB8
+27:            			ibs_d = 1; // reset at bad data
+00B0  0E01     MOVLW 0x1
+00B2  0100     MOVLB 0x0
+00B4  6FD8     MOVWF ibs_d, BANKED
+00B6  6BD9     CLRF 0xD9, BANKED
+28:            		if (ibs_stream_file == CONFIG_CHAR) { // search for configuration stream
+00B8  0E3F     MOVLW 0x3F
+00BA  0100     MOVLB 0x0
+00BC  5DEB     SUBWF ibs_stream_file, W, BANKED
+00BE  E107     BNZ 0xCE
+29:            			if (++config_found > CONFIG_REPEATS) {
+00C0  0100     MOVLB 0x0
+00C2  2BF9     INCF config_found, F, BANKED
+00C4  51F9     MOVF config_found, W, BANKED
+00C6  0809     SUBLW 0x9
+00C8  E204     BC 0xD2
+30:            				V.config = TRUE; //
+00CA  0100     MOVLB 0x0
+00CC  8FE8     BSF 0xE8, 7, BANKED
+31:            				config_found = 0;
+32:            			}
+33:            		} else {
+34:            			config_found = 0;
+00CE  0100     MOVLB 0x0
+00D0  6BF9     CLRF config_found, BANKED
+35:            		}
+36:            		if (ibs_stream_file & 0x80) { // stream data bit 7 set
+00D2  0100     MOVLB 0x0
+00D4  AFEB     BTFSS ibs_stream_file, 7, BANKED
+00D6  D023     BRA 0x11E
+37:            			ibs_data[ibs_d] = ibs_stream_file & 0x3f;
+00D8  0E3F     MOVLW 0x3F
+00DA  15EB     ANDWF ibs_stream_file, W, BANKED
+00DC  6EE6     MOVWF POSTINC1, ACCESS
+00DE  C0D8     MOVFF ibs_d, FSR0
+00E0  FFE9     NOP
+00E2  C0D9     MOVFF 0xD9, FSR0H
+00E4  FFEA     NOP
+00E6  90D8     BCF STATUS, 0, ACCESS
+00E8  36E9     RLCF FSR0, F, ACCESS
+00EA  36EA     RLCF FSR0H, F, ACCESS
+00EC  0EC3     MOVLW 0xC3
+00EE  26E9     ADDWF FSR0, F, ACCESS
+00F0  0E00     MOVLW 0x0
+00F2  22EA     ADDWFC FSR0H, F, ACCESS
+00F4  52E5     MOVF POSTDEC1, F, ACCESS
+00F6  50E7     MOVF INDF1, W, ACCESS
+00F8  6EEE     MOVWF POSTINC0, ACCESS
+00FA  6AED     CLRF POSTDEC0, ACCESS
+38:            			ibs_d++; // index to store the data stream
+00FC  0100     MOVLB 0x0
+00FE  2BD8     INCF ibs_d, F, BANKED
+0100  0E00     MOVLW 0x0
+0102  23D9     ADDWFC 0xD9, F, BANKED
+39:            			if (ibs_d > MAX_DATA)
+0104  35D9     RLCF 0xD9, W, BANKED
+0106  E301     BNC 0x10A
+0108  D10B     BRA 0x320
+010A  51D8     MOVF ibs_d, W, BANKED
+010C  0806     SUBLW 0x6
+010E  0E00     MOVLW 0x0
+0110  55D9     SUBFWB 0xD9, W, BANKED
+0112  E301     BNC 0x116
+0114  D105     BRA 0x320
+40:            				ibs_d = 1; // reset on overrun
+0116  0E01     MOVLW 0x1
+0118  6FD8     MOVWF ibs_d, BANKED
+011A  6BD9     CLRF 0xD9, BANKED
+41:            		} else { // stream codes for source parameters
+011C  D101     BRA 0x320
+42:            			ibs_d = 1;
+011E  0E01     MOVLW 0x1
+0120  0100     MOVLB 0x0
+0122  6FD8     MOVWF ibs_d, BANKED
+0124  6BD9     CLRF 0xD9, BANKED
+43:            			ihc_d = ((ibs_data[1]&0x0f) << 6)+(ibs_data[2]); // convert the 10 bit data from the stream
+0126  0E0F     MOVLW 0xF
+0128  0100     MOVLB 0x0
+012A  15C5     ANDWF 0xC5, W, BANKED
+012C  6E04     MOVWF __tmp_1, ACCESS
+012E  6A05     CLRF 0x5, ACCESS
+0130  0E06     MOVLW 0x6
+0132  90D8     BCF STATUS, 0, ACCESS
+0134  3604     RLCF __tmp_1, F, ACCESS
+0136  3605     RLCF 0x5, F, ACCESS
+0138  04E8     DECF WREG, W, ACCESS
+013A  E1FB     BNZ 0x132
+013C  5004     MOVF __tmp_1, W, ACCESS
+013E  0100     MOVLB 0x0
+0140  25C7     ADDWF 0xC7, W, BANKED
+0142  0100     MOVLB 0x0
+0144  6FEC     MOVWF ihc_d, BANKED
+0146  5005     MOVF 0x5, W, ACCESS
+0148  0100     MOVLB 0x0
+014A  21C8     ADDWFC 0xC8, W, BANKED
+014C  0100     MOVLB 0x0
+014E  6FED     MOVWF 0xED, BANKED
+44:            			ibs_data[0] = ibs_stream_file; // store the stream code
+0150  0100     MOVLB 0x0
+0152  51EB     MOVF ibs_stream_file, W, BANKED
+0154  0100     MOVLB 0x0
+0156  6FC3     MOVWF ibs_data, BANKED
+0158  6BC4     CLRF 0xC4, BANKED
+45:            			// parse the stream codes
+46:            			switch (ibs_stream_file_prev) {
+015A  0100     MOVLB 0x0
+015C  51C0     MOVF ibs_stream_file_prev, W, BANKED
+015E  0A69     XORLW 0x69
+0160  E101     BNZ 0x164
+0162  D0B0     BRA 0x2C4
+0164  0A1C     XORLW 0x1C
+0166  E101     BNZ 0x16A
+0168  D091     BRA 0x28C
+016A  0A13     XORLW 0x13
+016C  E073     BZ 0x254
+016E  0A03     XORLW 0x3
+0170  E054     BZ 0x21A
+0172  0A17     XORLW 0x17
+0174  E001     BZ 0x178
+0176  D0D2     BRA 0x31C
+47:            			case IHC_CODE0: // extraction regulation
+48:            				if (++ihc_count[0] > IHC_SAMPLES)
+0178  0100     MOVLB 0x0
+017A  2BD1     INCF ihc_count, F, BANKED
+017C  51D1     MOVF ihc_count, W, BANKED
+017E  0802     SUBLW 0x2
+0180  E202     BC 0x186
+49:            					V.ihc_data0 = FALSE; // in range preset to false
+0182  0100     MOVLB 0x0
+0184  95E8     BCF 0xE8, 2, BANKED
+50:            				if ((ihc_d > IHC_CODE0L) && (ihc_d < IHC_CODE0H)) {
+0186  0100     MOVLB 0x0
+0188  35ED     RLCF 0xED, W, BANKED
+018A  E245     BC 0x216
+018C  51EC     MOVF ihc_d, W, BANKED
+018E  0890     SUBLW 0x90
+0190  0E01     MOVLW 0x1
+0192  55ED     SUBFWB 0xED, W, BANKED
+0194  E240     BC 0x216
+0196  90D8     BCF STATUS, 0, ACCESS
+0198  51ED     MOVF 0xED, W, BANKED
+019A  E604     BN 0x1A4
+019C  0E8A     MOVLW 0x8A
+019E  5DEC     SUBWF ihc_d, W, BANKED
+01A0  0E02     MOVLW 0x2
+01A2  59ED     SUBWFB 0xED, W, BANKED
+01A4  E238     BC 0x216
+51:            					V.ihc_data0 = TRUE; // set range code to true
+01A6  0100     MOVLB 0x0
+01A8  85E8     BSF 0xE8, 2, BANKED
+52:            					ihc_count[0] = 0;
+01AA  0100     MOVLB 0x0
+01AC  6BD1     CLRF ihc_count, BANKED
+53:            					ihc_d_roc = ihc_d - ihc_d_prev;
+01AE  0100     MOVLB 0x0
+01B0  51FB     MOVF ihc_d_prev, W, BANKED
+01B2  0100     MOVLB 0x0
+01B4  5DEC     SUBWF ihc_d, W, BANKED
+01B6  6E04     MOVWF __tmp_1, ACCESS
+01B8  51ED     MOVF 0xED, W, BANKED
+01BA  0100     MOVLB 0x0
+01BC  55FC     SUBFWB 0xFC, W, BANKED
+01BE  6E05     MOVWF 0x5, ACCESS
+01C0  C004     MOVFF __tmp_1, POSTINC2
+01C2  FFDE     NOP
+01C4  6EDD     MOVWF POSTDEC2, ACCESS
+54:            					V.ihc_d_abs = (ihc_d_roc < 0 ? (-ihc_d_roc) : ihc_d_roc);
+01C6  CFDE     MOVFF POSTINC2, __tmp_1
+01C8  F004     NOP
+01CA  CFDD     MOVFF POSTDEC2, 0x5
+01CC  F005     NOP
+01CE  0E80     MOVLW 0x80
+01D0  1405     ANDWF 0x5, W, ACCESS
+01D2  E00A     BZ 0x1E8
+01D4  CFDE     MOVFF POSTINC2, 0xE6
+01D6  F0E6     NOP
+01D8  CFDD     MOVFF POSTDEC2, 0xE7
+01DA  F0E7     NOP
+01DC  0100     MOVLB 0x0
+01DE  6DE6     NEGF 0xE6, BANKED
+01E0  1FE7     COMF 0xE7, F, BANKED
+01E2  0E00     MOVLW 0x0
+01E4  23E7     ADDWFC 0xE7, F, BANKED
+01E6  D004     BRA 0x1F0
+01E8  CFDE     MOVFF POSTINC2, 0xE6
+01EA  F0E6     NOP
+01EC  CFDD     MOVFF POSTDEC2, 0xE7
+01EE  F0E7     NOP
+55:            					ihc_d_prev = ihc_d;
+01F0  C0EC     MOVFF ihc_d, ihc_d_prev
+01F2  F0FB     NOP
+01F4  C0ED     MOVFF 0xED, 0xFC
+01F6  F0FC     NOP
+56:            					if ((V.ihc_d_abs <= V.fine)) {
+01F8  0100     MOVLB 0x0
+01FA  51E6     MOVF 0xE6, W, BANKED
+01FC  5DE4     SUBWF 0xE4, W, BANKED
+01FE  51E7     MOVF 0xE7, W, BANKED
+0200  59E5     SUBWFB 0xE5, W, BANKED
+0202  E309     BNC 0x216
+57:            						if (V.inreg) FINE_REG = LEDON; // regulation in tight mode
+0204  B1E8     BTFSC 0xE8, 0, BANKED
+0206  908A     BCF LATB, 0, ACCESS
+58:            						V.stable = TRUE;
+0208  81E9     BSF 0xE9, 0, BANKED
+59:            						if (!glitch_count)
+020A  0100     MOVLB 0x0
+020C  51D7     MOVF glitch_count, W, BANKED
+020E  E001     BZ 0x212
+0210  D085     BRA 0x31C
+60:            							GLITCH_ERROR = LEDOFF;
+0212  8889     BSF LATA, 4, ACCESS
+61:            					} else {
+0214  D083     BRA 0x31C
+62:            						FINE_REG = LEDOFF; // not in fine regulation
+63:            					}
+64:            				} else {
+65:            					FINE_REG = LEDOFF; // not in fine regulation
+0216  808A     BSF LATB, 0, ACCESS
+66:            				}
+67:            				break;
+0218  D081     BRA 0x31C
+68:            			case IHC_CODE1: // filament voltage
+69:            				if (++ihc_count[1] > IHC_SAMPLES)
+021A  0100     MOVLB 0x0
+021C  2BD2     INCF 0xD2, F, BANKED
+021E  51D2     MOVF 0xD2, W, BANKED
+0220  0802     SUBLW 0x2
+0222  E202     BC 0x228
+70:            					V.ihc_data1 = FALSE;
+0224  0100     MOVLB 0x0
+0226  97E8     BCF 0xE8, 3, BANKED
+71:            				if ((ihc_d > IHC_CODE1L) && (ihc_d < IHC_CODE1H)) {
+0228  0100     MOVLB 0x0
+022A  35ED     RLCF 0xED, W, BANKED
+022C  E301     BNC 0x230
+022E  D076     BRA 0x31C
+0230  51EC     MOVF ihc_d, W, BANKED
+0232  08C8     SUBLW 0xC8
+0234  0E00     MOVLW 0x0
+0236  55ED     SUBFWB 0xED, W, BANKED
+0238  E271     BC 0x31C
+023A  90D8     BCF STATUS, 0, ACCESS
+023C  51ED     MOVF 0xED, W, BANKED
+023E  E604     BN 0x248
+0240  0E84     MOVLW 0x84
+0242  5DEC     SUBWF ihc_d, W, BANKED
+0244  0E03     MOVLW 0x3
+0246  59ED     SUBWFB 0xED, W, BANKED
+0248  E269     BC 0x31C
+72:            					V.ihc_data1 = TRUE;
+024A  0100     MOVLB 0x0
+024C  87E8     BSF 0xE8, 3, BANKED
+73:            					ihc_count[1] = 0;
+024E  0100     MOVLB 0x0
+0250  6BD2     CLRF 0xD2, BANKED
+74:            				}
+75:            				break;
+0252  D064     BRA 0x31C
+76:            			case IHC_CODE2: // filament current
+77:            				if (++ihc_count[2] > IHC_SAMPLES)
+0254  0100     MOVLB 0x0
+0256  2BD3     INCF 0xD3, F, BANKED
+0258  51D3     MOVF 0xD3, W, BANKED
+025A  0802     SUBLW 0x2
+025C  E202     BC 0x262
+78:            					V.ihc_data2 = FALSE;
+025E  0100     MOVLB 0x0
+0260  99E8     BCF 0xE8, 4, BANKED
+79:            				if ((ihc_d > IHC_CODE2L) && (ihc_d < IHC_CODE2H)) {
+0262  0100     MOVLB 0x0
+0264  35ED     RLCF 0xED, W, BANKED
+0266  E25A     BC 0x31C
+0268  51EC     MOVF ihc_d, W, BANKED
+026A  08C8     SUBLW 0xC8
+026C  0E00     MOVLW 0x0
+026E  55ED     SUBFWB 0xED, W, BANKED
+0270  E255     BC 0x31C
+0272  90D8     BCF STATUS, 0, ACCESS
+0274  51ED     MOVF 0xED, W, BANKED
+0276  E604     BN 0x280
+0278  0E06     MOVLW 0x6
+027A  5DEC     SUBWF ihc_d, W, BANKED
+027C  0E04     MOVLW 0x4
+027E  59ED     SUBWFB 0xED, W, BANKED
+0280  E24D     BC 0x31C
+80:            					V.ihc_data2 = TRUE;
+0282  0100     MOVLB 0x0
+0284  89E8     BSF 0xE8, 4, BANKED
+81:            					ihc_count[2] = 0;
+0286  0100     MOVLB 0x0
+0288  6BD3     CLRF 0xD3, BANKED
+82:            				}
+83:            				break;
+028A  D048     BRA 0x31C
+84:            			case IHC_CODE3: // cathode voltage
+85:            				if (++ihc_count[3] > IHC_SAMPLES)
+028C  0100     MOVLB 0x0
+028E  2BD4     INCF 0xD4, F, BANKED
+0290  51D4     MOVF 0xD4, W, BANKED
+0292  0802     SUBLW 0x2
+0294  E202     BC 0x29A
+86:            					V.ihc_data3 = FALSE;
+0296  0100     MOVLB 0x0
+0298  9BE8     BCF 0xE8, 5, BANKED
+87:            				if ((ihc_d > IHC_CODE3L) && (ihc_d < IHC_CODE3H)) {
+029A  0100     MOVLB 0x0
+029C  35ED     RLCF 0xED, W, BANKED
+029E  E23E     BC 0x31C
+02A0  51EC     MOVF ihc_d, W, BANKED
+02A2  08BC     SUBLW 0xBC
+02A4  0E02     MOVLW 0x2
+02A6  55ED     SUBFWB 0xED, W, BANKED
+02A8  E239     BC 0x31C
+02AA  90D8     BCF STATUS, 0, ACCESS
+02AC  51ED     MOVF 0xED, W, BANKED
+02AE  E604     BN 0x2B8
+02B0  0E1A     MOVLW 0x1A
+02B2  5DEC     SUBWF ihc_d, W, BANKED
+02B4  0E04     MOVLW 0x4
+02B6  59ED     SUBWFB 0xED, W, BANKED
+02B8  E231     BC 0x31C
+88:            					V.ihc_data3 = TRUE;
+02BA  0100     MOVLB 0x0
+02BC  8BE8     BSF 0xE8, 5, BANKED
+89:            					ihc_count[3] = 0;
+02BE  0100     MOVLB 0x0
+02C0  6BD4     CLRF 0xD4, BANKED
+90:            				}
+91:            				break;
+02C2  D02C     BRA 0x31C
+92:            			case IHC_CODE4: // cathode current
+93:            				V.ibs_block_done = TRUE; // update display now
+02C4  0100     MOVLB 0x0
+02C6  83E8     BSF 0xE8, 1, BANKED
+94:            				if (++ihc_count[4] > IHC_SAMPLES)
+02C8  0100     MOVLB 0x0
+02CA  2BD5     INCF 0xD5, F, BANKED
+02CC  51D5     MOVF 0xD5, W, BANKED
+02CE  0802     SUBLW 0x2
+02D0  E202     BC 0x2D6
+95:            					V.ihc_data4 = FALSE;
+02D2  0100     MOVLB 0x0
+02D4  9DE8     BCF 0xE8, 6, BANKED
+96:            				if ((ihc_d > IHC_CODE4L) && (ihc_d < IHC_CODE4H)) {
+02D6  0100     MOVLB 0x0
+02D8  35ED     RLCF 0xED, W, BANKED
+02DA  E220     BC 0x31C
+02DC  51EC     MOVF ihc_d, W, BANKED
+02DE  082C     SUBLW 0x2C
+02E0  0E01     MOVLW 0x1
+02E2  55ED     SUBFWB 0xED, W, BANKED
+02E4  E21B     BC 0x31C
+02E6  90D8     BCF STATUS, 0, ACCESS
+02E8  51ED     MOVF 0xED, W, BANKED
+02EA  E604     BN 0x2F4
+02EC  0EBC     MOVLW 0xBC
+02EE  5DEC     SUBWF ihc_d, W, BANKED
+02F0  0E02     MOVLW 0x2
+02F2  59ED     SUBWFB 0xED, W, BANKED
+02F4  E213     BC 0x31C
+97:            					V.ihc_data4 = TRUE;
+02F6  0100     MOVLB 0x0
+02F8  8DE8     BSF 0xE8, 6, BANKED
+98:            					ihc_count[4] = 0;
+02FA  0100     MOVLB 0x0
+02FC  6BD5     CLRF 0xD5, BANKED
+99:            					if (!V.ihc_data3) {
+02FE  0100     MOVLB 0x0
+0300  BBE8     BTFSC 0xE8, 5, BANKED
+0302  D00A     BRA 0x318
+100:           						if (V.stable && ((glitch_count++) > MAX_GLITCH))
+0304  51E9     MOVF 0xE9, W, BANKED
+0306  0B01     ANDLW 0x1
+0308  E009     BZ 0x31C
+030A  0100     MOVLB 0x0
+030C  51D7     MOVF glitch_count, W, BANKED
+030E  2BD7     INCF glitch_count, F, BANKED
+0310  0803     SUBLW 0x3
+0312  E204     BC 0x31C
+101:           							GLITCH_ERROR = LEDON;
+0314  9889     BCF LATA, 4, ACCESS
+102:           					} else {
+0316  D002     BRA 0x31C
+103:           						glitch_count = 0;
+0318  0100     MOVLB 0x0
+031A  6BD7     CLRF glitch_count, BANKED
+104:           					}
+105:           				}
+106:           				break;
+107:           			default:
+108:           				break;
+109:           			}
+110:           			ibs_stream_file_prev = ibs_stream_file;
+031C  C0EB     MOVFF ibs_stream_file, ibs_stream_file_prev
+031E  F0C0     NOP
+111:           		}
+112:           	}
+113:           
+114:           	if (PIR1bits.TMR1IF) { //      Timer1 int handler
+0320  A09E     BTFSS PIR1, 0, ACCESS
+0322  D00E     BRA 0x340
+115:           		PIR1bits.TMR1IF = FALSE; //      clear int flag
+0324  909E     BCF PIR1, 0, ACCESS
+116:           		WriteTimer1(SAMPLEFREQ);
+0326  0EB2     MOVLW 0xB2
+0328  6EE6     MOVWF POSTINC1, ACCESS
+032A  0EE7     MOVLW 0xE7
+032C  6EE6     MOVWF POSTINC1, ACCESS
+032E  ECA9     CALL 0xB52, 0
+0330  F005     NOP
+0332  52E5     MOVF POSTDEC1, F, ACCESS
+0334  52E5     MOVF POSTDEC1, F, ACCESS
+117:           		// aux work thread, nothing for now
+118:           		if (!link_ok)
+0336  0100     MOVLB 0x0
+0338  51D6     MOVF link_ok, W, BANKED
+033A  E102     BNZ 0x340
+119:           			V.ibs_block_done = TRUE; // update display quickly
+033C  0100     MOVLB 0x0
+033E  83E8     BSF 0xE8, 1, BANKED
+120:           	}
+121:           
+122:           	if (INTCONbits.TMR0IF) { //      check timer0 irq time timer
+0340  A4F2     BTFSS INTCON, 2, ACCESS
+0342  D0C6     BRA 0x4D0
+123:           		INTCONbits.TMR0IF = FALSE; //      clear interrupt flag
+0344  94F2     BCF INTCON, 2, ACCESS
+124:           		WriteTimer0(timer0_off);
+0346  C0C1     MOVFF timer0_off, POSTINC1
+0348  FFE6     NOP
+034A  C0C2     MOVFF 0xC2, POSTINC1
+034C  FFE6     NOP
+034E  ECC5     CALL 0xB8A, 0
+0350  F005     NOP
+0352  52E5     MOVF POSTDEC1, F, ACCESS
+0354  52E5     MOVF POSTDEC1, F, ACCESS
+125:           		/* some data link housekeeping */
+126:           		if (link_count > LINK_COUNT) { // data bytes per led flash time
+0356  0100     MOVLB 0x0
+0358  0E0A     MOVLW 0xA
+035A  80D8     BSF STATUS, 0, ACCESS
+035C  55CF     SUBFWB link_count, W, BANKED
+035E  0E00     MOVLW 0x0
+0360  55D0     SUBFWB 0xD0, W, BANKED
+0362  E207     BC 0x372
+127:           			link_ok = TRUE;
+0364  0100     MOVLB 0x0
+0366  0E01     MOVLW 0x1
+0368  6FD6     MOVWF link_ok, BANKED
+128:           			link_count = 0;
+036A  0100     MOVLB 0x0
+036C  6BCF     CLRF link_count, BANKED
+036E  6BD0     CLRF 0xD0, BANKED
+129:           		} else {
+0370  D009     BRA 0x384
+130:           			link_ok = FALSE;
+0372  0100     MOVLB 0x0
+0374  6BD6     CLRF link_ok, BANKED
+131:           			V.ihc_data0 = V.ihc_data1 = V.ihc_data2 = V.ihc_data3 = V.ihc_data4 = 0;
+0376  0100     MOVLB 0x0
+0378  9DE8     BCF 0xE8, 6, BANKED
+037A  9BE8     BCF 0xE8, 5, BANKED
+037C  99E8     BCF 0xE8, 4, BANKED
+037E  97E8     BCF 0xE8, 3, BANKED
+0380  95E8     BCF 0xE8, 2, BANKED
+132:           			FINE_REG = LEDOFF; // no fine regulation
+0382  808A     BSF LATB, 0, ACCESS
+133:           		}
+134:           
+135:           		/* Start Led Blink Code */
+136:           		if (V.blink_alt) {
+0384  0100     MOVLB 0x0
+0386  51E2     MOVF 0xE2, W, BANKED
+0388  11E3     IORWF 0xE3, W, BANKED
+038A  E044     BZ 0x414
+137:           			if (V.blink & 0b00000001) LEDS.out_bits.b0 = !LEDS.out_bits.b0;
+038C  51DE     MOVF V, W, BANKED
+038E  0B01     ANDLW 0x1
+0390  E002     BZ 0x396
+0392  0100     MOVLB 0x0
+0394  71EA     BTG LEDS, 0, BANKED
+138:           			if (V.blink & 0b00000010) LEDS.out_bits.b1 = !LEDS.out_bits.b0;
+0396  0100     MOVLB 0x0
+0398  51DE     MOVF V, W, BANKED
+039A  0B02     ANDLW 0x2
+039C  E007     BZ 0x3AC
+039E  0100     MOVLB 0x0
+03A0  51EA     MOVF LEDS, W, BANKED
+03A2  0B01     ANDLW 0x1
+03A4  E002     BZ 0x3AA
+03A6  93EA     BCF LEDS, 1, BANKED
+03A8  D001     BRA 0x3AC
+03AA  83EA     BSF LEDS, 1, BANKED
+139:           			if (V.blink & 0b00000100) LEDS.out_bits.b2 = !LEDS.out_bits.b2;
+03AC  0100     MOVLB 0x0
+03AE  51DE     MOVF V, W, BANKED
+03B0  0B04     ANDLW 0x4
+03B2  E002     BZ 0x3B8
+03B4  0100     MOVLB 0x0
+03B6  75EA     BTG LEDS, 2, BANKED
+140:           			if (V.blink & 0b00001000) LEDS.out_bits.b3 = !LEDS.out_bits.b2;
+03B8  0100     MOVLB 0x0
+03BA  51DE     MOVF V, W, BANKED
+03BC  0B08     ANDLW 0x8
+03BE  E007     BZ 0x3CE
+03C0  0100     MOVLB 0x0
+03C2  51EA     MOVF LEDS, W, BANKED
+03C4  0B04     ANDLW 0x4
+03C6  E002     BZ 0x3CC
+03C8  97EA     BCF LEDS, 3, BANKED
+03CA  D001     BRA 0x3CE
+03CC  87EA     BSF LEDS, 3, BANKED
+141:           			if (V.blink & 0b00010000) LEDS.out_bits.b4 = !LEDS.out_bits.b4;
+03CE  0100     MOVLB 0x0
+03D0  51DE     MOVF V, W, BANKED
+03D2  0B10     ANDLW 0x10
+03D4  E002     BZ 0x3DA
+03D6  0100     MOVLB 0x0
+03D8  79EA     BTG LEDS, 4, BANKED
+142:           			if (V.blink & 0b00100000) LEDS.out_bits.b5 = !LEDS.out_bits.b4;
+03DA  0100     MOVLB 0x0
+03DC  51DE     MOVF V, W, BANKED
+03DE  0B20     ANDLW 0x20
+03E0  E007     BZ 0x3F0
+03E2  0100     MOVLB 0x0
+03E4  51EA     MOVF LEDS, W, BANKED
+03E6  0B10     ANDLW 0x10
+03E8  E002     BZ 0x3EE
+03EA  9BEA     BCF LEDS, 5, BANKED
+03EC  D001     BRA 0x3F0
+03EE  8BEA     BSF LEDS, 5, BANKED
+143:           			if (V.blink & 0b01000000) LEDS.out_bits.b6 = !LEDS.out_bits.b6;
+03F0  0100     MOVLB 0x0
+03F2  51DE     MOVF V, W, BANKED
+03F4  0B40     ANDLW 0x40
+03F6  E002     BZ 0x3FC
+03F8  0100     MOVLB 0x0
+03FA  7DEA     BTG LEDS, 6, BANKED
+144:           			if (V.blink & 0b10000000) LEDS.out_bits.b7 = !LEDS.out_bits.b6;
+03FC  0100     MOVLB 0x0
+03FE  51DE     MOVF V, W, BANKED
+0400  0B80     ANDLW 0x80
+0402  E037     BZ 0x472
+0404  0100     MOVLB 0x0
+0406  51EA     MOVF LEDS, W, BANKED
+0408  0B40     ANDLW 0x40
+040A  E002     BZ 0x410
+040C  9FEA     BCF LEDS, 7, BANKED
+040E  D031     BRA 0x472
+0410  8FEA     BSF LEDS, 7, BANKED
+145:           		} else {
+0412  D02F     BRA 0x472
+146:           			if (V.blink & 0b00000001) LEDS.out_bits.b0 = !LEDS.out_bits.b0;
+0414  51DE     MOVF V, W, BANKED
+0416  0B01     ANDLW 0x1
+0418  E002     BZ 0x41E
+041A  0100     MOVLB 0x0
+041C  71EA     BTG LEDS, 0, BANKED
+147:           			if (V.blink & 0b00000010) LEDS.out_bits.b1 = !LEDS.out_bits.b1;
+041E  0100     MOVLB 0x0
+0420  51DE     MOVF V, W, BANKED
+0422  0B02     ANDLW 0x2
+0424  E002     BZ 0x42A
+0426  0100     MOVLB 0x0
+0428  73EA     BTG LEDS, 1, BANKED
+148:           			if (V.blink & 0b00000100) LEDS.out_bits.b2 = !LEDS.out_bits.b2;
+042A  0100     MOVLB 0x0
+042C  51DE     MOVF V, W, BANKED
+042E  0B04     ANDLW 0x4
+0430  E002     BZ 0x436
+0432  0100     MOVLB 0x0
+0434  75EA     BTG LEDS, 2, BANKED
+149:           			if (V.blink & 0b00001000) LEDS.out_bits.b3 = !LEDS.out_bits.b3;
+0436  0100     MOVLB 0x0
+0438  51DE     MOVF V, W, BANKED
+043A  0B08     ANDLW 0x8
+043C  E002     BZ 0x442
+043E  0100     MOVLB 0x0
+0440  77EA     BTG LEDS, 3, BANKED
+150:           			if (V.blink & 0b00010000) LEDS.out_bits.b4 = !LEDS.out_bits.b4;
+0442  0100     MOVLB 0x0
+0444  51DE     MOVF V, W, BANKED
+0446  0B10     ANDLW 0x10
+0448  E002     BZ 0x44E
+044A  0100     MOVLB 0x0
+044C  79EA     BTG LEDS, 4, BANKED
+151:           			if (V.blink & 0b00100000) LEDS.out_bits.b5 = !LEDS.out_bits.b5;
+044E  0100     MOVLB 0x0
+0450  51DE     MOVF V, W, BANKED
+0452  0B20     ANDLW 0x20
+0454  E002     BZ 0x45A
+0456  0100     MOVLB 0x0
+0458  7BEA     BTG LEDS, 5, BANKED
+152:           			if (V.blink & 0b01000000) LEDS.out_bits.b6 = !LEDS.out_bits.b6;
+045A  0100     MOVLB 0x0
+045C  51DE     MOVF V, W, BANKED
+045E  0B40     ANDLW 0x40
+0460  E002     BZ 0x466
+0462  0100     MOVLB 0x0
+0464  7DEA     BTG LEDS, 6, BANKED
+153:           			if (V.blink & 0b10000000) LEDS.out_bits.b7 = !LEDS.out_bits.b7;
+0466  0100     MOVLB 0x0
+0468  51DE     MOVF V, W, BANKED
+046A  0B80     ANDLW 0x80
+046C  E002     BZ 0x472
+046E  0100     MOVLB 0x0
+0470  7FEA     BTG LEDS, 7, BANKED
+154:           		}
+155:           		if (LEDS.out_byte != led_cache) {
+0472  0100     MOVLB 0x0
+0474  51F8     MOVF led_cache, W, BANKED
+0476  0100     MOVLB 0x0
+0478  5DEA     SUBWF LEDS, W, BANKED
+047A  E02A     BZ 0x4D0
+156:           			if (LEDS.out_bits.b0) {
+047C  A1EA     BTFSS LEDS, 0, BANKED
+047E  D002     BRA 0x484
+157:           				LED0 = LEDON;
+0480  9089     BCF LATA, 0, ACCESS
+158:           			} else {
+0482  D001     BRA 0x486
+159:           				LED0 = LEDOFF;
+0484  8089     BSF LATA, 0, ACCESS
+160:           			}
+161:           			//			LED0 = (LEDS.out_bits.b0 ? LEDON : LEDOFF); // this way generates nasty C18 code
+162:           			if (LEDS.out_bits.b1) {
+0486  A3EA     BTFSS LEDS, 1, BANKED
+0488  D002     BRA 0x48E
+163:           				LED1 = LEDON;
+048A  9289     BCF LATA, 1, ACCESS
+164:           			} else {
+048C  D001     BRA 0x490
+165:           				LED1 = LEDOFF;
+048E  8289     BSF LATA, 1, ACCESS
+166:           			}
+167:           			if (LEDS.out_bits.b2) {
+0490  A5EA     BTFSS LEDS, 2, BANKED
+0492  D002     BRA 0x498
+168:           				LED2 = LEDON;
+0494  9489     BCF LATA, 2, ACCESS
+169:           			} else {
+0496  D001     BRA 0x49A
+170:           				LED2 = LEDOFF;
+0498  8489     BSF LATA, 2, ACCESS
+171:           			}
+172:           			if (LEDS.out_bits.b3) {
+049A  A7EA     BTFSS LEDS, 3, BANKED
+049C  D002     BRA 0x4A2
+173:           				LED3 = LEDON;
+049E  9689     BCF LATA, 3, ACCESS
+174:           			} else {
+04A0  D001     BRA 0x4A4
+175:           				LED3 = LEDOFF;
+04A2  8689     BSF LATA, 3, ACCESS
+176:           			}
+177:           			if (LEDS.out_bits.b4) {
+04A4  A9EA     BTFSS LEDS, 4, BANKED
+04A6  D002     BRA 0x4AC
+178:           				LED4 = LEDON;
+04A8  9C8A     BCF LATB, 6, ACCESS
+179:           			} else {
+04AA  D001     BRA 0x4AE
+180:           				LED4 = LEDOFF;
+04AC  8C8A     BSF LATB, 6, ACCESS
+181:           			}
+182:           			if (LEDS.out_bits.b5) {
+04AE  ABEA     BTFSS LEDS, 5, BANKED
+04B0  D002     BRA 0x4B6
+183:           				LED5 = LEDON;
+04B2  9E8A     BCF LATB, 7, ACCESS
+184:           			} else {
+04B4  D001     BRA 0x4B8
+185:           				LED5 = LEDOFF;
+04B6  8E8A     BSF LATB, 7, ACCESS
+186:           			}
+187:           			if (LEDS.out_bits.b6) {
+04B8  ADEA     BTFSS LEDS, 6, BANKED
+04BA  D002     BRA 0x4C0
+188:           				LED6 = LEDON;
+04BC  9C89     BCF LATA, 6, ACCESS
+189:           			} else {
+04BE  D001     BRA 0x4C2
+190:           				LED6 = LEDOFF;
+04C0  8C89     BSF LATA, 6, ACCESS
+191:           			}
+192:           			if (LEDS.out_bits.b7) {
+04C2  AFEA     BTFSS LEDS, 7, BANKED
+04C4  D002     BRA 0x4CA
+193:           				LED7 = LEDON;
+04C6  9A8A     BCF LATB, 5, ACCESS
+194:           			} else {
+04C8  D001     BRA 0x4CC
+195:           				LED7 = LEDOFF;
+04CA  8A8A     BSF LATB, 5, ACCESS
+196:           			}
+197:           			led_cache = LEDS.out_byte;
+04CC  C0EA     MOVFF LEDS, led_cache
+04CE  F0F8     NOP
+198:           		}
+199:           		/* End Led Blink Code */
+200:           	}
+201:           }
+04D0  0E02     MOVLW 0x2
+04D2  5CE1     SUBWF FSR1, W, ACCESS
+04D4  E202     BC 0x4DA
+04D6  6AE1     CLRF FSR1, ACCESS
+04D8  52E5     MOVF POSTDEC1, F, ACCESS
+04DA  6EE1     MOVWF FSR1, ACCESS
+04DC  52E5     MOVF POSTDEC1, F, ACCESS
+04DE  CFE7     MOVFF INDF1, FSR2
+04E0  FFD9     NOP
+04E2  52E5     MOVF POSTDEC1, F, ACCESS
+04E4  EE00     LFSR 0, 0x7
+04E6  F007     NOP
+04E8  0E02     MOVLW 0x2
+04EA  04E8     DECF WREG, W, ACCESS
+04EC  E303     BNC 0x4F4
+04EE  CFE5     MOVFF POSTDEC1, POSTDEC0
+04F0  FFED     NOP
+04F2  D7FB     BRA 0x4EA
+04F4  CFE5     MOVFF POSTDEC1, PCLATH
+04F6  FFFA     NOP
+04F8  CFE5     MOVFF POSTDEC1, PRODH
+04FA  FFF4     NOP
+04FC  CFE5     MOVFF POSTDEC1, PROD
+04FE  FFF3     NOP
+0500  CFE5     MOVFF POSTDEC1, TABLAT
+0502  FFF5     NOP
+0504  CFE5     MOVFF POSTDEC1, TBLPTRH
+0506  FFF7     NOP
+0508  CFE5     MOVFF POSTDEC1, TBLPTR
+050A  FFF6     NOP
+050C  CFE5     MOVFF POSTDEC1, FSR0H
+050E  FFEA     NOP
+0510  CFE5     MOVFF POSTDEC1, FSR0
+0512  FFE9     NOP
+0514  CFE5     MOVFF POSTDEC1, FSR2H
+0516  FFDA     NOP
+0518  0011     RETFIE 1
+202:           #pragma	tmpdata
+---  /old_os/mplabx/ihc_mon/ibsmon.c  -------------------------------------------------------------------
+1:             
+2:             // PIC18F1320 Configuration Bit Settings
+3:             
+4:             #include <p18f1320.h>
+5:             
+6:             // CONFIG1H
+7:             #pragma config OSC = ECIO       // Oscillator Selection bits (Ext oscillator, port function on RA6)
+8:             #pragma config FSCM = ON        // Fail-Safe Clock Monitor Enable bit (Fail-Safe Clock Monitor enabled)
+9:             #pragma config IESO = ON        // Internal External Switchover bit (Internal External Switchover mode enabled)
+10:            
+11:            // CONFIG2L
+12:            #pragma config PWRT = OFF       // Power-up Timer Enable bit (PWRT disabled)
+13:            #pragma config BOR = ON         // Brown-out Reset Enable bit (Brown-out Reset enabled)
+14:            // BORV = No Setting
+15:            
+16:            // CONFIG2H
+17:            #pragma config WDT = OFF        // Watchdog Timer Enable bit (WDT disabled (control is placed on the SWDTEN bit))
+18:            #pragma config WDTPS = 32768    // Watchdog Timer Postscale Select bits (1:32768)
+19:            
+20:            // CONFIG3H
+21:            #pragma config MCLRE = ON       // MCLR Pin Enable bit (MCLR pin enabled, RA5 input pin disabled)
+22:            
+23:            // CONFIG4L
+24:            #pragma config STVR = ON        // Stack Full/Underflow Reset Enable bit (Stack full/underflow will cause Reset)
+25:            #pragma config LVP = OFF        // Low-Voltage ICSP Enable bit (Low-Voltage ICSP disabled)
+26:            
+27:            // CONFIG5L
+28:            #pragma config CP0 = ON        // Code Protection bit (Block 0 (00200-000FFFh) not code-protected)
+29:            #pragma config CP1 = ON        // Code Protection bit (Block 1 (001000-001FFFh) not code-protected)
+30:            
+31:            // CONFIG5H
+32:            #pragma config CPB = OFF        // Boot Block Code Protection bit (Boot Block (000000-0001FFh) not code-protected)
+33:            #pragma config CPD = OFF        // Data EEPROM Code Protection bit (Data EEPROM not code-protected)
+34:            
+35:            // CONFIG6L
+36:            #pragma config WRT0 = OFF       // Write Protection bit (Block 0 (00200-000FFFh) not write-protected)
+37:            #pragma config WRT1 = OFF       // Write Protection bit (Block 1 (001000-001FFFh) not write-protected)
+38:            
+39:            // CONFIG6H
+40:            #pragma config WRTC = OFF       // Configuration Register Write Protection bit (Configuration registers (300000-3000FFh) not write-protected)
+41:            #pragma config WRTB = OFF       // Boot Block Write Protection bit (Boot Block (000000-0001FFh) not write-protected)
+42:            #pragma config WRTD = OFF       // Data EEPROM Write Protection bit (Data EEPROM not write-protected)
+43:            
+44:            // CONFIG7L
+45:            #pragma config EBTR0 = OFF      // Table Read Protection bit (Block 0 (00200-000FFFh) not protected from table reads executed in other blocks)
+46:            #pragma config EBTR1 = OFF      // Table Read Protection bit (Block 1 (001000-001FFFh) not protected from table reads executed in other blocks)
+47:            
+48:            // CONFIG7H
+49:            #pragma config EBTRB = OFF      // Boot Block Table Read Protection bit (Boot Block (000000-0001FFh) not protected from table reads executed in other blocks)
+50:            
+51:            
+52:            /*
+53:             * Driver software IBS IHC source monitor
+54:             * Runs on a PIC18F1320 
+55:             *	nsaspook@nsaspook.com
+56:             * cpu clock 10mhz external
+57:             * Version
+58:             * 0.1  config chip to read the data stream
+59:             * 0.2  Alpha test version, move to external 10mhz clock for stable 57600 baud timing
+60:             * 0.3  Beta test version
+61:             * 0.4  Adjust comm error and code settings.
+62:             * 0.5  Add Glitch error for red led instead of comm error
+63:             * 0.6  Clean up Glitch code, open filament data limits and code style fixes
+64:             * 0.7	refactor names and functions
+65:             */
+66:            
+67:            #include <p18f1320.h>
+68:            #include <timers.h>
+69:            #include <stdlib.h>
+70:            #include <usart.h>
+71:            #include <stdio.h>
+72:            #include <EEP.h>
+73:            #include "ibsmon.h"
+74:            #include "blinker.h"
+75:            
+76:            void tm_handler(void);
+77:            int16_t display_work(void);
+78:            uint8_t do_config(void);
+79:            void init_ihcmon(void);
+80:            uint8_t init_stream_params(void);
+81:            
+82:            #pragma udata
+83:            volatile struct V_data V;
+84:            volatile union Obits2 LEDS;
+85:            volatile uint8_t ibs_stream_file, ibs_stream_file_prev = 0;
+86:            volatile int16_t ihc_d;
+87:            #pragma udata access ACCESSBANK
+88:            volatile uint16_t timer0_off = TIMEROFFSET, ibs_data[MAX_DATA] = {0}, link_count = 0;
+89:            volatile uint8_t ihc_count[MAX_PARAMS] = {0}, link_ok = FALSE, glitch_count = 0;
+90:            volatile int16_t ibs_d = 1;
+91:            near uint16_t blink_speed;
+92:            
+93:            const rom uint8_t *build_date = __DATE__, *build_time = __TIME__, build_version[5] = "0.7";
+94:            
+95:            #pragma code tm_interrupt = 0x8
+96:            
+97:            void tm_int(void)
+98:            {
+99:            	_asm goto tm_handler _endasm
+0008  EF14     GOTO 0x28
+000A  F000     NOP
+100:           }
+000C  0012     RETURN 0
+101:           #pragma code
+102:           
+103:           /* this is the two color red/green HID controller */
+104:           int16_t display_work(void)
+105:           {
+106:           	if (V.ibs_block_done) {
+051A  0100     MOVLB 0x0
+051C  A3E8     BTFSS 0xE8, 1, BANKED
+051E  D0B3     BRA 0x686
+107:           		if (GLITCH_ERROR == LEDON) {
+0520  B889     BTFSC LATA, 4, ACCESS
+0522  D002     BRA 0x528
+108:           			blink_led(0, OFF, OFF); // LED RED and STEADY
+0524  6AE6     CLRF POSTINC1, ACCESS
+0526  D959     RCALL __pa_7
+07DA  6AE6     CLRF POSTINC1, ACCESS
+07DC  DFDC     RCALL __pa_1
+109:           			blink_led(1, ON, OFF);
+07DE  0E01     MOVLW 0x1
+07E0  6EE6     MOVWF POSTINC1, ACCESS
+07E2  EFC4     GOTO 0x788
+07E4  F003     NOP
+110:           		}
+111:           		if ((V.ihc_data0 & V.ihc_data1 & V.ihc_data2 & V.ihc_data3 & V.ihc_data4) && (V.ihc_d_abs <= IHC_CODE0_TUNE)) { // all good and in rough regulation
+0528  0100     MOVLB 0x0
+052A  51E8     MOVF 0xE8, W, BANKED
+052C  0B40     ANDLW 0x40
+052E  E001     BZ 0x532
+0530  0E01     MOVLW 0x1
+0532  6E03     MOVWF 0x3, ACCESS
+0534  51E8     MOVF 0xE8, W, BANKED
+0536  0B20     ANDLW 0x20
+0538  E001     BZ 0x53C
+053A  0E01     MOVLW 0x1
+053C  6E02     MOVWF 0x2, ACCESS
+053E  51E8     MOVF 0xE8, W, BANKED
+0540  0B10     ANDLW 0x10
+0542  E001     BZ 0x546
+0544  0E01     MOVLW 0x1
+0546  6E01     MOVWF 0x1, ACCESS
+0548  51E8     MOVF 0xE8, W, BANKED
+054A  0B08     ANDLW 0x8
+054C  E001     BZ 0x550
+054E  0E01     MOVLW 0x1
+0550  6E00     MOVWF __tmp_0, ACCESS
+0552  51E8     MOVF 0xE8, W, BANKED
+0554  0B04     ANDLW 0x4
+0556  E001     BZ 0x55A
+0558  0E01     MOVLW 0x1
+055A  1400     ANDWF __tmp_0, W, ACCESS
+055C  1401     ANDWF 0x1, W, ACCESS
+055E  1402     ANDWF 0x2, W, ACCESS
+0560  1403     ANDWF 0x3, W, ACCESS
+0562  E01D     BZ 0x59E
+0564  35E7     RLCF 0xE7, W, BANKED
+0566  E204     BC 0x570
+0568  51E6     MOVF 0xE6, W, BANKED
+056A  081E     SUBLW 0x1E
+056C  0E00     MOVLW 0x0
+056E  55E7     SUBFWB 0xE7, W, BANKED
+0570  E316     BNC 0x59E
+112:           			// IHC Source OK, ALL GREEN and steady, ihc_data[0] is the key parameter
+113:           			blink_led(0, ON, OFF); // led #,on/off, blink
+0572  6AE6     CLRF POSTINC1, ACCESS
+0574  0E01     MOVLW 0x1
+0576  6EE6     MOVWF POSTINC1, ACCESS
+0578  D90E     RCALL __pa_1
+114:           			blink_led(1, OFF, OFF); //     DISPLAY LEDS
+057A  6AE6     CLRF POSTINC1, ACCESS
+057C  0E01     MOVLW 0x1
+057E  D921     RCALL __pa_4
+115:           			blink_led(2, ON, OFF); // [0..1]Cath V  X  X Cath I [4..5]
+0580  0E02     MOVLW 0x2
+0582  D924     RCALL __pa_5
+116:           			blink_led(3, OFF, OFF); // [2..3]Fila V  X  X Fila I [6..7]
+0584  0E03     MOVLW 0x3
+0586  D91D     RCALL __pa_4
+117:           			blink_led(4, ON, OFF); //               X  X
+0588  0E04     MOVLW 0x4
+058A  D920     RCALL __pa_5
+118:           			blink_led(5, OFF, OFF); //    Glitch     X  X Regulation Fine Mode
+058C  0E05     MOVLW 0x5
+058E  D919     RCALL __pa_4
+119:           			blink_led(6, ON, OFF);
+0590  0E06     MOVLW 0x6
+0592  D91C     RCALL __pa_5
+120:           			blink_led(7, OFF, OFF);
+0594  0E07     MOVLW 0x7
+0596  D8F8     RCALL __pa_0
+121:           			V.inreg = TRUE; // tighten the limits when in regulation
+0598  0100     MOVLB 0x0
+059A  81E8     BSF 0xE8, 0, BANKED
+122:           		} else {
+059C  D04E     BRA 0x63A
+123:           			V.inreg = FALSE;
+059E  91E8     BCF 0xE8, 0, BANKED
+124:           			blink_speed = TIMERFAST;
+05A0  0E48     MOVLW 0x48
+05A2  6E08     MOVWF blink_speed, ACCESS
+05A4  0EEE     MOVLW 0xEE
+05A6  6E09     MOVWF 0x9, ACCESS
+125:           			// IHC Source out of regulation or IHC parameters out of range
+126:           			if (V.ihc_data3) { // green and blinking if this is IN range
+05A8  ABE8     BTFSS 0xE8, 5, BANKED
+05AA  D008     BRA 0x5BC
+127:           				blink_led(0, ON, ON);
+05AC  0E01     MOVLW 0x1
+05AE  6EE6     MOVWF POSTINC1, ACCESS
+05B0  6EE6     MOVWF POSTINC1, ACCESS
+05B2  D8F1     RCALL __pa_1
+128:           				blink_led(1, OFF, OFF);
+05B4  6AE6     CLRF POSTINC1, ACCESS
+05B6  0E01     MOVLW 0x1
+05B8  D90D     RCALL __pa_6
+129:           				blink_speed -= 2500; // speed feedback
+130:           			} else { // red and blinking if this is OUT of range
+05BA  D003     BRA 0x5C2
+131:           				blink_led(0, OFF, ON);
+05BC  0E01     MOVLW 0x1
+05BE  6EE6     MOVWF POSTINC1, ACCESS
+05C0  D90C     RCALL __pa_7
+0796  6AE6     CLRF POSTINC1, ACCESS
+0798  ECF3     CALL 0x7E6, 0
+079A  F003     NOP
+079C  52E5     MOVF POSTDEC1, F, ACCESS
+079E  52E5     MOVF POSTDEC1, F, ACCESS
+07A0  52E5     MOVF POSTDEC1, F, ACCESS
+132:           				blink_led(1, ON, OFF);
+07A2  6AE6     CLRF POSTINC1, ACCESS
+07A4  0012     RETURN 0
+133:           			}
+134:           			if (V.ihc_data4) {
+05C2  0100     MOVLB 0x0
+05C4  ADE8     BTFSS 0xE8, 6, BANKED
+05C6  D008     BRA 0x5D8
+135:           				blink_led(4, ON, ON);
+05C8  0E01     MOVLW 0x1
+05CA  6EE6     MOVWF POSTINC1, ACCESS
+05CC  6EE6     MOVWF POSTINC1, ACCESS
+05CE  0E04     MOVLW 0x4
+05D0  D8FD     RCALL __pa_5
+136:           				blink_led(5, OFF, OFF);
+05D2  0E05     MOVLW 0x5
+05D4  D8FF     RCALL __pa_6
+137:           				blink_speed -= 2500;
+138:           			} else {
+05D6  D007     BRA 0x5E6
+139:           				blink_led(4, OFF, ON);
+05D8  0E01     MOVLW 0x1
+05DA  6EE6     MOVWF POSTINC1, ACCESS
+05DC  6AE6     CLRF POSTINC1, ACCESS
+05DE  0E04     MOVLW 0x4
+05E0  D8F0     RCALL __pa_4
+140:           				blink_led(5, ON, OFF);
+05E2  0E05     MOVLW 0x5
+05E4  D8D1     RCALL __pa_0
+141:           			}
+142:           			if (V.ihc_data1) {
+05E6  0100     MOVLB 0x0
+05E8  A7E8     BTFSS 0xE8, 3, BANKED
+05EA  D008     BRA 0x5FC
+143:           				blink_led(2, ON, ON);
+05EC  0E01     MOVLW 0x1
+05EE  6EE6     MOVWF POSTINC1, ACCESS
+05F0  6EE6     MOVWF POSTINC1, ACCESS
+05F2  0E02     MOVLW 0x2
+05F4  D8EB     RCALL __pa_5
+144:           				blink_led(3, OFF, OFF);
+05F6  0E03     MOVLW 0x3
+05F8  D8ED     RCALL __pa_6
+145:           				blink_speed -= 2500;
+146:           			} else {
+05FA  D007     BRA 0x60A
+147:           				blink_led(2, OFF, ON);
+05FC  0E01     MOVLW 0x1
+05FE  6EE6     MOVWF POSTINC1, ACCESS
+0600  6AE6     CLRF POSTINC1, ACCESS
+0602  0E02     MOVLW 0x2
+0604  D8DE     RCALL __pa_4
+148:           				blink_led(3, ON, OFF);
+0606  0E03     MOVLW 0x3
+0608  D8BF     RCALL __pa_0
+149:           			}
+150:           			if (V.ihc_data2) {
+060A  0100     MOVLB 0x0
+060C  A9E8     BTFSS 0xE8, 4, BANKED
+060E  D008     BRA 0x620
+151:           				blink_led(6, ON, ON);
+0610  0E01     MOVLW 0x1
+0612  6EE6     MOVWF POSTINC1, ACCESS
+0614  6EE6     MOVWF POSTINC1, ACCESS
+0616  0E06     MOVLW 0x6
+0618  D8D9     RCALL __pa_5
+07CC  DFDD     RCALL __pa_0
+152:           				blink_led(7, OFF, OFF);
+061A  0E07     MOVLW 0x7
+061C  D8DB     RCALL __pa_6
+07CE  6AE6     CLRF POSTINC1, ACCESS
+07D0  6AE6     CLRF POSTINC1, ACCESS
+07D2  0012     RETURN 0
+07D4  DFD9     RCALL __pa_0
+153:           				blink_speed -= 2500;
+07B8  0EC4     MOVLW 0xC4
+07BA  5E08     SUBWF blink_speed, F, ACCESS
+07BC  0E09     MOVLW 0x9
+07BE  5A09     SUBWFB 0x9, F, ACCESS
+07C0  0012     RETURN 0
+07D6  EFDC     GOTO 0x7B8
+07D8  F003     NOP
+154:           			} else {
+061E  D007     BRA 0x62E
+155:           				blink_led(6, OFF, ON);
+0620  0E01     MOVLW 0x1
+0622  6EE6     MOVWF POSTINC1, ACCESS
+0624  6AE6     CLRF POSTINC1, ACCESS
+0626  0E06     MOVLW 0x6
+0628  D8CC     RCALL __pa_4
+07C2  DFE2     RCALL __pa_0
+156:           				blink_led(7, ON, OFF);
+062A  0E07     MOVLW 0x7
+062C  D8AD     RCALL __pa_0
+0788  6EE6     MOVWF POSTINC1, ACCESS
+078A  ECF3     CALL 0x7E6, 0
+078C  F003     NOP
+078E  52E5     MOVF POSTDEC1, F, ACCESS
+0790  52E5     MOVF POSTDEC1, F, ACCESS
+0792  52E5     MOVF POSTDEC1, F, ACCESS
+0794  0012     RETURN 0
+07C4  6AE6     CLRF POSTINC1, ACCESS
+07C6  0E01     MOVLW 0x1
+07C8  6EE6     MOVWF POSTINC1, ACCESS
+07CA  0012     RETURN 0
+157:           			}
+158:           			INTCONbits.GIEH = 0;
+062E  9EF2     BCF INTCON, 7, ACCESS
+159:           			timer0_off = blink_speed;
+0630  C008     MOVFF blink_speed, timer0_off
+0632  F0C1     NOP
+0634  C009     MOVFF 0x9, 0xC2
+0636  F0C2     NOP
+160:           			INTCONbits.GIEH = 1;
+0638  8EF2     BSF INTCON, 7, ACCESS
+161:           		}
+162:           		V.ibs_block_done = FALSE;
+063A  0100     MOVLB 0x0
+063C  93E8     BCF 0xE8, 1, BANKED
+163:           		if ((!V.ihc_data0 & !V.ihc_data1 & !V.ihc_data2 & !V.ihc_data3 & !V.ihc_data4)) {
+063E  51E8     MOVF 0xE8, W, BANKED
+0640  0B40     ANDLW 0x40
+0642  0A40     XORLW 0x40
+0644  E001     BZ 0x648
+0646  0E01     MOVLW 0x1
+0648  6E03     MOVWF 0x3, ACCESS
+064A  51E8     MOVF 0xE8, W, BANKED
+064C  0B20     ANDLW 0x20
+064E  0A20     XORLW 0x20
+0650  E001     BZ 0x654
+0652  0E01     MOVLW 0x1
+0654  6E02     MOVWF 0x2, ACCESS
+0656  51E8     MOVF 0xE8, W, BANKED
+0658  0B10     ANDLW 0x10
+065A  0A10     XORLW 0x10
+065C  E001     BZ 0x660
+065E  0E01     MOVLW 0x1
+0660  6E01     MOVWF 0x1, ACCESS
+0662  51E8     MOVF 0xE8, W, BANKED
+0664  0B08     ANDLW 0x8
+0666  0A08     XORLW 0x8
+0668  E001     BZ 0x66C
+066A  0E01     MOVLW 0x1
+066C  6E00     MOVWF __tmp_0, ACCESS
+066E  51E8     MOVF 0xE8, W, BANKED
+0670  0B04     ANDLW 0x4
+0672  0A04     XORLW 0x4
+0674  E001     BZ 0x678
+0676  0E01     MOVLW 0x1
+0678  1400     ANDWF __tmp_0, W, ACCESS
+067A  1401     ANDWF 0x1, W, ACCESS
+067C  1402     ANDWF 0x2, W, ACCESS
+067E  1403     ANDWF 0x3, W, ACCESS
+0680  E002     BZ 0x686
+164:           			GLITCH_ERROR = LEDOFF;
+0682  8889     BSF LATA, 4, ACCESS
+165:           			V.stable = FALSE;
+0684  91E9     BCF 0xE9, 0, BANKED
+166:           		}
+167:           	}
+168:           	return 0;
+0686  6AF3     CLRF PROD, ACCESS
+0688  6AF4     CLRF PRODH, ACCESS
+169:           }
+068A  0012     RETURN 0
+170:           
+171:           uint8_t do_config(void)
+172:           {
+173:           	INTCONbits.GIEH = 0;
+068C  9EF2     BCF INTCON, 7, ACCESS
+174:           	if (Read_b_eep(0) == '?') { // use default options
+068E  D88B     RCALL __pa_2
+0690  E106     BNZ 0x69E
+07A6  0E00     MOVLW 0x0
+07A8  6EE6     MOVWF POSTINC1, ACCESS
+07AA  6AE6     CLRF POSTINC1, ACCESS
+07AC  EC66     CALL 0xACC, 0
+07AE  F005     NOP
+07B0  52E5     MOVF POSTDEC1, F, ACCESS
+07B2  52E5     MOVF POSTDEC1, F, ACCESS
+07B4  083F     SUBLW 0x3F
+07B6  0012     RETURN 0
+175:           		V.fine = IHC_CODE0_FINE;
+0692  0E05     MOVLW 0x5
+0694  0100     MOVLB 0x0
+0696  6FE4     MOVWF 0xE4, BANKED
+0698  6BE5     CLRF 0xE5, BANKED
+176:           		Write_b_eep(0, 'D'); // write into EEPROM
+069A  0E44     MOVLW 0x44
+177:           	} else { // set FINE options.
+069C  D005     BRA 0x6A8
+178:           		V.fine = IHC_CODE0_VFINE;
+069E  0E01     MOVLW 0x1
+06A0  0100     MOVLB 0x0
+06A2  6FE4     MOVWF 0xE4, BANKED
+06A4  6BE5     CLRF 0xE5, BANKED
+179:           		Write_b_eep(0, '?'); // write into EEPROM
+06A6  0E3F     MOVLW 0x3F
+06A8  6EE6     MOVWF POSTINC1, ACCESS
+06AA  0E00     MOVLW 0x0
+06AC  6EE6     MOVWF POSTINC1, ACCESS
+06AE  6AE6     CLRF POSTINC1, ACCESS
+06B0  EC3F     CALL 0xA7E, 0
+06B2  F005     NOP
+06B4  52E5     MOVF POSTDEC1, F, ACCESS
+06B6  52E5     MOVF POSTDEC1, F, ACCESS
+06B8  52E5     MOVF POSTDEC1, F, ACCESS
+180:           	}
+181:           	Busy_eep();
+06BA  EC26     CALL 0xC4C, 0
+06BC  F006     NOP
+182:           	INTCONbits.GIEH = 1;
+06BE  8EF2     BSF INTCON, 7, ACCESS
+183:           	V.config = FALSE;
+06C0  0100     MOVLB 0x0
+06C2  9FE8     BCF 0xE8, 7, BANKED
+184:           	GLITCH_ERROR = LEDOFF;
+06C4  8889     BSF LATA, 4, ACCESS
+185:           	return V.fine;
+06C6  51E4     MOVF 0xE4, W, BANKED
+186:           }
+06C8  0012     RETURN 0
+187:           
+188:           void init_ihcmon(void)
+189:           {
+190:           	ADCON1 = 0x7F; // all digital, no ADC
+06CA  0E7F     MOVLW 0x7F
+06CC  6EC1     MOVWF ADCON1, ACCESS
+191:           	/* interrupt priority ON */
+192:           	RCONbits.IPEN = 1;
+06CE  8ED0     BSF RCON, 7, ACCESS
+193:           	/* define I/O ports */
+194:           	IBSPORTA = IBSPORT_IOA;
+06D0  6A92     CLRF TRISA, ACCESS
+195:           	IBSPORTB = IBSPORT_IOB;
+06D2  0E12     MOVLW 0x12
+06D4  6E93     MOVWF TRISB, ACCESS
+196:           
+197:           	LED0 = LEDON; // preset all LEDS
+06D6  9089     BCF LATA, 0, ACCESS
+198:           	LED1 = LEDON;
+06D8  9289     BCF LATA, 1, ACCESS
+199:           	LED2 = LEDON;
+06DA  9489     BCF LATA, 2, ACCESS
+200:           	LED3 = LEDON;
+06DC  9689     BCF LATA, 3, ACCESS
+201:           	LED4 = LEDON;
+06DE  9C8A     BCF LATB, 6, ACCESS
+202:           	LED5 = LEDON;
+06E0  9E8A     BCF LATB, 7, ACCESS
+203:           	LED6 = LEDON;
+06E2  9C89     BCF LATA, 6, ACCESS
+204:           	LED7 = LEDON;
+06E4  9A8A     BCF LATB, 5, ACCESS
+205:           	FINE_REG = LEDON; // will stay ON if a bad data stream in present when booted
+06E6  908A     BCF LATB, 0, ACCESS
+206:           	GLITCH_ERROR = LEDON;
+06E8  9889     BCF LATA, 4, ACCESS
+207:           	Blink_Init();
+06EA  EC8D     CALL 0x91A, 0
+06EC  F004     NOP
+208:           	timer0_off = TIMERFAST; // blink fast
+06EE  0100     MOVLB 0x0
+06F0  0E48     MOVLW 0x48
+06F2  6FC1     MOVWF timer0_off, BANKED
+06F4  0EEE     MOVLW 0xEE
+06F6  6FC2     MOVWF 0xC2, BANKED
+209:           	OpenTimer0(TIMER_INT_ON & T0_16BIT & T0_SOURCE_INT & T0_PS_1_64); // led blinker
+06F8  0E95     MOVLW 0x95
+06FA  6EE6     MOVWF POSTINC1, ACCESS
+06FC  ECE1     CALL 0xBC2, 0
+06FE  F005     NOP
+0700  52E5     MOVF POSTDEC1, F, ACCESS
+210:           	WriteTimer0(timer0_off); //	start timer0 at ~1/2 second ticks
+0702  C0C1     MOVFF timer0_off, POSTINC1
+0704  FFE6     NOP
+0706  C0C2     MOVFF 0xC2, POSTINC1
+0708  FFE6     NOP
+070A  ECC5     CALL 0xB8A, 0
+070C  F005     NOP
+070E  52E5     MOVF POSTDEC1, F, ACCESS
+0710  52E5     MOVF POSTDEC1, F, ACCESS
+211:           	OpenTimer1(TIMER_INT_ON & T1_16BIT_RW & T1_SOURCE_INT & T1_PS_1_4 & T1_OSC1EN_OFF & T1_SYNC_EXT_OFF); // aux work thread
+0712  0EE5     MOVLW 0xE5
+0714  6EE6     MOVWF POSTINC1, ACCESS
+0716  EC88     CALL 0xB10, 0
+0718  F005     NOP
+071A  52E5     MOVF POSTDEC1, F, ACCESS
+212:           	WriteTimer1(SAMPLEFREQ);
+071C  0EB2     MOVLW 0xB2
+071E  6EE6     MOVWF POSTINC1, ACCESS
+0720  0EE7     MOVLW 0xE7
+0722  6EE6     MOVWF POSTINC1, ACCESS
+0724  ECA9     CALL 0xB52, 0
+0726  F005     NOP
+0728  52E5     MOVF POSTDEC1, F, ACCESS
+072A  52E5     MOVF POSTDEC1, F, ACCESS
+213:           	/* Light-link data input */
+214:           	COMM_ENABLE = FALSE; // for PICDEM4 onboard RS-232, not used on custom board
+072C  968A     BCF LATB, 3, ACCESS
+215:           	OpenUSART(USART_TX_INT_OFF &
+216:           		USART_RX_INT_ON &
+217:           		USART_ASYNCH_MODE &
+218:           		USART_EIGHT_BIT &
+219:           		USART_CONT_RX &
+220:           		USART_BRGH_HIGH, 42); // 10mhz osc HS		57600 baud
+072E  0E2A     MOVLW 0x2A
+0730  6EE6     MOVWF POSTINC1, ACCESS
+0732  6AE6     CLRF POSTINC1, ACCESS
+0734  0E7C     MOVLW 0x7C
+0736  6EE6     MOVWF POSTINC1, ACCESS
+0738  ECFA     CALL 0x9F4, 0
+073A  F004     NOP
+073C  52E5     MOVF POSTDEC1, F, ACCESS
+073E  52E5     MOVF POSTDEC1, F, ACCESS
+0740  52E5     MOVF POSTDEC1, F, ACCESS
+221:           	BAUDCTLbits.BRG16 = 1;
+0742  86AA     BSF BAUDCTL, 3, ACCESS
+222:           	TXSTAbits.BRGH = 1;
+0744  84AC     BSF TXSTA, 2, ACCESS
+223:           	SPBRGH = 0;
+0746  6AB0     CLRF SPBRGH, ACCESS
+224:           	SPBRG = 42;
+0748  0E2A     MOVLW 0x2A
+074A  6EAF     MOVWF SPBRG, ACCESS
+225:           	/*      work int thread setup */
+226:           	INTCONbits.TMR0IE = 1; // enable int
+074C  8AF2     BSF INTCON, 5, ACCESS
+227:           	INTCON2bits.TMR0IP = 1; // make it high level
+074E  84F1     BSF INTCON2, 2, ACCESS
+228:           	PIE1bits.TMR1IE = 1; // enable int
+0750  809D     BSF PIE1, 0, ACCESS
+229:           	IPR1bits.TMR1IP = 1; // make it high level
+0752  809F     BSF IPR1, 0, ACCESS
+230:           
+231:           	init_stream_params();
+0754  D802     RCALL init_stream_params
+232:           
+233:           	/* Enable all high priority interrupts */
+234:           	INTCONbits.GIEH = 1;
+0756  8EF2     BSF INTCON, 7, ACCESS
+235:           }
+0758  0012     RETURN 0
+236:           
+237:           uint8_t init_stream_params(void)
+238:           {
+239:           	/* setup the IHC stream parser */
+240:           	V.ibs_block_done = FALSE;
+075A  0100     MOVLB 0x0
+075C  93E8     BCF 0xE8, 1, BANKED
+241:           	V.inreg = FALSE;
+075E  91E8     BCF 0xE8, 0, BANKED
+242:           	V.config = FALSE;
+0760  9FE8     BCF 0xE8, 7, BANKED
+243:           	V.fine = IHC_CODE0_FINE;
+0762  0E05     MOVLW 0x5
+0764  6FE4     MOVWF 0xE4, BANKED
+0766  6BE5     CLRF 0xE5, BANKED
+244:           	if (Read_b_eep(0) == '?') V.fine = IHC_CODE0_VFINE;
+0768  D81E     RCALL __pa_2
+076A  E104     BNZ 0x774
+076C  0E01     MOVLW 0x1
+076E  0100     MOVLB 0x0
+0770  6FE4     MOVWF 0xE4, BANKED
+0772  6BE5     CLRF 0xE5, BANKED
+245:           	return V.fine;
+0774  0100     MOVLB 0x0
+0776  51E4     MOVF 0xE4, W, BANKED
+246:           }
+0778  0012     RETURN 0
+247:           
+248:           void main(void)
+249:           {
+250:           	init_ihcmon();
+077A  DFA7     RCALL init_ihcmon
+251:           	/* Loop forever */
+252:           	while (TRUE) { // busy work
+0786  D7FA     BRA 0x77C
+253:           		display_work(); // Show the status of the IHC controller and source
+077C  DECE     RCALL display_work
+254:           		if (V.config)
+077E  0100     MOVLB 0x0
+0780  AFE8     BTFSS 0xE8, 7, BANKED
+0782  D7FC     BRA 0x77C
+255:           			do_config();
+0784  DF83     RCALL do_config
+256:           	}
+257:           }
+---  /old_os/mplabx/ihc_mon/blinker.c  ------------------------------------------------------------------
+1:             #include "blinker.h"
+2:             
+3:             uint8_t blink_led(uint8_t led, uint8_t on_led, uint8_t start) // blink and store status of 8 leds
+07E6  D8A3     RCALL __pa_0
+4:             {
+5:                 if (led > 7) 
+07E8  0807     SUBLW 0x7
+07EA  E369     BNC 0x8BE
+6:             		return LEDS.out_byte;
+7:             
+8:                 if (on_led) {
+07EC  0EFD     MOVLW 0xFD
+07EE  50DB     MOVF PLUSW2, W, ACCESS
+07F0  E010     BZ 0x812
+9:                     V.blink_out &= ~(0x0001 << led); // reset the bit and store it on [8..15] of blink
+07F2  D8A4     RCALL __pa_1
+07F4  E002     BZ 0x7FA
+07F6  D8AB     RCALL __pa_3
+07F8  E1FE     BNZ 0x7F6
+07FA  50F3     MOVF PROD, W, ACCESS
+07FC  1CF3     COMF PROD, W, ACCESS
+07FE  6E00     MOVWF __tmp_0, ACCESS
+0800  6A01     CLRF 0x1, ACCESS
+0802  BE00     BTFSC __tmp_0, 7, ACCESS
+0804  6801     SETF 0x1, ACCESS
+0806  5000     MOVF __tmp_0, W, ACCESS
+0808  0100     MOVLB 0x0
+080A  17E0     ANDWF 0xE0, F, BANKED
+080C  5001     MOVF 0x1, W, ACCESS
+080E  17E1     ANDWF 0xE1, F, BANKED
+10:                } else {
+0810  D00E     BRA 0x82E
+11:                    V.blink_out |= (0x0001 << led); // set the bit and store it on [8..15] of blink
+0812  D894     RCALL __pa_1
+0814  E002     BZ 0x81A
+0816  D89B     RCALL __pa_3
+0818  E1FE     BNZ 0x816
+081A  50F3     MOVF PROD, W, ACCESS
+081C  6E00     MOVWF __tmp_0, ACCESS
+081E  6A01     CLRF 0x1, ACCESS
+0820  BE00     BTFSC __tmp_0, 7, ACCESS
+0822  6801     SETF 0x1, ACCESS
+0824  5000     MOVF __tmp_0, W, ACCESS
+0826  0100     MOVLB 0x0
+0828  13E0     IORWF 0xE0, F, BANKED
+082A  5001     MOVF 0x1, W, ACCESS
+082C  13E1     IORWF 0xE1, F, BANKED
+12:                }
+13:            
+14:                if (start) {
+082E  0EFC     MOVLW 0xFC
+0830  50DB     MOVF PLUSW2, W, ACCESS
+0832  E00F     BZ 0x852
+15:                    V.blink |= 0x0001 << led; // set the blink bit for the LED
+0834  D883     RCALL __pa_1
+0836  E002     BZ 0x83C
+0838  D88A     RCALL __pa_3
+083A  E1FE     BNZ 0x838
+083C  50F3     MOVF PROD, W, ACCESS
+083E  6E00     MOVWF __tmp_0, ACCESS
+0840  6A01     CLRF 0x1, ACCESS
+0842  BE00     BTFSC __tmp_0, 7, ACCESS
+0844  6801     SETF 0x1, ACCESS
+0846  5000     MOVF __tmp_0, W, ACCESS
+0848  0100     MOVLB 0x0
+084A  13DE     IORWF V, F, BANKED
+084C  5001     MOVF 0x1, W, ACCESS
+084E  13DF     IORWF 0xDF, F, BANKED
+16:                } else {
+0850  D036     BRA 0x8BE
+17:                    V.blink &= ~(0x0001 << led); // reset the blink bit for the LED
+0852  D874     RCALL __pa_1
+0854  E002     BZ 0x85A
+0856  D87B     RCALL __pa_3
+0858  E1FE     BNZ 0x856
+085A  50F3     MOVF PROD, W, ACCESS
+085C  1CF3     COMF PROD, W, ACCESS
+085E  6E00     MOVWF __tmp_0, ACCESS
+0860  6A01     CLRF 0x1, ACCESS
+0862  BE00     BTFSC __tmp_0, 7, ACCESS
+0864  6801     SETF 0x1, ACCESS
+0866  5000     MOVF __tmp_0, W, ACCESS
+0868  0100     MOVLB 0x0
+086A  17DE     ANDWF V, F, BANKED
+086C  5001     MOVF 0x1, W, ACCESS
+086E  17DF     ANDWF 0xDF, F, BANKED
+18:                    LEDS.out_byte &= ~(0x01 << led); // reset the LEDS bit for the LED
+0870  D865     RCALL __pa_1
+0872  E002     BZ 0x878
+0874  D86C     RCALL __pa_3
+0876  E1FE     BNZ 0x874
+0878  50F3     MOVF PROD, W, ACCESS
+087A  1CF3     COMF PROD, W, ACCESS
+087C  0100     MOVLB 0x0
+087E  17EA     ANDWF LEDS, F, BANKED
+093C  0E01     MOVLW 0x1
+093E  6EF3     MOVWF PROD, ACCESS
+0940  0EFE     MOVLW 0xFE
+0942  50DB     MOVF PLUSW2, W, ACCESS
+0944  0012     RETURN 0
+094E  90D8     BCF STATUS, 0, ACCESS
+0950  36F3     RLCF PROD, F, ACCESS
+0952  06E8     DECF WREG, F, ACCESS
+0954  0012     RETURN 0
+19:                    LEDS.out_byte |= (((V.blink_out >> led)&0x01) << led); // restore the LEDS bit status to the on_led state
+0880  0EFE     MOVLW 0xFE
+0882  50DB     MOVF PLUSW2, W, ACCESS
+0884  C0E0     MOVFF 0xE0, 0x2
+0886  F002     NOP
+0888  C0E1     MOVFF 0xE1, 0x3
+088A  F003     NOP
+088C  E005     BZ 0x898
+088E  90D8     BCF STATUS, 0, ACCESS
+0890  3203     RRCF 0x3, F, ACCESS
+0892  3202     RRCF 0x2, F, ACCESS
+0894  04E8     DECF WREG, W, ACCESS
+0896  E1FB     BNZ 0x88E
+0898  0E01     MOVLW 0x1
+089A  1602     ANDWF 0x2, F, ACCESS
+089C  0E00     MOVLW 0x0
+089E  1603     ANDWF 0x3, F, ACCESS
+08A0  0EFE     MOVLW 0xFE
+08A2  50DB     MOVF PLUSW2, W, ACCESS
+08A4  C002     MOVFF 0x2, __tmp_0
+08A6  F000     NOP
+08A8  C003     MOVFF 0x3, 0x1
+08AA  F001     NOP
+08AC  E005     BZ 0x8B8
+08AE  90D8     BCF STATUS, 0, ACCESS
+08B0  3600     RLCF __tmp_0, F, ACCESS
+08B2  3601     RLCF 0x1, F, ACCESS
+08B4  04E8     DECF WREG, W, ACCESS
+08B6  E1FB     BNZ 0x8AE
+08B8  5000     MOVF __tmp_0, W, ACCESS
+08BA  0100     MOVLB 0x0
+08BC  13EA     IORWF LEDS, F, BANKED
+20:                }
+21:                return LEDS.out_byte;
+08BE  0100     MOVLB 0x0
+08C0  51EA     MOVF LEDS, W, BANKED
+22:            }
+08C2  D041     BRA __pa_2
+23:            
+24:            uint8_t is_led_blinking(uint8_t led) {
+08C4  D834     RCALL __pa_0
+25:                return (V.blink >> led)&0b00000001;
+08C6  C0DE     MOVFF V, __tmp_0
+08C8  F000     NOP
+08CA  C0DF     MOVFF 0xDF, 0x1
+08CC  F001     NOP
+08CE  E005     BZ 0x8DA
+08D0  90D8     BCF STATUS, 0, ACCESS
+08D2  3201     RRCF 0x1, F, ACCESS
+08D4  3200     RRCF __tmp_0, F, ACCESS
+08D6  04E8     DECF WREG, W, ACCESS
+08D8  E1FB     BNZ 0x8D0
+08DA  0E01     MOVLW 0x1
+08DC  1400     ANDWF __tmp_0, W, ACCESS
+26:            }
+08DE  D033     BRA __pa_2
+27:            
+28:            uint8_t blink_led_alt(uint8_t alt) // set alt and returns the previous value
+08E0  CFD9     MOVFF FSR2, POSTINC1
+08E2  FFE6     NOP
+08E4  CFE1     MOVFF FSR1, FSR2
+08E6  FFD9     NOP
+08E8  52E6     MOVF POSTINC1, F, ACCESS
+29:            {
+30:                uint8_t old_alt = V.blink_alt;
+08EA  C0E2     MOVFF 0xE2, INDF2
+08EC  FFDF     NOP
+31:                V.blink_alt = alt;
+08EE  0EFE     MOVLW 0xFE
+08F0  50DB     MOVF PLUSW2, W, ACCESS
+08F2  0100     MOVLB 0x0
+08F4  6FE2     MOVWF 0xE2, BANKED
+08F6  6BE3     CLRF 0xE3, BANKED
+32:                return old_alt;
+08F8  50DF     MOVF INDF2, W, ACCESS
+33:            }
+08FA  52E5     MOVF POSTDEC1, F, ACCESS
+08FC  D024     BRA __pa_2
+34:            
+35:            uint8_t is_led_on(uint8_t led) {
+08FE  D817     RCALL __pa_0
+092E  CFD9     MOVFF FSR2, POSTINC1
+0930  FFE6     NOP
+0932  CFE1     MOVFF FSR1, FSR2
+0934  FFD9     NOP
+36:                return (V.blink_out >> led)&0b00000001;
+0900  C0E0     MOVFF 0xE0, __tmp_0
+0902  F000     NOP
+0904  C0E1     MOVFF 0xE1, 0x1
+0906  F001     NOP
+0908  E005     BZ 0x914
+090A  90D8     BCF STATUS, 0, ACCESS
+090C  3201     RRCF 0x1, F, ACCESS
+090E  3200     RRCF __tmp_0, F, ACCESS
+0910  04E8     DECF WREG, W, ACCESS
+0912  E1FB     BNZ 0x90A
+0914  0E01     MOVLW 0x1
+0916  1400     ANDWF __tmp_0, W, ACCESS
+0936  0EFE     MOVLW 0xFE
+0938  50DB     MOVF PLUSW2, W, ACCESS
+093A  0012     RETURN 0
+37:            }
+0918  D016     BRA __pa_2
+0946  52E5     MOVF POSTDEC1, F, ACCESS
+0948  CFE7     MOVFF INDF1, FSR2
+094A  FFD9     NOP
+094C  0012     RETURN 0
+38:            
+39:            void Blink_Init(void) {
+40:                LEDS.out_byte = 0xff;
+091A  0100     MOVLB 0x0
+091C  69EA     SETF LEDS, BANKED
+41:                V.blink = 0;
+091E  0100     MOVLB 0x0
+0920  6BDE     CLRF V, BANKED
+0922  6BDF     CLRF 0xDF, BANKED
+42:                V.blink_out = 0;
+0924  6BE0     CLRF 0xE0, BANKED
+0926  6BE1     CLRF 0xE1, BANKED
+43:                V.blink_alt = 0;
+0928  6BE2     CLRF 0xE2, BANKED
+092A  6BE3     CLRF 0xE3, BANKED
+44:                // High priority interrupt in ISR for Blink timer. Called 1/2sec.
+45:            }
+092C  0012     RETURN 0
+46:            
+---  /MCC18/v3_39/src/traditional/stdclib/__init.c  -----------------------------------------------------
+0006  0012     RETURN 0
+---  /MCC18/v3_39/src/traditional/startup/c018i.c  ------------------------------------------------------
+0000  EF0D     GOTO 0xC1A
+0002  F006     NOP
+0004  0012     RETURN 0
+0C1A  EE10     LFSR 1, 0x80
+0C1C  F080     NOP
+0C1E  EE20     LFSR 2, 0x80
+0C20  F080     NOP
+0C22  6AF8     CLRF TBLPTRU, ACCESS
+0C24  9C07     BCF 0x7, 6, ACCESS
+0C26  ECAB     CALL 0x956, 0
+0C28  F004     NOP
+0C2A  EC03     CALL 0x6, 0
+0C2C  F000     NOP
+0C2E  ECBD     CALL 0x77A, 0
+0C30  F003     NOP
+0C32  D7FB     BRA 0xC2A
+0C34  0012     RETURN 0
+0956  0E0E     MOVLW 0xE
+0958  6EF6     MOVWF TBLPTR, ACCESS
+095A  0E00     MOVLW 0x0
+095C  6EF7     MOVWF TBLPTRH, ACCESS
+095E  0E00     MOVLW 0x0
+0960  6EF8     MOVWF TBLPTRU, ACCESS
+0962  0100     MOVLB 0x0
+0964  0009     TBLRD*+
+0966  50F5     MOVF TABLAT, W, ACCESS
+0968  6FF3     MOVWF curr_entry, BANKED
+096A  0009     TBLRD*+
+096C  50F5     MOVF TABLAT, W, ACCESS
+096E  6FF4     MOVWF 0xF4, BANKED
+0970  E103     BNZ 0x978
+0972  67F3     TSTFSZ curr_entry, BANKED
+0974  D001     BRA 0x978
+0976  D03D     BRA 0x9F2
+0978  0009     TBLRD*+
+097A  50F5     MOVF TABLAT, W, ACCESS
+097C  6FEE     MOVWF prom, BANKED
+097E  0009     TBLRD*+
+0980  50F5     MOVF TABLAT, W, ACCESS
+0982  6FEF     MOVWF 0xEF, BANKED
+0984  0009     TBLRD*+
+0986  50F5     MOVF TABLAT, W, ACCESS
+0988  6FF0     MOVWF 0xF0, BANKED
+098A  0009     TBLRD*+
+098C  0009     TBLRD*+
+098E  50F5     MOVF TABLAT, W, ACCESS
+0990  6EE9     MOVWF FSR0, ACCESS
+0992  0009     TBLRD*+
+0994  50F5     MOVF TABLAT, W, ACCESS
+0996  6EEA     MOVWF FSR0H, ACCESS
+0998  0009     TBLRD*+
+099A  0009     TBLRD*+
+099C  0009     TBLRD*+
+099E  50F5     MOVF TABLAT, W, ACCESS
+09A0  6FF1     MOVWF curr_byte, BANKED
+09A2  0009     TBLRD*+
+09A4  50F5     MOVF TABLAT, W, ACCESS
+09A6  6FF2     MOVWF 0xF2, BANKED
+09A8  0009     TBLRD*+
+09AA  0009     TBLRD*+
+09AC  CFF6     MOVFF TBLPTR, data_ptr
+09AE  F0F5     NOP
+09B0  CFF7     MOVFF TBLPTRH, 0xF6
+09B2  F0F6     NOP
+09B4  CFF8     MOVFF TBLPTRU, 0xF7
+09B6  F0F7     NOP
+09B8  C0EE     MOVFF prom, TBLPTR
+09BA  FFF6     NOP
+09BC  C0EF     MOVFF 0xEF, TBLPTRH
+09BE  FFF7     NOP
+09C0  C0F0     MOVFF 0xF0, TBLPTRU
+09C2  FFF8     NOP
+09C4  0100     MOVLB 0x0
+09C6  53F1     MOVF curr_byte, F, BANKED
+09C8  E102     BNZ 0x9CE
+09CA  53F2     MOVF 0xF2, F, BANKED
+09CC  E007     BZ 0x9DC
+09CE  0009     TBLRD*+
+09D0  50F5     MOVF TABLAT, W, ACCESS
+09D2  6EEE     MOVWF POSTINC0, ACCESS
+09D4  07F1     DECF curr_byte, F, BANKED
+09D6  E2F8     BC 0x9C8
+09D8  07F2     DECF 0xF2, F, BANKED
+09DA  D7F9     BRA 0x9CE
+09DC  C0F5     MOVFF data_ptr, TBLPTR
+09DE  FFF6     NOP
+09E0  C0F6     MOVFF 0xF6, TBLPTRH
+09E2  FFF7     NOP
+09E4  C0F7     MOVFF 0xF7, TBLPTRU
+09E6  FFF8     NOP
+09E8  0100     MOVLB 0x0
+09EA  07F3     DECF curr_entry, F, BANKED
+09EC  0E00     MOVLW 0x0
+09EE  5BF4     SUBWFB 0xF4, F, BANKED
+09F0  D7BF     BRA 0x970
+09F2  0012     RETURN 0
+---  /MCC18/v3_39/src/traditional/proc/p18F1320.asm  ----------------------------------------------------
+0BFA  0E00     MOVLW 0x0
+0BFC  6EF3     MOVWF PROD, ACCESS
+0BFE  EE00     LFSR 0, 0x0
+0C00  F000     NOP
+0C02  0E01     MOVLW 0x1
+0C04  D801     RCALL zero_block
+0C06  0012     RETURN 0
+0C08  60EA     CPFSLT FSR0H, ACCESS
+0C0A  D002     BRA compare_l
+0C0C  6AEE     CLRF POSTINC0, ACCESS
+0C0E  D7FC     BRA zero_block
+0C10  50F3     MOVF PROD, W, ACCESS
+0C12  60E9     CPFSLT FSR0, ACCESS
+0C14  0012     RETURN 0
+0C16  6AEE     CLRF POSTINC0, ACCESS
+0C18  D7FC     BRA loop_l
+---  /MCC18/v3_39/src/pmc_common/USART/uopen.c  ---------------------------------------------------------
+09F4  CFD9     MOVFF FSR2, POSTINC1
+09F6  FFE6     NOP
+09F8  CFDA     MOVFF FSR2H, POSTINC1
+09FA  FFE6     NOP
+09FC  CFE1     MOVFF FSR1, FSR2
+09FE  FFD9     NOP
+0A00  CFE2     MOVFF FSR1H, FSR2H
+0A02  FFDA     NOP
+0A04  6AAC     CLRF TXSTA, ACCESS
+0A06  6AAB     CLRF RCSTA, ACCESS
+0A08  0EFD     MOVLW 0xFD
+0A0A  B0DB     BTFSC PLUSW2, 0, ACCESS
+0A0C  88AC     BSF TXSTA, 4, ACCESS
+0A0E  A2DB     BTFSS PLUSW2, 1, ACCESS
+0A10  D002     BRA 0xA16
+0A12  8CAC     BSF TXSTA, 6, ACCESS
+0A14  8CAB     BSF RCSTA, 6, ACCESS
+0A16  B4DB     BTFSC PLUSW2, 2, ACCESS
+0A18  8EAC     BSF TXSTA, 7, ACCESS
+0A1A  A6DB     BTFSS PLUSW2, 3, ACCESS
+0A1C  D002     BRA 0xA22
+0A1E  88AB     BSF RCSTA, 4, ACCESS
+0A20  D001     BRA 0xA24
+0A22  8AAB     BSF RCSTA, 5, ACCESS
+0A24  B8DB     BTFSC PLUSW2, 4, ACCESS
+0A26  84AC     BSF TXSTA, 2, ACCESS
+0A28  989E     BCF PIR1, 4, ACCESS
+0A2A  BADB     BTFSC PLUSW2, 5, ACCESS
+0A2C  86AB     BSF RCSTA, 3, ACCESS
+0A2E  ACDB     BTFSS PLUSW2, 6, ACCESS
+0A30  D002     BRA 0xA36
+0A32  8A9D     BSF PIE1, 5, ACCESS
+0A34  D001     BRA 0xA38
+0A36  9A9D     BCF PIE1, 5, ACCESS
+0A38  9A9E     BCF PIR1, 5, ACCESS
+0A3A  AEDB     BTFSS PLUSW2, 7, ACCESS
+0A3C  D002     BRA 0xA42
+0A3E  889D     BSF PIE1, 4, ACCESS
+0A40  D001     BRA 0xA44
+0A42  989D     BCF PIE1, 4, ACCESS
+0A44  0EFB     MOVLW 0xFB
+0A46  50DB     MOVF PLUSW2, W, ACCESS
+0A48  6EAF     MOVWF SPBRG, ACCESS
+0A4A  0EFB     MOVLW 0xFB
+0A4C  0EFC     MOVLW 0xFC
+0A4E  CFDB     MOVFF PLUSW2, 0x1
+0A50  F001     NOP
+0A52  C001     MOVFF 0x1, __tmp_0
+0A54  F000     NOP
+0A56  6A01     CLRF 0x1, ACCESS
+0A58  5000     MOVF __tmp_0, W, ACCESS
+0A5A  6EB0     MOVWF SPBRGH, ACCESS
+0A5C  8AAC     BSF TXSTA, 5, ACCESS
+0A5E  8EAB     BSF RCSTA, 7, ACCESS
+0A60  9293     BCF TRISB, 1, ACCESS
+0A62  8893     BSF TRISB, 4, ACCESS
+0A64  50AC     MOVF TXSTA, W, ACCESS
+0A66  0B10     ANDLW 0x10
+0A68  E004     BZ 0xA72
+0A6A  50AC     MOVF TXSTA, W, ACCESS
+0A6C  0B80     ANDLW 0x80
+0A6E  E101     BNZ 0xA72
+0A70  8293     BSF TRISB, 1, ACCESS
+0A72  52E5     MOVF POSTDEC1, F, ACCESS
+0A74  CFE5     MOVFF POSTDEC1, FSR2H
+0A76  FFDA     NOP
+0A78  CFE7     MOVFF INDF1, FSR2
+0A7A  FFD9     NOP
+0A7C  0012     RETURN 0
+---  /MCC18/v3_39/src/pmc_common/Timers/t1write.c  ------------------------------------------------------
+0B52  CFD9     MOVFF FSR2, POSTINC1
+0B54  FFE6     NOP
+0B56  CFDA     MOVFF FSR2H, POSTINC1
+0B58  FFE6     NOP
+0B5A  CFE1     MOVFF FSR1, FSR2
+0B5C  FFD9     NOP
+0B5E  CFE2     MOVFF FSR1H, FSR2H
+0B60  FFDA     NOP
+0B62  52E6     MOVF POSTINC1, F, ACCESS
+0B64  52E6     MOVF POSTINC1, F, ACCESS
+0B66  0EFC     MOVLW 0xFC
+0B68  CFDB     MOVFF PLUSW2, POSTINC2
+0B6A  FFDE     NOP
+0B6C  CFDB     MOVFF PLUSW2, POSTDEC2
+0B6E  FFDD     NOP
+0B70  0E01     MOVLW 0x1
+0B72  50DB     MOVF PLUSW2, W, ACCESS
+0B74  6ECF     MOVWF TMR1H, ACCESS
+0B76  50DF     MOVF INDF2, W, ACCESS
+0B78  6ECE     MOVWF TMR1, ACCESS
+0B7A  52E5     MOVF POSTDEC1, F, ACCESS
+0B7C  52E5     MOVF POSTDEC1, F, ACCESS
+0B7E  52E5     MOVF POSTDEC1, F, ACCESS
+0B80  CFE5     MOVFF POSTDEC1, FSR2H
+0B82  FFDA     NOP
+0B84  CFE7     MOVFF INDF1, FSR2
+0B86  FFD9     NOP
+0B88  0012     RETURN 0
+---  /MCC18/v3_39/src/pmc_common/Timers/t1open.c  -------------------------------------------------------
+0B10  CFD9     MOVFF FSR2, POSTINC1
+0B12  FFE6     NOP
+0B14  CFDA     MOVFF FSR2H, POSTINC1
+0B16  FFE6     NOP
+0B18  CFE1     MOVFF FSR1, FSR2
+0B1A  FFD9     NOP
+0B1C  CFE2     MOVFF FSR1H, FSR2H
+0B1E  FFDA     NOP
+0B20  0EFD     MOVLW 0xFD
+0B22  50DB     MOVF PLUSW2, W, ACCESS
+0B24  0B7E     ANDLW 0x7E
+0B26  6ECD     MOVWF T1CON, ACCESS
+0B28  0EFD     MOVLW 0xFD
+0B2A  ACDB     BTFSS PLUSW2, 6, ACCESS
+0B2C  D002     BRA 0xB32
+0B2E  8ECD     BSF T1CON, 7, ACCESS
+0B30  D001     BRA 0xB34
+0B32  9ECD     BCF T1CON, 7, ACCESS
+0B34  6ACF     CLRF TMR1H, ACCESS
+0B36  6ACE     CLRF TMR1, ACCESS
+0B38  909E     BCF PIR1, 0, ACCESS
+0B3A  AEDB     BTFSS PLUSW2, 7, ACCESS
+0B3C  D002     BRA 0xB42
+0B3E  809D     BSF PIE1, 0, ACCESS
+0B40  D001     BRA 0xB44
+0B42  909D     BCF PIE1, 0, ACCESS
+0B44  80CD     BSF T1CON, 0, ACCESS
+0B46  52E5     MOVF POSTDEC1, F, ACCESS
+0B48  CFE5     MOVFF POSTDEC1, FSR2H
+0B4A  FFDA     NOP
+0B4C  CFE7     MOVFF INDF1, FSR2
+0B4E  FFD9     NOP
+0B50  0012     RETURN 0
+---  /MCC18/v3_39/src/pmc_common/Timers/t0write.c  ------------------------------------------------------
+0B8A  CFD9     MOVFF FSR2, POSTINC1
+0B8C  FFE6     NOP
+0B8E  CFDA     MOVFF FSR2H, POSTINC1
+0B90  FFE6     NOP
+0B92  CFE1     MOVFF FSR1, FSR2
+0B94  FFD9     NOP
+0B96  CFE2     MOVFF FSR1H, FSR2H
+0B98  FFDA     NOP
+0B9A  52E6     MOVF POSTINC1, F, ACCESS
+0B9C  52E6     MOVF POSTINC1, F, ACCESS
+0B9E  0EFC     MOVLW 0xFC
+0BA0  CFDB     MOVFF PLUSW2, POSTINC2
+0BA2  FFDE     NOP
+0BA4  CFDB     MOVFF PLUSW2, POSTDEC2
+0BA6  FFDD     NOP
+0BA8  0E01     MOVLW 0x1
+0BAA  50DB     MOVF PLUSW2, W, ACCESS
+0BAC  6ED7     MOVWF TMR0H, ACCESS
+0BAE  50DF     MOVF INDF2, W, ACCESS
+0BB0  6ED6     MOVWF TMR0, ACCESS
+0BB2  52E5     MOVF POSTDEC1, F, ACCESS
+0BB4  52E5     MOVF POSTDEC1, F, ACCESS
+0BB6  52E5     MOVF POSTDEC1, F, ACCESS
+0BB8  CFE5     MOVFF POSTDEC1, FSR2H
+0BBA  FFDA     NOP
+0BBC  CFE7     MOVFF INDF1, FSR2
+0BBE  FFD9     NOP
+0BC0  0012     RETURN 0
+---  /MCC18/v3_39/src/pmc_common/Timers/t0open.c  -------------------------------------------------------
+0BC2  CFD9     MOVFF FSR2, POSTINC1
+0BC4  FFE6     NOP
+0BC6  CFDA     MOVFF FSR2H, POSTINC1
+0BC8  FFE6     NOP
+0BCA  CFE1     MOVFF FSR1, FSR2
+0BCC  FFD9     NOP
+0BCE  CFE2     MOVFF FSR1H, FSR2H
+0BD0  FFDA     NOP
+0BD2  0EFD     MOVLW 0xFD
+0BD4  50DB     MOVF PLUSW2, W, ACCESS
+0BD6  0B7F     ANDLW 0x7F
+0BD8  6ED5     MOVWF T0CON, ACCESS
+0BDA  6AD7     CLRF TMR0H, ACCESS
+0BDC  6AD6     CLRF TMR0, ACCESS
+0BDE  94F2     BCF INTCON, 2, ACCESS
+0BE0  0EFD     MOVLW 0xFD
+0BE2  AEDB     BTFSS PLUSW2, 7, ACCESS
+0BE4  D002     BRA 0xBEA
+0BE6  8AF2     BSF INTCON, 5, ACCESS
+0BE8  D001     BRA 0xBEC
+0BEA  9AF2     BCF INTCON, 5, ACCESS
+0BEC  8ED5     BSF T0CON, 7, ACCESS
+0BEE  52E5     MOVF POSTDEC1, F, ACCESS
+0BF0  CFE5     MOVFF POSTDEC1, FSR2H
+0BF2  FFDA     NOP
+0BF4  CFE7     MOVFF INDF1, FSR2
+0BF6  FFD9     NOP
+0BF8  0012     RETURN 0
+---  /MCC18/v3_39/src/pmc_common/EEP/write_B.c  ---------------------------------------------------------
+0A7E  CFD9     MOVFF FSR2, POSTINC1
+0A80  FFE6     NOP
+0A82  CFDA     MOVFF FSR2H, POSTINC1
+0A84  FFE6     NOP
+0A86  CFE1     MOVFF FSR1, FSR2
+0A88  FFD9     NOP
+0A8A  CFE2     MOVFF FSR1H, FSR2H
+0A8C  FFDA     NOP
+0A8E  0EFF     MOVLW 0xFF
+0A90  6EE7     MOVWF INDF1, ACCESS
+0A92  0EFC     MOVLW 0xFC
+0A94  CFDB     MOVFF PLUSW2, __tmp_0
+0A96  F000     NOP
+0A98  50E7     MOVF INDF1, W, ACCESS
+0A9A  1600     ANDWF __tmp_0, F, ACCESS
+0A9C  5000     MOVF __tmp_0, W, ACCESS
+0A9E  6EA9     MOVWF EEADR, ACCESS
+0AA0  0EFB     MOVLW 0xFB
+0AA2  50DB     MOVF PLUSW2, W, ACCESS
+0AA4  6EA8     MOVWF EEDATA, ACCESS
+0AA6  9EA6     BCF EECON1, 7, ACCESS
+0AA8  9CA6     BCF EECON1, 6, ACCESS
+0AAA  84A6     BSF EECON1, 2, ACCESS
+0AAC  9EF2     BCF INTCON, 7, ACCESS
+0AAE  0E55     MOVLW 0x55
+0AB0  6EA7     MOVWF EECON2, ACCESS
+0AB2  0EAA     MOVLW 0xAA
+0AB4  6EA7     MOVWF EECON2, ACCESS
+0AB6  82A6     BSF EECON1, 1, ACCESS
+0AB8  B2A6     BTFSC EECON1, 1, ACCESS
+0ABA  D7FE     BRA 0xAB8
+0ABC  8EF2     BSF INTCON, 7, ACCESS
+0ABE  94A6     BCF EECON1, 2, ACCESS
+0AC0  52E5     MOVF POSTDEC1, F, ACCESS
+0AC2  CFE5     MOVFF POSTDEC1, FSR2H
+0AC4  FFDA     NOP
+0AC6  CFE7     MOVFF INDF1, FSR2
+0AC8  FFD9     NOP
+0ACA  0012     RETURN 0
+---  /MCC18/v3_39/src/pmc_common/EEP/read_B.c  ----------------------------------------------------------
+0ACC  CFD9     MOVFF FSR2, POSTINC1
+0ACE  FFE6     NOP
+0AD0  CFDA     MOVFF FSR2H, POSTINC1
+0AD2  FFE6     NOP
+0AD4  CFE1     MOVFF FSR1, FSR2
+0AD6  FFD9     NOP
+0AD8  CFE2     MOVFF FSR1H, FSR2H
+0ADA  FFDA     NOP
+0ADC  0EFF     MOVLW 0xFF
+0ADE  6EE7     MOVWF INDF1, ACCESS
+0AE0  0EFC     MOVLW 0xFC
+0AE2  CFDB     MOVFF PLUSW2, __tmp_0
+0AE4  F000     NOP
+0AE6  0EFD     MOVLW 0xFD
+0AE8  CFDB     MOVFF PLUSW2, 0x1
+0AEA  F001     NOP
+0AEC  50E7     MOVF INDF1, W, ACCESS
+0AEE  1600     ANDWF __tmp_0, F, ACCESS
+0AF0  6A01     CLRF 0x1, ACCESS
+0AF2  5000     MOVF __tmp_0, W, ACCESS
+0AF4  6EA9     MOVWF EEADR, ACCESS
+0AF6  9CA6     BCF EECON1, 6, ACCESS
+0AF8  9EA6     BCF EECON1, 7, ACCESS
+0AFA  80A6     BSF EECON1, 0, ACCESS
+0AFC  0000     NOP
+0AFE  0000     NOP
+0B00  50A8     MOVF EEDATA, W, ACCESS
+0B02  D000     BRA 0xB04
+0B04  52E5     MOVF POSTDEC1, F, ACCESS
+0B06  CFE5     MOVFF POSTDEC1, FSR2H
+0B08  FFDA     NOP
+0B0A  CFE7     MOVFF INDF1, FSR2
+0B0C  FFD9     NOP
+0B0E  0012     RETURN 0
+---  /MCC18/v3_39/src/pmc_common/EEP/busy_eep.c  --------------------------------------------------------
+0C4C  B2A6     BTFSC EECON1, 1, ACCESS
+0C4E  D7FE     BRA Busy_eep
+0C50  0012     RETURN 0
