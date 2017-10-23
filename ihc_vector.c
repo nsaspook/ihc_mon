@@ -17,8 +17,10 @@ void tm_handler(void) // timer/serial functions are handled here
 			ibs_stream_file = 0x00; // nulls for data on errors
 			RCSTAbits.CREN = FALSE; // clear overrun
 			RCSTAbits.CREN = TRUE; // re-enable
-			if (c_error++>MAX_C_ERROR)
+			if (c_error++>MAX_C_ERROR) {
 				c_error = 0;
+				GLITCH_ERROR = LEDON;
+			}
 		} else {
 			if (!V.config)
 				TXREG = ibs_stream_file; // echo

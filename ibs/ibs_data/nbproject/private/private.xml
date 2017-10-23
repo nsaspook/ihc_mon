@@ -1,17 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <data xmlns="http://www.netbeans.org/ns/make-project-private/1">
+        <activeConfTypeElem>1</activeConfTypeElem>
+        <activeConfIndexElem>1</activeConfIndexElem>
+    </data>
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/1"/>
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group name="MBMC">
-            <file>file:/old_os/mplabx/ihc_mon/ibsmon.c</file>
-            <file>file:/old_os/mplabx/ihc_mon/ihc_vector.c</file>
-        </group>
         <group>
-            <file>file:/fred/ibs_monitor/pat/ihc_vector.c</file>
-            <file>file:/fred/ibs_monitor/pat/ibsmon.c</file>
-            <file>file:/fred/ibs_monitor/pat/ibsmon.h</file>
-            <file>file:/fred/ibs_monitor/pat/ihc_vector.h</file>
+            <file>file:/fred/ibs/ibs_data/main.cpp</file>
         </group>
     </open-files>
 </project-private>
