@@ -6,7 +6,7 @@
             <setting alwaysvectorfont="no"/>
             <setting verticaltext="up"/>
         </settings>
-        <grid distance="0.05" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.025" altunitdist="inch" altunit="inch"/>
+        <grid distance="0.05" unitdist="inch" unit="mm" style="lines" multiple="1" display="no" altdistance="0.025" altunitdist="inch" altunit="inch"/>
         <layers>
             <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
             <layer number="16" name="Bottom" color="1" fill="1" visible="yes" active="yes"/>
@@ -53,6 +53,7 @@
             <layer number="96" name="Values" color="7" fill="1" visible="no" active="no"/>
             <layer number="97" name="Info" color="7" fill="1" visible="no" active="no"/>
             <layer number="98" name="Guide" color="6" fill="1" visible="no" active="no"/>
+            <layer number="116" name="centerDrill" color="7" fill="1" visible="yes" active="yes"/>
         </layers>
         <board>
             <plain>
@@ -60,6 +61,98 @@
                 <wire x1="100" y1="0" x2="100" y2="80" width="0" layer="20"/>
                 <wire x1="100" y1="80" x2="0" y2="80" width="0" layer="20"/>
                 <wire x1="0" y1="80" x2="0" y2="0" width="0" layer="20"/>
+                <circle x="17.78" y="31.75" radius="0.303" width="0.306" layer="116"/>
+                <circle x="20.32" y="31.75" radius="0.303" width="0.306" layer="116"/>
+                <circle x="25.4" y="31.75" radius="0.303" width="0.306" layer="116"/>
+                <circle x="30.48" y="31.75" radius="0.303" width="0.306" layer="116"/>
+                <circle x="25.4" y="55.88" radius="0.303" width="0.306" layer="116"/>
+                <circle x="30.48" y="55.88" radius="0.303" width="0.306" layer="116"/>
+                <circle x="26.67" y="15.24" radius="0.303" width="0.306" layer="116"/>
+                <circle x="31.75" y="15.24" radius="0.303" width="0.306" layer="116"/>
+                <circle x="52.07" y="33.02" radius="0.303" width="0.306" layer="116"/>
+                <circle x="57.15" y="33.02" radius="0.303" width="0.306" layer="116"/>
+                <circle x="53.34" y="15.24" radius="0.325" width="0.35" layer="116"/>
+                <circle x="50.8" y="15.24" radius="0.325" width="0.35" layer="116"/>
+                <circle x="48.26" y="15.24" radius="0.325" width="0.35" layer="116"/>
+                <circle x="45.72" y="15.24" radius="0.325" width="0.35" layer="116"/>
+                <circle x="45.72" y="7.62" radius="0.325" width="0.35" layer="116"/>
+                <circle x="53.34" y="7.62" radius="0.325" width="0.35" layer="116"/>
+                <circle x="43.18" y="15.24" radius="0.325" width="0.35" layer="116"/>
+                <circle x="40.64" y="15.24" radius="0.325" width="0.35" layer="116"/>
+                <circle x="38.1" y="15.24" radius="0.325" width="0.35" layer="116"/>
+                <circle x="35.56" y="15.24" radius="0.325" width="0.35" layer="116"/>
+                <circle x="35.56" y="7.62" radius="0.325" width="0.35" layer="116"/>
+                <circle x="43.18" y="7.62" radius="0.325" width="0.35" layer="116"/>
+                <circle x="35.56" y="43.18" radius="0.303" width="0.306" layer="116"/>
+                <circle x="35.56" y="40.64" radius="0.303" width="0.306" layer="116"/>
+                <circle x="35.56" y="38.1" radius="0.303" width="0.306" layer="116"/>
+                <circle x="35.56" y="35.56" radius="0.303" width="0.306" layer="116"/>
+                <circle x="35.56" y="33.02" radius="0.303" width="0.306" layer="116"/>
+                <circle x="35.56" y="30.48" radius="0.303" width="0.306" layer="116"/>
+                <circle x="35.56" y="27.94" radius="0.303" width="0.306" layer="116"/>
+                <circle x="35.56" y="25.4" radius="0.303" width="0.306" layer="116"/>
+                <circle x="35.56" y="22.86" radius="0.303" width="0.306" layer="116"/>
+                <circle x="43.18" y="22.86" radius="0.303" width="0.306" layer="116"/>
+                <circle x="43.18" y="25.4" radius="0.303" width="0.306" layer="116"/>
+                <circle x="43.18" y="27.94" radius="0.303" width="0.306" layer="116"/>
+                <circle x="43.18" y="30.48" radius="0.303" width="0.306" layer="116"/>
+                <circle x="43.18" y="33.02" radius="0.303" width="0.306" layer="116"/>
+                <circle x="43.18" y="35.56" radius="0.303" width="0.306" layer="116"/>
+                <circle x="43.18" y="38.1" radius="0.303" width="0.306" layer="116"/>
+                <circle x="43.18" y="40.64" radius="0.303" width="0.306" layer="116"/>
+                <circle x="43.18" y="43.18" radius="0.303" width="0.306" layer="116"/>
+                <circle x="35.56" y="58.42" radius="0.303" width="0.306" layer="116"/>
+                <circle x="35.56" y="55.88" radius="0.303" width="0.306" layer="116"/>
+                <circle x="35.56" y="53.34" radius="0.303" width="0.306" layer="116"/>
+                <circle x="35.56" y="50.8" radius="0.303" width="0.306" layer="116"/>
+                <circle x="43.18" y="50.8" radius="0.303" width="0.306" layer="116"/>
+                <circle x="43.18" y="53.34" radius="0.303" width="0.306" layer="116"/>
+                <circle x="43.18" y="55.88" radius="0.303" width="0.306" layer="116"/>
+                <circle x="43.18" y="58.42" radius="0.303" width="0.306" layer="116"/>
+                <circle x="55.88" y="58.42" radius="0.303" width="0.306" layer="116"/>
+                <circle x="55.88" y="55.88" radius="0.303" width="0.306" layer="116"/>
+                <circle x="55.88" y="53.34" radius="0.303" width="0.306" layer="116"/>
+                <circle x="55.88" y="50.8" radius="0.303" width="0.306" layer="116"/>
+                <circle x="55.88" y="48.26" radius="0.303" width="0.306" layer="116"/>
+                <circle x="55.88" y="45.72" radius="0.303" width="0.306" layer="116"/>
+                <circle x="55.88" y="43.18" radius="0.303" width="0.306" layer="116"/>
+                <circle x="55.88" y="40.64" radius="0.303" width="0.306" layer="116"/>
+                <circle x="63.5" y="40.64" radius="0.303" width="0.306" layer="116"/>
+                <circle x="63.5" y="43.18" radius="0.303" width="0.306" layer="116"/>
+                <circle x="63.5" y="45.72" radius="0.303" width="0.306" layer="116"/>
+                <circle x="63.5" y="48.26" radius="0.303" width="0.306" layer="116"/>
+                <circle x="63.5" y="50.8" radius="0.303" width="0.306" layer="116"/>
+                <circle x="63.5" y="53.34" radius="0.303" width="0.306" layer="116"/>
+                <circle x="63.5" y="55.88" radius="0.303" width="0.306" layer="116"/>
+                <circle x="63.5" y="58.42" radius="0.303" width="0.306" layer="116"/>
+                <circle x="64.77" y="20.32" radius="0.354" width="0.408" layer="116"/>
+                <circle x="64.77" y="17.78" radius="0.354" width="0.408" layer="116"/>
+                <circle x="64.77" y="15.24" radius="0.354" width="0.408" layer="116"/>
+                <circle x="64.77" y="12.7" radius="0.354" width="0.408" layer="116"/>
+                <circle x="64.77" y="10.16" radius="0.354" width="0.408" layer="116"/>
+                <circle x="64.77" y="7.62" radius="0.354" width="0.408" layer="116"/>
+                <circle x="50.8" y="58.42" radius="0.303" width="0.306" layer="116"/>
+                <circle x="53.34" y="58.42" radius="0.303" width="0.306" layer="116"/>
+                <circle x="50.8" y="50.8" radius="0.303" width="0.306" layer="116"/>
+                <circle x="53.34" y="50.8" radius="0.303" width="0.306" layer="116"/>
+                <circle x="66.04" y="58.42" radius="0.303" width="0.306" layer="116"/>
+                <circle x="68.58" y="58.42" radius="0.303" width="0.306" layer="116"/>
+                <circle x="66.04" y="50.8" radius="0.303" width="0.306" layer="116"/>
+                <circle x="68.58" y="50.8" radius="0.303" width="0.306" layer="116"/>
+                <circle x="30.48" y="35.56" radius="0.303" width="0.306" layer="116"/>
+                <circle x="33.02" y="35.56" radius="0.303" width="0.306" layer="116"/>
+                <circle x="22.86" y="35.56" radius="0.303" width="0.306" layer="116"/>
+                <circle x="25.4" y="35.56" radius="0.303" width="0.306" layer="116"/>
+                <circle x="38.1" y="20.32" radius="0.303" width="0.306" layer="116"/>
+                <circle x="40.64" y="20.32" radius="0.303" width="0.306" layer="116"/>
+                <circle x="48.26" y="20.32" radius="0.303" width="0.306" layer="116"/>
+                <circle x="50.8" y="20.32" radius="0.303" width="0.306" layer="116"/>
+                <circle x="50.8" y="40.64" radius="0.303" width="0.306" layer="116"/>
+                <circle x="53.34" y="40.64" radius="0.303" width="0.306" layer="116"/>
+                <circle x="48.26" y="78.74" radius="0.252" width="0.205" layer="116"/>
+                <circle x="15.24" y="66.04" radius="0.252" width="0.205" layer="116"/>
+                <circle x="31.75" y="27.94" radius="0.252" width="0.205" layer="116"/>
+                <circle x="48.26" y="45.72" radius="0.252" width="0.205" layer="116"/>
             </plain>
             <libraries>
                 <library name="microchip">
@@ -1916,6 +2009,9 @@
                     <wire x1="43.18" y1="50.8" x2="36.83" y2="62.23" width="0.254" layer="1"/>
                 </signal>
             </signals>
+            <errors>
+                <approved hash="5,1,4abe5602aee09259"/>
+            </errors>
         </board>
     </drawing>
 </eagle>
