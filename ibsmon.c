@@ -62,6 +62,7 @@
  * 0.5  Add Glitch error for red led instead of comm error
  * 0.6  Clean up Glitch code, open filament data limits and code style fixes
  * 0.7	refactor names and functions
+ * 1.0 Rover Elite SR485 controller status monitor
  */
 
 #include <p18f1320.h>
@@ -217,11 +218,11 @@ void init_ihcmon(void)
 		USART_ASYNCH_MODE &
 		USART_EIGHT_BIT &
 		USART_CONT_RX &
-		USART_BRGH_HIGH, 42); // 10mhz osc HS		57600 baud
+		USART_BRGH_HIGH, 259); // 10mhz osc HS		9600 baud
 	BAUDCTLbits.BRG16 = 1;
 	TXSTAbits.BRGH = 1;
 	SPBRGH = 0;
-	SPBRG = 42;
+	SPBRG = 259;
 	/*      work int thread setup */
 	INTCONbits.TMR0IE = 1; // enable int
 	INTCON2bits.TMR0IP = 1; // make it high level

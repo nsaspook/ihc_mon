@@ -1609,7 +1609,7 @@
             </designrules>
             <autorouter>
                 <pass name="Default">
-                    <param name="RoutingGrid" value="50mil"/>
+                    <param name="RoutingGrid" value="2mm"/>
                     <param name="tpViaShape" value="round"/>
                     <param name="PrefDir.1" value="|"/>
                     <param name="PrefDir.2" value="0"/>
@@ -1988,6 +1988,8 @@
                     <wire x1="57.15" y1="33.02" x2="31.75" y2="15.24" width="0.254" layer="1"/>
                     <wire x1="85.09" y1="20.32" x2="64.77" y2="15.24" width="0.254" layer="1"/>
                     <wire x1="30.48" y1="31.75" x2="85.09" y2="20.32" width="0.254" layer="1"/>
+                    <contactref element="D2" pad="2"/>
+                    <wire x1="31.75" y1="15.24" x2="40.64" y2="15.24" width="0" layer="19" extent="1-1"/>
                 </signal>
                 <signal name="N$24">
                     <contactref element="IC1" pad="3"/>
