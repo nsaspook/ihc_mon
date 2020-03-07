@@ -9,10 +9,9 @@ void tm_handler(void) // timer/serial functions are handled here
 	static uint8_t c_error = 0;
 
 	if (PIR1bits.RCIF) { // is data from host light link via RS-232 port
-		link_count++;
-		ibs_stream_file = RCREG;
+		cc_stream_file = RCREG;
 		if (RCSTAbits.OERR || RCSTAbits.FERR) {
-			ibs_stream_file = 0x00; // nulls for data on errors
+			cc_stream_file = 0x00; // nulls for data on errors
 			RCSTAbits.CREN = FALSE; // clear overrun
 			RCSTAbits.CREN = TRUE; // re-enable
 			if (c_error++>MAX_C_ERROR) {
@@ -23,7 +22,9 @@ void tm_handler(void) // timer/serial functions are handled here
 			/*
 			 * process received data stream
 			 */
-			TXREG = ibs_stream_file; // echo for now
+			cc_buffer[V.recv_count] = cc_stream_file;
+			if (++V.recv_count >= MAX_DATA)
+				V.recv_count = 0; // reset buffer position
 		}
 	}
 

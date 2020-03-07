@@ -20,7 +20,7 @@ extern "C" {
 #include "ibsmon.h"
 
 	extern volatile struct V_data V;
-	extern volatile uint8_t ibs_stream_file, ibs_stream_file_prev;
+	extern volatile uint8_t cc_stream_file, cc_stream_file_prev, cc_buffer[MAX_DATA];
 	extern volatile uint16_t timer0_off, link_count;
 
 #ifdef	__cplusplus

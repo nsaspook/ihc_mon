@@ -68,17 +68,18 @@
 #include "ibsmon.h"
 
 void tm_handler(void);
-int16_t display_work(void);
+int8_t controller_work(void);
 uint8_t do_config(void);
 void init_ihcmon(void);
 uint8_t init_stream_params(void);
 
 #pragma udata
+const rom uint8_t modbus_cc_mode[] = {0, 1, 2, 3};
 volatile struct V_data V;
-volatile uint8_t ibs_stream_file, ibs_stream_file_prev = 0;
+volatile uint8_t cc_stream_file, cc_stream_file_prev = 0, cc_buffer[MAX_DATA];
 #pragma udata access ACCESSBANK
-volatile uint16_t timer0_off = TIMEROFFSET, link_count = 0;
-
+volatile uint16_t timer0_off = TIMEROFFSET;
+comm_type cstate = INIT;
 const rom uint8_t *build_date = __DATE__, *build_time = __TIME__, build_version[5] = "1.0";
 
 #pragma code tm_interrupt = 0x8
@@ -89,9 +90,26 @@ void tm_int(void)
 }
 #pragma code
 
-/* this is the two color red/green HID controller */
-int16_t display_work(void)
+int8_t controller_work(void)
 {
+	switch (cstate) {
+	case INIT:
+		V.send_count = 0;
+		V.recv_count=0;
+		cstate = SEND;
+		break;
+	case SEND:
+		do {
+			while (BusyUSART());
+			TXREG = modbus_cc_mode[V.send_count];
+		} while (++V.send_count<sizeof(modbus_cc_mode));
+		cstate = RECV;
+		break;
+	case RECV:
+		break;
+	default:
+		break;
+	}
 	return 0;
 }
 
@@ -168,7 +186,7 @@ void main(void)
 	init_ihcmon();
 	/* Loop forever */
 	while (TRUE) { // busy work
-		display_work(); // Show the status of the IHC controller and source
+		controller_work();
 		if (V.config)
 			do_config();
 	}

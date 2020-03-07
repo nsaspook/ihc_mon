@@ -19,10 +19,11 @@ typedef signed long long int64_t;
 #endif
 
 typedef struct V_data { // ISR used, mainly for non-atomic mod problems
-	uint8_t config : 1;
-	uint8_t stable : 1;
 	uint32_t clock_100hz;
 	uint32_t clock_2hz;
+	uint8_t config : 1;
+	uint8_t stable : 1;
+	uint8_t send_count, recv_count;
 } V_data;
 
 typedef struct OUTBITS2 {
@@ -41,6 +42,12 @@ union Obits2 {
 	OUTBITS_TYPE2 out_bits;
 };
 
+typedef enum comm_type {
+	INIT,
+	SEND,
+	RECV,
+} comm_type;
+
 #define TRUE	1
 #define FALSE	0
 #define	ON	1
@@ -53,7 +60,7 @@ union Obits2 {
 #define	SAMPLEFREQ	0xe7b2			// timer1 100hz
 #define	PWMFREQ		100			// timer2 100khz
 
-#define MAX_DATA        6
+#define MAX_DATA        16
 #define MAX_GLITCH      3
 #define MAX_PARAMS      5
 
