@@ -50,29 +50,22 @@
 
 
 /*
- * Driver software IBS IHC source monitor
+ * Driver software Rover Elite charge mode monitor
  * Runs on a PIC18F1320 
  *	nsaspook@nsaspook.com
  * cpu clock 10mhz external
  * Version
- * 0.1  config chip to read the data stream
- * 0.2  Alpha test version, move to external 10mhz clock for stable 57600 baud timing
- * 0.3  Beta test version
- * 0.4  Adjust comm error and code settings.
- * 0.5  Add Glitch error for red led instead of comm error
- * 0.6  Clean up Glitch code, open filament data limits and code style fixes
- * 0.7	refactor names and functions
  * 1.0 Rover Elite SR485 controller status monitor
  */
 
 #include <p18f1320.h>
 #include <timers.h>
+#include <pwm.h>
 #include <stdlib.h>
 #include <usart.h>
 #include <stdio.h>
 #include <EEP.h>
 #include "ibsmon.h"
-#include "blinker.h"
 
 void tm_handler(void);
 int16_t display_work(void);
@@ -82,16 +75,11 @@ uint8_t init_stream_params(void);
 
 #pragma udata
 volatile struct V_data V;
-volatile union Obits2 LEDS;
 volatile uint8_t ibs_stream_file, ibs_stream_file_prev = 0;
-volatile int16_t ihc_d;
 #pragma udata access ACCESSBANK
-volatile uint16_t timer0_off = TIMEROFFSET, ibs_data[MAX_DATA] = {0}, link_count = 0;
-volatile uint8_t ihc_count[MAX_PARAMS] = {0}, link_ok = FALSE, glitch_count = 0;
-volatile int16_t ibs_d = 1;
-near uint16_t blink_speed;
+volatile uint16_t timer0_off = TIMEROFFSET, link_count = 0;
 
-const rom uint8_t *build_date = __DATE__, *build_time = __TIME__, build_version[5] = "0.7";
+const rom uint8_t *build_date = __DATE__, *build_time = __TIME__, build_version[5] = "1.0";
 
 #pragma code tm_interrupt = 0x8
 
@@ -104,68 +92,6 @@ void tm_int(void)
 /* this is the two color red/green HID controller */
 int16_t display_work(void)
 {
-	if (V.ibs_block_done) {
-		if (GLITCH_ERROR == LEDON) {
-			blink_led(0, OFF, OFF); // LED RED and STEADY
-			blink_led(1, ON, OFF);
-		}
-		if ((V.ihc_data0 & V.ihc_data1 & V.ihc_data2 & V.ihc_data3 & V.ihc_data4) && (V.ihc_d_abs <= IHC_CODE0_TUNE)) { // all good and in rough regulation
-			// IHC Source OK, ALL GREEN and steady, ihc_data[0] is the key parameter
-			blink_led(0, ON, OFF); // led #,on/off, blink
-			blink_led(1, OFF, OFF); //     DISPLAY LEDS
-			blink_led(2, ON, OFF); // [0..1]Cath V  X  X Cath I [4..5]
-			blink_led(3, OFF, OFF); // [2..3]Fila V  X  X Fila I [6..7]
-			blink_led(4, ON, OFF); //               X  X
-			blink_led(5, OFF, OFF); //    Glitch     X  X Regulation Fine Mode
-			blink_led(6, ON, OFF);
-			blink_led(7, OFF, OFF);
-			V.inreg = TRUE; // tighten the limits when in regulation
-		} else {
-			V.inreg = FALSE;
-			blink_speed = TIMERFAST;
-			// IHC Source out of regulation or IHC parameters out of range
-			if (V.ihc_data3) { // green and blinking if this is IN range
-				blink_led(0, ON, ON);
-				blink_led(1, OFF, OFF);
-				blink_speed -= 2500; // speed feedback
-			} else { // red and blinking if this is OUT of range
-				blink_led(0, OFF, ON);
-				blink_led(1, ON, OFF);
-			}
-			if (V.ihc_data4) {
-				blink_led(4, ON, ON);
-				blink_led(5, OFF, OFF);
-				blink_speed -= 2500;
-			} else {
-				blink_led(4, OFF, ON);
-				blink_led(5, ON, OFF);
-			}
-			if (V.ihc_data1) {
-				blink_led(2, ON, ON);
-				blink_led(3, OFF, OFF);
-				blink_speed -= 2500;
-			} else {
-				blink_led(2, OFF, ON);
-				blink_led(3, ON, OFF);
-			}
-			if (V.ihc_data2) {
-				blink_led(6, ON, ON);
-				blink_led(7, OFF, OFF);
-				blink_speed -= 2500;
-			} else {
-				blink_led(6, OFF, ON);
-				blink_led(7, ON, OFF);
-			}
-			INTCONbits.GIEH = 0;
-			timer0_off = blink_speed;
-			INTCONbits.GIEH = 1;
-		}
-		V.ibs_block_done = FALSE;
-		if ((!V.ihc_data0 & !V.ihc_data1 & !V.ihc_data2 & !V.ihc_data3 & !V.ihc_data4)) {
-			GLITCH_ERROR = LEDOFF;
-			V.stable = FALSE;
-		}
-	}
 	return 0;
 }
 
@@ -173,17 +99,14 @@ uint8_t do_config(void)
 {
 	INTCONbits.GIEH = 0;
 	if (Read_b_eep(0) == '?') { // use default options
-		V.fine = IHC_CODE0_FINE;
 		Write_b_eep(0, 'D'); // write into EEPROM
 	} else { // set FINE options.
-		V.fine = IHC_CODE0_VFINE;
 		Write_b_eep(0, '?'); // write into EEPROM
 	}
 	Busy_eep();
 	INTCONbits.GIEH = 1;
 	V.config = FALSE;
-	GLITCH_ERROR = LEDOFF;
-	return V.fine;
+	return 0;
 }
 
 void init_ihcmon(void)
@@ -195,24 +118,22 @@ void init_ihcmon(void)
 	IBSPORTA = IBSPORT_IOA;
 	IBSPORTB = IBSPORT_IOB;
 
-	LED0 = LEDON; // preset all LEDS
+
 	LED1 = LEDON;
-	LED2 = LEDON;
-	LED3 = LEDON;
-	LED4 = LEDON;
-	LED5 = LEDON;
-	LED6 = LEDON;
-	LED7 = LEDON;
 	FINE_REG = LEDON; // will stay ON if a bad data stream in present when booted
-	GLITCH_ERROR = LEDON;
-	Blink_Init();
 	timer0_off = TIMERFAST; // blink fast
 	OpenTimer0(TIMER_INT_ON & T0_16BIT & T0_SOURCE_INT & T0_PS_1_64); // led blinker
 	WriteTimer0(timer0_off); //	start timer0 at ~1/2 second ticks
 	OpenTimer1(TIMER_INT_ON & T1_16BIT_RW & T1_SOURCE_INT & T1_PS_1_4 & T1_OSC1EN_OFF & T1_SYNC_EXT_OFF); // aux work thread
 	WriteTimer1(SAMPLEFREQ);
+	OpenTimer2(T2_POST_1_1 & T2_PS_1_4); // pwm 
+	WriteTimer2(PWMFREQ);
+
+	OpenPWM1(100);
+	SetDCPWM1(128);
+	SetOutputPWM1(SINGLE_OUT, PWM_MODE_1);
+
 	/* Light-link data input */
-	COMM_ENABLE = FALSE; // for PICDEM4 onboard RS-232, not used on custom board
 	OpenUSART(USART_TX_INT_OFF &
 		USART_RX_INT_ON &
 		USART_ASYNCH_MODE &
@@ -237,13 +158,9 @@ void init_ihcmon(void)
 
 uint8_t init_stream_params(void)
 {
-	/* setup the IHC stream parser */
-	V.ibs_block_done = FALSE;
-	V.inreg = FALSE;
+
 	V.config = FALSE;
-	V.fine = IHC_CODE0_FINE;
-	if (Read_b_eep(0) == '?') V.fine = IHC_CODE0_VFINE;
-	return V.fine;
+	return 0;
 }
 
 void main(void)

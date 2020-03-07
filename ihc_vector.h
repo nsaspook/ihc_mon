@@ -19,13 +19,9 @@ extern "C" {
 #include <EEP.h>
 #include "ibsmon.h"
 
-    extern volatile struct V_data V;
-    extern volatile union Obits2 LEDS;
-    extern volatile uint8_t ibs_stream_file, ibs_stream_file_prev;
-    extern volatile int16_t ihc_d;
-    extern volatile uint16_t timer0_off, ibs_data[MAX_DATA], link_count;
-    extern volatile uint8_t ihc_count[MAX_PARAMS], link_ok, glitch_count;
-    extern volatile int16_t ibs_d;
+	extern volatile struct V_data V;
+	extern volatile uint8_t ibs_stream_file, ibs_stream_file_prev;
+	extern volatile uint16_t timer0_off, link_count;
 
 #ifdef	__cplusplus
 }

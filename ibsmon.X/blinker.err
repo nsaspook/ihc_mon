@@ -1,0 +1,25 @@
+Error[1205] ../blinker.c 9 : unknown member 'blink_out' in 'V_data'
+Error[1137] ../blinker.c 9 : integer types required for bitwise AND operator
+Error[1205] ../blinker.c 11 : unknown member 'blink_out' in 'V_data'
+Error[1138] ../blinker.c 11 : integer types required for bitwise OR operator
+Error[1205] ../blinker.c 15 : unknown member 'blink' in 'V_data'
+Error[1138] ../blinker.c 15 : integer types required for bitwise OR operator
+Error[1205] ../blinker.c 17 : unknown member 'blink' in 'V_data'
+Error[1137] ../blinker.c 17 : integer types required for bitwise AND operator
+Error[1205] ../blinker.c 19 : unknown member 'blink_out' in 'V_data'
+Error[1136] ../blinker.c 19 : integer operands required for shift operator
+Error[1137] ../blinker.c 19 : integer types required for bitwise AND operator
+Error[1136] ../blinker.c 19 : integer operands required for shift operator
+Error[1138] ../blinker.c 19 : integer types required for bitwise OR operator
+Error[1205] ../blinker.c 25 : unknown member 'blink' in 'V_data'
+Error[1136] ../blinker.c 25 : integer operands required for shift operator
+Error[1137] ../blinker.c 25 : integer types required for bitwise AND operator
+Error[1116] ../blinker.c 25 : type mismatch in return statement
+Error[1205] ../blinker.c 30 : unknown member 'blink_alt' in 'V_data'
+Error[1131] ../blinker.c 30 : type mismatch in assignment
+Error[1205] ../blinker.c 31 : unknown member 'blink_alt' in 'V_data'
+Error[1131] ../blinker.c 31 : type mismatch in assignment
+Error[1205] ../blinker.c 36 : unknown member 'blink_out' in 'V_data'
+Error[1136] ../blinker.c 36 : integer operands required for shift operator
+Error[1137] ../blinker.c 36 : integer types required for bitwise AND operator
+Error[1116] ../blinker.c 36 : type mismatch in return statement

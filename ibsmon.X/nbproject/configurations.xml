@@ -4,7 +4,6 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
-      <itemPath>../blinker.h</itemPath>
       <itemPath>../ibsmon.h</itemPath>
       <itemPath>../ihc_vector.h</itemPath>
     </logicalFolder>
@@ -15,7 +14,6 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
-      <itemPath>../blinker.c</itemPath>
       <itemPath>../ibsmon.c</itemPath>
       <itemPath>../ihc_vector.c</itemPath>
     </logicalFolder>
