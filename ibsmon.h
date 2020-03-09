@@ -23,7 +23,7 @@ typedef struct V_data { // ISR used, mainly for non-atomic mod problems
 	uint32_t clock_2hz;
 	uint8_t config : 1;
 	uint8_t stable : 1;
-	uint8_t send_count, recv_count;
+	uint8_t send_count, recv_count,pwm_volts;
 } V_data;
 
 typedef struct OUTBITS2 {
@@ -58,7 +58,8 @@ typedef enum comm_type {
 #define	TIMEROFFSET	34268			// timer0 16bit counter value for 1 second to overflow
 #define	TIMERFAST	61000			// fast flash 2hz
 #define	SAMPLEFREQ	0xe7b2			// timer1 100hz
-#define	PWMFREQ		100			// timer2 100khz
+#define	PWMFREQ		65			    // timer2 pwm
+#define PWMVOLTS    127
 
 #define MAX_DATA        16
 #define MAX_GLITCH      3
@@ -73,7 +74,7 @@ typedef enum comm_type {
 #define RE_		LATAbits.LATA1
 #define FINE_REG  	LATBbits.LATB2
 #define ANA_SIG		LATBbits.LATB3
-#define LED1		LATAbits.LATA4
+#define LED1		LATBbits.LATB0
 
 #define LINK_COUNT      10
 #define MAX_C_ERROR     3

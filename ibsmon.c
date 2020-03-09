@@ -1,10 +1,11 @@
-
 // PIC18F1320 Configuration Bit Settings
+
+// 'C' source line config statements
 
 #include <p18f1320.h>
 
 // CONFIG1H
-#pragma config OSC = ECIO       // Oscillator Selection bits (Ext oscillator, port function on RA6)
+#pragma config OSC = HSPLL      // Oscillator Selection bits (HS oscillator, PLL enabled (clock frequency = 4 x FOSC1))
 #pragma config FSCM = ON        // Fail-Safe Clock Monitor Enable bit (Fail-Safe Clock Monitor enabled)
 #pragma config IESO = ON        // Internal External Switchover bit (Internal External Switchover mode enabled)
 
@@ -22,11 +23,11 @@
 
 // CONFIG4L
 #pragma config STVR = ON        // Stack Full/Underflow Reset Enable bit (Stack full/underflow will cause Reset)
-#pragma config LVP = OFF        // Low-Voltage ICSP Enable bit (Low-Voltage ICSP disabled)
+#pragma config LVP = ON         // Low-Voltage ICSP Enable bit (Low-Voltage ICSP enabled)
 
 // CONFIG5L
-#pragma config CP0 = ON        // Code Protection bit (Block 0 (00200-000FFFh) not code-protected)
-#pragma config CP1 = ON        // Code Protection bit (Block 1 (001000-001FFFh) not code-protected)
+#pragma config CP0 = ON         // Code Protection bit (Block 0 (00200-000FFFh) code-protected)
+#pragma config CP1 = ON         // Code Protection bit (Block 1 (001000-001FFFh) code-protected)
 
 // CONFIG5H
 #pragma config CPB = OFF        // Boot Block Code Protection bit (Boot Block (000000-0001FFh) not code-protected)
@@ -47,6 +48,9 @@
 
 // CONFIG7H
 #pragma config EBTRB = OFF      // Boot Block Table Read Protection bit (Boot Block (000000-0001FFh) not protected from table reads executed in other blocks)
+
+
+
 
 
 /*
@@ -74,7 +78,7 @@ void init_ihcmon(void);
 uint8_t init_stream_params(void);
 
 #pragma udata
-const rom uint8_t modbus_cc_mode[] = {0, 1, 2, 3};
+const rom uint8_t modbus_cc_mode[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
 volatile struct V_data V;
 volatile uint8_t cc_stream_file, cc_stream_file_prev = 0, cc_buffer[MAX_DATA];
 #pragma udata access ACCESSBANK
@@ -94,18 +98,26 @@ int8_t controller_work(void)
 {
 	switch (cstate) {
 	case INIT:
+		RE_ = 0;
+		DE = 1;
 		V.send_count = 0;
-		V.recv_count=0;
+		V.recv_count = 0;
 		cstate = SEND;
 		break;
 	case SEND:
 		do {
 			while (BusyUSART());
 			TXREG = modbus_cc_mode[V.send_count];
-		} while (++V.send_count<sizeof(modbus_cc_mode));
+			V.pwm_volts = (modbus_cc_mode[V.send_count]*25) + 5;
+			SetDCPWM1(V.pwm_volts);
+		} while (++V.send_count < 8);
+		while (BusyUSART());
 		cstate = RECV;
 		break;
 	case RECV:
+		DE = 0;
+		RE_ = 1;
+		cstate = INIT; //fixme for testing
 		break;
 	default:
 		break;
@@ -136,7 +148,6 @@ void init_ihcmon(void)
 	IBSPORTA = IBSPORT_IOA;
 	IBSPORTB = IBSPORT_IOB;
 
-
 	LED1 = LEDON;
 	FINE_REG = LEDON; // will stay ON if a bad data stream in present when booted
 	timer0_off = TIMERFAST; // blink fast
@@ -144,11 +155,10 @@ void init_ihcmon(void)
 	WriteTimer0(timer0_off); //	start timer0 at ~1/2 second ticks
 	OpenTimer1(TIMER_INT_ON & T1_16BIT_RW & T1_SOURCE_INT & T1_PS_1_4 & T1_OSC1EN_OFF & T1_SYNC_EXT_OFF); // aux work thread
 	WriteTimer1(SAMPLEFREQ);
-	OpenTimer2(T2_POST_1_1 & T2_PS_1_4); // pwm 
-	WriteTimer2(PWMFREQ);
 
-	OpenPWM1(100);
-	SetDCPWM1(128);
+	OpenPWM1(PWMFREQ);
+	V.pwm_volts = PWMVOLTS;
+	SetDCPWM1(V.pwm_volts);
 	SetOutputPWM1(SINGLE_OUT, PWM_MODE_1);
 
 	/* Light-link data input */
@@ -157,11 +167,11 @@ void init_ihcmon(void)
 		USART_ASYNCH_MODE &
 		USART_EIGHT_BIT &
 		USART_CONT_RX &
-		USART_BRGH_HIGH, 259); // 10mhz osc HS		9600 baud
-	BAUDCTLbits.BRG16 = 1;
-	TXSTAbits.BRGH = 1;
+		USART_BRGH_LOW, 64); // 10mhz osc HS		9600 baud
+	BAUDCTLbits.BRG16 = 0;
+	TXSTAbits.BRGH = 0;
 	SPBRGH = 0;
-	SPBRG = 259;
+	SPBRG = 64;
 	/*      work int thread setup */
 	INTCONbits.TMR0IE = 1; // enable int
 	INTCON2bits.TMR0IP = 1; // make it high level
@@ -187,7 +197,6 @@ void main(void)
 	/* Loop forever */
 	while (TRUE) { // busy work
 		controller_work();
-		if (V.config)
-			do_config();
+		LED1 = ~LED1;
 	}
 }

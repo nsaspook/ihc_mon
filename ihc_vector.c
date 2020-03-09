@@ -16,7 +16,7 @@ void tm_handler(void) // timer/serial functions are handled here
 			RCSTAbits.CREN = TRUE; // re-enable
 			if (c_error++>MAX_C_ERROR) {
 				c_error = 0;
-				LED1 = LEDON;
+				//                LED1 = LEDON;
 			}
 		} else {
 			/*
@@ -39,5 +39,15 @@ void tm_handler(void) // timer/serial functions are handled here
 		WriteTimer0(timer0_off);
 		V.clock_2hz++;
 	}
+
+	if (PIR1bits.TMR2IF) { //      check timer0 irq time timer
+		PIR1bits.TMR2IF = FALSE; //      clear interrupt flag
+	}
+
+	if (PIR1bits.CCP1IF) { //      check timer0 irq time timer
+		PIR1bits.CCP1IF = FALSE; //      clear interrupt flag
+	}
+	LED1 = ~LED1;
+
 }
 #pragma	tmpdata
