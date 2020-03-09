@@ -79,4 +79,6 @@ typedef enum comm_type {
 
 #define LINK_COUNT      10
 #define MAX_C_ERROR     3
+
+#define LOCAL_ECHO	1
 #endif 

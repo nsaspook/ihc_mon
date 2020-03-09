@@ -104,7 +104,11 @@ int8_t controller_work(void)
 		break;
 	case INIT:
 		if (get_2hz(FALSE) > 80) {
-			RE_ = 0;
+#ifdef LOCAL_ECHO
+			RE_ = 0; // keep receiver active
+#else
+			RE_ = 1; // shutdown receiver
+#endif
 			DE = 1;
 			V.send_count = 0;
 			V.recv_count = 0;
@@ -128,7 +132,7 @@ int8_t controller_work(void)
 	case RECV:
 		if (get_100hz(FALSE) > 2) {
 			DE = 0;
-			RE_ = 1;
+			RE_ = 0;
 			cstate = CLEAR; //fixme for testing
 			LED1 = ~LED1;
 		}
