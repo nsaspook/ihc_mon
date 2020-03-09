@@ -43,6 +43,7 @@ union Obits2 {
 };
 
 typedef enum comm_type {
+	CLEAR,
 	INIT,
 	SEND,
 	RECV,

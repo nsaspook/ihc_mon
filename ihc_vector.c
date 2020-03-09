@@ -47,7 +47,46 @@ void tm_handler(void) // timer/serial functions are handled here
 	if (PIR1bits.CCP1IF) { //      check timer0 irq time timer
 		PIR1bits.CCP1IF = FALSE; //      clear interrupt flag
 	}
-	LED1 = ~LED1;
 
 }
 #pragma	tmpdata
+
+void clear_2hz(void)
+{
+	INTCONbits.GIEH = 0;
+	V.clock_2hz = 0;
+	INTCONbits.GIEH = 1;
+}
+
+void clear_100hz(void)
+{
+	INTCONbits.GIEH = 0;
+	V.clock_100hz = 0;
+	INTCONbits.GIEH = 1;
+}
+
+uint32_t get_2hz(uint8_t mode)
+{
+	static uint32_t tmp;
+
+	if (mode)
+		return tmp;
+
+	INTCONbits.GIEH = 0;
+	tmp = V.clock_2hz;
+	INTCONbits.GIEH = 1;
+	return tmp;
+}
+
+uint32_t get_100hz(uint8_t mode)
+{
+	static uint32_t tmp;
+
+	if (mode)
+		return tmp;
+
+	INTCONbits.GIEH = 0;
+	tmp = V.clock_100hz;
+	INTCONbits.GIEH = 1;
+	return tmp;
+}

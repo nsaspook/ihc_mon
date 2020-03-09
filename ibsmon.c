@@ -70,6 +70,7 @@
 #include <stdio.h>
 #include <EEP.h>
 #include "ibsmon.h"
+#include "ihc_vector.h"
 
 void tm_handler(void);
 int8_t controller_work(void);
@@ -78,12 +79,12 @@ void init_ihcmon(void);
 uint8_t init_stream_params(void);
 
 #pragma udata
-const rom uint8_t modbus_cc_mode[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+const rom uint8_t modbus_cc_mode[] = {0x01, 0x03, 0x00, 0x0a, 0x00, 0x01, 0xa4, 0x08, 8, 9};
 volatile struct V_data V;
 volatile uint8_t cc_stream_file, cc_stream_file_prev = 0, cc_buffer[MAX_DATA];
 #pragma udata access ACCESSBANK
 volatile uint16_t timer0_off = TIMEROFFSET;
-comm_type cstate = INIT;
+comm_type cstate = CLEAR;
 const rom uint8_t *build_date = __DATE__, *build_time = __TIME__, build_version[5] = "1.0";
 
 #pragma code tm_interrupt = 0x8
@@ -97,27 +98,40 @@ void tm_int(void)
 int8_t controller_work(void)
 {
 	switch (cstate) {
+	case CLEAR:
+		clear_2hz();
+		cstate = INIT;
+		break;
 	case INIT:
-		RE_ = 0;
-		DE = 1;
-		V.send_count = 0;
-		V.recv_count = 0;
-		cstate = SEND;
+		if (get_2hz(FALSE) > 80) {
+			RE_ = 0;
+			DE = 1;
+			V.send_count = 0;
+			V.recv_count = 0;
+			cstate = SEND;
+			clear_100hz();
+		}
 		break;
 	case SEND:
-		do {
+		if (get_100hz(FALSE) > 2) {
+			do {
+				while (BusyUSART());
+				TXREG = modbus_cc_mode[V.send_count];
+				V.pwm_volts = (modbus_cc_mode[V.send_count]*25) + 5;
+				SetDCPWM1(V.pwm_volts);
+			} while (++V.send_count <= 8);
 			while (BusyUSART());
-			TXREG = modbus_cc_mode[V.send_count];
-			V.pwm_volts = (modbus_cc_mode[V.send_count]*25) + 5;
-			SetDCPWM1(V.pwm_volts);
-		} while (++V.send_count < 8);
-		while (BusyUSART());
-		cstate = RECV;
+			cstate = RECV;
+			clear_100hz();
+		}
 		break;
 	case RECV:
-		DE = 0;
-		RE_ = 1;
-		cstate = INIT; //fixme for testing
+		if (get_100hz(FALSE) > 2) {
+			DE = 0;
+			RE_ = 1;
+			cstate = CLEAR; //fixme for testing
+			LED1 = ~LED1;
+		}
 		break;
 	default:
 		break;
@@ -197,6 +211,5 @@ void main(void)
 	/* Loop forever */
 	while (TRUE) { // busy work
 		controller_work();
-		LED1 = ~LED1;
 	}
 }

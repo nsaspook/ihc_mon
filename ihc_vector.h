@@ -23,6 +23,11 @@ extern "C" {
 	extern volatile uint8_t cc_stream_file, cc_stream_file_prev, cc_buffer[MAX_DATA];
 	extern volatile uint16_t timer0_off, link_count;
 
+	void clear_2hz(void);
+	void clear_100hz(void);
+	uint32_t get_2hz(uint8_t);
+	uint32_t get_100hz(uint8_t);
+
 #ifdef	__cplusplus
 }
 #endif
