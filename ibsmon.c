@@ -79,8 +79,8 @@ void init_ihcmon(void);
 uint8_t init_stream_params(void);
 
 #pragma udata
-const rom uint8_t modbus_cc_mode[] = {0x01, 0x03, 0x00, 0x0a, 0x00, 0x01, 0xa4, 0x08},
-		re20a_mode[]={0x01,0x03,0x04,0x00,0x01,0x00,0x00,0xab,0xf3};
+const rom uint8_t modbus_cc_mode[] = {0x01, 0x03, 0x01, 0x20, 0x00, 0x01, 0x84, 0x3c},
+re20a_mode[] = {0x01, 0x03, 0x02, 0x00, 0x02, 0x39, 0x85};
 volatile struct V_data V;
 volatile uint8_t cc_stream_file, cc_stream_file_prev = 0, cc_buffer[MAX_DATA];
 #pragma udata access ACCESSBANK
@@ -120,12 +120,10 @@ int8_t controller_work(void)
 	case SEND:
 		if (get_500hz(FALSE) > TDELAY) {
 			do {
-				while (BusyUSART());
+				while (BusyUSART()); // wait for each byte
 				TXREG = modbus_cc_mode[V.send_count];
-				V.pwm_volts = (modbus_cc_mode[V.send_count]*25) + 5;
-				SetDCPWM1(V.pwm_volts);
-			} while (++V.send_count <= 8);
-			while (BusyUSART());
+			} while (++V.send_count < sizeof(modbus_cc_mode));
+			while (BusyUSART()); // wait for the last byte
 			cstate = RECV;
 			clear_500hz();
 		}
@@ -134,12 +132,22 @@ int8_t controller_work(void)
 		if (get_500hz(FALSE) > TDELAY) {
 			DE = 0;
 			RE_ = 0;
-			cstate = CLEAR;
-			if (V.recv_count> sizeof(re20a_mode)) { // check received data
-				LED1 = ~LED1;
+			if (V.recv_count >= sizeof(re20a_mode)) { // check received data
+				if (cc_buffer[4]) {
+					LED1 = ~LED1;
+					V.pwm_volts = CC_ACTIVE;
+				} else {
+					LED1 = OFF;
+					V.pwm_volts = CC_IDLE;
+				}
+				SetDCPWM1(V.pwm_volts);
+				cstate = CLEAR;
 			} else {
 				if (get_500hz(FALSE) > RDELAY) {
 					LED1 = OFF;
+					cstate = CLEAR;
+					V.pwm_volts = CC_OFFLINE;
+					SetDCPWM1(V.pwm_volts);
 				}
 			}
 		}
@@ -174,15 +182,15 @@ void init_ihcmon(void)
 	IBSPORTB = IBSPORT_IOB;
 
 	LED1 = LEDON;
-	FINE_REG = LEDON; // will stay ON if a bad data stream in present when booted
+	FINE_REG = LEDON; // debug
 	timer0_off = TIMERFAST; // blink fast
-	OpenTimer0(TIMER_INT_ON & T0_16BIT & T0_SOURCE_INT & T0_PS_1_64); // led blinker
-	WriteTimer0(timer0_off); //	start timer0 at ~1/2 second ticks
-	OpenTimer1(TIMER_INT_ON & T1_16BIT_RW & T1_SOURCE_INT & T1_PS_1_4 & T1_OSC1EN_OFF & T1_SYNC_EXT_OFF); // aux work thread
+	OpenTimer0(TIMER_INT_ON & T0_16BIT & T0_SOURCE_INT & T0_PS_1_64);
+	WriteTimer0(timer0_off);
+	OpenTimer1(TIMER_INT_ON & T1_16BIT_RW & T1_SOURCE_INT & T1_PS_1_4 & T1_OSC1EN_OFF & T1_SYNC_EXT_OFF);
 	WriteTimer1(SAMPLEFREQ);
 
 	OpenPWM1(PWMFREQ);
-	V.pwm_volts = PWMVOLTS;
+	V.pwm_volts = CC_OFFLINE;
 	SetDCPWM1(V.pwm_volts);
 	SetOutputPWM1(SINGLE_OUT, PWM_MODE_1);
 
@@ -197,7 +205,7 @@ void init_ihcmon(void)
 	TXSTAbits.BRGH = 0;
 	SPBRGH = 0;
 	SPBRG = 64;
-	/*      work int thread setup */
+
 	INTCONbits.TMR0IE = 1; // enable int
 	INTCON2bits.TMR0IP = 1; // make it high level
 	PIE1bits.TMR1IE = 1; // enable int

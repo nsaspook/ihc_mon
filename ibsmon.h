@@ -62,7 +62,7 @@ typedef enum comm_type {
 #define	PWMFREQ		65			// timer2 pwm
 #define PWMVOLTS	127
 
-#define MAX_DATA        16
+#define MAX_DATA        20
 #define MAX_GLITCH      3
 #define MAX_PARAMS      5
 
@@ -73,10 +73,10 @@ typedef enum comm_type {
 
 #define DE		LATAbits.LATA0
 #define RE_		LATAbits.LATA1
-#define FINE_REG  	LATBbits.LATB2
+#define FINE_REG  	LATBbits.LATB2 // debug
 #define ANA_SIG		LATBbits.LATB3
 #define LED1		LATBbits.LATB0
-#define DEB		LATBbits.LATB7
+#define DEB		LATBbits.LATB7 // debug
 
 
 #define LINK_COUNT      10
@@ -85,5 +85,9 @@ typedef enum comm_type {
 //#define LOCAL_ECHO	1
 #define TDELAY		3
 #define RDELAY		2000
-#define QDELAY		2		
+#define QDELAY		2
+
+#define CC_IDLE		50
+#define CC_ACTIVE	210
+#define CC_OFFLINE	100
 #endif 

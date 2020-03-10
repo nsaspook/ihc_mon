@@ -34,7 +34,7 @@
         <targetDevice>PIC18F1320</targetDevice>
         <targetHeader></targetHeader>
         <targetPluginBoard></targetPluginBoard>
-        <platformTool>ICD4Tool</platformTool>
+        <platformTool>ICD3PlatformTool</platformTool>
         <languageToolchain>C18</languageToolchain>
         <languageToolchainVersion>3.40</languageToolchainVersion>
         <platform>2</platform>
@@ -139,7 +139,7 @@
                   value="${memories.instruction.ram.ranges}"/>
         <property key="memories.programmemory" value="true"/>
         <property key="memories.programmemory.ranges" value="0-1fff"/>
-        <property key="poweroptions.powerenable" value="true"/>
+        <property key="poweroptions.powerenable" value="false"/>
         <property key="programoptions.donoteraseauxmem" value="false"/>
         <property key="programoptions.eraseb4program" value="true"/>
         <property key="programoptions.preservedataflash" value="false"/>
