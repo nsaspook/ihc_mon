@@ -24,9 +24,9 @@ extern "C" {
 	extern volatile uint16_t timer0_off, link_count;
 
 	void clear_2hz(void);
-	void clear_100hz(void);
+	void clear_500hz(void);
 	uint32_t get_2hz(uint8_t);
-	uint32_t get_100hz(uint8_t);
+	uint32_t get_500hz(uint8_t);
 
 #ifdef	__cplusplus
 }

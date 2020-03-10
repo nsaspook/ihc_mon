@@ -79,7 +79,8 @@ void init_ihcmon(void);
 uint8_t init_stream_params(void);
 
 #pragma udata
-const rom uint8_t modbus_cc_mode[] = {0x01, 0x03, 0x00, 0x0a, 0x00, 0x01, 0xa4, 0x08, 8, 9};
+const rom uint8_t modbus_cc_mode[] = {0x01, 0x03, 0x00, 0x0a, 0x00, 0x01, 0xa4, 0x08},
+		re20a_mode[]={0x01,0x03,0x04,0x00,0x01,0x00,0x00,0xab,0xf3};
 volatile struct V_data V;
 volatile uint8_t cc_stream_file, cc_stream_file_prev = 0, cc_buffer[MAX_DATA];
 #pragma udata access ACCESSBANK
@@ -103,7 +104,7 @@ int8_t controller_work(void)
 		cstate = INIT;
 		break;
 	case INIT:
-		if (get_2hz(FALSE) > 80) {
+		if (get_2hz(FALSE) > QDELAY) {
 #ifdef LOCAL_ECHO
 			RE_ = 0; // keep receiver active
 #else
@@ -113,11 +114,11 @@ int8_t controller_work(void)
 			V.send_count = 0;
 			V.recv_count = 0;
 			cstate = SEND;
-			clear_100hz();
+			clear_500hz();
 		}
 		break;
 	case SEND:
-		if (get_100hz(FALSE) > 2) {
+		if (get_500hz(FALSE) > TDELAY) {
 			do {
 				while (BusyUSART());
 				TXREG = modbus_cc_mode[V.send_count];
@@ -126,15 +127,21 @@ int8_t controller_work(void)
 			} while (++V.send_count <= 8);
 			while (BusyUSART());
 			cstate = RECV;
-			clear_100hz();
+			clear_500hz();
 		}
 		break;
 	case RECV:
-		if (get_100hz(FALSE) > 2) {
+		if (get_500hz(FALSE) > TDELAY) {
 			DE = 0;
 			RE_ = 0;
-			cstate = CLEAR; //fixme for testing
-			LED1 = ~LED1;
+			cstate = CLEAR;
+			if (V.recv_count> sizeof(re20a_mode)) { // check received data
+				LED1 = ~LED1;
+			} else {
+				if (get_500hz(FALSE) > RDELAY) {
+					LED1 = OFF;
+				}
+			}
 		}
 		break;
 	default:

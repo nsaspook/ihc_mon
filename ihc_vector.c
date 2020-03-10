@@ -16,7 +16,6 @@ void tm_handler(void) // timer/serial functions are handled here
 			RCSTAbits.CREN = TRUE; // re-enable
 			if (c_error++>MAX_C_ERROR) {
 				c_error = 0;
-				//                LED1 = LEDON;
 			}
 		} else {
 			/*
@@ -31,13 +30,15 @@ void tm_handler(void) // timer/serial functions are handled here
 	if (PIR1bits.TMR1IF) { //      Timer1 int handler
 		PIR1bits.TMR1IF = FALSE; //      clear int flag
 		WriteTimer1(SAMPLEFREQ);
-		V.clock_100hz++;
+		V.clock_500hz++;
+//		DEB = ~DEB;
 	}
 
 	if (INTCONbits.TMR0IF) { //      check timer0 irq time timer
 		INTCONbits.TMR0IF = FALSE; //      clear interrupt flag
 		WriteTimer0(timer0_off);
 		V.clock_2hz++;
+//		DEB = ~DEB;
 	}
 
 	if (PIR1bits.TMR2IF) { //      check timer0 irq time timer
@@ -58,10 +59,10 @@ void clear_2hz(void)
 	INTCONbits.GIEH = 1;
 }
 
-void clear_100hz(void)
+void clear_500hz(void)
 {
 	INTCONbits.GIEH = 0;
-	V.clock_100hz = 0;
+	V.clock_500hz = 0;
 	INTCONbits.GIEH = 1;
 }
 
@@ -78,7 +79,7 @@ uint32_t get_2hz(uint8_t mode)
 	return tmp;
 }
 
-uint32_t get_100hz(uint8_t mode)
+uint32_t get_500hz(uint8_t mode)
 {
 	static uint32_t tmp;
 
@@ -86,7 +87,7 @@ uint32_t get_100hz(uint8_t mode)
 		return tmp;
 
 	INTCONbits.GIEH = 0;
-	tmp = V.clock_100hz;
+	tmp = V.clock_500hz;
 	INTCONbits.GIEH = 1;
 	return tmp;
 }

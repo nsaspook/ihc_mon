@@ -1,5 +1,5 @@
 build/default/production/_ext/1472/ibsmon.o:  \
-	/root/MPLABXProjects/vtouch_v2/ihc_mon/ibsmon.c  \
-	/root/MPLABXProjects/vtouch_v2/ihc_mon/ihc_vector.h  \
-	/root/MPLABXProjects/vtouch_v2/ihc_mon/ibsmon.h  \
+	/fred/ibs_monitor/pat/ibsmon.c  \
+	/fred/ibs_monitor/pat/ihc_vector.h  \
+	/fred/ibs_monitor/pat/ibsmon.h  \
 
