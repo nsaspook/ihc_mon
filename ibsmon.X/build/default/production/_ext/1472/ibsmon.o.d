@@ -1,5 +1,5 @@
 build/default/production/_ext/1472/ibsmon.o:  \
-	/root/ihc_mon/ibsmon.c  \
-	/root/ihc_mon/ihc_vector.h  \
-	/root/ihc_mon/ibsmon.h  \
+	/fred/ibs_monitor/pat/ibsmon.c  \
+	/fred/ibs_monitor/pat/ihc_vector.h  \
+	/fred/ibs_monitor/pat/ibsmon.h  \
 

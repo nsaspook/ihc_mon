@@ -87,7 +87,7 @@ typedef enum comm_type {
 #define RDELAY		2000
 #define QDELAY		2
 
-#define CC_IDLE		50
-#define CC_ACTIVE	210
-#define CC_OFFLINE	100
+#define CC_IDLE		74
+#define CC_ACTIVE	240
+#define CC_OFFLINE	135
 #endif 
