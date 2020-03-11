@@ -1,5 +1,5 @@
 MPLINK 4.40, Linker
-Linker Map File - Created Tue Mar 10 09:28:25 2020
+Linker Map File - Created Tue Mar 10 17:03:50 2020
 
                                  Section Info
                   Section       Type    Address   Location Size(Bytes)
@@ -8,54 +8,54 @@ Linker Map File - Created Tue Mar 10 09:28:25 2020
            .code___init.o       code   0x000006    program   0x000002
              tm_interrupt       code   0x000008    program   0x000006
                    .cinit    romdata   0x00000e    program   0x00001a
-           .code_ibsmon.o       code   0x000028    program   0x0001e4
-       .code_ihc_vector.o       code   0x00020c    program   0x000192
-         .code_pw1setoc.o       code   0x00039e    program   0x0000aa
-               _cinit_scn       code   0x000448    program   0x00009e
-            .code_uopen.o       code   0x0004e6    program   0x00008a
-         .code_pw1setdc.o       code   0x000570    program   0x00005e
-          .code_write_B.o       code   0x0005ce    program   0x00004e
-           .code_read_B.o       code   0x00061c    program   0x000044
-           .code_t1open.o       code   0x000660    program   0x000042
-          .code_t1write.o       code   0x0006a2    program   0x000038
-          .code_t0write.o       code   0x0006da    program   0x000038
-           .code_t0open.o       code   0x000712    program   0x000038
-          .code_pw1open.o       code   0x00074a    program   0x000030
-                    .code       code   0x00077a    program   0x000020
-             _startup_scn       code   0x00079a    program   0x00001c
-             .stringtable    romdata   0x0007b6    program   0x000015
-        .romdata_ibsmon.o    romdata   0x0007cb    program   0x000014
-      .idata_pw1setoc.o_i    romdata   0x0007df    program   0x000000
-      .romdata_pw1setdc.o    romdata   0x0007df    program   0x000000
-      .idata_pw1setdc.o_i    romdata   0x0007df    program   0x000000
-      .romdata_pw1setoc.o    romdata   0x0007df    program   0x000000
-        .romdata_read_B.o    romdata   0x0007df    program   0x000000
-        .idata_read_B.o_i    romdata   0x0007df    program   0x000000
-       .idata_t1write.o_i    romdata   0x0007df    program   0x000000
-         .romdata_uopen.o    romdata   0x0007df    program   0x000000
-         .idata_uopen.o_i    romdata   0x0007df    program   0x000000
-       .romdata_t1write.o    romdata   0x0007df    program   0x000000
-        .romdata_t1open.o    romdata   0x0007df    program   0x000000
-        .idata_t1open.o_i    romdata   0x0007df    program   0x000000
-        .romdata_t0open.o    romdata   0x0007df    program   0x000000
-        .idata_t0open.o_i    romdata   0x0007df    program   0x000000
-       .idata_write_B.o_i    romdata   0x0007df    program   0x000000
-       .romdata_pw1open.o    romdata   0x0007df    program   0x000000
-       .idata_pw1open.o_i    romdata   0x0007df    program   0x000000
-      .romdata_busy_eep.o    romdata   0x0007df    program   0x000000
-       .romdata_write_B.o    romdata   0x0007df    program   0x000000
-    .romdata_ihc_vector.o    romdata   0x0007df    program   0x000000
-    .idata_ihc_vector.o_i    romdata   0x0007df    program   0x000001
-       .idata_t0write.o_i    romdata   0x0007df    program   0x000000
-       .romdata_t0write.o    romdata   0x0007df    program   0x000000
-        .romdata___init.o    romdata   0x0007df    program   0x000000
-         .romdata_c018i.o    romdata   0x0007df    program   0x000000
-         .code_busy_eep.o       code   0x0007e0    program   0x000006
-        .idata_ibsmon.o_i    romdata   0x0007e6    program   0x000008
-      .idata_busy_eep.o_i    romdata   0x0007ee    program   0x000000
-            .code_c018i.o       code   0x0007ee    program   0x000000
-        .idata___init.o_i    romdata   0x0007ee    program   0x000000
-         .idata_c018i.o_i    romdata   0x0007ee    program   0x000000
+           .code_ibsmon.o       code   0x000028    program   0x000260
+       .code_ihc_vector.o       code   0x000288    program   0x000192
+         .code_pw1setoc.o       code   0x00041a    program   0x0000aa
+               _cinit_scn       code   0x0004c4    program   0x00009e
+            .code_uopen.o       code   0x000562    program   0x00008a
+         .code_pw1setdc.o       code   0x0005ec    program   0x00005e
+          .code_write_B.o       code   0x00064a    program   0x00004e
+           .code_read_B.o       code   0x000698    program   0x000044
+           .code_t1open.o       code   0x0006dc    program   0x000042
+          .code_t1write.o       code   0x00071e    program   0x000038
+          .code_t0write.o       code   0x000756    program   0x000038
+           .code_t0open.o       code   0x00078e    program   0x000038
+          .code_pw1open.o       code   0x0007c6    program   0x000030
+                    .code       code   0x0007f6    program   0x000020
+             _startup_scn       code   0x000816    program   0x00001c
+             .stringtable    romdata   0x000832    program   0x000015
+        .romdata_ibsmon.o    romdata   0x000847    program   0x000014
+      .idata_pw1setoc.o_i    romdata   0x00085b    program   0x000000
+      .romdata_pw1setdc.o    romdata   0x00085b    program   0x000000
+      .idata_pw1setdc.o_i    romdata   0x00085b    program   0x000000
+      .romdata_pw1setoc.o    romdata   0x00085b    program   0x000000
+        .romdata_read_B.o    romdata   0x00085b    program   0x000000
+        .idata_read_B.o_i    romdata   0x00085b    program   0x000000
+       .idata_t1write.o_i    romdata   0x00085b    program   0x000000
+         .romdata_uopen.o    romdata   0x00085b    program   0x000000
+         .idata_uopen.o_i    romdata   0x00085b    program   0x000000
+       .romdata_t1write.o    romdata   0x00085b    program   0x000000
+        .romdata_t1open.o    romdata   0x00085b    program   0x000000
+        .idata_t1open.o_i    romdata   0x00085b    program   0x000000
+        .romdata_t0open.o    romdata   0x00085b    program   0x000000
+        .idata_t0open.o_i    romdata   0x00085b    program   0x000000
+       .idata_write_B.o_i    romdata   0x00085b    program   0x000000
+       .romdata_pw1open.o    romdata   0x00085b    program   0x000000
+       .idata_pw1open.o_i    romdata   0x00085b    program   0x000000
+      .romdata_busy_eep.o    romdata   0x00085b    program   0x000000
+       .romdata_write_B.o    romdata   0x00085b    program   0x000000
+    .romdata_ihc_vector.o    romdata   0x00085b    program   0x000000
+    .idata_ihc_vector.o_i    romdata   0x00085b    program   0x000001
+       .idata_t0write.o_i    romdata   0x00085b    program   0x000000
+       .romdata_t0write.o    romdata   0x00085b    program   0x000000
+        .romdata___init.o    romdata   0x00085b    program   0x000000
+         .romdata_c018i.o    romdata   0x00085b    program   0x000000
+         .code_busy_eep.o       code   0x00085c    program   0x000006
+        .idata_ibsmon.o_i    romdata   0x000862    program   0x000008
+      .idata_busy_eep.o_i    romdata   0x00086a    program   0x000000
+            .code_c018i.o       code   0x00086a    program   0x000000
+        .idata___init.o_i    romdata   0x00086a    program   0x000000
+         .idata_c018i.o_i    romdata   0x00086a    program   0x000000
   .config_300001_ibsmon.o    romdata   0x300001    program   0x000001
   .config_300002_ibsmon.o    romdata   0x300002    program   0x000001
   .config_300003_ibsmon.o    romdata   0x300003    program   0x000001
@@ -109,40 +109,40 @@ Linker Map File - Created Tue Mar 10 09:28:25 2020
                               Program Memory Usage 
                                Start         End      
                            ---------   ---------      
-                            0x000000    0x0007ed      
+                            0x000000    0x000869      
                             0x300001    0x300003      
                             0x300005    0x300006      
                             0x300008    0x30000d      
-            2041 out of 8472 program addresses used, program memory utilization is 24%
+            2165 out of 8472 program addresses used, program memory utilization is 25%
 
 
 
                               Symbols - Sorted by Name
                      Name    Address   Location    Storage File                     
                 ---------  ---------  ---------  --------- ---------                
-                 Busy_eep   0x0007e0    program     extern C:\MCC18\v3_39\src\pmc_common\EEP\busy_eep.c
-                 OpenPWM1   0x00074a    program     extern C:\MCC18\v3_39\src\pmc_common\PWM\pw1open.c
-         OpenPWM1ConfigIO   0x000776    program     extern C:\MCC18\v3_39\src\pmc_common\PWM\pw1open.c
-               OpenTimer0   0x000712    program     extern C:\MCC18\v3_39\src\pmc_common\Timers\t0open.c
-               OpenTimer1   0x000660    program     extern C:\MCC18\v3_39\src\pmc_common\Timers\t1open.c
-                OpenUSART   0x0004e6    program     extern C:\MCC18\v3_39\src\pmc_common\USART\uopen.c
-               Read_b_eep   0x00061c    program     extern C:\MCC18\v3_39\src\pmc_common\EEP\read_B.c
-                SetDCPWM1   0x000570    program     extern C:\MCC18\v3_39\src\pmc_common\PWM\pw1setdc.c
-            SetOutputPWM1   0x00039e    program     extern C:\MCC18\v3_39\src\pmc_common\PWM\pw1setoc.c
-              WriteTimer0   0x0006da    program     extern C:\MCC18\v3_39\src\pmc_common\Timers\t0write.c
-              WriteTimer1   0x0006a2    program     extern C:\MCC18\v3_39\src\pmc_common\Timers\t1write.c
-              Write_b_eep   0x0005ce    program     extern C:\MCC18\v3_39\src\pmc_common\EEP\write_B.c
-         ___else_lbl00004   0x000416    program     static                          
-         ___else_lbl00006   0x000408    program     static                          
-           ___if_lbl00002   0x00042e    program     static                          
-           ___if_lbl00003   0x00042e    program     static                          
-           ___if_lbl00005   0x00042e    program     static                          
+                 Busy_eep   0x00085c    program     extern C:\MCC18\v3_39\src\pmc_common\EEP\busy_eep.c
+                 OpenPWM1   0x0007c6    program     extern C:\MCC18\v3_39\src\pmc_common\PWM\pw1open.c
+         OpenPWM1ConfigIO   0x0007f2    program     extern C:\MCC18\v3_39\src\pmc_common\PWM\pw1open.c
+               OpenTimer0   0x00078e    program     extern C:\MCC18\v3_39\src\pmc_common\Timers\t0open.c
+               OpenTimer1   0x0006dc    program     extern C:\MCC18\v3_39\src\pmc_common\Timers\t1open.c
+                OpenUSART   0x000562    program     extern C:\MCC18\v3_39\src\pmc_common\USART\uopen.c
+               Read_b_eep   0x000698    program     extern C:\MCC18\v3_39\src\pmc_common\EEP\read_B.c
+                SetDCPWM1   0x0005ec    program     extern C:\MCC18\v3_39\src\pmc_common\PWM\pw1setdc.c
+            SetOutputPWM1   0x00041a    program     extern C:\MCC18\v3_39\src\pmc_common\PWM\pw1setoc.c
+              WriteTimer0   0x000756    program     extern C:\MCC18\v3_39\src\pmc_common\Timers\t0write.c
+              WriteTimer1   0x00071e    program     extern C:\MCC18\v3_39\src\pmc_common\Timers\t1write.c
+              Write_b_eep   0x00064a    program     extern C:\MCC18\v3_39\src\pmc_common\EEP\write_B.c
+         ___else_lbl00004   0x000492    program     static                          
+         ___else_lbl00006   0x000484    program     static                          
+           ___if_lbl00002   0x0004aa    program     static                          
+           ___if_lbl00003   0x0004aa    program     static                          
+           ___if_lbl00005   0x0004aa    program     static                          
        ___return_lbl00000   0x00000c    program     static                          
-       ___return_lbl00000   0x000654    program     static                          
-       ___return_lbl00000   0x000436    program     static                          
+       ___return_lbl00000   0x0006d0    program     static                          
+       ___return_lbl00000   0x0004b2    program     static                          
        ___return_lbl00000   0x000004    program     static                          
-       ___return_lbl00001   0x0007b4    program     static                          
-       ___return_lbl00002   0x0004e4    program     static                          
+       ___return_lbl00001   0x000830    program     static                          
+       ___return_lbl00002   0x000560    program     static                          
                __config_0   0x300001    program     static /fred/ibs_monitor/pat/ibsmon.c
                __config_1   0x300002    program     static /fred/ibs_monitor/pat/ibsmon.c
               __config_10   0x30000d    program     static /fred/ibs_monitor/pat/ibsmon.c
@@ -155,42 +155,42 @@ Linker Map File - Created Tue Mar 10 09:28:25 2020
                __config_8   0x30000b    program     static /fred/ibs_monitor/pat/ibsmon.c
                __config_9   0x30000c    program     static /fred/ibs_monitor/pat/ibsmon.c
                    __init   0x000006    program     extern C:\MCC18\v3_39\src\traditional\stdclib\__init.c
-                   __pa_0   0x0001da    program     static /fred/ibs_monitor/pat/ibsmon.c
-                   __pa_0   0x000390    program     static /fred/ibs_monitor/pat/ihc_vector.c
-                   __pa_1   0x0001ec    program     static /fred/ibs_monitor/pat/ibsmon.c
-                   __pa_2   0x000200    program     static /fred/ibs_monitor/pat/ibsmon.c
-               __string_0   0x0007bf    program     static /fred/ibs_monitor/pat/ibsmon.c
-               __string_1   0x0007b6    program     static /fred/ibs_monitor/pat/ibsmon.c
-               __tmplbl_0   0x000426    program     static                          
-               __tmplbl_1   0x00041e    program     static                          
-            __zero_memory   0x00077a    program     extern C:\MCC18\v3_39\src\traditional\proc\p18F1320.asm
-                _do_cinit   0x000448    program     extern C:\MCC18\v3_39\src\traditional\startup\c018i.c
+                   __pa_0   0x000258    program     static /fred/ibs_monitor/pat/ibsmon.c
+                   __pa_0   0x00040c    program     static /fred/ibs_monitor/pat/ihc_vector.c
+                   __pa_1   0x00026c    program     static /fred/ibs_monitor/pat/ibsmon.c
+                   __pa_2   0x00027c    program     static /fred/ibs_monitor/pat/ibsmon.c
+               __string_0   0x00083b    program     static /fred/ibs_monitor/pat/ibsmon.c
+               __string_1   0x000832    program     static /fred/ibs_monitor/pat/ibsmon.c
+               __tmplbl_0   0x0004a2    program     static                          
+               __tmplbl_1   0x00049a    program     static                          
+            __zero_memory   0x0007f6    program     extern C:\MCC18\v3_39\src\traditional\proc\p18F1320.asm
+                _do_cinit   0x0004c4    program     extern C:\MCC18\v3_39\src\traditional\startup\c018i.c
                    _entry   0x000000    program     extern C:\MCC18\v3_39\src\traditional\startup\c018i.c
-                 _startup   0x00079a    program     extern C:\MCC18\v3_39\src\traditional\startup\c018i.c
-            build_version   0x0007da    program     extern /fred/ibs_monitor/pat/ibsmon.c
-                clear_2hz   0x000310    program     extern /fred/ibs_monitor/pat/ihc_vector.c
-              clear_500hz   0x000320    program     extern /fred/ibs_monitor/pat/ihc_vector.c
-                compare_l   0x000790    program     static C:\MCC18\v3_39\src\traditional\proc\p18F1320.asm
+                 _startup   0x000816    program     extern C:\MCC18\v3_39\src\traditional\startup\c018i.c
+            build_version   0x000856    program     extern /fred/ibs_monitor/pat/ibsmon.c
+                clear_2hz   0x00038c    program     extern /fred/ibs_monitor/pat/ihc_vector.c
+              clear_500hz   0x00039c    program     extern /fred/ibs_monitor/pat/ihc_vector.c
+                compare_l   0x00080c    program     static C:\MCC18\v3_39\src\traditional\proc\p18F1320.asm
           controller_work   0x000028    program     extern /fred/ibs_monitor/pat/ibsmon.c
-                copy_loop   0x0004ba    program     static                          
-            copy_one_byte   0x0004c0    program     static                          
-                do_config   0x0000fc    program     extern /fred/ibs_monitor/pat/ibsmon.c
-                     done   0x0004e4    program     static                          
-             done_copying   0x0004ce    program     static                          
-                  get_2hz   0x000330    program     extern /fred/ibs_monitor/pat/ihc_vector.c
-                get_500hz   0x000360    program     extern /fred/ibs_monitor/pat/ihc_vector.c
-              init_ihcmon   0x000134    program     extern /fred/ibs_monitor/pat/ibsmon.c
-       init_stream_params   0x0001ce    program     extern /fred/ibs_monitor/pat/ibsmon.c
-                     loop   0x0007aa    program     static                          
-                   loop_h   0x000788    program     static C:\MCC18\v3_39\src\traditional\proc\p18F1320.asm
-                   loop_l   0x000792    program     static C:\MCC18\v3_39\src\traditional\proc\p18F1320.asm
-                     main   0x0001d4    program     extern /fred/ibs_monitor/pat/ibsmon.c
-           modbus_cc_mode   0x0007cb    program     extern /fred/ibs_monitor/pat/ibsmon.c
-               re20a_mode   0x0007d3    program     extern /fred/ibs_monitor/pat/ibsmon.c
-                     test   0x000462    program     static                          
-               tm_handler   0x00020c    program     extern /fred/ibs_monitor/pat/ihc_vector.c
+                copy_loop   0x000536    program     static                          
+            copy_one_byte   0x00053c    program     static                          
+                do_config   0x000176    program     extern /fred/ibs_monitor/pat/ibsmon.c
+                     done   0x000560    program     static                          
+             done_copying   0x00054a    program     static                          
+                  get_2hz   0x0003ac    program     extern /fred/ibs_monitor/pat/ihc_vector.c
+                get_500hz   0x0003dc    program     extern /fred/ibs_monitor/pat/ihc_vector.c
+              init_ihcmon   0x0001ae    program     extern /fred/ibs_monitor/pat/ibsmon.c
+       init_stream_params   0x00024c    program     extern /fred/ibs_monitor/pat/ibsmon.c
+                     loop   0x000826    program     static                          
+                   loop_h   0x000804    program     static C:\MCC18\v3_39\src\traditional\proc\p18F1320.asm
+                   loop_l   0x00080e    program     static C:\MCC18\v3_39\src\traditional\proc\p18F1320.asm
+                     main   0x000252    program     extern /fred/ibs_monitor/pat/ibsmon.c
+           modbus_cc_mode   0x000847    program     extern /fred/ibs_monitor/pat/ibsmon.c
+               re20a_mode   0x00084f    program     extern /fred/ibs_monitor/pat/ibsmon.c
+                     test   0x0004de    program     static                          
+               tm_handler   0x000288    program     extern /fred/ibs_monitor/pat/ihc_vector.c
                    tm_int   0x000008    program     extern /fred/ibs_monitor/pat/ibsmon.c
-               zero_block   0x000788    program     static C:\MCC18\v3_39\src\traditional\proc\p18F1320.asm
+               zero_block   0x000804    program     static C:\MCC18\v3_39\src\traditional\proc\p18F1320.asm
                    ADCON0   0x000fc2       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F1320.asm
                ADCON0bits   0x000fc2       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F1320.asm
                    ADCON1   0x000fc1       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F1320.asm
@@ -380,60 +380,60 @@ Linker Map File - Created Tue Mar 10 09:28:25 2020
                    tm_int   0x000008    program     extern /fred/ibs_monitor/pat/ibsmon.c
        ___return_lbl00000   0x00000c    program     static                          
           controller_work   0x000028    program     extern /fred/ibs_monitor/pat/ibsmon.c
-                do_config   0x0000fc    program     extern /fred/ibs_monitor/pat/ibsmon.c
-              init_ihcmon   0x000134    program     extern /fred/ibs_monitor/pat/ibsmon.c
-       init_stream_params   0x0001ce    program     extern /fred/ibs_monitor/pat/ibsmon.c
-                     main   0x0001d4    program     extern /fred/ibs_monitor/pat/ibsmon.c
-                   __pa_0   0x0001da    program     static /fred/ibs_monitor/pat/ibsmon.c
-                   __pa_1   0x0001ec    program     static /fred/ibs_monitor/pat/ibsmon.c
-                   __pa_2   0x000200    program     static /fred/ibs_monitor/pat/ibsmon.c
-               tm_handler   0x00020c    program     extern /fred/ibs_monitor/pat/ihc_vector.c
-                clear_2hz   0x000310    program     extern /fred/ibs_monitor/pat/ihc_vector.c
-              clear_500hz   0x000320    program     extern /fred/ibs_monitor/pat/ihc_vector.c
-                  get_2hz   0x000330    program     extern /fred/ibs_monitor/pat/ihc_vector.c
-                get_500hz   0x000360    program     extern /fred/ibs_monitor/pat/ihc_vector.c
-                   __pa_0   0x000390    program     static /fred/ibs_monitor/pat/ihc_vector.c
-            SetOutputPWM1   0x00039e    program     extern C:\MCC18\v3_39\src\pmc_common\PWM\pw1setoc.c
-         ___else_lbl00006   0x000408    program     static                          
-         ___else_lbl00004   0x000416    program     static                          
-               __tmplbl_1   0x00041e    program     static                          
-               __tmplbl_0   0x000426    program     static                          
-           ___if_lbl00002   0x00042e    program     static                          
-           ___if_lbl00003   0x00042e    program     static                          
-           ___if_lbl00005   0x00042e    program     static                          
-       ___return_lbl00000   0x000436    program     static                          
-                _do_cinit   0x000448    program     extern C:\MCC18\v3_39\src\traditional\startup\c018i.c
-                     test   0x000462    program     static                          
-                copy_loop   0x0004ba    program     static                          
-            copy_one_byte   0x0004c0    program     static                          
-             done_copying   0x0004ce    program     static                          
-                     done   0x0004e4    program     static                          
-       ___return_lbl00002   0x0004e4    program     static                          
-                OpenUSART   0x0004e6    program     extern C:\MCC18\v3_39\src\pmc_common\USART\uopen.c
-                SetDCPWM1   0x000570    program     extern C:\MCC18\v3_39\src\pmc_common\PWM\pw1setdc.c
-              Write_b_eep   0x0005ce    program     extern C:\MCC18\v3_39\src\pmc_common\EEP\write_B.c
-               Read_b_eep   0x00061c    program     extern C:\MCC18\v3_39\src\pmc_common\EEP\read_B.c
-       ___return_lbl00000   0x000654    program     static                          
-               OpenTimer1   0x000660    program     extern C:\MCC18\v3_39\src\pmc_common\Timers\t1open.c
-              WriteTimer1   0x0006a2    program     extern C:\MCC18\v3_39\src\pmc_common\Timers\t1write.c
-              WriteTimer0   0x0006da    program     extern C:\MCC18\v3_39\src\pmc_common\Timers\t0write.c
-               OpenTimer0   0x000712    program     extern C:\MCC18\v3_39\src\pmc_common\Timers\t0open.c
-                 OpenPWM1   0x00074a    program     extern C:\MCC18\v3_39\src\pmc_common\PWM\pw1open.c
-         OpenPWM1ConfigIO   0x000776    program     extern C:\MCC18\v3_39\src\pmc_common\PWM\pw1open.c
-            __zero_memory   0x00077a    program     extern C:\MCC18\v3_39\src\traditional\proc\p18F1320.asm
-               zero_block   0x000788    program     static C:\MCC18\v3_39\src\traditional\proc\p18F1320.asm
-                   loop_h   0x000788    program     static C:\MCC18\v3_39\src\traditional\proc\p18F1320.asm
-                compare_l   0x000790    program     static C:\MCC18\v3_39\src\traditional\proc\p18F1320.asm
-                   loop_l   0x000792    program     static C:\MCC18\v3_39\src\traditional\proc\p18F1320.asm
-                 _startup   0x00079a    program     extern C:\MCC18\v3_39\src\traditional\startup\c018i.c
-                     loop   0x0007aa    program     static                          
-       ___return_lbl00001   0x0007b4    program     static                          
-               __string_1   0x0007b6    program     static /fred/ibs_monitor/pat/ibsmon.c
-               __string_0   0x0007bf    program     static /fred/ibs_monitor/pat/ibsmon.c
-           modbus_cc_mode   0x0007cb    program     extern /fred/ibs_monitor/pat/ibsmon.c
-               re20a_mode   0x0007d3    program     extern /fred/ibs_monitor/pat/ibsmon.c
-            build_version   0x0007da    program     extern /fred/ibs_monitor/pat/ibsmon.c
-                 Busy_eep   0x0007e0    program     extern C:\MCC18\v3_39\src\pmc_common\EEP\busy_eep.c
+                do_config   0x000176    program     extern /fred/ibs_monitor/pat/ibsmon.c
+              init_ihcmon   0x0001ae    program     extern /fred/ibs_monitor/pat/ibsmon.c
+       init_stream_params   0x00024c    program     extern /fred/ibs_monitor/pat/ibsmon.c
+                     main   0x000252    program     extern /fred/ibs_monitor/pat/ibsmon.c
+                   __pa_0   0x000258    program     static /fred/ibs_monitor/pat/ibsmon.c
+                   __pa_1   0x00026c    program     static /fred/ibs_monitor/pat/ibsmon.c
+                   __pa_2   0x00027c    program     static /fred/ibs_monitor/pat/ibsmon.c
+               tm_handler   0x000288    program     extern /fred/ibs_monitor/pat/ihc_vector.c
+                clear_2hz   0x00038c    program     extern /fred/ibs_monitor/pat/ihc_vector.c
+              clear_500hz   0x00039c    program     extern /fred/ibs_monitor/pat/ihc_vector.c
+                  get_2hz   0x0003ac    program     extern /fred/ibs_monitor/pat/ihc_vector.c
+                get_500hz   0x0003dc    program     extern /fred/ibs_monitor/pat/ihc_vector.c
+                   __pa_0   0x00040c    program     static /fred/ibs_monitor/pat/ihc_vector.c
+            SetOutputPWM1   0x00041a    program     extern C:\MCC18\v3_39\src\pmc_common\PWM\pw1setoc.c
+         ___else_lbl00006   0x000484    program     static                          
+         ___else_lbl00004   0x000492    program     static                          
+               __tmplbl_1   0x00049a    program     static                          
+               __tmplbl_0   0x0004a2    program     static                          
+           ___if_lbl00002   0x0004aa    program     static                          
+           ___if_lbl00003   0x0004aa    program     static                          
+           ___if_lbl00005   0x0004aa    program     static                          
+       ___return_lbl00000   0x0004b2    program     static                          
+                _do_cinit   0x0004c4    program     extern C:\MCC18\v3_39\src\traditional\startup\c018i.c
+                     test   0x0004de    program     static                          
+                copy_loop   0x000536    program     static                          
+            copy_one_byte   0x00053c    program     static                          
+             done_copying   0x00054a    program     static                          
+                     done   0x000560    program     static                          
+       ___return_lbl00002   0x000560    program     static                          
+                OpenUSART   0x000562    program     extern C:\MCC18\v3_39\src\pmc_common\USART\uopen.c
+                SetDCPWM1   0x0005ec    program     extern C:\MCC18\v3_39\src\pmc_common\PWM\pw1setdc.c
+              Write_b_eep   0x00064a    program     extern C:\MCC18\v3_39\src\pmc_common\EEP\write_B.c
+               Read_b_eep   0x000698    program     extern C:\MCC18\v3_39\src\pmc_common\EEP\read_B.c
+       ___return_lbl00000   0x0006d0    program     static                          
+               OpenTimer1   0x0006dc    program     extern C:\MCC18\v3_39\src\pmc_common\Timers\t1open.c
+              WriteTimer1   0x00071e    program     extern C:\MCC18\v3_39\src\pmc_common\Timers\t1write.c
+              WriteTimer0   0x000756    program     extern C:\MCC18\v3_39\src\pmc_common\Timers\t0write.c
+               OpenTimer0   0x00078e    program     extern C:\MCC18\v3_39\src\pmc_common\Timers\t0open.c
+                 OpenPWM1   0x0007c6    program     extern C:\MCC18\v3_39\src\pmc_common\PWM\pw1open.c
+         OpenPWM1ConfigIO   0x0007f2    program     extern C:\MCC18\v3_39\src\pmc_common\PWM\pw1open.c
+            __zero_memory   0x0007f6    program     extern C:\MCC18\v3_39\src\traditional\proc\p18F1320.asm
+               zero_block   0x000804    program     static C:\MCC18\v3_39\src\traditional\proc\p18F1320.asm
+                   loop_h   0x000804    program     static C:\MCC18\v3_39\src\traditional\proc\p18F1320.asm
+                compare_l   0x00080c    program     static C:\MCC18\v3_39\src\traditional\proc\p18F1320.asm
+                   loop_l   0x00080e    program     static C:\MCC18\v3_39\src\traditional\proc\p18F1320.asm
+                 _startup   0x000816    program     extern C:\MCC18\v3_39\src\traditional\startup\c018i.c
+                     loop   0x000826    program     static                          
+       ___return_lbl00001   0x000830    program     static                          
+               __string_1   0x000832    program     static /fred/ibs_monitor/pat/ibsmon.c
+               __string_0   0x00083b    program     static /fred/ibs_monitor/pat/ibsmon.c
+           modbus_cc_mode   0x000847    program     extern /fred/ibs_monitor/pat/ibsmon.c
+               re20a_mode   0x00084f    program     extern /fred/ibs_monitor/pat/ibsmon.c
+            build_version   0x000856    program     extern /fred/ibs_monitor/pat/ibsmon.c
+                 Busy_eep   0x00085c    program     extern C:\MCC18\v3_39\src\pmc_common\EEP\busy_eep.c
                __config_0   0x300001    program     static /fred/ibs_monitor/pat/ibsmon.c
                __config_1   0x300002    program     static /fred/ibs_monitor/pat/ibsmon.c
                __config_2   0x300003    program     static /fred/ibs_monitor/pat/ibsmon.c

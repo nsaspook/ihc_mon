@@ -133,12 +133,37 @@ int8_t controller_work(void)
 			DE = 0;
 			RE_ = 0;
 			if (V.recv_count >= sizeof(re20a_mode)) { // check received data
-				if (cc_buffer[4]) {
+				uint8_t temp, volts = CC_OFFLINE;
+
+				if ((temp = cc_buffer[4])) {
 					LED1 = ~LED1;
-					V.pwm_volts = CC_ACTIVE;
+					switch (temp) {
+					case 1:
+						volts = CC_ACT;
+						break;
+					case 2:
+						volts = CC_MPPT;
+						break;
+					case 3:
+						volts = CC_EQUAL;
+						break;
+					case 4:
+						volts = CC_BOOST;
+						break;
+					case 5:
+						volts = CC_FLOAT;
+						break;
+					case 6:
+						volts = CC_LIMIT;
+						break;
+					default:
+						volts = CC_ACT;
+						break;
+					}
+					V.pwm_volts = volts;
 				} else {
 					LED1 = OFF;
-					V.pwm_volts = CC_IDLE;
+					V.pwm_volts = CC_DEACT;
 				}
 				SetDCPWM1(V.pwm_volts);
 				cstate = CLEAR;
@@ -180,6 +205,7 @@ void init_ihcmon(void)
 	/* define I/O ports */
 	IBSPORTA = IBSPORT_IOA;
 	IBSPORTB = IBSPORT_IOB;
+	INTCON2bits.RBPU = 0; // enable weak pull-ups, mainly for receive serial when RS485 Rx transceiver is off.
 
 	LED1 = LEDON;
 	FINE_REG = LEDON; // debug
@@ -200,7 +226,7 @@ void init_ihcmon(void)
 		USART_ASYNCH_MODE &
 		USART_EIGHT_BIT &
 		USART_CONT_RX &
-		USART_BRGH_LOW, 64); // 10mhz osc HS		9600 baud
+		USART_BRGH_LOW, 64); // 40MHz osc HS/PLL 9600 baud
 	BAUDCTLbits.BRG16 = 0;
 	TXSTAbits.BRGH = 0;
 	SPBRGH = 0;
@@ -219,7 +245,6 @@ void init_ihcmon(void)
 
 uint8_t init_stream_params(void)
 {
-
 	V.config = FALSE;
 	return 0;
 }
