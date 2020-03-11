@@ -31,14 +31,14 @@ void tm_handler(void) // timer/serial functions are handled here
 		PIR1bits.TMR1IF = FALSE; //      clear int flag
 		WriteTimer1(SAMPLEFREQ);
 		V.clock_500hz++;
-//		DEB = ~DEB;
+		//		DEB = ~DEB;
 	}
 
 	if (INTCONbits.TMR0IF) { //      check timer0 irq time timer
 		INTCONbits.TMR0IF = FALSE; //      clear interrupt flag
 		WriteTimer0(timer0_off);
 		V.clock_2hz++;
-//		DEB = ~DEB;
+		//		DEB = ~DEB;
 	}
 
 	if (PIR1bits.TMR2IF) { //      check timer0 irq time timer
