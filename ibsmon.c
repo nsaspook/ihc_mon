@@ -132,7 +132,10 @@ int8_t controller_work(void)
 		if (get_500hz(FALSE) > TDELAY) {
 			DE = 0;
 			RE_ = 0;
-			if (V.recv_count >= sizeof(re20a_mode)) { // check received data
+			/*
+			 * check received data for size and format
+			 */
+			if ((V.recv_count >= sizeof(re20a_mode)) && (cc_buffer[0] == 0x01) && (cc_buffer[1] == 0x03)) {
 				uint8_t temp, volts = CC_OFFLINE;
 
 				if ((temp = cc_buffer[4])) {

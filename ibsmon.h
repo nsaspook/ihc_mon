@@ -85,7 +85,7 @@ typedef enum comm_type {
 //#define LOCAL_ECHO	1
 #define TDELAY		3
 #define RDELAY		2000
-#define QDELAY		2
+#define QDELAY		5
 
 #define CC_DEACT	74	// 1.00
 #define CC_ACT		100	// 1.43
