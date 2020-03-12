@@ -146,10 +146,12 @@ int8_t controller_work(void)
 			 */
 			if ((V.recv_count >= sizeof(re20a_mode)) /* && (cc_buffer[0] == 0x01) && (cc_buffer[1] == 0x03)*/) {
 				uint8_t temp;
-				uint16_t c_crc;
+				uint16_t c_crc, c_crc_rec;
 				static uint8_t volts = CC_OFFLINE;
 
 				c_crc = crc16(cc_buffer, 5);
+				c_crc_rec = (cc_buffer[5] << 8) | cc_buffer[5];
+
 				if ((temp = cc_buffer[4])) {
 					LED1 = ~LED1;
 					switch (temp) {
@@ -159,7 +161,7 @@ int8_t controller_work(void)
 						break;
 					case 2:
 						//if (crc_match(cc_buffer[5], cc_buffer[6], 0x3985))
-						if (crc_match(cc_buffer[5], cc_buffer[6], c_crc))
+						if (c_crc == c_crc_rec)
 							volts = CC_MPPT;
 						break;
 					case 3:

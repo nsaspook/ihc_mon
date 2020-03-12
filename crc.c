@@ -1,5 +1,7 @@
 #include "crc.h"
 
+// code from libmodbus: https://raw.githubusercontent.com/stephane/libmodbus/master/src/modbus-rtu.c
+
 /* Table of CRC values for high-order byte */
 static const rom uint8_t table_crc_hi[] = {
     0x00, 0xC1, 0x81, 0x40, 0x01, 0xC0, 0x80, 0x41, 0x01, 0xC0,
@@ -59,6 +61,15 @@ static const rom uint8_t table_crc_lo[] = {
     0x44, 0x84, 0x85, 0x45, 0x87, 0x47, 0x46, 0x86, 0x82, 0x42,
     0x43, 0x83, 0x41, 0x81, 0x80, 0x40
 };
+
+uint8_t _modbus_rtu_send_msg_pre(volatile uint8_t *req, uint16_t req_length)
+{
+    uint16_t crc = crc16(req, req_length);
+    req[req_length++] = crc >> 8;
+    req[req_length++] = crc & 0x00FF;
+
+    return req_length;
+}
 
 uint16_t crc16(volatile uint8_t *buffer, uint16_t buffer_length)
 {
