@@ -77,7 +77,7 @@ int8_t controller_work(void);
 uint8_t do_config(void);
 void init_ihcmon(void);
 uint8_t init_stream_params(void);
-uint8_t crc_match(void *, uint16_t);
+uint8_t crc_match(uint8_t, uint8_t, uint16_t);
 
 #pragma udata
 const rom uint8_t modbus_cc_mode[] = {0x01, 0x03, 0x01, 0x20, 0x00, 0x01, 0x84, 0x3c},
@@ -97,9 +97,9 @@ void tm_int(void)
 }
 #pragma code
 
-uint8_t crc_match(void *data, uint16_t crc)
+uint8_t crc_match(uint8_t upper, uint8_t lower, uint16_t crc)
 {
-	if ((uint16_t) (&data) == crc)
+	if ((upper == (crc >> 8) & 0x00ff) && (lower == (crc & 0x00ff)))
 		return TRUE;
 	return FALSE;
 }
@@ -143,43 +143,49 @@ int8_t controller_work(void)
 			/*
 			 * check received data for size and format
 			 */
-			if ((V.recv_count >= sizeof(re20a_mode)) && (cc_buffer[0] == 0x01) && (cc_buffer[1] == 0x03)) {
-				uint8_t temp, volts = CC_OFFLINE;
+			if ((V.recv_count >= sizeof(re20a_mode)) /* && (cc_buffer[0] == 0x01) && (cc_buffer[1] == 0x03)*/) {
+				uint8_t temp;
+				static uint8_t volts = CC_OFFLINE;
 
 				if ((temp = cc_buffer[4])) {
 					LED1 = ~LED1;
 					switch (temp) {
 					case 1:
+						if (crc_match(cc_buffer[5], cc_buffer[6], 0xff00))
 						volts = CC_ACT;
 						break;
 					case 2:
-						if (crc_match((void*) &cc_buffer[6], 0x3985)) {
+						if (crc_match(cc_buffer[5], cc_buffer[6], 0x3985))
 							volts = CC_MPPT;
-						}
 						break;
 					case 3:
-						volts = CC_EQUAL;
+						if (crc_match(cc_buffer[5], cc_buffer[6], 0xff00))
+							volts = CC_EQUAL;
 						break;
 					case 4:
+						if (crc_match(cc_buffer[5], cc_buffer[6], 0xff00))
 						volts = CC_BOOST;
 						break;
 					case 5:
+						if (crc_match(cc_buffer[5], cc_buffer[6], 0xff00))
 						volts = CC_FLOAT;
 						break;
 					case 6:
+						if (crc_match(cc_buffer[5], cc_buffer[6], 0xff00))
 						volts = CC_LIMIT;
 						break;
 					default:
+						if (crc_match(cc_buffer[5], cc_buffer[6], 0xff00))
 						volts = CC_ACT;
 						break;
 					}
-					V.pwm_volts = volts;
 				} else {
-					if (crc_match((void*) &cc_buffer[6], 0xb844)) {
-						LED1 = OFF;
-						V.pwm_volts = CC_DEACT;
+					if (crc_match(cc_buffer[5], cc_buffer[6], 0xb844)) {
+						LED1 = ON;
+						volts = CC_DEACT;
 					}
 				}
+				V.pwm_volts = volts;
 				SetDCPWM1(V.pwm_volts);
 				cstate = CLEAR;
 			} else {
