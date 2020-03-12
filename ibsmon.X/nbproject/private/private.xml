@@ -8,12 +8,11 @@
             <file>file:/old_os/mplabx/ihc_mon/ihc_vector.c</file>
         </group>
         <group>
-            <file>file:/root/MPLABXProjects/vtouch_v2/ihc_mon/ihc_vector.h</file>
-            <file>file:/root/MPLABXProjects/vtouch_v2/ihc_mon/ihc_vector.c</file>
-            <file>file:/root/MPLABXProjects/vtouch_v2/ihc_mon/crc.h</file>
-            <file>file:/root/MPLABXProjects/vtouch_v2/ihc_mon/ibsmon.h</file>
-            <file>file:/root/MPLABXProjects/vtouch_v2/ihc_mon/ibsmon.c</file>
-            <file>file:/root/MPLABXProjects/vtouch_v2/ihc_mon/crc.c</file>
+            <file>file:/root/ihc_mon/ibsmon.c</file>
+            <file>file:/root/ihc_mon/ihc_vector.c</file>
+            <file>file:/root/ihc_mon/ibsmon.h</file>
+            <file>file:/root/ihc_mon/crc.c</file>
+            <file>file:/root/ihc_mon/crc.h</file>
         </group>
     </open-files>
 </project-private>

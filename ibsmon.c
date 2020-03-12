@@ -86,6 +86,7 @@ re20a_mode[] = {0x01, 0x03, 0x02, 0x00, 0x02, 0x39, 0x85};
 volatile struct V_data V;
 volatile uint8_t cc_stream_file, cc_stream_file_prev = 0, cc_buffer[MAX_DATA];
 #pragma udata access ACCESSBANK
+near uint32_t crc_error;
 volatile uint16_t timer0_off = TIMEROFFSET;
 comm_type cstate = CLEAR;
 const rom uint8_t *build_date = __DATE__, *build_time = __TIME__, build_version[5] = "1.0";
@@ -144,52 +145,47 @@ int8_t controller_work(void)
 			/*
 			 * check received data for size and format
 			 */
-			if ((V.recv_count >= sizeof(re20a_mode)) /* && (cc_buffer[0] == 0x01) && (cc_buffer[1] == 0x03)*/) {
+			if ((V.recv_count >= sizeof(re20a_mode)) && (cc_buffer[0] == 0x01) && (cc_buffer[1] == 0x03)) {
 				uint8_t temp;
 				uint16_t c_crc, c_crc_rec;
 				static uint8_t volts = CC_OFFLINE;
 
 				c_crc = crc16(cc_buffer, 5);
-				c_crc_rec = (cc_buffer[5] << 8) | cc_buffer[5];
+				c_crc_rec = ((uint16_t) (cc_buffer[5] << 8)) | ((uint16_t) cc_buffer[6]);
 
-				if ((temp = cc_buffer[4])) {
-					LED1 = ~LED1;
-					switch (temp) {
-					case 1:
-						if (crc_match(cc_buffer[5], cc_buffer[6], 0xff00))
+				if (c_crc == c_crc_rec) {
+					if ((temp = cc_buffer[4])) {
+						LED1 = ~LED1;
+						switch (temp) {
+						case 1:
 							volts = CC_ACT;
-						break;
-					case 2:
-						//if (crc_match(cc_buffer[5], cc_buffer[6], 0x3985))
-						if (c_crc == c_crc_rec)
+							break;
+						case 2:
 							volts = CC_MPPT;
-						break;
-					case 3:
-						if (crc_match(cc_buffer[5], cc_buffer[6], 0xff00))
+							break;
+						case 3:
 							volts = CC_EQUAL;
-						break;
-					case 4:
-						if (crc_match(cc_buffer[5], cc_buffer[6], 0xff00))
+							break;
+						case 4:
 							volts = CC_BOOST;
-						break;
-					case 5:
-						if (crc_match(cc_buffer[5], cc_buffer[6], 0xff00))
+							break;
+						case 5:
 							volts = CC_FLOAT;
-						break;
-					case 6:
-						if (crc_match(cc_buffer[5], cc_buffer[6], 0xff00))
+							break;
+						case 6:
 							volts = CC_LIMIT;
-						break;
-					default:
-						if (crc_match(cc_buffer[5], cc_buffer[6], 0xff00))
+							break;
+						default:
 							volts = CC_ACT;
-						break;
-					}
-				} else {
-					if (crc_match(cc_buffer[5], cc_buffer[6], 0xb844)) {
+							break;
+						}
+					} else {
 						LED1 = ON;
 						volts = CC_DEACT;
 					}
+				} else {
+					crc_error++;
+					LED1 = OFF;
 				}
 				V.pwm_volts = volts;
 				SetDCPWM1(V.pwm_volts);
