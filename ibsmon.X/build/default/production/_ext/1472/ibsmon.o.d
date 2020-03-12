@@ -1,5 +1,5 @@
 build/default/production/_ext/1472/ibsmon.o:  \
-	/root/ihc_mon/ibsmon.c  \
-	/root/ihc_mon/ihc_vector.h  \
-	/root/ihc_mon/ibsmon.h  \
+	/root/MPLABXProjects/vtouch_v2/ihc_mon/ibsmon.c  \
+	/root/MPLABXProjects/vtouch_v2/ihc_mon/ihc_vector.h  \
+	/root/MPLABXProjects/vtouch_v2/ihc_mon/ibsmon.h  \
 

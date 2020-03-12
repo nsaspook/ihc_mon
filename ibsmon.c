@@ -77,6 +77,7 @@ int8_t controller_work(void);
 uint8_t do_config(void);
 void init_ihcmon(void);
 uint8_t init_stream_params(void);
+uint8_t crc_match(void *, uint16_t);
 
 #pragma udata
 const rom uint8_t modbus_cc_mode[] = {0x01, 0x03, 0x01, 0x20, 0x00, 0x01, 0x84, 0x3c},
@@ -95,6 +96,13 @@ void tm_int(void)
 	_asm goto tm_handler _endasm
 }
 #pragma code
+
+uint8_t crc_match(void *data, uint16_t crc)
+{
+	if ((uint16_t) (&data) == crc)
+		return TRUE;
+	return FALSE;
+}
 
 int8_t controller_work(void)
 {
@@ -145,7 +153,9 @@ int8_t controller_work(void)
 						volts = CC_ACT;
 						break;
 					case 2:
-						volts = CC_MPPT;
+						if (crc_match((void*) &cc_buffer[6], 0x3985)) {
+							volts = CC_MPPT;
+						}
 						break;
 					case 3:
 						volts = CC_EQUAL;
@@ -165,8 +175,10 @@ int8_t controller_work(void)
 					}
 					V.pwm_volts = volts;
 				} else {
-					LED1 = OFF;
-					V.pwm_volts = CC_DEACT;
+					if (crc_match((void*) &cc_buffer[6], 0xb844)) {
+						LED1 = OFF;
+						V.pwm_volts = CC_DEACT;
+					}
 				}
 				SetDCPWM1(V.pwm_volts);
 				cstate = CLEAR;
