@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=../ibsmon.c ../ihc_vector.c
+SOURCEFILES_QUOTED_IF_SPACED=../ibsmon.c ../ihc_vector.c ../crc.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/_ext/1472/ibsmon.o ${OBJECTDIR}/_ext/1472/ihc_vector.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/_ext/1472/ibsmon.o.d ${OBJECTDIR}/_ext/1472/ihc_vector.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/_ext/1472/ibsmon.o ${OBJECTDIR}/_ext/1472/ihc_vector.o ${OBJECTDIR}/_ext/1472/crc.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/_ext/1472/ibsmon.o.d ${OBJECTDIR}/_ext/1472/ihc_vector.o.d ${OBJECTDIR}/_ext/1472/crc.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/_ext/1472/ibsmon.o ${OBJECTDIR}/_ext/1472/ihc_vector.o
+OBJECTFILES=${OBJECTDIR}/_ext/1472/ibsmon.o ${OBJECTDIR}/_ext/1472/ihc_vector.o ${OBJECTDIR}/_ext/1472/crc.o
 
 # Source Files
-SOURCEFILES=../ibsmon.c ../ihc_vector.c
+SOURCEFILES=../ibsmon.c ../ihc_vector.c ../crc.c
 
 
 
@@ -118,6 +118,14 @@ ${OBJECTDIR}/_ext/1472/ihc_vector.o: ../ihc_vector.c  nbproject/Makefile-${CND_C
 	@${DEP_GEN} -d ${OBJECTDIR}/_ext/1472/ihc_vector.o 
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1472/ihc_vector.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
 	
+${OBJECTDIR}/_ext/1472/crc.o: ../crc.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/1472" 
+	@${RM} ${OBJECTDIR}/_ext/1472/crc.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1472/crc.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1 -p$(MP_PROCESSOR_OPTION) --verbose -I"../C:/Program Files (x86)/Microchip/mplabc18/v3.38/h" -I".." -I"." -ms -oa-  -I ${MP_CC_DIR}/../h  -fo ${OBJECTDIR}/_ext/1472/crc.o   ../crc.c 
+	@${DEP_GEN} -d ${OBJECTDIR}/_ext/1472/crc.o 
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1472/crc.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
+	
 else
 ${OBJECTDIR}/_ext/1472/ibsmon.o: ../ibsmon.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1472" 
@@ -134,6 +142,14 @@ ${OBJECTDIR}/_ext/1472/ihc_vector.o: ../ihc_vector.c  nbproject/Makefile-${CND_C
 	${MP_CC} $(MP_EXTRA_CC_PRE) -p$(MP_PROCESSOR_OPTION) --verbose -I"../C:/Program Files (x86)/Microchip/mplabc18/v3.38/h" -I".." -I"." -ms -oa-  -I ${MP_CC_DIR}/../h  -fo ${OBJECTDIR}/_ext/1472/ihc_vector.o   ../ihc_vector.c 
 	@${DEP_GEN} -d ${OBJECTDIR}/_ext/1472/ihc_vector.o 
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1472/ihc_vector.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
+	
+${OBJECTDIR}/_ext/1472/crc.o: ../crc.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/1472" 
+	@${RM} ${OBJECTDIR}/_ext/1472/crc.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1472/crc.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -p$(MP_PROCESSOR_OPTION) --verbose -I"../C:/Program Files (x86)/Microchip/mplabc18/v3.38/h" -I".." -I"." -ms -oa-  -I ${MP_CC_DIR}/../h  -fo ${OBJECTDIR}/_ext/1472/crc.o   ../crc.c 
+	@${DEP_GEN} -d ${OBJECTDIR}/_ext/1472/crc.o 
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1472/crc.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
 	
 endif
 

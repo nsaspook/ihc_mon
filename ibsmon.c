@@ -71,6 +71,7 @@
 #include <EEP.h>
 #include "ibsmon.h"
 #include "ihc_vector.h"
+#include "crc.h"
 
 void tm_handler(void);
 int8_t controller_work(void);
@@ -145,17 +146,20 @@ int8_t controller_work(void)
 			 */
 			if ((V.recv_count >= sizeof(re20a_mode)) /* && (cc_buffer[0] == 0x01) && (cc_buffer[1] == 0x03)*/) {
 				uint8_t temp;
+				uint16_t c_crc;
 				static uint8_t volts = CC_OFFLINE;
 
+				c_crc = crc16(cc_buffer, 5);
 				if ((temp = cc_buffer[4])) {
 					LED1 = ~LED1;
 					switch (temp) {
 					case 1:
 						if (crc_match(cc_buffer[5], cc_buffer[6], 0xff00))
-						volts = CC_ACT;
+							volts = CC_ACT;
 						break;
 					case 2:
-						if (crc_match(cc_buffer[5], cc_buffer[6], 0x3985))
+						//if (crc_match(cc_buffer[5], cc_buffer[6], 0x3985))
+						if (crc_match(cc_buffer[5], cc_buffer[6], c_crc))
 							volts = CC_MPPT;
 						break;
 					case 3:
@@ -164,19 +168,19 @@ int8_t controller_work(void)
 						break;
 					case 4:
 						if (crc_match(cc_buffer[5], cc_buffer[6], 0xff00))
-						volts = CC_BOOST;
+							volts = CC_BOOST;
 						break;
 					case 5:
 						if (crc_match(cc_buffer[5], cc_buffer[6], 0xff00))
-						volts = CC_FLOAT;
+							volts = CC_FLOAT;
 						break;
 					case 6:
 						if (crc_match(cc_buffer[5], cc_buffer[6], 0xff00))
-						volts = CC_LIMIT;
+							volts = CC_LIMIT;
 						break;
 					default:
 						if (crc_match(cc_buffer[5], cc_buffer[6], 0xff00))
-						volts = CC_ACT;
+							volts = CC_ACT;
 						break;
 					}
 				} else {
