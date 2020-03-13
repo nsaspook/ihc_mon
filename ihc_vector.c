@@ -36,7 +36,7 @@ void tm_handler(void) // timer/serial functions are handled here
 
 	if (INTCONbits.TMR0IF) { //      check timer0 irq time timer
 		INTCONbits.TMR0IF = FALSE; //      clear interrupt flag
-		WriteTimer0(timer0_off);
+		WriteTimer0(TIMERFAST);
 		V.clock_2hz++;
 		//		DEB = ~DEB;
 	}

@@ -70,6 +70,7 @@
 #include <usart.h>
 #include <stdio.h>
 #include <EEP.h>
+#include <string.h>
 #include "ibsmon.h"
 #include "ihc_vector.h"
 #include "crc.h"
@@ -81,14 +82,17 @@ void init_ihcmon(void);
 uint8_t init_stream_params(void);
 uint8_t crc_match(uint8_t, uint8_t, uint16_t);
 
+
 #pragma udata
-const rom uint8_t modbus_cc_mode[] = {0x01, 0x03, 0x01, 0x20, 0x00, 0x01, 0x84, 0x3c},
+uint16_t req_length = 0;
+//const rom uint8_t modbus_cc_mode[] = {0x01, 0x03, 0x01, 0x20, 0x00, 0x01, 0x84, 0x3c},
+const rom uint8_t modbus_cc_mode[] = {0x01, 0x03, 0x01, 0x20, 0x00, 0x01},
 re20a_mode[] = {0x01, 0x03, 0x02, 0x00, 0x02, 0x39, 0x85};
 volatile struct V_data V;
-volatile uint8_t cc_stream_file, cc_stream_file_prev = 0, cc_buffer[MAX_DATA];
+volatile uint8_t cc_stream_file, cc_buffer[MAX_DATA];
 #pragma udata access ACCESSBANK
 near uint32_t crc_error;
-volatile uint16_t timer0_off = TIMEROFFSET;
+near uint8_t modbus_tx_buffer[16];
 comm_type cstate = CLEAR;
 const rom uint8_t *build_date = __DATE__, *build_time = __TIME__, build_version[5] = "1.1";
 
@@ -109,10 +113,20 @@ uint8_t crc_match(uint8_t upper, uint8_t lower, uint16_t crc)
 
 int8_t controller_work(void)
 {
+
 	switch (cstate) {
 	case CLEAR:
 		clear_2hz();
 		cstate = INIT;
+		/*
+		 * command specific tx buffer setup
+		 */
+		req_length = sizeof(modbus_cc_mode);
+		memcpypgm2ram((void*) modbus_tx_buffer, (const far rom void *) modbus_cc_mode, req_length);
+		/*
+		 * add the CRC and increase buffer by two bytes for the CRC16
+		 */
+		req_length = modbus_rtu_send_msg_crc((volatile uint8_t *) modbus_tx_buffer, req_length);
 		break;
 	case INIT:
 		if (get_2hz(FALSE) > QDELAY) {
@@ -132,8 +146,12 @@ int8_t controller_work(void)
 		if (get_500hz(FALSE) > TDELAY) {
 			do {
 				while (BusyUSART()); // wait for each byte
-				TXREG = modbus_cc_mode[V.send_count];
-			} while (++V.send_count < sizeof(modbus_cc_mode));
+				TXREG = modbus_tx_buffer[V.send_count];
+			} while (++V.send_count < req_length);
+
+			//				TXREG = modbus_cc_mode[V.send_count];
+			//			} while (++V.send_count < sizeof(modbus_cc_mode));
+
 			while (BusyUSART()); // wait for the last byte
 			cstate = RECV;
 			clear_500hz();
@@ -144,7 +162,7 @@ int8_t controller_work(void)
 			DE = 0;
 			RE_ = 0;
 			/*
-			 * check received data for size and format
+			 * check received response data for size and format for each command sent
 			 */
 			if ((V.recv_count >= sizeof(re20a_mode)) && (cc_buffer[0] == 0x01) && (cc_buffer[1] == 0x03)) {
 				uint8_t temp;
@@ -233,9 +251,8 @@ void init_ihcmon(void)
 
 	LED1 = LEDON;
 	FINE_REG = LEDON; // debug
-	timer0_off = TIMERFAST; // blink fast
 	OpenTimer0(TIMER_INT_ON & T0_16BIT & T0_SOURCE_INT & T0_PS_1_64);
-	WriteTimer0(timer0_off);
+	WriteTimer0(TIMERFAST);
 	OpenTimer1(TIMER_INT_ON & T1_16BIT_RW & T1_SOURCE_INT & T1_PS_1_4 & T1_OSC1EN_OFF & T1_SYNC_EXT_OFF);
 	WriteTimer1(SAMPLEFREQ);
 

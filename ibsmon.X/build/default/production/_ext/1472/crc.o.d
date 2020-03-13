@@ -1,5 +1,5 @@
 build/default/production/_ext/1472/crc.o:  \
-	/root/ihc_mon/crc.c  \
-	/root/ihc_mon/crc.h  \
-	/root/ihc_mon/ibsmon.h  \
+	/root/MPLABXProjects/vtouch_v2/ihc_mon/crc.c  \
+	/root/MPLABXProjects/vtouch_v2/ihc_mon/crc.h  \
+	/root/MPLABXProjects/vtouch_v2/ihc_mon/ibsmon.h  \
 
