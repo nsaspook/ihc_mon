@@ -50,9 +50,6 @@
 #pragma config EBTRB = OFF      // Boot Block Table Read Protection bit (Boot Block (000000-0001FFh) not protected from table reads executed in other blocks)
 
 
-
-
-
 /*
  * Driver software Rover Elite charge mode monitor
  * Runs on a PIC18F1320 
@@ -61,6 +58,7 @@
  * Version
  * 1.0 Rover Elite SR485 controller status monitor
  * 1.1 for rev 1.1 PCB
+ * 1.2 full CRC for TX and RX
  */
 
 #include <p18f1320.h>
@@ -85,16 +83,14 @@ uint8_t crc_match(uint8_t, uint8_t, uint16_t);
 
 #pragma udata
 uint16_t req_length = 0;
-//const rom uint8_t modbus_cc_mode[] = {0x01, 0x03, 0x01, 0x20, 0x00, 0x01, 0x84, 0x3c},
 const rom uint8_t modbus_cc_mode[] = {0x01, 0x03, 0x01, 0x20, 0x00, 0x01},
 re20a_mode[] = {0x01, 0x03, 0x02, 0x00, 0x02, 0x39, 0x85};
 volatile struct V_data V;
-volatile uint8_t cc_stream_file, cc_buffer[MAX_DATA];
+volatile uint8_t cc_stream_file, cc_buffer[MAX_DATA]; // half-duplex so we can share the cc_buffer for TX and RX
 #pragma udata access ACCESSBANK
 near uint32_t crc_error;
-near uint8_t modbus_tx_buffer[16];
 comm_type cstate = CLEAR;
-const rom uint8_t *build_date = __DATE__, *build_time = __TIME__, build_version[5] = "1.1";
+const rom uint8_t *build_date = __DATE__, *build_time = __TIME__, build_version[5] = "1.2";
 
 #pragma code tm_interrupt = 0x8
 
@@ -122,11 +118,11 @@ int8_t controller_work(void)
 		 * command specific tx buffer setup
 		 */
 		req_length = sizeof(modbus_cc_mode);
-		memcpypgm2ram((void*) modbus_tx_buffer, (const far rom void *) modbus_cc_mode, req_length);
+		memcpypgm2ram((void*) cc_buffer, (const far rom void *) modbus_cc_mode, req_length);
 		/*
-		 * add the CRC and increase buffer by two bytes for the CRC16
+		 * add the CRC and increase message size by two bytes for the CRC16
 		 */
-		req_length = modbus_rtu_send_msg_crc((volatile uint8_t *) modbus_tx_buffer, req_length);
+		req_length = modbus_rtu_send_msg_crc((volatile uint8_t *) cc_buffer, req_length);
 		break;
 	case INIT:
 		if (get_2hz(FALSE) > QDELAY) {
@@ -146,12 +142,8 @@ int8_t controller_work(void)
 		if (get_500hz(FALSE) > TDELAY) {
 			do {
 				while (BusyUSART()); // wait for each byte
-				TXREG = modbus_tx_buffer[V.send_count];
+				TXREG = cc_buffer[V.send_count];
 			} while (++V.send_count < req_length);
-
-			//				TXREG = modbus_cc_mode[V.send_count];
-			//			} while (++V.send_count < sizeof(modbus_cc_mode));
-
 			while (BusyUSART()); // wait for the last byte
 			cstate = RECV;
 			clear_500hz();
@@ -164,13 +156,14 @@ int8_t controller_work(void)
 			/*
 			 * check received response data for size and format for each command sent
 			 */
-			if ((V.recv_count >= sizeof(re20a_mode)) && (cc_buffer[0] == 0x01) && (cc_buffer[1] == 0x03)) {
+			req_length = sizeof(re20a_mode);
+			if ((V.recv_count >= req_length) && (cc_buffer[0] == 0x01) && (cc_buffer[1] == 0x03)) {
 				uint8_t temp;
 				uint16_t c_crc, c_crc_rec;
 				static uint8_t volts = CC_OFFLINE;
 
-				c_crc = crc16(cc_buffer, 5);
-				c_crc_rec = ((uint16_t) (cc_buffer[5] << 8)) | ((uint16_t) cc_buffer[6]);
+				c_crc = crc16(cc_buffer, req_length - 2);
+				c_crc_rec = (uint16_t) ((uint16_t) cc_buffer[req_length - 2] << (uint16_t) 8) | ((uint16_t) cc_buffer[req_length - 1] & 0x00ff);
 
 				if (c_crc == c_crc_rec) {
 					if ((temp = cc_buffer[4])) {

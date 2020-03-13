@@ -64,8 +64,10 @@ static const rom uint8_t table_crc_lo[] = {
 
 uint16_t modbus_rtu_send_msg_crc(volatile uint8_t *req, uint16_t req_length)
 {
-	uint16_t crc = crc16(req, req_length);
-	req[req_length++] = crc >> 8;
+	uint16_t crc;
+
+	crc = crc16(req, req_length);
+	req[req_length++] = crc >> (uint16_t)8;
 	req[req_length++] = crc & 0x00FF;
 
 	return req_length;
@@ -75,7 +77,7 @@ uint16_t crc16(volatile uint8_t *buffer, uint16_t buffer_length)
 {
 	uint8_t crc_hi = 0xFF; /* high CRC byte initialized */
 	uint8_t crc_lo = 0xFF; /* low CRC byte initialized */
-	unsigned int i; /* will index into CRC lookup */
+	uint8_t i; /* will index into CRC lookup */
 
 	/* pass through message buffer */
 	while (buffer_length--) {
@@ -84,6 +86,6 @@ uint16_t crc16(volatile uint8_t *buffer, uint16_t buffer_length)
 		crc_lo = table_crc_lo[i];
 	}
 
-	return(crc_hi << 8 | crc_lo);
+	return((uint16_t) crc_hi << (uint16_t) 8 | (uint16_t) crc_lo);
 }
 

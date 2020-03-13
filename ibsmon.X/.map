@@ -1,5 +1,5 @@
 MPLINK 4.40, Linker
-Linker Map File - Created Fri Mar 13 11:04:58 2020
+Linker Map File - Created Fri Mar 13 14:50:35 2020
 
                                  Section Info
                   Section       Type    Address   Location Size(Bytes)
@@ -8,58 +8,58 @@ Linker Map File - Created Fri Mar 13 11:04:58 2020
            .code___init.o       code   0x000006    program   0x000002
              tm_interrupt       code   0x000008    program   0x000006
                    .cinit    romdata   0x00000e    program   0x00001a
-           .code_ibsmon.o       code   0x000028    program   0x00037a
-           .romdata_crc.o    romdata   0x0003a2    program   0x000200
-       .code_ihc_vector.o       code   0x0005a2    program   0x000192
-              .code_crc.o       code   0x000734    program   0x00016e
-         .code_pw1setoc.o       code   0x0008a2    program   0x0000aa
-               _cinit_scn       code   0x00094c    program   0x00009e
-            .code_uopen.o       code   0x0009ea    program   0x00008a
-          .code_write_B.o       code   0x000a74    program   0x000066
-         .code_pw1setdc.o       code   0x000ada    program   0x00005e
-                   STRING       code   0x000b38    program   0x000046
-           .code_read_B.o       code   0x000b7e    program   0x000044
-           .code_t1open.o       code   0x000bc2    program   0x000042
-          .code_t1write.o       code   0x000c04    program   0x000038
-          .code_t0write.o       code   0x000c3c    program   0x000038
-           .code_t0open.o       code   0x000c74    program   0x000038
-          .code_pw1open.o       code   0x000cac    program   0x000030
-                    .code       code   0x000cdc    program   0x000020
-             _startup_scn       code   0x000cfc    program   0x00001c
-             .stringtable    romdata   0x000d18    program   0x000015
-        .romdata_ibsmon.o    romdata   0x000d2d    program   0x000012
-      .idata_pw1setoc.o_i    romdata   0x000d3f    program   0x000000
-       .idata_write_B.o_i    romdata   0x000d3f    program   0x000000
-      .romdata_pw1setdc.o    romdata   0x000d3f    program   0x000000
-       .romdata_write_B.o    romdata   0x000d3f    program   0x000000
-      .romdata_pw1setoc.o    romdata   0x000d3f    program   0x000000
-       .romdata_t1write.o    romdata   0x000d3f    program   0x000000
-      .idata_pw1setdc.o_i    romdata   0x000d3f    program   0x000000
-        .romdata_read_B.o    romdata   0x000d3f    program   0x000000
-        .idata_read_B.o_i    romdata   0x000d3f    program   0x000000
-        .romdata___init.o    romdata   0x000d3f    program   0x000000
-       .idata_t0write.o_i    romdata   0x000d3f    program   0x000000
-         .romdata_uopen.o    romdata   0x000d3f    program   0x000000
-         .idata_uopen.o_i    romdata   0x000d3f    program   0x000000
-       .romdata_t0write.o    romdata   0x000d3f    program   0x000000
-       .idata_t1write.o_i    romdata   0x000d3f    program   0x000000
-        .romdata_t1open.o    romdata   0x000d3f    program   0x000000
-        .idata_t1open.o_i    romdata   0x000d3f    program   0x000000
-        .romdata_t0open.o    romdata   0x000d3f    program   0x000000
-        .idata_t0open.o_i    romdata   0x000d3f    program   0x000000
-       .romdata_pw1open.o    romdata   0x000d3f    program   0x000000
-       .idata_pw1open.o_i    romdata   0x000d3f    program   0x000000
-      .romdata_busy_eep.o    romdata   0x000d3f    program   0x000000
-         .romdata_c018i.o    romdata   0x000d3f    program   0x000000
-    .romdata_ihc_vector.o    romdata   0x000d3f    program   0x000000
-    .idata_ihc_vector.o_i    romdata   0x000d3f    program   0x000001
-         .code_busy_eep.o       code   0x000d40    program   0x000006
-        .idata_ibsmon.o_i    romdata   0x000d46    program   0x000008
-         .idata_c018i.o_i    romdata   0x000d4e    program   0x000000
-            .code_c018i.o       code   0x000d4e    program   0x000000
-        .idata___init.o_i    romdata   0x000d4e    program   0x000000
-           .idata_crc.o_i    romdata   0x000d4e    program   0x000000
-      .idata_busy_eep.o_i    romdata   0x000d4e    program   0x000000
+           .code_ibsmon.o       code   0x000028    program   0x0003be
+           .romdata_crc.o    romdata   0x0003e6    program   0x000200
+       .code_ihc_vector.o       code   0x0005e6    program   0x000192
+              .code_crc.o       code   0x000778    program   0x00015a
+         .code_pw1setoc.o       code   0x0008d2    program   0x0000aa
+               _cinit_scn       code   0x00097c    program   0x00009e
+            .code_uopen.o       code   0x000a1a    program   0x00008a
+          .code_write_B.o       code   0x000aa4    program   0x000066
+         .code_pw1setdc.o       code   0x000b0a    program   0x00005e
+                   STRING       code   0x000b68    program   0x000046
+           .code_read_B.o       code   0x000bae    program   0x000044
+           .code_t1open.o       code   0x000bf2    program   0x000042
+          .code_t1write.o       code   0x000c34    program   0x000038
+          .code_t0write.o       code   0x000c6c    program   0x000038
+           .code_t0open.o       code   0x000ca4    program   0x000038
+          .code_pw1open.o       code   0x000cdc    program   0x000030
+                    .code       code   0x000d0c    program   0x000020
+             _startup_scn       code   0x000d2c    program   0x00001c
+             .stringtable    romdata   0x000d48    program   0x000015
+        .romdata_ibsmon.o    romdata   0x000d5d    program   0x000012
+      .idata_pw1setoc.o_i    romdata   0x000d6f    program   0x000000
+       .idata_write_B.o_i    romdata   0x000d6f    program   0x000000
+      .romdata_pw1setdc.o    romdata   0x000d6f    program   0x000000
+       .romdata_write_B.o    romdata   0x000d6f    program   0x000000
+      .romdata_pw1setoc.o    romdata   0x000d6f    program   0x000000
+       .romdata_t1write.o    romdata   0x000d6f    program   0x000000
+      .idata_pw1setdc.o_i    romdata   0x000d6f    program   0x000000
+        .romdata_read_B.o    romdata   0x000d6f    program   0x000000
+        .idata_read_B.o_i    romdata   0x000d6f    program   0x000000
+        .romdata___init.o    romdata   0x000d6f    program   0x000000
+       .idata_t0write.o_i    romdata   0x000d6f    program   0x000000
+         .romdata_uopen.o    romdata   0x000d6f    program   0x000000
+         .idata_uopen.o_i    romdata   0x000d6f    program   0x000000
+       .romdata_t0write.o    romdata   0x000d6f    program   0x000000
+       .idata_t1write.o_i    romdata   0x000d6f    program   0x000000
+        .romdata_t1open.o    romdata   0x000d6f    program   0x000000
+        .idata_t1open.o_i    romdata   0x000d6f    program   0x000000
+        .romdata_t0open.o    romdata   0x000d6f    program   0x000000
+        .idata_t0open.o_i    romdata   0x000d6f    program   0x000000
+       .romdata_pw1open.o    romdata   0x000d6f    program   0x000000
+       .idata_pw1open.o_i    romdata   0x000d6f    program   0x000000
+      .romdata_busy_eep.o    romdata   0x000d6f    program   0x000000
+         .romdata_c018i.o    romdata   0x000d6f    program   0x000000
+    .romdata_ihc_vector.o    romdata   0x000d6f    program   0x000000
+    .idata_ihc_vector.o_i    romdata   0x000d6f    program   0x000001
+         .code_busy_eep.o       code   0x000d70    program   0x000006
+        .idata_ibsmon.o_i    romdata   0x000d76    program   0x000008
+         .idata_c018i.o_i    romdata   0x000d7e    program   0x000000
+            .code_c018i.o       code   0x000d7e    program   0x000000
+        .idata___init.o_i    romdata   0x000d7e    program   0x000000
+           .idata_crc.o_i    romdata   0x000d7e    program   0x000000
+      .idata_busy_eep.o_i    romdata   0x000d7e    program   0x000000
   .config_300001_ibsmon.o    romdata   0x300001    program   0x000001
   .config_300002_ibsmon.o    romdata   0x300002    program   0x000001
   .config_300003_ibsmon.o    romdata   0x300003    program   0x000001
@@ -71,10 +71,10 @@ Linker Map File - Created Fri Mar 13 11:04:58 2020
   .config_30000b_ibsmon.o    romdata   0x30000b    program   0x000001
   .config_30000c_ibsmon.o    romdata   0x30000c    program   0x000001
   .config_30000d_ibsmon.o    romdata   0x30000d    program   0x000001
-               ACCESSBANK      udata   0x000000       data   0x000014
-                MATH_DATA      udata   0x000014       data   0x00000b
-                 .tmpdata      udata   0x00001f       data   0x000008
-              ISRHtmpdata      udata   0x000027       data   0x000000
+                MATH_DATA      udata   0x000000       data   0x00000b
+                 .tmpdata      udata   0x00000b       data   0x000008
+               ACCESSBANK      udata   0x000013       data   0x000004
+              ISRHtmpdata      udata   0x000017       data   0x000000
                    .stack      udata   0x000080       data   0x000040
           .udata_ibsmon.o      udata   0x0000c0       data   0x000021
            .udata_c018i.o      udata   0x0000e1       data   0x00000a
@@ -116,101 +116,102 @@ Linker Map File - Created Fri Mar 13 11:04:58 2020
                               Program Memory Usage 
                                Start         End      
                            ---------   ---------      
-                            0x000000    0x000d4d      
+                            0x000000    0x000d7d      
                             0x300001    0x300003      
                             0x300005    0x300006      
                             0x300008    0x30000d      
-            3417 out of 8472 program addresses used, program memory utilization is 40%
+            3465 out of 8472 program addresses used, program memory utilization is 40%
 
 
 
                               Symbols - Sorted by Name
                      Name    Address   Location    Storage File                     
                 ---------  ---------  ---------  --------- ---------                
-                 Busy_eep   0x000d40    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\EEP\busy_eep.c
-                 OpenPWM1   0x000cac    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\PWM\pw1open.c
-         OpenPWM1ConfigIO   0x000cd8    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\PWM\pw1open.c
-               OpenTimer0   0x000c74    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\Timers\t0open.c
-               OpenTimer1   0x000bc2    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\Timers\t1open.c
-                OpenUSART   0x0009ea    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\USART\uopen.c
-               Read_b_eep   0x000b7e    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\EEP\read_B.c
-                SetDCPWM1   0x000ada    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\PWM\pw1setdc.c
-            SetOutputPWM1   0x0008a2    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\PWM\pw1setoc.c
-              WriteTimer0   0x000c3c    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\Timers\t0write.c
-              WriteTimer1   0x000c04    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\Timers\t1write.c
-              Write_b_eep   0x000a74    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\EEP\write_B.c
-              _3jContinue   0x000b6a    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\mcpyp2r.asm
-                   _4jEnd   0x000b74    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\mcpyp2r.asm
-         ___else_lbl00004   0x00091a    program     static                          
-         ___else_lbl00006   0x00090c    program     static                          
-           ___if_lbl00002   0x000932    program     static                          
-           ___if_lbl00003   0x000932    program     static                          
-           ___if_lbl00005   0x000932    program     static                          
+                 Busy_eep   0x000d70    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\EEP\busy_eep.c
+                 OpenPWM1   0x000cdc    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\PWM\pw1open.c
+         OpenPWM1ConfigIO   0x000d08    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\PWM\pw1open.c
+               OpenTimer0   0x000ca4    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\Timers\t0open.c
+               OpenTimer1   0x000bf2    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\Timers\t1open.c
+                OpenUSART   0x000a1a    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\USART\uopen.c
+               Read_b_eep   0x000bae    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\EEP\read_B.c
+                SetDCPWM1   0x000b0a    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\PWM\pw1setdc.c
+            SetOutputPWM1   0x0008d2    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\PWM\pw1setoc.c
+              WriteTimer0   0x000c6c    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\Timers\t0write.c
+              WriteTimer1   0x000c34    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\Timers\t1write.c
+              Write_b_eep   0x000aa4    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\EEP\write_B.c
+              _3jContinue   0x000b9a    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\mcpyp2r.asm
+                   _4jEnd   0x000ba4    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\mcpyp2r.asm
+         ___else_lbl00004   0x00094a    program     static                          
+         ___else_lbl00006   0x00093c    program     static                          
+           ___if_lbl00002   0x000962    program     static                          
+           ___if_lbl00003   0x000962    program     static                          
+           ___if_lbl00005   0x000962    program     static                          
        ___return_lbl00000   0x00000c    program     static                          
-       ___return_lbl00000   0x00093a    program     static                          
+       ___return_lbl00000   0x000be6    program     static                          
        ___return_lbl00000   0x000004    program     static                          
-       ___return_lbl00000   0x000bb6    program     static                          
-       ___return_lbl00001   0x000d16    program     static                          
-       ___return_lbl00002   0x0009e8    program     static                          
-               __config_0   0x300001    program     static /root/MPLABXProjects/vtouch_v2/ihc_mon/ibsmon.c
-               __config_1   0x300002    program     static /root/MPLABXProjects/vtouch_v2/ihc_mon/ibsmon.c
-              __config_10   0x30000d    program     static /root/MPLABXProjects/vtouch_v2/ihc_mon/ibsmon.c
-               __config_2   0x300003    program     static /root/MPLABXProjects/vtouch_v2/ihc_mon/ibsmon.c
-               __config_3   0x300005    program     static /root/MPLABXProjects/vtouch_v2/ihc_mon/ibsmon.c
-               __config_4   0x300006    program     static /root/MPLABXProjects/vtouch_v2/ihc_mon/ibsmon.c
-               __config_5   0x300008    program     static /root/MPLABXProjects/vtouch_v2/ihc_mon/ibsmon.c
-               __config_6   0x300009    program     static /root/MPLABXProjects/vtouch_v2/ihc_mon/ibsmon.c
-               __config_7   0x30000a    program     static /root/MPLABXProjects/vtouch_v2/ihc_mon/ibsmon.c
-               __config_8   0x30000b    program     static /root/MPLABXProjects/vtouch_v2/ihc_mon/ibsmon.c
-               __config_9   0x30000c    program     static /root/MPLABXProjects/vtouch_v2/ihc_mon/ibsmon.c
+       ___return_lbl00000   0x00096a    program     static                          
+       ___return_lbl00001   0x000d46    program     static                          
+       ___return_lbl00002   0x000a18    program     static                          
+               __config_0   0x300001    program     static /root/ihc_mon/ibsmon.c   
+               __config_1   0x300002    program     static /root/ihc_mon/ibsmon.c   
+              __config_10   0x30000d    program     static /root/ihc_mon/ibsmon.c   
+               __config_2   0x300003    program     static /root/ihc_mon/ibsmon.c   
+               __config_3   0x300005    program     static /root/ihc_mon/ibsmon.c   
+               __config_4   0x300006    program     static /root/ihc_mon/ibsmon.c   
+               __config_5   0x300008    program     static /root/ihc_mon/ibsmon.c   
+               __config_6   0x300009    program     static /root/ihc_mon/ibsmon.c   
+               __config_7   0x30000a    program     static /root/ihc_mon/ibsmon.c   
+               __config_8   0x30000b    program     static /root/ihc_mon/ibsmon.c   
+               __config_9   0x30000c    program     static /root/ihc_mon/ibsmon.c   
                    __init   0x000006    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\__init.c
-                   __pa_0   0x000372    program     static /root/MPLABXProjects/vtouch_v2/ihc_mon/ibsmon.c
-                   __pa_0   0x00086e    program     static /root/MPLABXProjects/vtouch_v2/ihc_mon/crc.c
-                   __pa_0   0x000726    program     static /root/MPLABXProjects/vtouch_v2/ihc_mon/ihc_vector.c
-                   __pa_1   0x000884    program     static /root/MPLABXProjects/vtouch_v2/ihc_mon/crc.c
-                   __pa_1   0x000386    program     static /root/MPLABXProjects/vtouch_v2/ihc_mon/ibsmon.c
-                   __pa_2   0x000894    program     static /root/MPLABXProjects/vtouch_v2/ihc_mon/crc.c
-                   __pa_2   0x000396    program     static /root/MPLABXProjects/vtouch_v2/ihc_mon/ibsmon.c
-               __string_0   0x000d21    program     static /root/MPLABXProjects/vtouch_v2/ihc_mon/ibsmon.c
-               __string_1   0x000d18    program     static /root/MPLABXProjects/vtouch_v2/ihc_mon/ibsmon.c
-               __tmplbl_0   0x00092a    program     static                          
-               __tmplbl_1   0x000922    program     static                          
-            __zero_memory   0x000cdc    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
-                _do_cinit   0x00094c    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
+                   __pa_0   0x00076a    program     static /root/ihc_mon/ihc_vector.c
+                   __pa_0   0x0008ac    program     static /root/ihc_mon/crc.c      
+                   __pa_0   0x00039e    program     static /root/ihc_mon/ibsmon.c   
+                   __pa_1   0x0003b2    program     static /root/ihc_mon/ibsmon.c   
+                   __pa_1   0x0008c2    program     static /root/ihc_mon/crc.c      
+                   __pa_2   0x0003c2    program     static /root/ihc_mon/ibsmon.c   
+                   __pa_3   0x0003d0    program     static /root/ihc_mon/ibsmon.c   
+                   __pa_4   0x0003da    program     static /root/ihc_mon/ibsmon.c   
+               __string_0   0x000d51    program     static /root/ihc_mon/ibsmon.c   
+               __string_1   0x000d48    program     static /root/ihc_mon/ibsmon.c   
+               __tmplbl_0   0x00095a    program     static                          
+               __tmplbl_1   0x000952    program     static                          
+            __zero_memory   0x000d0c    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
+                _do_cinit   0x00097c    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
                    _entry   0x000000    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
-                 _startup   0x000cfc    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
-            build_version   0x000d3a    program     extern /root/MPLABXProjects/vtouch_v2/ihc_mon/ibsmon.c
-                clear_2hz   0x0006a6    program     extern /root/MPLABXProjects/vtouch_v2/ihc_mon/ihc_vector.c
-              clear_500hz   0x0006b6    program     extern /root/MPLABXProjects/vtouch_v2/ihc_mon/ihc_vector.c
-                compare_l   0x000cf2    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
-          controller_work   0x000084    program     extern /root/MPLABXProjects/vtouch_v2/ihc_mon/ibsmon.c
-                copy_loop   0x0009be    program     static                          
-            copy_one_byte   0x0009c4    program     static                          
-                    crc16   0x0007c0    program     extern /root/MPLABXProjects/vtouch_v2/ihc_mon/crc.c
-                crc_match   0x000028    program     extern /root/MPLABXProjects/vtouch_v2/ihc_mon/ibsmon.c
-                do_config   0x00029a    program     extern /root/MPLABXProjects/vtouch_v2/ihc_mon/ibsmon.c
-                     done   0x0009e8    program     static                          
-             done_copying   0x0009d2    program     static                          
-                  get_2hz   0x0006c6    program     extern /root/MPLABXProjects/vtouch_v2/ihc_mon/ihc_vector.c
-                get_500hz   0x0006f6    program     extern /root/MPLABXProjects/vtouch_v2/ihc_mon/ihc_vector.c
-              init_ihcmon   0x0002d2    program     extern /root/MPLABXProjects/vtouch_v2/ihc_mon/ibsmon.c
-       init_stream_params   0x000366    program     extern /root/MPLABXProjects/vtouch_v2/ihc_mon/ibsmon.c
-                     jEnd   0x000b7c    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\mcpyp2r.asm
-                    jLoop   0x000b5e    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\mcpyp2r.asm
-                     loop   0x000d0c    program     static                          
-                   loop_h   0x000cea    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
-                   loop_l   0x000cf4    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
-                     main   0x00036c    program     extern /root/MPLABXProjects/vtouch_v2/ihc_mon/ibsmon.c
-            memcpypgm2ram   0x000b38    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\mcpyp2r.asm
-           modbus_cc_mode   0x000d2d    program     extern /root/MPLABXProjects/vtouch_v2/ihc_mon/ibsmon.c
-  modbus_rtu_send_msg_crc   0x000734    program     extern /root/MPLABXProjects/vtouch_v2/ihc_mon/crc.c
-               re20a_mode   0x000d33    program     extern /root/MPLABXProjects/vtouch_v2/ihc_mon/ibsmon.c
-             table_crc_hi   0x0003a2    program     static /root/MPLABXProjects/vtouch_v2/ihc_mon/crc.c
-             table_crc_lo   0x0004a2    program     static /root/MPLABXProjects/vtouch_v2/ihc_mon/crc.c
-                     test   0x000966    program     static                          
-               tm_handler   0x0005a2    program     extern /root/MPLABXProjects/vtouch_v2/ihc_mon/ihc_vector.c
-                   tm_int   0x000008    program     extern /root/MPLABXProjects/vtouch_v2/ihc_mon/ibsmon.c
-               zero_block   0x000cea    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
+                 _startup   0x000d2c    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
+            build_version   0x000d6a    program     extern /root/ihc_mon/ibsmon.c   
+                clear_2hz   0x0006ea    program     extern /root/ihc_mon/ihc_vector.c
+              clear_500hz   0x0006fa    program     extern /root/ihc_mon/ihc_vector.c
+                compare_l   0x000d22    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
+          controller_work   0x000084    program     extern /root/ihc_mon/ibsmon.c   
+                copy_loop   0x0009ee    program     static                          
+            copy_one_byte   0x0009f4    program     static                          
+                    crc16   0x000804    program     extern /root/ihc_mon/crc.c      
+                crc_match   0x000028    program     extern /root/ihc_mon/ibsmon.c   
+                do_config   0x0002c6    program     extern /root/ihc_mon/ibsmon.c   
+                     done   0x000a18    program     static                          
+             done_copying   0x000a02    program     static                          
+                  get_2hz   0x00070a    program     extern /root/ihc_mon/ihc_vector.c
+                get_500hz   0x00073a    program     extern /root/ihc_mon/ihc_vector.c
+              init_ihcmon   0x0002fe    program     extern /root/ihc_mon/ibsmon.c   
+       init_stream_params   0x000392    program     extern /root/ihc_mon/ibsmon.c   
+                     jEnd   0x000bac    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\mcpyp2r.asm
+                    jLoop   0x000b8e    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\mcpyp2r.asm
+                     loop   0x000d3c    program     static                          
+                   loop_h   0x000d1a    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
+                   loop_l   0x000d24    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
+                     main   0x000398    program     extern /root/ihc_mon/ibsmon.c   
+            memcpypgm2ram   0x000b68    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\mcpyp2r.asm
+           modbus_cc_mode   0x000d5d    program     extern /root/ihc_mon/ibsmon.c   
+  modbus_rtu_send_msg_crc   0x000778    program     extern /root/ihc_mon/crc.c      
+               re20a_mode   0x000d63    program     extern /root/ihc_mon/ibsmon.c   
+             table_crc_hi   0x0003e6    program     static /root/ihc_mon/crc.c      
+             table_crc_lo   0x0004e6    program     static /root/ihc_mon/crc.c      
+                     test   0x000996    program     static                          
+               tm_handler   0x0005e6    program     extern /root/ihc_mon/ihc_vector.c
+                   tm_int   0x000008    program     extern /root/ihc_mon/ibsmon.c   
+               zero_block   0x000d1a    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
                    ADCON0   0x000fc2       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
                ADCON0bits   0x000fc2       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
                    ADCON1   0x000fc1       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
@@ -310,7 +311,7 @@ Linker Map File - Created Fri Mar 13 11:04:58 2020
                     RCREG   0x000fae       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
                     RCSTA   0x000fab       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
                 RCSTAbits   0x000fab       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
-                     SIGN   0x00001d       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\cmath18.asm
+                     SIGN   0x000009       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\cmath18.asm
                     SPBRG   0x000faf       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
                    SPBRGH   0x000fb0       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
                    STATUS   0x000fd8       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
@@ -348,50 +349,49 @@ Linker Map File - Created Fri Mar 13 11:04:58 2020
                     TXREG   0x000fad       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
                     TXSTA   0x000fac       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
                 TXSTAbits   0x000fac       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
-                        V   0x0000c0       data     extern /root/MPLABXProjects/vtouch_v2/ihc_mon/ibsmon.c
+                        V   0x0000c0       data     extern /root/ihc_mon/ibsmon.c   
                         W   0x000fe8       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
                    WDTCON   0x000fd1       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
                WDTCONbits   0x000fd1       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
                      WREG   0x000fe8       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
-                 __AARGB0   0x00001b       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\aarg.asm
-                 __AARGB1   0x00001a       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\aarg.asm
-                 __AARGB2   0x000019       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\aarg.asm
-                 __AARGB3   0x000018       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\aarg.asm
-                 __AARGB4   0x000017       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\aarg.asm
-                 __AARGB5   0x000016       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\aarg.asm
-                 __AARGB6   0x000015       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\aarg.asm
-                 __AARGB7   0x000014       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\aarg.asm
-                   __AEXP   0x00001c       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\aarg.asm
-                __FPFLAGS   0x00001e       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\cmath18.asm
-            __FPFLAGSbits   0x00001e       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\cmath18.asm
-                  __REMB0   0x000017       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\aarg.asm
-                  __REMB1   0x000016       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\aarg.asm
-                  __REMB2   0x000015       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\aarg.asm
-                  __REMB3   0x000014       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\aarg.asm
-                  __tmp_0   0x00001f       data     static E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\EEP\write_B.c
-                  __tmp_0   0x00001f       data     static E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\PWM\pw1setoc.c
-                  __tmp_0   0x00001f       data     static E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\PWM\pw1setdc.c
-                  __tmp_0   0x00001f       data     static E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\EEP\read_B.c
-                  __tmp_0   0x00001f       data     static E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\USART\uopen.c
-                  __tmp_0   0x00001f       data     static /root/MPLABXProjects/vtouch_v2/ihc_mon/ibsmon.c
-                  __tmp_0   0x00001f       data     static /root/MPLABXProjects/vtouch_v2/ihc_mon/crc.c
-               build_date   0x0000f6       data     extern /root/MPLABXProjects/vtouch_v2/ihc_mon/ibsmon.c
-               build_time   0x0000f8       data     extern /root/MPLABXProjects/vtouch_v2/ihc_mon/ibsmon.c
-                  c_error   0x0000fc       data     static /root/MPLABXProjects/vtouch_v2/ihc_mon/ihc_vector.c
-                cc_buffer   0x0000cd       data     extern /root/MPLABXProjects/vtouch_v2/ihc_mon/ibsmon.c
-           cc_stream_file   0x0000cc       data     extern /root/MPLABXProjects/vtouch_v2/ihc_mon/ibsmon.c
-                crc_error   0x000000       data     extern /root/MPLABXProjects/vtouch_v2/ihc_mon/ibsmon.c
-                   cstate   0x0000f5       data     extern /root/MPLABXProjects/vtouch_v2/ihc_mon/ibsmon.c
+                 __AARGB0   0x000007       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\aarg.asm
+                 __AARGB1   0x000006       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\aarg.asm
+                 __AARGB2   0x000005       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\aarg.asm
+                 __AARGB3   0x000004       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\aarg.asm
+                 __AARGB4   0x000003       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\aarg.asm
+                 __AARGB5   0x000002       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\aarg.asm
+                 __AARGB6   0x000001       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\aarg.asm
+                 __AARGB7   0x000000       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\aarg.asm
+                   __AEXP   0x000008       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\aarg.asm
+                __FPFLAGS   0x00000a       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\cmath18.asm
+            __FPFLAGSbits   0x00000a       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\cmath18.asm
+                  __REMB0   0x000003       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\aarg.asm
+                  __REMB1   0x000002       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\aarg.asm
+                  __REMB2   0x000001       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\aarg.asm
+                  __REMB3   0x000000       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\aarg.asm
+                  __tmp_0   0x00000b       data     static E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\EEP\write_B.c
+                  __tmp_0   0x00000b       data     static E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\PWM\pw1setoc.c
+                  __tmp_0   0x00000b       data     static E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\PWM\pw1setdc.c
+                  __tmp_0   0x00000b       data     static E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\EEP\read_B.c
+                  __tmp_0   0x00000b       data     static E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\USART\uopen.c
+                  __tmp_0   0x00000b       data     static /root/ihc_mon/ibsmon.c   
+                  __tmp_0   0x00000b       data     static /root/ihc_mon/crc.c      
+               build_date   0x0000f6       data     extern /root/ihc_mon/ibsmon.c   
+               build_time   0x0000f8       data     extern /root/ihc_mon/ibsmon.c   
+                  c_error   0x0000fc       data     static /root/ihc_mon/ihc_vector.c
+                cc_buffer   0x0000cd       data     extern /root/ihc_mon/ibsmon.c   
+           cc_stream_file   0x0000cc       data     extern /root/ihc_mon/ibsmon.c   
+                crc_error   0x000013       data     extern /root/ihc_mon/ibsmon.c   
+                   cstate   0x0000f5       data     extern /root/ihc_mon/ibsmon.c   
                 curr_byte   0x0000e4       data     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
                curr_entry   0x0000e6       data     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
                  data_ptr   0x0000e8       data     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
-         modbus_tx_buffer   0x000004       data     extern /root/MPLABXProjects/vtouch_v2/ihc_mon/ibsmon.c
                      prom   0x0000e1       data     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
-               req_length   0x0000f3       data     extern /root/MPLABXProjects/vtouch_v2/ihc_mon/ibsmon.c
+               req_length   0x0000f3       data     extern /root/ihc_mon/ibsmon.c   
               tblptru_sav   0x0000fb       data     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\mcpyp2r.asm
-                      tmp   0x0000ef       data     static /root/MPLABXProjects/vtouch_v2/ihc_mon/ihc_vector.c
-                      tmp   0x0000eb       data     static /root/MPLABXProjects/vtouch_v2/ihc_mon/ihc_vector.c
-                    volts   0x0000fa       data     static /root/MPLABXProjects/vtouch_v2/ihc_mon/ibsmon.c
+                      tmp   0x0000ef       data     static /root/ihc_mon/ihc_vector.c
+                      tmp   0x0000eb       data     static /root/ihc_mon/ihc_vector.c
+                    volts   0x0000fa       data     static /root/ihc_mon/ibsmon.c   
 
 
 
@@ -401,134 +401,134 @@ Linker Map File - Created Fri Mar 13 11:04:58 2020
                    _entry   0x000000    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
        ___return_lbl00000   0x000004    program     static                          
                    __init   0x000006    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\__init.c
-                   tm_int   0x000008    program     extern /root/MPLABXProjects/vtouch_v2/ihc_mon/ibsmon.c
+                   tm_int   0x000008    program     extern /root/ihc_mon/ibsmon.c   
        ___return_lbl00000   0x00000c    program     static                          
-                crc_match   0x000028    program     extern /root/MPLABXProjects/vtouch_v2/ihc_mon/ibsmon.c
-          controller_work   0x000084    program     extern /root/MPLABXProjects/vtouch_v2/ihc_mon/ibsmon.c
-                do_config   0x00029a    program     extern /root/MPLABXProjects/vtouch_v2/ihc_mon/ibsmon.c
-              init_ihcmon   0x0002d2    program     extern /root/MPLABXProjects/vtouch_v2/ihc_mon/ibsmon.c
-       init_stream_params   0x000366    program     extern /root/MPLABXProjects/vtouch_v2/ihc_mon/ibsmon.c
-                     main   0x00036c    program     extern /root/MPLABXProjects/vtouch_v2/ihc_mon/ibsmon.c
-                   __pa_0   0x000372    program     static /root/MPLABXProjects/vtouch_v2/ihc_mon/ibsmon.c
-                   __pa_1   0x000386    program     static /root/MPLABXProjects/vtouch_v2/ihc_mon/ibsmon.c
-                   __pa_2   0x000396    program     static /root/MPLABXProjects/vtouch_v2/ihc_mon/ibsmon.c
-             table_crc_hi   0x0003a2    program     static /root/MPLABXProjects/vtouch_v2/ihc_mon/crc.c
-             table_crc_lo   0x0004a2    program     static /root/MPLABXProjects/vtouch_v2/ihc_mon/crc.c
-               tm_handler   0x0005a2    program     extern /root/MPLABXProjects/vtouch_v2/ihc_mon/ihc_vector.c
-                clear_2hz   0x0006a6    program     extern /root/MPLABXProjects/vtouch_v2/ihc_mon/ihc_vector.c
-              clear_500hz   0x0006b6    program     extern /root/MPLABXProjects/vtouch_v2/ihc_mon/ihc_vector.c
-                  get_2hz   0x0006c6    program     extern /root/MPLABXProjects/vtouch_v2/ihc_mon/ihc_vector.c
-                get_500hz   0x0006f6    program     extern /root/MPLABXProjects/vtouch_v2/ihc_mon/ihc_vector.c
-                   __pa_0   0x000726    program     static /root/MPLABXProjects/vtouch_v2/ihc_mon/ihc_vector.c
-  modbus_rtu_send_msg_crc   0x000734    program     extern /root/MPLABXProjects/vtouch_v2/ihc_mon/crc.c
-                    crc16   0x0007c0    program     extern /root/MPLABXProjects/vtouch_v2/ihc_mon/crc.c
-                   __pa_0   0x00086e    program     static /root/MPLABXProjects/vtouch_v2/ihc_mon/crc.c
-                   __pa_1   0x000884    program     static /root/MPLABXProjects/vtouch_v2/ihc_mon/crc.c
-                   __pa_2   0x000894    program     static /root/MPLABXProjects/vtouch_v2/ihc_mon/crc.c
-            SetOutputPWM1   0x0008a2    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\PWM\pw1setoc.c
-         ___else_lbl00006   0x00090c    program     static                          
-         ___else_lbl00004   0x00091a    program     static                          
-               __tmplbl_1   0x000922    program     static                          
-               __tmplbl_0   0x00092a    program     static                          
-           ___if_lbl00005   0x000932    program     static                          
-           ___if_lbl00003   0x000932    program     static                          
-           ___if_lbl00002   0x000932    program     static                          
-       ___return_lbl00000   0x00093a    program     static                          
-                _do_cinit   0x00094c    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
-                     test   0x000966    program     static                          
-                copy_loop   0x0009be    program     static                          
-            copy_one_byte   0x0009c4    program     static                          
-             done_copying   0x0009d2    program     static                          
-       ___return_lbl00002   0x0009e8    program     static                          
-                     done   0x0009e8    program     static                          
-                OpenUSART   0x0009ea    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\USART\uopen.c
-              Write_b_eep   0x000a74    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\EEP\write_B.c
-                SetDCPWM1   0x000ada    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\PWM\pw1setdc.c
-            memcpypgm2ram   0x000b38    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\mcpyp2r.asm
-                    jLoop   0x000b5e    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\mcpyp2r.asm
-              _3jContinue   0x000b6a    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\mcpyp2r.asm
-                   _4jEnd   0x000b74    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\mcpyp2r.asm
-                     jEnd   0x000b7c    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\mcpyp2r.asm
-               Read_b_eep   0x000b7e    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\EEP\read_B.c
-       ___return_lbl00000   0x000bb6    program     static                          
-               OpenTimer1   0x000bc2    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\Timers\t1open.c
-              WriteTimer1   0x000c04    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\Timers\t1write.c
-              WriteTimer0   0x000c3c    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\Timers\t0write.c
-               OpenTimer0   0x000c74    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\Timers\t0open.c
-                 OpenPWM1   0x000cac    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\PWM\pw1open.c
-         OpenPWM1ConfigIO   0x000cd8    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\PWM\pw1open.c
-            __zero_memory   0x000cdc    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
-                   loop_h   0x000cea    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
-               zero_block   0x000cea    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
-                compare_l   0x000cf2    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
-                   loop_l   0x000cf4    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
-                 _startup   0x000cfc    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
-                     loop   0x000d0c    program     static                          
-       ___return_lbl00001   0x000d16    program     static                          
-               __string_1   0x000d18    program     static /root/MPLABXProjects/vtouch_v2/ihc_mon/ibsmon.c
-               __string_0   0x000d21    program     static /root/MPLABXProjects/vtouch_v2/ihc_mon/ibsmon.c
-           modbus_cc_mode   0x000d2d    program     extern /root/MPLABXProjects/vtouch_v2/ihc_mon/ibsmon.c
-               re20a_mode   0x000d33    program     extern /root/MPLABXProjects/vtouch_v2/ihc_mon/ibsmon.c
-            build_version   0x000d3a    program     extern /root/MPLABXProjects/vtouch_v2/ihc_mon/ibsmon.c
-                 Busy_eep   0x000d40    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\EEP\busy_eep.c
-               __config_0   0x300001    program     static /root/MPLABXProjects/vtouch_v2/ihc_mon/ibsmon.c
-               __config_1   0x300002    program     static /root/MPLABXProjects/vtouch_v2/ihc_mon/ibsmon.c
-               __config_2   0x300003    program     static /root/MPLABXProjects/vtouch_v2/ihc_mon/ibsmon.c
-               __config_3   0x300005    program     static /root/MPLABXProjects/vtouch_v2/ihc_mon/ibsmon.c
-               __config_4   0x300006    program     static /root/MPLABXProjects/vtouch_v2/ihc_mon/ibsmon.c
-               __config_5   0x300008    program     static /root/MPLABXProjects/vtouch_v2/ihc_mon/ibsmon.c
-               __config_6   0x300009    program     static /root/MPLABXProjects/vtouch_v2/ihc_mon/ibsmon.c
-               __config_7   0x30000a    program     static /root/MPLABXProjects/vtouch_v2/ihc_mon/ibsmon.c
-               __config_8   0x30000b    program     static /root/MPLABXProjects/vtouch_v2/ihc_mon/ibsmon.c
-               __config_9   0x30000c    program     static /root/MPLABXProjects/vtouch_v2/ihc_mon/ibsmon.c
-              __config_10   0x30000d    program     static /root/MPLABXProjects/vtouch_v2/ihc_mon/ibsmon.c
-                crc_error   0x000000       data     extern /root/MPLABXProjects/vtouch_v2/ihc_mon/ibsmon.c
-         modbus_tx_buffer   0x000004       data     extern /root/MPLABXProjects/vtouch_v2/ihc_mon/ibsmon.c
-                 __AARGB7   0x000014       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\aarg.asm
-                  __REMB3   0x000014       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\aarg.asm
-                 __AARGB6   0x000015       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\aarg.asm
-                  __REMB2   0x000015       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\aarg.asm
-                  __REMB1   0x000016       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\aarg.asm
-                 __AARGB5   0x000016       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\aarg.asm
-                  __REMB0   0x000017       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\aarg.asm
-                 __AARGB4   0x000017       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\aarg.asm
-                 __AARGB3   0x000018       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\aarg.asm
-                 __AARGB2   0x000019       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\aarg.asm
-                 __AARGB1   0x00001a       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\aarg.asm
-                 __AARGB0   0x00001b       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\aarg.asm
-                   __AEXP   0x00001c       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\aarg.asm
-                     SIGN   0x00001d       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\cmath18.asm
-            __FPFLAGSbits   0x00001e       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\cmath18.asm
-                __FPFLAGS   0x00001e       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\cmath18.asm
-                  __tmp_0   0x00001f       data     static /root/MPLABXProjects/vtouch_v2/ihc_mon/crc.c
-                  __tmp_0   0x00001f       data     static /root/MPLABXProjects/vtouch_v2/ihc_mon/ibsmon.c
-                  __tmp_0   0x00001f       data     static E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\USART\uopen.c
-                  __tmp_0   0x00001f       data     static E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\EEP\read_B.c
-                  __tmp_0   0x00001f       data     static E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\PWM\pw1setdc.c
-                  __tmp_0   0x00001f       data     static E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\PWM\pw1setoc.c
-                  __tmp_0   0x00001f       data     static E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\EEP\write_B.c
-                        V   0x0000c0       data     extern /root/MPLABXProjects/vtouch_v2/ihc_mon/ibsmon.c
-           cc_stream_file   0x0000cc       data     extern /root/MPLABXProjects/vtouch_v2/ihc_mon/ibsmon.c
-                cc_buffer   0x0000cd       data     extern /root/MPLABXProjects/vtouch_v2/ihc_mon/ibsmon.c
+                crc_match   0x000028    program     extern /root/ihc_mon/ibsmon.c   
+          controller_work   0x000084    program     extern /root/ihc_mon/ibsmon.c   
+                do_config   0x0002c6    program     extern /root/ihc_mon/ibsmon.c   
+              init_ihcmon   0x0002fe    program     extern /root/ihc_mon/ibsmon.c   
+       init_stream_params   0x000392    program     extern /root/ihc_mon/ibsmon.c   
+                     main   0x000398    program     extern /root/ihc_mon/ibsmon.c   
+                   __pa_0   0x00039e    program     static /root/ihc_mon/ibsmon.c   
+                   __pa_1   0x0003b2    program     static /root/ihc_mon/ibsmon.c   
+                   __pa_2   0x0003c2    program     static /root/ihc_mon/ibsmon.c   
+                   __pa_3   0x0003d0    program     static /root/ihc_mon/ibsmon.c   
+                   __pa_4   0x0003da    program     static /root/ihc_mon/ibsmon.c   
+             table_crc_hi   0x0003e6    program     static /root/ihc_mon/crc.c      
+             table_crc_lo   0x0004e6    program     static /root/ihc_mon/crc.c      
+               tm_handler   0x0005e6    program     extern /root/ihc_mon/ihc_vector.c
+                clear_2hz   0x0006ea    program     extern /root/ihc_mon/ihc_vector.c
+              clear_500hz   0x0006fa    program     extern /root/ihc_mon/ihc_vector.c
+                  get_2hz   0x00070a    program     extern /root/ihc_mon/ihc_vector.c
+                get_500hz   0x00073a    program     extern /root/ihc_mon/ihc_vector.c
+                   __pa_0   0x00076a    program     static /root/ihc_mon/ihc_vector.c
+  modbus_rtu_send_msg_crc   0x000778    program     extern /root/ihc_mon/crc.c      
+                    crc16   0x000804    program     extern /root/ihc_mon/crc.c      
+                   __pa_0   0x0008ac    program     static /root/ihc_mon/crc.c      
+                   __pa_1   0x0008c2    program     static /root/ihc_mon/crc.c      
+            SetOutputPWM1   0x0008d2    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\PWM\pw1setoc.c
+         ___else_lbl00006   0x00093c    program     static                          
+         ___else_lbl00004   0x00094a    program     static                          
+               __tmplbl_1   0x000952    program     static                          
+               __tmplbl_0   0x00095a    program     static                          
+           ___if_lbl00003   0x000962    program     static                          
+           ___if_lbl00002   0x000962    program     static                          
+           ___if_lbl00005   0x000962    program     static                          
+       ___return_lbl00000   0x00096a    program     static                          
+                _do_cinit   0x00097c    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
+                     test   0x000996    program     static                          
+                copy_loop   0x0009ee    program     static                          
+            copy_one_byte   0x0009f4    program     static                          
+             done_copying   0x000a02    program     static                          
+                     done   0x000a18    program     static                          
+       ___return_lbl00002   0x000a18    program     static                          
+                OpenUSART   0x000a1a    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\USART\uopen.c
+              Write_b_eep   0x000aa4    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\EEP\write_B.c
+                SetDCPWM1   0x000b0a    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\PWM\pw1setdc.c
+            memcpypgm2ram   0x000b68    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\mcpyp2r.asm
+                    jLoop   0x000b8e    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\mcpyp2r.asm
+              _3jContinue   0x000b9a    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\mcpyp2r.asm
+                   _4jEnd   0x000ba4    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\mcpyp2r.asm
+                     jEnd   0x000bac    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\mcpyp2r.asm
+               Read_b_eep   0x000bae    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\EEP\read_B.c
+       ___return_lbl00000   0x000be6    program     static                          
+               OpenTimer1   0x000bf2    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\Timers\t1open.c
+              WriteTimer1   0x000c34    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\Timers\t1write.c
+              WriteTimer0   0x000c6c    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\Timers\t0write.c
+               OpenTimer0   0x000ca4    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\Timers\t0open.c
+                 OpenPWM1   0x000cdc    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\PWM\pw1open.c
+         OpenPWM1ConfigIO   0x000d08    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\PWM\pw1open.c
+            __zero_memory   0x000d0c    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
+                   loop_h   0x000d1a    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
+               zero_block   0x000d1a    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
+                compare_l   0x000d22    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
+                   loop_l   0x000d24    program     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
+                 _startup   0x000d2c    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
+                     loop   0x000d3c    program     static                          
+       ___return_lbl00001   0x000d46    program     static                          
+               __string_1   0x000d48    program     static /root/ihc_mon/ibsmon.c   
+               __string_0   0x000d51    program     static /root/ihc_mon/ibsmon.c   
+           modbus_cc_mode   0x000d5d    program     extern /root/ihc_mon/ibsmon.c   
+               re20a_mode   0x000d63    program     extern /root/ihc_mon/ibsmon.c   
+            build_version   0x000d6a    program     extern /root/ihc_mon/ibsmon.c   
+                 Busy_eep   0x000d70    program     extern E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\EEP\busy_eep.c
+               __config_0   0x300001    program     static /root/ihc_mon/ibsmon.c   
+               __config_1   0x300002    program     static /root/ihc_mon/ibsmon.c   
+               __config_2   0x300003    program     static /root/ihc_mon/ibsmon.c   
+               __config_3   0x300005    program     static /root/ihc_mon/ibsmon.c   
+               __config_4   0x300006    program     static /root/ihc_mon/ibsmon.c   
+               __config_5   0x300008    program     static /root/ihc_mon/ibsmon.c   
+               __config_6   0x300009    program     static /root/ihc_mon/ibsmon.c   
+               __config_7   0x30000a    program     static /root/ihc_mon/ibsmon.c   
+               __config_8   0x30000b    program     static /root/ihc_mon/ibsmon.c   
+               __config_9   0x30000c    program     static /root/ihc_mon/ibsmon.c   
+              __config_10   0x30000d    program     static /root/ihc_mon/ibsmon.c   
+                  __REMB3   0x000000       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\aarg.asm
+                 __AARGB7   0x000000       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\aarg.asm
+                  __REMB2   0x000001       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\aarg.asm
+                 __AARGB6   0x000001       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\aarg.asm
+                  __REMB1   0x000002       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\aarg.asm
+                 __AARGB5   0x000002       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\aarg.asm
+                  __REMB0   0x000003       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\aarg.asm
+                 __AARGB4   0x000003       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\aarg.asm
+                 __AARGB3   0x000004       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\aarg.asm
+                 __AARGB2   0x000005       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\aarg.asm
+                 __AARGB1   0x000006       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\aarg.asm
+                 __AARGB0   0x000007       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\aarg.asm
+                   __AEXP   0x000008       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\aarg.asm
+                     SIGN   0x000009       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\cmath18.asm
+            __FPFLAGSbits   0x00000a       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\cmath18.asm
+                __FPFLAGS   0x00000a       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\math\cmath18.asm
+                  __tmp_0   0x00000b       data     static /root/ihc_mon/ibsmon.c   
+                  __tmp_0   0x00000b       data     static E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\USART\uopen.c
+                  __tmp_0   0x00000b       data     static E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\EEP\read_B.c
+                  __tmp_0   0x00000b       data     static E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\PWM\pw1setdc.c
+                  __tmp_0   0x00000b       data     static E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\PWM\pw1setoc.c
+                  __tmp_0   0x00000b       data     static E:\c18v3.46\pic18-lt\cxx-framework\src\pmc_common\EEP\write_B.c
+                  __tmp_0   0x00000b       data     static /root/ihc_mon/crc.c      
+                crc_error   0x000013       data     extern /root/ihc_mon/ibsmon.c   
+                        V   0x0000c0       data     extern /root/ihc_mon/ibsmon.c   
+           cc_stream_file   0x0000cc       data     extern /root/ihc_mon/ibsmon.c   
+                cc_buffer   0x0000cd       data     extern /root/ihc_mon/ibsmon.c   
                      prom   0x0000e1       data     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
                 curr_byte   0x0000e4       data     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
                curr_entry   0x0000e6       data     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
                  data_ptr   0x0000e8       data     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
-                      tmp   0x0000eb       data     static /root/MPLABXProjects/vtouch_v2/ihc_mon/ihc_vector.c
-                      tmp   0x0000ef       data     static /root/MPLABXProjects/vtouch_v2/ihc_mon/ihc_vector.c
-               req_length   0x0000f3       data     extern /root/MPLABXProjects/vtouch_v2/ihc_mon/ibsmon.c
-                   cstate   0x0000f5       data     extern /root/MPLABXProjects/vtouch_v2/ihc_mon/ibsmon.c
-               build_date   0x0000f6       data     extern /root/MPLABXProjects/vtouch_v2/ihc_mon/ibsmon.c
-               build_time   0x0000f8       data     extern /root/MPLABXProjects/vtouch_v2/ihc_mon/ibsmon.c
-                    volts   0x0000fa       data     static /root/MPLABXProjects/vtouch_v2/ihc_mon/ibsmon.c
+                      tmp   0x0000eb       data     static /root/ihc_mon/ihc_vector.c
+                      tmp   0x0000ef       data     static /root/ihc_mon/ihc_vector.c
+               req_length   0x0000f3       data     extern /root/ihc_mon/ibsmon.c   
+                   cstate   0x0000f5       data     extern /root/ihc_mon/ibsmon.c   
+               build_date   0x0000f6       data     extern /root/ihc_mon/ibsmon.c   
+               build_time   0x0000f8       data     extern /root/ihc_mon/ibsmon.c   
+                    volts   0x0000fa       data     static /root/ihc_mon/ibsmon.c   
               tblptru_sav   0x0000fb       data     static E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\stdclib\mcpyp2r.asm
-                  c_error   0x0000fc       data     static /root/MPLABXProjects/vtouch_v2/ihc_mon/ihc_vector.c
+                  c_error   0x0000fc       data     static /root/ihc_mon/ihc_vector.c
                     PORTA   0x000f80       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
                 PORTAbits   0x000f80       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
                     PORTB   0x000f81       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
                 PORTBbits   0x000f81       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
-                 LATAbits   0x000f89       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
                      LATA   0x000f89       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
+                 LATAbits   0x000f89       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
                      LATB   0x000f8a       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
                  LATBbits   0x000f8a       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
                 TRISAbits   0x000f92       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
@@ -549,46 +549,46 @@ Linker Map File - Created Fri Mar 13 11:04:58 2020
                      IPR1   0x000f9f       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
                      PIE2   0x000fa0       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
                  PIE2bits   0x000fa0       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
-                     PIR2   0x000fa1       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
                  PIR2bits   0x000fa1       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
-                     IPR2   0x000fa2       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
+                     PIR2   0x000fa1       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
                  IPR2bits   0x000fa2       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
-                   EECON1   0x000fa6       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
+                     IPR2   0x000fa2       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
                EECON1bits   0x000fa6       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
+                   EECON1   0x000fa6       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
                    EECON2   0x000fa7       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
                    EEDATA   0x000fa8       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
                     EEADR   0x000fa9       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
-                  BAUDCTL   0x000faa       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
               BAUDCTLbits   0x000faa       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
-                    RCSTA   0x000fab       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
+                  BAUDCTL   0x000faa       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
                 RCSTAbits   0x000fab       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
+                    RCSTA   0x000fab       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
                 TXSTAbits   0x000fac       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
                     TXSTA   0x000fac       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
                     TXREG   0x000fad       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
                     RCREG   0x000fae       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
                     SPBRG   0x000faf       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
                    SPBRGH   0x000fb0       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
-                T3CONbits   0x000fb1       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
                     T3CON   0x000fb1       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
+                T3CONbits   0x000fb1       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
                     TMR3L   0x000fb2       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
                     TMR3H   0x000fb3       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
-                   ECCPAS   0x000fb6       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
                ECCPASbits   0x000fb6       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
-                  PWM1CON   0x000fb7       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
+                   ECCPAS   0x000fb6       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
               PWM1CONbits   0x000fb7       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
-                  CCP1CON   0x000fbd       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
+                  PWM1CON   0x000fb7       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
               CCP1CONbits   0x000fbd       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
+                  CCP1CON   0x000fbd       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
                     CCPR1   0x000fbe       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
                    CCPR1L   0x000fbe       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
                    CCPR1H   0x000fbf       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
-                   ADCON2   0x000fc0       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
                ADCON2bits   0x000fc0       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
-               ADCON1bits   0x000fc1       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
+                   ADCON2   0x000fc0       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
                    ADCON1   0x000fc1       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
+               ADCON1bits   0x000fc1       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
                    ADCON0   0x000fc2       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
                ADCON0bits   0x000fc2       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
-                    ADRES   0x000fc3       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
                    ADRESL   0x000fc3       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
+                    ADRES   0x000fc3       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
                    ADRESH   0x000fc4       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
                 T2CONbits   0x000fca       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
                     T2CON   0x000fca       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
@@ -604,14 +604,14 @@ Linker Map File - Created Fri Mar 13 11:04:58 2020
                WDTCONbits   0x000fd1       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
                    LVDCON   0x000fd2       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
                LVDCONbits   0x000fd2       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
-                   OSCCON   0x000fd3       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
                OSCCONbits   0x000fd3       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
-                    T0CON   0x000fd5       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
+                   OSCCON   0x000fd3       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
                 T0CONbits   0x000fd5       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
+                    T0CON   0x000fd5       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
                     TMR0L   0x000fd6       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
                     TMR0H   0x000fd7       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
-               STATUSbits   0x000fd8       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
                    STATUS   0x000fd8       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
+               STATUSbits   0x000fd8       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
                     FSR2L   0x000fd9       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
                      FSR2   0x000fd9       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
                     FSR2H   0x000fda       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
@@ -629,8 +629,8 @@ Linker Map File - Created Fri Mar 13 11:04:58 2020
                  POSTDEC1   0x000fe5       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
                  POSTINC1   0x000fe6       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
                     INDF1   0x000fe7       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
-                     WREG   0x000fe8       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
                         W   0x000fe8       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
+                     WREG   0x000fe8       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
                     FSR0L   0x000fe9       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
                      FSR0   0x000fe9       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
                     FSR0H   0x000fea       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
@@ -645,8 +645,8 @@ Linker Map File - Created Fri Mar 13 11:04:58 2020
                   INTCON2   0x000ff1       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
                INTCONbits   0x000ff2       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
                    INTCON   0x000ff2       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
-                    PRODL   0x000ff3       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
                      PROD   0x000ff3       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
+                    PRODL   0x000ff3       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
                     PRODH   0x000ff4       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
                    TABLAT   0x000ff5       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
                    TBLPTR   0x000ff6       data     extern E:\c18v3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f1320.asm
