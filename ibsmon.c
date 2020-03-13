@@ -60,6 +60,7 @@
  * cpu clock 10mhz external
  * Version
  * 1.0 Rover Elite SR485 controller status monitor
+ * 1.1 for rev 1.1 PCB
  */
 
 #include <p18f1320.h>
@@ -89,7 +90,7 @@ volatile uint8_t cc_stream_file, cc_stream_file_prev = 0, cc_buffer[MAX_DATA];
 near uint32_t crc_error;
 volatile uint16_t timer0_off = TIMEROFFSET;
 comm_type cstate = CLEAR;
-const rom uint8_t *build_date = __DATE__, *build_time = __TIME__, build_version[5] = "1.0";
+const rom uint8_t *build_date = __DATE__, *build_time = __TIME__, build_version[5] = "1.1";
 
 #pragma code tm_interrupt = 0x8
 
