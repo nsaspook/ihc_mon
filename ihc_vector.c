@@ -1,5 +1,7 @@
 #include "ihc_vector.h"
 
+static void led_blink(void);
+
 #pragma tmpdata ISRHtmpdata
 
 #pragma interrupt tm_handler nosave=section (".tmpdata")
@@ -38,6 +40,8 @@ void tm_handler(void) // timer/serial functions are handled here
 		INTCONbits.TMR0IF = FALSE; //      clear interrupt flag
 		WriteTimer0(TIMERFAST);
 		V.clock_2hz++;
+		V.clock_blinks++;
+		led_blink();
 		//		DEB = ~DEB;
 	}
 
@@ -90,4 +94,39 @@ uint32_t get_500hz(uint8_t mode)
 	tmp = V.clock_500hz;
 	INTCONbits.GIEH = 1;
 	return tmp;
+}
+
+/*
+ * runs in timer 0 ISR
+ */
+static void led_blink(void)
+{
+	if (V.num_blinks == 255) {
+		LED1 = ON;
+		V.clock_blinks = 0;
+		return;
+	}
+	if (!V.num_blinks || V.num_blinks > MAX_BLINKS) {
+		LED1 = OFF;
+		V.clock_blinks = 0;
+		return;
+	}
+
+	if (V.clock_blinks > BLINK_SPACE) {
+		if (V.clock_blinks > V.clock_blinks + (V.num_blinks << 2)) {
+			V.clock_blinks = 0;
+			LED1 = OFF;
+		} else {
+			LED1 = ~LED1;
+		}
+	}
+}
+
+void set_led_blink(uint8_t blinks)
+{
+	if (blinks > MAX_BLINKS)
+		blinks = 0;
+
+	V.num_blinks = blinks;
+
 }

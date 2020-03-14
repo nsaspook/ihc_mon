@@ -21,8 +21,11 @@ typedef signed long long int64_t;
 typedef struct V_data { // ISR used, mainly for non-atomic mod problems
 	uint32_t clock_500hz;
 	uint32_t clock_2hz;
+	uint8_t clock_blinks;
+	uint8_t num_blinks;
 	uint8_t config : 1;
 	uint8_t stable : 1;
+	uint8_t boot_code : 1;
 	uint8_t send_count, recv_count, pwm_volts;
 } V_data;
 
@@ -65,6 +68,8 @@ typedef enum comm_type {
 #define MAX_DATA        20
 #define MAX_GLITCH      3
 #define MAX_PARAMS      5
+#define MAX_BLINKS	8
+#define BLINK_SPACE	4
 
 #define IBSPORTA	TRISA
 #define IBSPORTB	TRISB
@@ -73,7 +78,7 @@ typedef enum comm_type {
 
 #define DE		LATAbits.LATA0
 #define RE_		LATAbits.LATA1
-#define FINE_REG  	LATBbits.LATB2 // debug
+#define BOOT_FLAG  	LATBbits.LATB2 // debug
 #define ANA_SIG		LATBbits.LATB3
 #define LED1		LATBbits.LATB0
 #define DEB		LATBbits.LATB7 // debug

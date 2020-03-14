@@ -28,6 +28,7 @@ extern "C" {
 	uint32_t get_2hz(uint8_t);
 	uint32_t get_500hz(uint8_t);
 
+	void set_led_blink(uint8_t);
 #ifdef	__cplusplus
 }
 #endif
