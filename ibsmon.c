@@ -78,7 +78,6 @@ int8_t controller_work(void);
 uint8_t do_config(void);
 void init_ihcmon(void);
 uint8_t init_stream_params(void);
-uint8_t crc_match(uint8_t, uint8_t, uint16_t);
 
 
 #pragma udata
@@ -100,13 +99,6 @@ void tm_int(void)
 }
 #pragma code
 
-uint8_t crc_match(uint8_t upper, uint8_t lower, uint16_t crc)
-{
-	if ((upper == (crc >> 8) & 0x00ff) && (lower == (crc & 0x00ff)))
-		return TRUE;
-	return FALSE;
-}
-
 int8_t controller_work(void)
 {
 
@@ -117,12 +109,7 @@ int8_t controller_work(void)
 		/*
 		 * command specific tx buffer setup
 		 */
-		req_length = sizeof(modbus_cc_mode);
-		memcpypgm2ram((void*) cc_buffer, (const far rom void *) modbus_cc_mode, req_length);
-		/*
-		 * add the CRC and increase message size by two bytes for the CRC16
-		 */
-		req_length = modbus_rtu_send_msg_crc((volatile uint8_t *) cc_buffer, req_length);
+		req_length = modbus_rtu_send_msg((void*) cc_buffer, (const far rom void *) modbus_cc_mode, sizeof(modbus_cc_mode));
 		break;
 	case INIT:
 		if (get_2hz(FALSE) > QDELAY) {

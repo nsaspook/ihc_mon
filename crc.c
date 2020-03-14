@@ -62,15 +62,29 @@ static const rom uint8_t table_crc_lo[] = {
 	0x43, 0x83, 0x41, 0x81, 0x80, 0x40
 };
 
-uint16_t modbus_rtu_send_msg_crc(volatile uint8_t *req, uint16_t req_length)
+static uint16_t modbus_rtu_send_msg_crc(volatile uint8_t *, uint16_t);
+
+static uint16_t modbus_rtu_send_msg_crc(volatile uint8_t *req, uint16_t req_length)
 {
 	uint16_t crc;
 
 	crc = crc16(req, req_length);
-	req[req_length++] = crc >> (uint16_t)8;
+	req[req_length++] = crc >> (uint16_t) 8;
 	req[req_length++] = crc & 0x00FF;
 
 	return req_length;
+}
+
+/*
+ * constructs a properly formatted RTU message with CRC from a program memory array to the data memory array buffer
+ */
+uint16_t modbus_rtu_send_msg(void *cc_buffer, const far rom void *modbus_cc_mode, uint16_t req_length)
+{
+	memcpypgm2ram((void*) cc_buffer, (const far rom void *) modbus_cc_mode, req_length);
+	/*
+	 * add the CRC and increase message size by two bytes for the CRC16
+	 */
+	return modbus_rtu_send_msg_crc((volatile uint8_t *) cc_buffer, req_length);
 }
 
 uint16_t crc16(volatile uint8_t *buffer, uint16_t buffer_length)
