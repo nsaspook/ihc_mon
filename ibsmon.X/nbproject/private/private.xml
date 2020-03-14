@@ -7,6 +7,13 @@
             <file>file:/old_os/mplabx/ihc_mon/ibsmon.c</file>
             <file>file:/old_os/mplabx/ihc_mon/ihc_vector.c</file>
         </group>
-        <group/>
+        <group>
+            <file>file:/root/ihc_mon/ibsmon.c</file>
+            <file>file:/root/ihc_mon/ihc_vector.c</file>
+            <file>file:/root/ihc_mon/ibsmon.h</file>
+            <file>file:/root/ihc_mon/18f1320_g.lkr</file>
+            <file>file:/root/ihc_mon/crc.c</file>
+            <file>file:/root/ihc_mon/crc.h</file>
+        </group>
     </open-files>
 </project-private>
