@@ -154,7 +154,6 @@ int8_t controller_work(void)
 
 				if (c_crc == c_crc_rec) {
 					if ((temp = cc_buffer[4])) {
-						//LED1 = ~LED1;
 						set_led_blink(temp);
 						switch (temp) {
 						case 1:
@@ -180,22 +179,19 @@ int8_t controller_work(void)
 							break;
 						}
 					} else {
-						// = ON;
-						set_led_blink(255);
+						set_led_blink(BON);
 						volts = CC_DEACT;
 					}
 				} else {
 					crc_error++;
-					set_led_blink(0);
-					// = OFF;
+					set_led_blink(BOFF);
 				}
 				V.pwm_volts = volts;
 				SetDCPWM1(V.pwm_volts);
 				cstate = CLEAR;
 			} else {
 				if (get_500hz(FALSE) > RDELAY) {
-					// = OFF;
-					set_led_blink(0);
+					set_led_blink(BOFF);
 					cstate = CLEAR;
 					V.pwm_volts = CC_OFFLINE;
 					SetDCPWM1(V.pwm_volts);
@@ -247,9 +243,9 @@ void init_ihcmon(void)
 	IBSPORTB = IBSPORT_IOB;
 	INTCON2bits.RBPU = 0; // enable weak pull-ups, mainly for receive serial when RS485 Rx transceiver is off.
 
-	LED1 = ON;
+	LED1 = OFF;
 	V.clock_blinks = 0;
-	set_led_blink(255);
+	set_led_blink(BOFF);
 	OpenTimer0(TIMER_INT_ON & T0_16BIT & T0_SOURCE_INT & T0_PS_1_64);
 	WriteTimer0(TIMERFAST);
 	OpenTimer1(TIMER_INT_ON & T1_16BIT_RW & T1_SOURCE_INT & T1_PS_1_4 & T1_OSC1EN_OFF & T1_SYNC_EXT_OFF);

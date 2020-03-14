@@ -97,7 +97,7 @@ uint32_t get_500hz(uint8_t mode)
 }
 
 /*
- * runs in timer 0 ISR
+ * runs in timer 0 ISR @ 2Hz
  */
 static void led_blink(void)
 {
@@ -113,7 +113,8 @@ static void led_blink(void)
 	}
 
 	if (V.clock_blinks > BLINK_SPACE) {
-		if (V.clock_blinks > V.clock_blinks + (V.num_blinks << 2)) {
+
+		if ((BLINK_SPACE + (V.num_blinks << 1)) <= V.clock_blinks) {
 			V.clock_blinks = 0;
 			LED1 = OFF;
 		} else {
@@ -124,7 +125,7 @@ static void led_blink(void)
 
 void set_led_blink(uint8_t blinks)
 {
-	if (blinks > MAX_BLINKS)
+	if (blinks > MAX_BLINKS && (blinks != 255))
 		blinks = 0;
 
 	V.num_blinks = blinks;

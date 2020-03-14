@@ -58,6 +58,8 @@ typedef enum comm_type {
 #define	OFF	0
 #define	LEDON	0   // logic low lights led
 #define	LEDOFF	1
+#define BOFF	0
+#define BON	255
 
 #define	TIMEROFFSET	34268			// timer0 16bit counter value for 1 second to overflow
 #define	TIMERFAST	26600			// fast flash 2hz
@@ -69,7 +71,7 @@ typedef enum comm_type {
 #define MAX_GLITCH      3
 #define MAX_PARAMS      5
 #define MAX_BLINKS	8
-#define BLINK_SPACE	4
+#define BLINK_SPACE	8
 
 #define IBSPORTA	TRISA
 #define IBSPORTB	TRISB
