@@ -59,6 +59,7 @@
  * 1.0 Rover Elite SR485 controller status monitor
  * 1.1 for rev 1.1 PCB
  * 1.2 full CRC for TX and RX
+ * 1.3 status led blinker code
  */
 
 #include <p18f1320.h>
@@ -79,7 +80,6 @@ uint8_t do_config(void);
 void init_ihcmon(void);
 uint8_t init_stream_params(void);
 
-
 #pragma udata
 uint16_t req_length = 0;
 const rom uint8_t modbus_cc_mode[] = {0x01, 0x03, 0x01, 0x20, 0x00, 0x01},
@@ -89,7 +89,7 @@ volatile uint8_t cc_stream_file, cc_buffer[MAX_DATA]; // half-duplex so we can s
 #pragma udata access ACCESSBANK
 near uint32_t crc_error;
 comm_type cstate = CLEAR;
-const rom uint8_t *build_date = __DATE__, *build_time = __TIME__, build_version[5] = "1.2";
+const rom uint8_t *build_date = __DATE__, *build_time = __TIME__, build_version[5] = "1.3";
 
 #pragma code tm_interrupt = 0x8
 
@@ -205,12 +205,15 @@ int8_t controller_work(void)
 	return 0;
 }
 
+/*
+ * maybe a future options function
+ */
 uint8_t do_config(void)
 {
 	INTCONbits.GIEH = 0;
 	if (Read_b_eep(0) == '?') { // use default options
 		Write_b_eep(0, 'D'); // write into EEPROM
-	} else { // set FINE options.
+	} else { // set options.
 		Write_b_eep(0, '?'); // write into EEPROM
 	}
 	Busy_eep();

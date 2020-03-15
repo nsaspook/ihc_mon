@@ -64,6 +64,10 @@ static const rom uint8_t table_crc_lo[] = {
 
 static uint16_t modbus_rtu_send_msg_crc(volatile uint8_t *, uint16_t);
 
+/*
+ * be careful of C18 integer promotion rules on 16-bit registers
+ * on these types of routines
+ */
 static uint16_t modbus_rtu_send_msg_crc(volatile uint8_t *req, uint16_t req_length)
 {
 	uint16_t crc;

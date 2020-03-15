@@ -97,10 +97,12 @@ uint32_t get_500hz(uint8_t mode)
 }
 
 /*
+ * link condition status server via blinking led
  * runs in timer 0 ISR @ 2Hz
  */
 static void led_blink(void)
 {
+	// range checks
 	if (V.num_blinks == 255) {
 		LED1 = ON;
 		V.clock_blinks = 0;
@@ -112,8 +114,8 @@ static void led_blink(void)
 		return;
 	}
 
+	// time spacing and blink counter
 	if (V.clock_blinks > BLINK_SPACE) {
-
 		if ((BLINK_SPACE + (V.num_blinks << 1)) <= V.clock_blinks) {
 			V.clock_blinks = 0;
 			LED1 = OFF;
@@ -123,11 +125,15 @@ static void led_blink(void)
 	}
 }
 
+/*
+ * set the number of blinks variable from mainline code
+ */
 void set_led_blink(uint8_t blinks)
 {
 	if (blinks > MAX_BLINKS && (blinks != 255))
 		blinks = 0;
 
+	INTCONbits.GIEH = 0;
 	V.num_blinks = blinks;
-
+	INTCONbits.GIEH = 1;
 }
