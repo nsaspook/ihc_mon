@@ -94,12 +94,12 @@ typedef enum comm_type {
 #define RDELAY		2000
 #define QDELAY		1
 
-#define CC_DEACT	74	// 1.10
-#define CC_ACT		100	// 1.43
-#define CC_MPPT		120	// 1.75
-#define CC_EQUAL	140	// 2.10
-#define CC_BOOST	160	// 2.45
-#define CC_FLOAT	180	// 2.82
-#define CC_LIMIT	200	// 3.20
-#define CC_OFFLINE	240	// 4.00
+#define CC_DEACT	74	// 1.00
+#define CC_ACT		100	// 1.50
+#define CC_MPPT		120	// 2.00
+#define CC_EQUAL	140	// 2.50
+#define CC_BOOST	160	// 3.00
+#define CC_FLOAT	180	// 3.50
+#define CC_LIMIT	200	// 4.00
+#define CC_OFFLINE	240	// 4.50
 #endif 
