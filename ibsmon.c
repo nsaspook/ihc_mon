@@ -23,7 +23,7 @@
 
 // CONFIG4L
 #pragma config STVR = ON        // Stack Full/Underflow Reset Enable bit (Stack full/underflow will cause Reset)
-#pragma config LVP = ON         // Low-Voltage ICSP Enable bit (Low-Voltage ICSP enabled)
+#pragma config LVP = OFF         // Low-Voltage ICSP Enable bit (Low-Voltage ICSP DISenabled)
 
 // CONFIG5L
 #pragma config CP0 = ON         // Code Protection bit (Block 0 (00200-000FFFh) code-protected)
@@ -60,6 +60,7 @@
  * 1.1 for rev 1.1 PCB
  * 1.2 full CRC for TX and RX
  * 1.3 status led blinker code
+ * 1.4 adjust pwm values for new board
  */
 
 #include <p18f1320.h>
@@ -89,7 +90,7 @@ volatile uint8_t cc_stream_file, cc_buffer[MAX_DATA]; // half-duplex so we can s
 #pragma udata access ACCESSBANK
 near uint32_t crc_error;
 comm_type cstate = CLEAR;
-const rom uint8_t *build_date = __DATE__, *build_time = __TIME__, build_version[5] = "1.3";
+const rom uint8_t *build_date = __DATE__, *build_time = __TIME__, build_version[5] = "1.4";
 
 #pragma code tm_interrupt = 0x8
 
@@ -191,7 +192,7 @@ int8_t controller_work(void)
 				cstate = CLEAR;
 			} else {
 				if (get_500hz(FALSE) > RDELAY) {
-					set_led_blink(2);
+					set_led_blink(BOFF);
 					cstate = CLEAR;
 					V.pwm_volts = CC_OFFLINE;
 					SetDCPWM1(V.pwm_volts);
@@ -294,6 +295,5 @@ void main(void)
 	/* Loop forever */
 	while (TRUE) { // busy work
 		controller_work();
-		LED1=1;
 	}
 }
