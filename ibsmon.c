@@ -191,7 +191,7 @@ int8_t controller_work(void)
 				cstate = CLEAR;
 			} else {
 				if (get_500hz(FALSE) > RDELAY) {
-					set_led_blink(BOFF);
+					set_led_blink(2);
 					cstate = CLEAR;
 					V.pwm_volts = CC_OFFLINE;
 					SetDCPWM1(V.pwm_volts);
@@ -294,5 +294,6 @@ void main(void)
 	/* Loop forever */
 	while (TRUE) { // busy work
 		controller_work();
+		LED1=1;
 	}
 }
