@@ -13049,15 +13049,15 @@ drill 1.4 mm</description>
 <part name="VSS11" library="supply1" deviceset="VSS" device=""/>
 <part name="JP2" library="pinhead" deviceset="PINHD-1X6" device="" value="RS485"/>
 <part name="VDD4" library="supply1" deviceset="VDD" device=""/>
-<part name="R3" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-US_" device="R0805" package3d_urn="urn:adsk.eagle:package:23553/2" value="300"/>
-<part name="C11" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-US" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="22uf"/>
+<part name="R3" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-US_" device="R0805" package3d_urn="urn:adsk.eagle:package:23553/2" value="100"/>
+<part name="C11" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-US" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="3.3uf"/>
 <part name="L1" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="L-US" device="0204/7" package3d_urn="urn:adsk.eagle:package:23498/2" value="10uh"/>
 <part name="VSS12" library="supply1" deviceset="VSS" device=""/>
-<part name="R4" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-US_" device="R0805" package3d_urn="urn:adsk.eagle:package:23553/2" value="10000"/>
+<part name="R4" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-US_" device="R0805" package3d_urn="urn:adsk.eagle:package:23553/2" value="2200"/>
 <part name="VSS13" library="supply1" deviceset="VSS" device=""/>
 <part name="LED1" library="led" library_urn="urn:adsk.eagle:library:259" deviceset="LED" device="CHIPLED_0805" package3d_urn="urn:adsk.eagle:package:15821/2" value="DATA"/>
 <part name="VSS14" library="supply1" deviceset="VSS" device=""/>
-<part name="R5" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-US_" device="R0805" package3d_urn="urn:adsk.eagle:package:23553/2" value="2.2k"/>
+<part name="R5" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-US_" device="R0805" package3d_urn="urn:adsk.eagle:package:23553/2" value="1000"/>
 <part name="R6" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-US_" device="R0805" package3d_urn="urn:adsk.eagle:package:23553/2" value="10000"/>
 <part name="VDD5" library="supply1" deviceset="VDD" device=""/>
 <part name="R8" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-US_" device="M1206" package3d_urn="urn:adsk.eagle:package:23566/2" value="120"/>
@@ -13066,9 +13066,10 @@ drill 1.4 mm</description>
 <part name="VDD6" library="supply1" deviceset="VDD" device=""/>
 <part name="VSS16" library="supply1" deviceset="VSS" device=""/>
 <part name="LSP1" library="solpad" library_urn="urn:adsk.eagle:library:364" deviceset="SE14" device="" package3d_urn="urn:adsk.eagle:package:26504/1"/>
-<part name="PAD1" library="wirepad" library_urn="urn:adsk.eagle:library:412" deviceset="3,81/1,4" device="" package3d_urn="urn:adsk.eagle:package:30835/1"/>
-<part name="PAD2" library="wirepad" library_urn="urn:adsk.eagle:library:412" deviceset="SMD2" device="" package3d_urn="urn:adsk.eagle:package:30839/1"/>
+<part name="GND1" library="wirepad" library_urn="urn:adsk.eagle:library:412" deviceset="3,81/1,4" device="" package3d_urn="urn:adsk.eagle:package:30835/1" value="gnd"/>
+<part name="GND2" library="wirepad" library_urn="urn:adsk.eagle:library:412" deviceset="SMD2" device="" package3d_urn="urn:adsk.eagle:package:30839/1" value="gnd"/>
 <part name="VSS17" library="supply1" deviceset="VSS" device=""/>
+<part name="A4" library="wirepad" library_urn="urn:adsk.eagle:library:412" deviceset="SMD2" device="" package3d_urn="urn:adsk.eagle:package:30839/1" value="a4"/>
 </parts>
 <sheets>
 <sheet>
@@ -13263,16 +13264,20 @@ drill 1.4 mm</description>
 <instance part="LSP1" gate="1" x="127" y="17.78" smashed="yes">
 <attribute name="NAME" x="125.73" y="20.701" size="1.778" layer="95"/>
 </instance>
-<instance part="PAD1" gate="1" x="137.16" y="17.78" smashed="yes" rot="R270">
+<instance part="GND1" gate="1" x="137.16" y="17.78" smashed="yes" rot="R270">
 <attribute name="NAME" x="139.0142" y="18.923" size="1.778" layer="95" rot="R270"/>
 <attribute name="VALUE" x="133.858" y="18.923" size="1.778" layer="96" rot="R270"/>
 </instance>
-<instance part="PAD2" gate="1" x="147.32" y="17.78" smashed="yes" rot="R270">
+<instance part="GND2" gate="1" x="147.32" y="17.78" smashed="yes" rot="R270">
 <attribute name="NAME" x="149.1742" y="18.923" size="1.778" layer="95" rot="R270"/>
 <attribute name="VALUE" x="144.018" y="18.923" size="1.778" layer="96" rot="R270"/>
 </instance>
 <instance part="VSS17" gate="G$1" x="124.46" y="12.7" smashed="yes">
 <attribute name="VALUE" x="121.92" y="7.62" size="1.778" layer="96" rot="R90"/>
+</instance>
+<instance part="A4" gate="1" x="-15.24" y="43.18" smashed="yes">
+<attribute name="NAME" x="-16.383" y="45.0342" size="1.778" layer="95"/>
+<attribute name="VALUE" x="-16.383" y="39.878" size="1.778" layer="96"/>
 </instance>
 </instances>
 <busses>
@@ -13581,7 +13586,7 @@ drill 1.4 mm</description>
 <junction x="144.78" y="76.2"/>
 </segment>
 <segment>
-<pinref part="PAD2" gate="1" pin="P"/>
+<pinref part="GND2" gate="1" pin="P"/>
 <wire x1="147.32" y1="15.24" x2="137.16" y2="15.24" width="0.1524" layer="91"/>
 <pinref part="VSS17" gate="G$1" pin="VSS"/>
 <junction x="124.46" y="15.24"/>
@@ -13589,7 +13594,7 @@ drill 1.4 mm</description>
 <junction x="127" y="15.24"/>
 <wire x1="137.16" y1="15.24" x2="127" y2="15.24" width="0.1524" layer="91"/>
 <wire x1="127" y1="15.24" x2="124.46" y2="15.24" width="0.1524" layer="91"/>
-<pinref part="PAD1" gate="1" pin="P"/>
+<pinref part="GND1" gate="1" pin="P"/>
 <junction x="137.16" y="15.24"/>
 <junction x="147.32" y="15.24"/>
 </segment>
@@ -13744,19 +13749,6 @@ drill 1.4 mm</description>
 <junction x="-27.94" y="33.02"/>
 </segment>
 </net>
-<net name="N$14" class="0">
-<segment>
-<pinref part="IC1" gate="G$1" pin="RA4/T0CKI"/>
-<wire x1="17.78" y1="33.02" x2="10.16" y2="33.02" width="0.1524" layer="91"/>
-<wire x1="10.16" y1="33.02" x2="10.16" y2="35.56" width="0.1524" layer="91"/>
-<wire x1="10.16" y1="35.56" x2="-17.78" y2="35.56" width="0.1524" layer="91"/>
-<wire x1="-17.78" y1="35.56" x2="-17.78" y2="43.18" width="0.1524" layer="91"/>
-<pinref part="R5" gate="G$1" pin="2"/>
-<wire x1="-17.78" y1="43.18" x2="-27.94" y2="43.18" width="0.1524" layer="91"/>
-<junction x="-27.94" y="43.18"/>
-<junction x="17.78" y="33.02"/>
-</segment>
-</net>
 <net name="N$17" class="0">
 <segment>
 <pinref part="IC1" gate="G$1" pin="INT0/AN4/RB0"/>
@@ -13767,6 +13759,13 @@ drill 1.4 mm</description>
 <wire x1="50.8" y1="-5.08" x2="50.8" y2="-12.7" width="0.1524" layer="91"/>
 <junction x="50.8" y="-12.7"/>
 <junction x="76.2" y="50.8"/>
+<pinref part="R5" gate="G$1" pin="2"/>
+<wire x1="-27.94" y1="43.18" x2="-22.86" y2="43.18" width="0.1524" layer="91"/>
+<wire x1="-22.86" y1="43.18" x2="-22.86" y2="0" width="0.1524" layer="91"/>
+<wire x1="-22.86" y1="0" x2="50.8" y2="0" width="0.1524" layer="91"/>
+<wire x1="50.8" y1="0" x2="50.8" y2="-5.08" width="0.1524" layer="91"/>
+<junction x="50.8" y="-5.08"/>
+<junction x="-27.94" y="43.18"/>
 </segment>
 </net>
 <net name="N$18" class="0">
@@ -13808,6 +13807,16 @@ drill 1.4 mm</description>
 <wire x1="43.18" y1="2.54" x2="43.18" y2="-12.7" width="0.1524" layer="91"/>
 <junction x="43.18" y="-12.7"/>
 <junction x="17.78" y="50.8"/>
+</segment>
+</net>
+<net name="N$16" class="0">
+<segment>
+<pinref part="IC1" gate="G$1" pin="RA4/T0CKI"/>
+<wire x1="17.78" y1="33.02" x2="10.16" y2="33.02" width="0.1524" layer="91"/>
+<wire x1="10.16" y1="33.02" x2="10.16" y2="35.56" width="0.1524" layer="91"/>
+<wire x1="10.16" y1="35.56" x2="-12.7" y2="35.56" width="0.1524" layer="91"/>
+<wire x1="-12.7" y1="35.56" x2="-12.7" y2="43.18" width="0.1524" layer="91"/>
+<pinref part="A4" gate="1" pin="P"/>
 </segment>
 </net>
 </nets>
