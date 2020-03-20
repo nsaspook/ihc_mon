@@ -75,15 +75,17 @@ typedef enum comm_type {
 
 #define IBSPORTA	TRISA
 #define IBSPORTB	TRISB
-#define IBSPORT_IOA	0b00010000		//
+#define IBSPORT_IOA	0b00001100		//
 #define IBSPORT_IOB	0b00010010		// RS-232 receive on B4
 
 #define DE		LATAbits.LATA0
 #define RE_		LATAbits.LATA1
+#define SIG3		LATAbits.LATA2
+#define SIG4		LATAbits.LATA3
+#define SIG5		LATAbits.LATA6
+#define LED1		LATBbits.LATB0
 #define BOOT_FLAG  	LATBbits.LATB2 // debug
 #define ANA_SIG		LATBbits.LATB3
-#define LED1		LATBbits.LATB0
-#define DEB		LATBbits.LATB7 // debug
 
 
 #define LINK_COUNT      10

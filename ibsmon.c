@@ -61,6 +61,7 @@
  * 1.2 full CRC for TX and RX
  * 1.3 status led blinker code
  * 1.4 adjust pwm values for new board
+ * 1.5 switch to High Voltage chip programming
  */
 
 #include <p18f1320.h>
@@ -90,7 +91,7 @@ volatile uint8_t cc_stream_file, cc_buffer[MAX_DATA]; // half-duplex so we can s
 #pragma udata access ACCESSBANK
 near uint32_t crc_error;
 comm_type cstate = CLEAR;
-const rom uint8_t *build_date = __DATE__, *build_time = __TIME__, build_version[5] = "1.4";
+const rom uint8_t *build_date = __DATE__, *build_time = __TIME__, build_version[5] = "1.5";
 
 #pragma code tm_interrupt = 0x8
 
