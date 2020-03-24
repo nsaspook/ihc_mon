@@ -2,7 +2,8 @@
 
 // 'C' source line config statements
 
-#include <p18f1320.h>
+//#include <p18f1320.h>
+#include <xc.h>
 
 // CONFIG1H
 #pragma config OSC = HSPLL      // Oscillator Selection bits (HS oscillator, PLL enabled (clock frequency = 4 x FOSC1))
@@ -62,44 +63,53 @@
  * 1.3 status led blinker code
  * 1.4 adjust pwm values for new board
  * 1.5 switch to High Voltage chip programming
+ * 1.6 convert to xc8 compiler
  */
 
-#include <p18f1320.h>
-#include <timers.h>
-#include <pwm.h>
+//#include <p18f1320.h>
+//#include <timers.h>
+//#include <pwm.h>
 #include <stdlib.h>
-#include <usart.h>
+//#include <usart.h>
 #include <stdio.h>
-#include <EEP.h>
+//#include <EEP.h>
 #include <string.h>
 #include "ibsmon.h"
 #include "ihc_vector.h"
 #include "crc.h"
 
-void tm_handler(void);
+#define BusyUSART( ) (!TXSTAbits.TRMT)
+#define USART_TX_INT_ON   0b11111111  // Transmit interrupt on
+#define USART_TX_INT_OFF  0b01111111  // Transmit interrupt off
+#define USART_RX_INT_ON   0b11111111  // Receive interrupt on
+#define USART_RX_INT_OFF  0b10111111  // Receive interrupt off
+#define USART_BRGH_HIGH   0b11111111  // High baud rate
+#define USART_BRGH_LOW    0b11101111  // Low baud rate
+#define USART_CONT_RX     0b11111111  // Continuous reception
+#define USART_SINGLE_RX   0b11110111  // Single reception
+#define USART_SYNC_MASTER 0b11111111  // Synchrounous master mode
+#define USART_SYNC_SLAVE  0b11111011  // Synchrounous slave mode
+#define USART_NINE_BIT    0b11111111  // 9-bit data
+#define USART_EIGHT_BIT   0b11111101  // 8-bit data
+#define USART_SYNCH_MODE  0b11111111  // Synchronous mode
+#define USART_ASYNCH_MODE 0b11111110  // Asynchronous mode
+#define USART_ADDEN_ON    0b11111111  // Enables address detection
+#define USART_ADDEN_OFF   0b11011111  // Disables address detection
+
 int8_t controller_work(void);
 uint8_t do_config(void);
 void init_ihcmon(void);
 uint8_t init_stream_params(void);
 
-#pragma udata
 uint16_t req_length = 0;
-const rom uint8_t modbus_cc_mode[] = {0x01, 0x03, 0x01, 0x20, 0x00, 0x01},
+const uint8_t modbus_cc_mode[] = {0x01, 0x03, 0x01, 0x20, 0x00, 0x01},
 re20a_mode[] = {0x01, 0x03, 0x02, 0x00, 0x02, 0x39, 0x85};
 volatile struct V_data V;
 volatile uint8_t cc_stream_file, cc_buffer[MAX_DATA]; // half-duplex so we can share the cc_buffer for TX and RX
-#pragma udata access ACCESSBANK
-near uint32_t crc_error;
+uint32_t crc_error;
 comm_type cstate = CLEAR;
-const rom uint8_t *build_date = __DATE__, *build_time = __TIME__, build_version[5] = "1.5";
-
-#pragma code tm_interrupt = 0x8
-
-void tm_int(void)
-{
-	_asm goto tm_handler _endasm
-}
-#pragma code
+const char *build_date = __DATE__, *build_time = __TIME__, build_version[5] = "1.6";
+#pragma warning disable 752  // disable compiler bug for 8 bit math
 
 int8_t controller_work(void)
 {
@@ -111,7 +121,7 @@ int8_t controller_work(void)
 		/*
 		 * command specific tx buffer setup
 		 */
-		req_length = modbus_rtu_send_msg((void*) cc_buffer, (const far rom void *) modbus_cc_mode, sizeof(modbus_cc_mode));
+		req_length = modbus_rtu_send_msg((void*) cc_buffer, (const void *) modbus_cc_mode, sizeof(modbus_cc_mode));
 		break;
 	case INIT:
 		if (get_2hz(FALSE) > QDELAY) {
@@ -213,12 +223,6 @@ int8_t controller_work(void)
 uint8_t do_config(void)
 {
 	INTCONbits.GIEH = 0;
-	if (Read_b_eep(0) == '?') { // use default options
-		Write_b_eep(0, 'D'); // write into EEPROM
-	} else { // set options.
-		Write_b_eep(0, '?'); // write into EEPROM
-	}
-	Busy_eep();
 	INTCONbits.GIEH = 1;
 	V.config = FALSE;
 	return 0;
@@ -251,11 +255,15 @@ void init_ihcmon(void)
 	LED1 = OFF;
 	V.clock_blinks = 0;
 	set_led_blink(BOFF);
-	OpenTimer0(TIMER_INT_ON & T0_16BIT & T0_SOURCE_INT & T0_PS_1_64);
-	WriteTimer0(TIMERFAST);
-	OpenTimer1(TIMER_INT_ON & T1_16BIT_RW & T1_SOURCE_INT & T1_PS_1_4 & T1_OSC1EN_OFF & T1_SYNC_EXT_OFF);
-	WriteTimer1(SAMPLEFREQ);
+	//OpenTimer0(TIMER_INT_ON & T0_16BIT & T0_SOURCE_INT & T0_PS_1_64);
+	T0CON = 0b10000101;
+	WRITETIMER0(TIMERFAST);
+	//OpenTimer1(TIMER_INT_ON & T1_16BIT_RW & T1_SOURCE_INT & T1_PS_1_4 & T1_OSC1EN_OFF & T1_SYNC_EXT_OFF);
+	T1CON = 0b10100101;
+	WRITETIMER1(SAMPLEFREQ);
 
+	WRITETIMER2(PWMFREQ);
+	CCP1CONbits.CCP1M=0;
 	OpenPWM1(PWMFREQ);
 	V.pwm_volts = CC_OFFLINE;
 	SetDCPWM1(V.pwm_volts);

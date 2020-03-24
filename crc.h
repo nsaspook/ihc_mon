@@ -15,7 +15,7 @@ extern "C" {
 #include "ibsmon.h"
 
 	uint16_t crc16(volatile uint8_t *, uint16_t);
-	uint16_t modbus_rtu_send_msg(void *, const far rom void *, uint16_t);
+	uint16_t modbus_rtu_send_msg(void *, const void *, uint16_t);
 
 
 #ifdef	__cplusplus

@@ -11,12 +11,13 @@
 #ifdef	__cplusplus
 extern "C" {
 #endif
-#include <p18f1320.h>
-#include <timers.h>
+#include <xc.h>
+//#include <p18f1320.h>
+//#include <timers.h>
 #include <stdlib.h>
-#include <usart.h>
+///#include <usart.h>
 #include <stdio.h>
-#include <EEP.h>
+//#include <EEP.h>
 #include "ibsmon.h"
 
 	extern volatile struct V_data V;

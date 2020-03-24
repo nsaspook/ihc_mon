@@ -28,18 +28,18 @@ CP=cp
 CND_CONF=default
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
 IMAGE_TYPE=debug
-OUTPUT_SUFFIX=cof
-DEBUGGABLE_SUFFIX=cof
+OUTPUT_SUFFIX=elf
+DEBUGGABLE_SUFFIX=elf
 FINAL_IMAGE=dist/${CND_CONF}/${IMAGE_TYPE}/ibsmon.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
 else
 IMAGE_TYPE=production
 OUTPUT_SUFFIX=hex
-DEBUGGABLE_SUFFIX=cof
+DEBUGGABLE_SUFFIX=elf
 FINAL_IMAGE=dist/${CND_CONF}/${IMAGE_TYPE}/ibsmon.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
 endif
 
 ifeq ($(COMPARE_BUILD), true)
-COMPARISON_BUILD=
+COMPARISON_BUILD=-mafrlcsj
 else
 COMPARISON_BUILD=
 endif
@@ -60,11 +60,11 @@ DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 SOURCEFILES_QUOTED_IF_SPACED=../ibsmon.c ../ihc_vector.c ../crc.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/_ext/1472/ibsmon.o ${OBJECTDIR}/_ext/1472/ihc_vector.o ${OBJECTDIR}/_ext/1472/crc.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/_ext/1472/ibsmon.o.d ${OBJECTDIR}/_ext/1472/ihc_vector.o.d ${OBJECTDIR}/_ext/1472/crc.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/_ext/1472/ibsmon.p1 ${OBJECTDIR}/_ext/1472/ihc_vector.p1 ${OBJECTDIR}/_ext/1472/crc.p1
+POSSIBLE_DEPFILES=${OBJECTDIR}/_ext/1472/ibsmon.p1.d ${OBJECTDIR}/_ext/1472/ihc_vector.p1.d ${OBJECTDIR}/_ext/1472/crc.p1.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/_ext/1472/ibsmon.o ${OBJECTDIR}/_ext/1472/ihc_vector.o ${OBJECTDIR}/_ext/1472/crc.o
+OBJECTFILES=${OBJECTDIR}/_ext/1472/ibsmon.p1 ${OBJECTDIR}/_ext/1472/ihc_vector.p1 ${OBJECTDIR}/_ext/1472/crc.p1
 
 # Source Files
 SOURCEFILES=../ibsmon.c ../ihc_vector.c ../crc.c
@@ -91,8 +91,60 @@ endif
 	${MAKE}  -f nbproject/Makefile-default.mk dist/${CND_CONF}/${IMAGE_TYPE}/ibsmon.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
 
 MP_PROCESSOR_OPTION=18F1320
-MP_PROCESSOR_OPTION_LD=18f1320
-MP_LINKER_DEBUG_OPTION= -u_DEBUGCODESTART=0x1e40 -u_DEBUGCODELEN=0x1c0 -u_DEBUGDATASTART=0xf4 -u_DEBUGDATALEN=0xb
+# ------------------------------------------------------------------------------------
+# Rules for buildStep: compile
+ifeq ($(TYPE_IMAGE), DEBUG_RUN)
+${OBJECTDIR}/_ext/1472/ibsmon.p1: ../ibsmon.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/1472" 
+	@${RM} ${OBJECTDIR}/_ext/1472/ibsmon.p1.d 
+	@${RM} ${OBJECTDIR}/_ext/1472/ibsmon.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1    -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/_ext/1472/ibsmon.p1 ../ibsmon.c 
+	@-${MV} ${OBJECTDIR}/_ext/1472/ibsmon.d ${OBJECTDIR}/_ext/1472/ibsmon.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/_ext/1472/ibsmon.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/_ext/1472/ihc_vector.p1: ../ihc_vector.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/1472" 
+	@${RM} ${OBJECTDIR}/_ext/1472/ihc_vector.p1.d 
+	@${RM} ${OBJECTDIR}/_ext/1472/ihc_vector.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1    -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/_ext/1472/ihc_vector.p1 ../ihc_vector.c 
+	@-${MV} ${OBJECTDIR}/_ext/1472/ihc_vector.d ${OBJECTDIR}/_ext/1472/ihc_vector.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/_ext/1472/ihc_vector.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/_ext/1472/crc.p1: ../crc.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/1472" 
+	@${RM} ${OBJECTDIR}/_ext/1472/crc.p1.d 
+	@${RM} ${OBJECTDIR}/_ext/1472/crc.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1    -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/_ext/1472/crc.p1 ../crc.c 
+	@-${MV} ${OBJECTDIR}/_ext/1472/crc.d ${OBJECTDIR}/_ext/1472/crc.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/_ext/1472/crc.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+else
+${OBJECTDIR}/_ext/1472/ibsmon.p1: ../ibsmon.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/1472" 
+	@${RM} ${OBJECTDIR}/_ext/1472/ibsmon.p1.d 
+	@${RM} ${OBJECTDIR}/_ext/1472/ibsmon.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c    -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/_ext/1472/ibsmon.p1 ../ibsmon.c 
+	@-${MV} ${OBJECTDIR}/_ext/1472/ibsmon.d ${OBJECTDIR}/_ext/1472/ibsmon.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/_ext/1472/ibsmon.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/_ext/1472/ihc_vector.p1: ../ihc_vector.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/1472" 
+	@${RM} ${OBJECTDIR}/_ext/1472/ihc_vector.p1.d 
+	@${RM} ${OBJECTDIR}/_ext/1472/ihc_vector.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c    -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/_ext/1472/ihc_vector.p1 ../ihc_vector.c 
+	@-${MV} ${OBJECTDIR}/_ext/1472/ihc_vector.d ${OBJECTDIR}/_ext/1472/ihc_vector.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/_ext/1472/ihc_vector.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/_ext/1472/crc.p1: ../crc.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/1472" 
+	@${RM} ${OBJECTDIR}/_ext/1472/crc.p1.d 
+	@${RM} ${OBJECTDIR}/_ext/1472/crc.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c    -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/_ext/1472/crc.p1 ../crc.c 
+	@-${MV} ${OBJECTDIR}/_ext/1472/crc.d ${OBJECTDIR}/_ext/1472/crc.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/_ext/1472/crc.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+endif
+
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: assemble
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
@@ -100,57 +152,9 @@ else
 endif
 
 # ------------------------------------------------------------------------------------
-# Rules for buildStep: compile
+# Rules for buildStep: assembleWithPreprocess
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
-${OBJECTDIR}/_ext/1472/ibsmon.o: ../ibsmon.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/1472" 
-	@${RM} ${OBJECTDIR}/_ext/1472/ibsmon.o.d 
-	@${RM} ${OBJECTDIR}/_ext/1472/ibsmon.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1 -p$(MP_PROCESSOR_OPTION) --verbose -I"../C:/Program Files (x86)/Microchip/mplabc18/v3.38/h" -I".." -I"." -ms -oa-  -I ${MP_CC_DIR}/../h  -fo ${OBJECTDIR}/_ext/1472/ibsmon.o   ../ibsmon.c 
-	@${DEP_GEN} -d ${OBJECTDIR}/_ext/1472/ibsmon.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1472/ibsmon.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
-	
-${OBJECTDIR}/_ext/1472/ihc_vector.o: ../ihc_vector.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/1472" 
-	@${RM} ${OBJECTDIR}/_ext/1472/ihc_vector.o.d 
-	@${RM} ${OBJECTDIR}/_ext/1472/ihc_vector.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1 -p$(MP_PROCESSOR_OPTION) --verbose -I"../C:/Program Files (x86)/Microchip/mplabc18/v3.38/h" -I".." -I"." -ms -oa-  -I ${MP_CC_DIR}/../h  -fo ${OBJECTDIR}/_ext/1472/ihc_vector.o   ../ihc_vector.c 
-	@${DEP_GEN} -d ${OBJECTDIR}/_ext/1472/ihc_vector.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1472/ihc_vector.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
-	
-${OBJECTDIR}/_ext/1472/crc.o: ../crc.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/1472" 
-	@${RM} ${OBJECTDIR}/_ext/1472/crc.o.d 
-	@${RM} ${OBJECTDIR}/_ext/1472/crc.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1 -p$(MP_PROCESSOR_OPTION) --verbose -I"../C:/Program Files (x86)/Microchip/mplabc18/v3.38/h" -I".." -I"." -ms -oa-  -I ${MP_CC_DIR}/../h  -fo ${OBJECTDIR}/_ext/1472/crc.o   ../crc.c 
-	@${DEP_GEN} -d ${OBJECTDIR}/_ext/1472/crc.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1472/crc.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
-	
 else
-${OBJECTDIR}/_ext/1472/ibsmon.o: ../ibsmon.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/1472" 
-	@${RM} ${OBJECTDIR}/_ext/1472/ibsmon.o.d 
-	@${RM} ${OBJECTDIR}/_ext/1472/ibsmon.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -p$(MP_PROCESSOR_OPTION) --verbose -I"../C:/Program Files (x86)/Microchip/mplabc18/v3.38/h" -I".." -I"." -ms -oa-  -I ${MP_CC_DIR}/../h  -fo ${OBJECTDIR}/_ext/1472/ibsmon.o   ../ibsmon.c 
-	@${DEP_GEN} -d ${OBJECTDIR}/_ext/1472/ibsmon.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1472/ibsmon.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
-	
-${OBJECTDIR}/_ext/1472/ihc_vector.o: ../ihc_vector.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/1472" 
-	@${RM} ${OBJECTDIR}/_ext/1472/ihc_vector.o.d 
-	@${RM} ${OBJECTDIR}/_ext/1472/ihc_vector.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -p$(MP_PROCESSOR_OPTION) --verbose -I"../C:/Program Files (x86)/Microchip/mplabc18/v3.38/h" -I".." -I"." -ms -oa-  -I ${MP_CC_DIR}/../h  -fo ${OBJECTDIR}/_ext/1472/ihc_vector.o   ../ihc_vector.c 
-	@${DEP_GEN} -d ${OBJECTDIR}/_ext/1472/ihc_vector.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1472/ihc_vector.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
-	
-${OBJECTDIR}/_ext/1472/crc.o: ../crc.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/1472" 
-	@${RM} ${OBJECTDIR}/_ext/1472/crc.o.d 
-	@${RM} ${OBJECTDIR}/_ext/1472/crc.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -p$(MP_PROCESSOR_OPTION) --verbose -I"../C:/Program Files (x86)/Microchip/mplabc18/v3.38/h" -I".." -I"." -ms -oa-  -I ${MP_CC_DIR}/../h  -fo ${OBJECTDIR}/_ext/1472/crc.o   ../crc.c 
-	@${DEP_GEN} -d ${OBJECTDIR}/_ext/1472/crc.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/1472/crc.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
-	
 endif
 
 # ------------------------------------------------------------------------------------
@@ -158,11 +162,14 @@ endif
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
 dist/${CND_CONF}/${IMAGE_TYPE}/ibsmon.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk    
 	@${MKDIR} dist/${CND_CONF}/${IMAGE_TYPE} 
-	${MP_LD} $(MP_EXTRA_LD_PRE)   -p$(MP_PROCESSOR_OPTION_LD)  -w -x -u_DEBUG -m"$(BINDIR_)$(TARGETBASE).map" -w -l"../C:/Program Files (x86)/Microchip/mplabc18/v3.38/lib" -l"."  -z__MPLAB_BUILD=1  -u_CRUNTIME -z__MPLAB_DEBUG=1 -z__MPLAB_DEBUGGER_ICD3=1 $(MP_LINKER_DEBUG_OPTION) -l ${MP_CC_DIR}/../lib  -o dist/${CND_CONF}/${IMAGE_TYPE}/ibsmon.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}  ${OBJECTFILES_QUOTED_IF_SPACED}   
+	${MP_CC} $(MP_EXTRA_LD_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -Wl,-Map=dist/${CND_CONF}/${IMAGE_TYPE}/ibsmon.X.${IMAGE_TYPE}.map  -D__DEBUG=1  -DXPRJ_default=$(CND_CONF)  -Wl,--defsym=__MPLAB_BUILD=1    -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -mrom=default,-1e40-1fff -mram=default,-f4-ff,-f9c-f9c,-fd4-fd4,-fdb-fdf,-fe3-fe7,-feb-fef,-ffd-fff  $(COMPARISON_BUILD) -Wl,--memorysummary,dist/${CND_CONF}/${IMAGE_TYPE}/memoryfile.xml -o dist/${CND_CONF}/${IMAGE_TYPE}/ibsmon.X.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX}  ${OBJECTFILES_QUOTED_IF_SPACED}     
+	@${RM} dist/${CND_CONF}/${IMAGE_TYPE}/ibsmon.X.${IMAGE_TYPE}.hex 
+	
 else
 dist/${CND_CONF}/${IMAGE_TYPE}/ibsmon.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk   
 	@${MKDIR} dist/${CND_CONF}/${IMAGE_TYPE} 
-	${MP_LD} $(MP_EXTRA_LD_PRE)   -p$(MP_PROCESSOR_OPTION_LD)  -w  -m"$(BINDIR_)$(TARGETBASE).map" -w -l"../C:/Program Files (x86)/Microchip/mplabc18/v3.38/lib" -l"."  -z__MPLAB_BUILD=1  -u_CRUNTIME -l ${MP_CC_DIR}/../lib  -o dist/${CND_CONF}/${IMAGE_TYPE}/ibsmon.X.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX}  ${OBJECTFILES_QUOTED_IF_SPACED}   
+	${MP_CC} $(MP_EXTRA_LD_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -Wl,-Map=dist/${CND_CONF}/${IMAGE_TYPE}/ibsmon.X.${IMAGE_TYPE}.map  -DXPRJ_default=$(CND_CONF)  -Wl,--defsym=__MPLAB_BUILD=1    -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     $(COMPARISON_BUILD) -Wl,--memorysummary,dist/${CND_CONF}/${IMAGE_TYPE}/memoryfile.xml -o dist/${CND_CONF}/${IMAGE_TYPE}/ibsmon.X.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX}  ${OBJECTFILES_QUOTED_IF_SPACED}     
+	
 endif
 
 

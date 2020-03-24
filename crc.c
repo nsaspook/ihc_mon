@@ -3,7 +3,7 @@
 // code from libmodbus: https://raw.githubusercontent.com/stephane/libmodbus/master/src/modbus-rtu.c
 
 /* Table of CRC values for high-order byte */
-static const rom uint8_t table_crc_hi[] = {
+static const uint8_t table_crc_hi[] = {
 	0x00, 0xC1, 0x81, 0x40, 0x01, 0xC0, 0x80, 0x41, 0x01, 0xC0,
 	0x80, 0x41, 0x00, 0xC1, 0x81, 0x40, 0x01, 0xC0, 0x80, 0x41,
 	0x00, 0xC1, 0x81, 0x40, 0x00, 0xC1, 0x81, 0x40, 0x01, 0xC0,
@@ -33,7 +33,7 @@ static const rom uint8_t table_crc_hi[] = {
 };
 
 /* Table of CRC values for low-order byte */
-static const rom uint8_t table_crc_lo[] = {
+static const uint8_t table_crc_lo[] = {
 	0x00, 0xC0, 0xC1, 0x01, 0xC3, 0x03, 0x02, 0xC2, 0xC6, 0x06,
 	0x07, 0xC7, 0x05, 0xC5, 0xC4, 0x04, 0xCC, 0x0C, 0x0D, 0xCD,
 	0x0F, 0xCF, 0xCE, 0x0E, 0x0A, 0xCA, 0xCB, 0x0B, 0xC9, 0x09,
@@ -82,9 +82,9 @@ static uint16_t modbus_rtu_send_msg_crc(volatile uint8_t *req, uint16_t req_leng
 /*
  * constructs a properly formatted RTU message with CRC from a program memory array to the data memory array buffer
  */
-uint16_t modbus_rtu_send_msg(void *cc_buffer, const far rom void *modbus_cc_mode, uint16_t req_length)
+uint16_t modbus_rtu_send_msg(void *cc_buffer, const void *modbus_cc_mode, uint16_t req_length)
 {
-	memcpypgm2ram((void*) cc_buffer, (const far rom void *) modbus_cc_mode, req_length);
+	memcpy((void*) cc_buffer, (const void *) modbus_cc_mode, req_length);
 	/*
 	 * add the CRC and increase message size by two bytes for the CRC16
 	 */
