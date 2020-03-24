@@ -3391,7 +3391,6 @@ typedef enum comm_type {
 # 79 "../ibsmon.c" 2
 # 99 "../ibsmon.c"
 int8_t controller_work(void);
-uint8_t do_config(void);
 void init_ihcmon(void);
 uint8_t init_stream_params(void);
 
@@ -3402,7 +3401,7 @@ volatile struct V_data V;
 volatile uint8_t cc_stream_file, cc_buffer[20];
 uint32_t crc_error;
 comm_type cstate = CLEAR;
-const char *build_date = "Mar 24 2020", *build_time = "11:21:56", build_version[5] = "1.6";
+const char *build_date = "Mar 24 2020", *build_time = "12:37:41", build_version[5] = "1.6";
 #pragma warning disable 752
 
 int8_t controller_work(void)
@@ -3511,17 +3510,6 @@ int8_t controller_work(void)
  return 0;
 }
 
-
-
-
-uint8_t do_config(void)
-{
- INTCONbits.GIEH = 0;
- INTCONbits.GIEH = 1;
- V.config = 0;
- return 0;
-}
-
 void init_ihcmon(void)
 {
  V.boot_code = 0;
@@ -3556,22 +3544,29 @@ void init_ihcmon(void)
  T1CON = 0b10100101;
  ((void)(TMR1H=((0xf660)>>8),TMR1L=((0xf660)&0xFF)));
 
- OpenPWM1(65);
+ T2CONbits.TMR2ON=0;
+ PR2=65;
+ T2CONbits.TMR2ON=1;
+ CCP1CONbits.CCP1M=0;
  V.pwm_volts = 255;
  SetDCPWM1(V.pwm_volts);
- SetOutputPWM1(SINGLE_OUT, PWM_MODE_1);
 
 
- OpenUSART(0b01111111 &
-  0b11111111 &
-  0b11111110 &
-  0b11111101 &
-  0b11111111 &
-  0b11101111, 64);
+
+ TXSTA=0;
+ RCSTA=0;
+ PIE1bits.RCIE=1;
+ PIE1bits.TXIE=0;
+ TXSTAbits.SYNC=0;
+ RCSTAbits.CREN=1;
+ PIR1bits.TXIF=0;
+ PIR1bits.RCIF=0;
  BAUDCTLbits.BRG16 = 0;
  TXSTAbits.BRGH = 0;
  SPBRGH = 0;
  SPBRG = 64;
+ TXSTAbits.TXEN=1;
+ RCSTAbits.SPEN=1;
 
  INTCONbits.TMR0IE = 1;
  INTCON2bits.TMR0IP = 1;

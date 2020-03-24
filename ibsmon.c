@@ -97,7 +97,6 @@
 #define USART_ADDEN_OFF   0b11011111  // Disables address detection
 
 int8_t controller_work(void);
-uint8_t do_config(void);
 void init_ihcmon(void);
 uint8_t init_stream_params(void);
 
@@ -217,17 +216,6 @@ int8_t controller_work(void)
 	return 0;
 }
 
-/*
- * maybe a future options function
- */
-uint8_t do_config(void)
-{
-	INTCONbits.GIEH = 0;
-	INTCONbits.GIEH = 1;
-	V.config = FALSE;
-	return 0;
-}
-
 void init_ihcmon(void)
 {
 	V.boot_code = FALSE;
@@ -262,24 +250,29 @@ void init_ihcmon(void)
 	T1CON = 0b10100101;
 	WRITETIMER1(SAMPLEFREQ);
 
-	WRITETIMER2(PWMFREQ);
-	CCP1CONbits.CCP1M=0;
-	OpenPWM1(PWMFREQ);
+	T2CONbits.TMR2ON=0;
+	PR2=PWMFREQ;
+	T2CONbits.TMR2ON=1;
+	CCP1CONbits.CCP1M=0; 
 	V.pwm_volts = CC_OFFLINE;
 	SetDCPWM1(V.pwm_volts);
-	SetOutputPWM1(SINGLE_OUT, PWM_MODE_1);
+//	SetOutputPWM1(SINGLE_OUT, PWM_MODE_1);
 
-	/* Light-link data input */
-	OpenUSART(USART_TX_INT_OFF &
-		USART_RX_INT_ON &
-		USART_ASYNCH_MODE &
-		USART_EIGHT_BIT &
-		USART_CONT_RX &
-		USART_BRGH_LOW, 64); // 40MHz osc HS/PLL 9600 baud
-	BAUDCTLbits.BRG16 = 0;
+	/* MODBUS data line */
+	TXSTA=0;
+	RCSTA=0;
+	PIE1bits.RCIE=1;
+	PIE1bits.TXIE=0;
+	TXSTAbits.SYNC=0;
+	RCSTAbits.CREN=1;
+	PIR1bits.TXIF=0;
+	PIR1bits.RCIF=0;
+	BAUDCTLbits.BRG16 = 0;   // 40MHz osc HS/PLL 9600 baud
 	TXSTAbits.BRGH = 0;
 	SPBRGH = 0;
 	SPBRG = 64;
+	TXSTAbits.TXEN=1;
+	RCSTAbits.SPEN=1;
 
 	INTCONbits.TMR0IE = 1; // enable int
 	INTCON2bits.TMR0IP = 1; // make it high level
