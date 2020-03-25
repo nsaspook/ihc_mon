@@ -1,8 +1,6 @@
 // PIC18F1320 Configuration Bit Settings
 
 // 'C' source line config statements
-
-//#include <p18f1320.h>
 #include <xc.h>
 
 // CONFIG1H
@@ -66,35 +64,16 @@
  * 1.6 convert to xc8 compiler
  */
 
-//#include <p18f1320.h>
-//#include <timers.h>
-//#include <pwm.h>
+#include <stdint.h>
 #include <stdlib.h>
-//#include <usart.h>
 #include <stdio.h>
-//#include <EEP.h>
 #include <string.h>
+#include <pic18f1320.h>
 #include "ibsmon.h"
 #include "ihc_vector.h"
 #include "crc.h"
 
 #define BusyUSART( ) (!TXSTAbits.TRMT)
-#define USART_TX_INT_ON   0b11111111  // Transmit interrupt on
-#define USART_TX_INT_OFF  0b01111111  // Transmit interrupt off
-#define USART_RX_INT_ON   0b11111111  // Receive interrupt on
-#define USART_RX_INT_OFF  0b10111111  // Receive interrupt off
-#define USART_BRGH_HIGH   0b11111111  // High baud rate
-#define USART_BRGH_LOW    0b11101111  // Low baud rate
-#define USART_CONT_RX     0b11111111  // Continuous reception
-#define USART_SINGLE_RX   0b11110111  // Single reception
-#define USART_SYNC_MASTER 0b11111111  // Synchrounous master mode
-#define USART_SYNC_SLAVE  0b11111011  // Synchrounous slave mode
-#define USART_NINE_BIT    0b11111111  // 9-bit data
-#define USART_EIGHT_BIT   0b11111101  // 8-bit data
-#define USART_SYNCH_MODE  0b11111111  // Synchronous mode
-#define USART_ASYNCH_MODE 0b11111110  // Asynchronous mode
-#define USART_ADDEN_ON    0b11111111  // Enables address detection
-#define USART_ADDEN_OFF   0b11011111  // Disables address detection
 
 int8_t controller_work(void);
 void init_ihcmon(void);
@@ -108,7 +87,20 @@ volatile uint8_t cc_stream_file, cc_buffer[MAX_DATA]; // half-duplex so we can s
 uint32_t crc_error;
 comm_type cstate = CLEAR;
 const char *build_date = __DATE__, *build_time = __TIME__, build_version[5] = "1.6";
-#pragma warning disable 752  // disable compiler bug for 8 bit math
+
+void SetDCPWM1(uint16_t dutycycle)
+{
+	union PWMDC DCycle;
+
+	// Save the dutycycle value in the union
+	DCycle.lpwm = dutycycle << 6;
+
+	// Write the high byte into CCPR1L
+	CCPR1L = DCycle.bpwm[1];
+
+	// Write the low byte into CCP1CON5:4
+	CCP1CON = (CCP1CON & 0xCF) | ((DCycle.bpwm[0] >> 2) & 0x30);
+}
 
 int8_t controller_work(void)
 {
@@ -218,6 +210,7 @@ int8_t controller_work(void)
 
 void init_ihcmon(void)
 {
+	uint16_t tmp;
 	V.boot_code = FALSE;
 	BOOT_FLAG = FALSE;
 	if (RCON != 0b0011100)
@@ -245,34 +238,39 @@ void init_ihcmon(void)
 	set_led_blink(BOFF);
 	//OpenTimer0(TIMER_INT_ON & T0_16BIT & T0_SOURCE_INT & T0_PS_1_64);
 	T0CON = 0b10000101;
-	WRITETIMER0(TIMERFAST);
+	tmp = TIMERFAST >> 8;
+	TMR0H = tmp;
+	tmp = TIMERFAST & 0xFF;
+	TMR0L = tmp;
 	//OpenTimer1(TIMER_INT_ON & T1_16BIT_RW & T1_SOURCE_INT & T1_PS_1_4 & T1_OSC1EN_OFF & T1_SYNC_EXT_OFF);
 	T1CON = 0b10100101;
-	WRITETIMER1(SAMPLEFREQ);
+	tmp = SAMPLEFREQ >> 8;
+	TMR1H = tmp;
+	tmp = SAMPLEFREQ & 0xFF;
+	TMR1L = tmp;
 
-	T2CONbits.TMR2ON=0;
-	PR2=PWMFREQ;
-	T2CONbits.TMR2ON=1;
-	CCP1CONbits.CCP1M=0; 
+	CCP1CON |= 0b00001100;
+	T2CONbits.TMR2ON = 0;
+	PR2 = PWMFREQ;
+	T2CONbits.TMR2ON = 1;
 	V.pwm_volts = CC_OFFLINE;
 	SetDCPWM1(V.pwm_volts);
-//	SetOutputPWM1(SINGLE_OUT, PWM_MODE_1);
 
-	/* MODBUS data line */
-	TXSTA=0;
-	RCSTA=0;
-	PIE1bits.RCIE=1;
-	PIE1bits.TXIE=0;
-	TXSTAbits.SYNC=0;
-	RCSTAbits.CREN=1;
-	PIR1bits.TXIF=0;
-	PIR1bits.RCIF=0;
-	BAUDCTLbits.BRG16 = 0;   // 40MHz osc HS/PLL 9600 baud
+	/* MODBUS data line UART1 */
+	TXSTA = 0;
+	RCSTA = 0;
+	PIE1bits.RCIE = 1;
+	PIE1bits.TXIE = 0;
+	TXSTAbits.SYNC = 0;
+	RCSTAbits.CREN = 1;
+	PIR1bits.TXIF = 0;
+	PIR1bits.RCIF = 0;
+	BAUDCTLbits.BRG16 = 0; // 40MHz osc HS/PLL 9600 baud
 	TXSTAbits.BRGH = 0;
 	SPBRGH = 0;
 	SPBRG = 64;
-	TXSTAbits.TXEN=1;
-	RCSTAbits.SPEN=1;
+	TXSTAbits.TXEN = 1;
+	RCSTAbits.SPEN = 1;
 
 	INTCONbits.TMR0IE = 1; // enable int
 	INTCON2bits.TMR0IP = 1; // make it high level

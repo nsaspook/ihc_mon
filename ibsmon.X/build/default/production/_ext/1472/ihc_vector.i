@@ -3076,9 +3076,6 @@ extern __attribute__((nonreentrant)) void _delay3(unsigned char);
 # 33 "/opt/microchip/xc8/v2.10/pic/include/xc.h" 2 3
 # 15 "../ihc_vector.h" 2
 
-
-
-
 # 1 "/opt/microchip/xc8/v2.10/pic/include/c99/stdio.h" 1 3
 # 24 "/opt/microchip/xc8/v2.10/pic/include/c99/stdio.h" 3
 # 1 "/opt/microchip/xc8/v2.10/pic/include/c99/bits/alltypes.h" 1 3
@@ -3217,19 +3214,95 @@ char *ctermid(char *);
 
 
 char *tempnam(const char *, const char *);
-# 20 "../ihc_vector.h" 2
-
+# 17 "../ihc_vector.h" 2
 # 1 "../ibsmon.h" 1
-# 10 "../ibsmon.h"
-typedef unsigned char uint8_t;
-typedef unsigned short int uint16_t;
-typedef unsigned long uint32_t;
-typedef unsigned long long uint64_t;
 
+
+
+
+# 1 "/opt/microchip/xc8/v2.10/pic/include/c99/stdint.h" 1 3
+# 22 "/opt/microchip/xc8/v2.10/pic/include/c99/stdint.h" 3
+# 1 "/opt/microchip/xc8/v2.10/pic/include/c99/bits/alltypes.h" 1 3
+# 127 "/opt/microchip/xc8/v2.10/pic/include/c99/bits/alltypes.h" 3
+typedef unsigned long uintptr_t;
+# 142 "/opt/microchip/xc8/v2.10/pic/include/c99/bits/alltypes.h" 3
+typedef long intptr_t;
+# 158 "/opt/microchip/xc8/v2.10/pic/include/c99/bits/alltypes.h" 3
 typedef signed char int8_t;
-typedef signed short int int16_t;
-typedef signed long int32_t;
-typedef signed long long int64_t;
+
+
+
+
+typedef short int16_t;
+# 173 "/opt/microchip/xc8/v2.10/pic/include/c99/bits/alltypes.h" 3
+typedef long int32_t;
+
+
+
+
+
+typedef long long int64_t;
+# 188 "/opt/microchip/xc8/v2.10/pic/include/c99/bits/alltypes.h" 3
+typedef long long intmax_t;
+
+
+
+
+
+typedef unsigned char uint8_t;
+
+
+
+
+typedef unsigned short uint16_t;
+# 209 "/opt/microchip/xc8/v2.10/pic/include/c99/bits/alltypes.h" 3
+typedef unsigned long uint32_t;
+
+
+
+
+
+typedef unsigned long long uint64_t;
+# 229 "/opt/microchip/xc8/v2.10/pic/include/c99/bits/alltypes.h" 3
+typedef unsigned long long uintmax_t;
+# 23 "/opt/microchip/xc8/v2.10/pic/include/c99/stdint.h" 2 3
+
+typedef int8_t int_fast8_t;
+
+typedef int64_t int_fast64_t;
+
+
+typedef int8_t int_least8_t;
+typedef int16_t int_least16_t;
+
+typedef int24_t int_least24_t;
+
+typedef int32_t int_least32_t;
+
+typedef int64_t int_least64_t;
+
+
+typedef uint8_t uint_fast8_t;
+
+typedef uint64_t uint_fast64_t;
+
+
+typedef uint8_t uint_least8_t;
+typedef uint16_t uint_least16_t;
+
+typedef uint24_t uint_least24_t;
+
+typedef uint32_t uint_least32_t;
+
+typedef uint64_t uint_least64_t;
+# 139 "/opt/microchip/xc8/v2.10/pic/include/c99/stdint.h" 3
+# 1 "/opt/microchip/xc8/v2.10/pic/include/c99/bits/stdint.h" 1 3
+typedef int32_t int_fast16_t;
+typedef int32_t int_fast32_t;
+typedef uint32_t uint_fast16_t;
+typedef uint32_t uint_fast32_t;
+# 140 "/opt/microchip/xc8/v2.10/pic/include/c99/stdint.h" 2 3
+# 5 "../ibsmon.h" 2
 
 
 typedef struct V_data {
@@ -3265,7 +3338,14 @@ typedef enum comm_type {
  SEND,
  RECV,
 } comm_type;
-# 22 "../ihc_vector.h" 2
+
+union PWMDC {
+ unsigned int lpwm;
+ char bpwm[2];
+};
+# 99 "../ibsmon.h"
+void SetDCPWM1(uint16_t);
+# 18 "../ihc_vector.h" 2
 
  extern volatile struct V_data V;
  extern volatile uint8_t cc_stream_file, cc_stream_file_prev, cc_buffer[20];
@@ -3281,13 +3361,10 @@ typedef enum comm_type {
 
 static void led_blink(void);
 
-
-
-
 void __attribute__((picinterrupt(("")))) tm_handler(void)
-
 {
  static uint8_t c_error = 0;
+ uint16_t tmp;
 
  if (PIR1bits.RCIF) {
   cc_stream_file = RCREG;
@@ -3310,18 +3387,22 @@ void __attribute__((picinterrupt(("")))) tm_handler(void)
 
  if (PIR1bits.TMR1IF) {
   PIR1bits.TMR1IF = 0;
-  ((void)(TMR1H=((0xf660)>>8),TMR1L=((0xf660)&0xFF)));
+  tmp = 0xf660 >> 8;
+  TMR1H = tmp;
+  tmp = 0xf660 & 0xFF;
+  TMR1L = tmp;
   V.clock_500hz++;
-
  }
 
  if (INTCONbits.TMR0IF) {
   INTCONbits.TMR0IF = 0;
-  ((void)(TMR0H=((26600)>>8),TMR0L=((26600)&0xFF)));
+  tmp = 26600 >> 8;
+  TMR0H = tmp;
+  tmp = 26600 & 0xFF;
+  TMR0L = tmp;
   V.clock_2hz++;
   V.clock_blinks++;
   led_blink();
-
  }
 
  if (PIR1bits.TMR2IF) {
@@ -3333,7 +3414,6 @@ void __attribute__((picinterrupt(("")))) tm_handler(void)
  }
 
 }
-
 
 void clear_2hz(void)
 {

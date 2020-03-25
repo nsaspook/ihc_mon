@@ -10,8 +10,6 @@
 
 
 
-
-
 # 1 "/opt/microchip/xc8/v2.10/pic/include/xc.h" 1 3
 # 18 "/opt/microchip/xc8/v2.10/pic/include/xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -3077,7 +3075,7 @@ extern __attribute__((nonreentrant)) void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern __attribute__((nonreentrant)) void _delay3(unsigned char);
 # 33 "/opt/microchip/xc8/v2.10/pic/include/xc.h" 2 3
-# 6 "../ibsmon.c" 2
+# 4 "../ibsmon.c" 2
 
 
 
@@ -3124,7 +3122,92 @@ extern __attribute__((nonreentrant)) void _delay3(unsigned char);
 
 
 #pragma config EBTRB = OFF
-# 74 "../ibsmon.c"
+# 67 "../ibsmon.c"
+# 1 "/opt/microchip/xc8/v2.10/pic/include/c99/stdint.h" 1 3
+# 22 "/opt/microchip/xc8/v2.10/pic/include/c99/stdint.h" 3
+# 1 "/opt/microchip/xc8/v2.10/pic/include/c99/bits/alltypes.h" 1 3
+# 127 "/opt/microchip/xc8/v2.10/pic/include/c99/bits/alltypes.h" 3
+typedef unsigned long uintptr_t;
+# 142 "/opt/microchip/xc8/v2.10/pic/include/c99/bits/alltypes.h" 3
+typedef long intptr_t;
+# 158 "/opt/microchip/xc8/v2.10/pic/include/c99/bits/alltypes.h" 3
+typedef signed char int8_t;
+
+
+
+
+typedef short int16_t;
+# 173 "/opt/microchip/xc8/v2.10/pic/include/c99/bits/alltypes.h" 3
+typedef long int32_t;
+
+
+
+
+
+typedef long long int64_t;
+# 188 "/opt/microchip/xc8/v2.10/pic/include/c99/bits/alltypes.h" 3
+typedef long long intmax_t;
+
+
+
+
+
+typedef unsigned char uint8_t;
+
+
+
+
+typedef unsigned short uint16_t;
+# 209 "/opt/microchip/xc8/v2.10/pic/include/c99/bits/alltypes.h" 3
+typedef unsigned long uint32_t;
+
+
+
+
+
+typedef unsigned long long uint64_t;
+# 229 "/opt/microchip/xc8/v2.10/pic/include/c99/bits/alltypes.h" 3
+typedef unsigned long long uintmax_t;
+# 23 "/opt/microchip/xc8/v2.10/pic/include/c99/stdint.h" 2 3
+
+typedef int8_t int_fast8_t;
+
+typedef int64_t int_fast64_t;
+
+
+typedef int8_t int_least8_t;
+typedef int16_t int_least16_t;
+
+typedef int24_t int_least24_t;
+
+typedef int32_t int_least32_t;
+
+typedef int64_t int_least64_t;
+
+
+typedef uint8_t uint_fast8_t;
+
+typedef uint64_t uint_fast64_t;
+
+
+typedef uint8_t uint_least8_t;
+typedef uint16_t uint_least16_t;
+
+typedef uint24_t uint_least24_t;
+
+typedef uint32_t uint_least32_t;
+
+typedef uint64_t uint_least64_t;
+# 139 "/opt/microchip/xc8/v2.10/pic/include/c99/stdint.h" 3
+# 1 "/opt/microchip/xc8/v2.10/pic/include/c99/bits/stdint.h" 1 3
+typedef int32_t int_fast16_t;
+typedef int32_t int_fast32_t;
+typedef uint32_t uint_fast16_t;
+typedef uint32_t uint_fast32_t;
+# 140 "/opt/microchip/xc8/v2.10/pic/include/c99/stdint.h" 2 3
+# 67 "../ibsmon.c" 2
+
+
 # 1 "/opt/microchip/xc8/v2.10/pic/include/c99/stdio.h" 1 3
 # 24 "/opt/microchip/xc8/v2.10/pic/include/c99/stdio.h" 3
 # 1 "/opt/microchip/xc8/v2.10/pic/include/c99/bits/alltypes.h" 1 3
@@ -3263,8 +3346,7 @@ char *ctermid(char *);
 
 
 char *tempnam(const char *, const char *);
-# 74 "../ibsmon.c" 2
-
+# 69 "../ibsmon.c" 2
 
 # 1 "/opt/microchip/xc8/v2.10/pic/include/c99/string.h" 1 3
 # 25 "/opt/microchip/xc8/v2.10/pic/include/c99/string.h" 3
@@ -3320,19 +3402,14 @@ size_t strxfrm_l (char *restrict, const char *restrict, size_t, locale_t);
 
 
 void *memccpy (void *restrict, const void *restrict, int, size_t);
-# 76 "../ibsmon.c" 2
+# 70 "../ibsmon.c" 2
+
 
 # 1 "../ibsmon.h" 1
-# 10 "../ibsmon.h"
-typedef unsigned char uint8_t;
-typedef unsigned short int uint16_t;
-typedef unsigned long uint32_t;
-typedef unsigned long long uint64_t;
 
-typedef signed char int8_t;
-typedef signed short int int16_t;
-typedef signed long int32_t;
-typedef signed long long int64_t;
+
+
+
 
 
 typedef struct V_data {
@@ -3368,10 +3445,17 @@ typedef enum comm_type {
  SEND,
  RECV,
 } comm_type;
-# 77 "../ibsmon.c" 2
+
+union PWMDC {
+ unsigned int lpwm;
+ char bpwm[2];
+};
+# 99 "../ibsmon.h"
+void SetDCPWM1(uint16_t);
+# 72 "../ibsmon.c" 2
 
 # 1 "../ihc_vector.h" 1
-# 23 "../ihc_vector.h"
+# 19 "../ihc_vector.h"
  extern volatile struct V_data V;
  extern volatile uint8_t cc_stream_file, cc_stream_file_prev, cc_buffer[20];
  extern volatile uint16_t timer0_off, link_count;
@@ -3382,14 +3466,17 @@ typedef enum comm_type {
  uint32_t get_500hz(uint8_t);
 
  void set_led_blink(uint8_t);
-# 78 "../ibsmon.c" 2
+# 73 "../ibsmon.c" 2
 
 # 1 "../crc.h" 1
 # 17 "../crc.h"
  uint16_t crc16(volatile uint8_t *, uint16_t);
  uint16_t modbus_rtu_send_msg(void *, const void *, uint16_t);
-# 79 "../ibsmon.c" 2
-# 99 "../ibsmon.c"
+# 74 "../ibsmon.c" 2
+
+
+
+
 int8_t controller_work(void);
 void init_ihcmon(void);
 uint8_t init_stream_params(void);
@@ -3401,8 +3488,21 @@ volatile struct V_data V;
 volatile uint8_t cc_stream_file, cc_buffer[20];
 uint32_t crc_error;
 comm_type cstate = CLEAR;
-const char *build_date = "Mar 24 2020", *build_time = "12:37:41", build_version[5] = "1.6";
-#pragma warning disable 752
+const char *build_date = "Mar 24 2020", *build_time = "16:06:33", build_version[5] = "1.6";
+
+void SetDCPWM1(uint16_t dutycycle)
+{
+ union PWMDC DCycle;
+
+
+ DCycle.lpwm = dutycycle << 6;
+
+
+ CCPR1L = DCycle.bpwm[1];
+
+
+ CCP1CON = (CCP1CON & 0xCF) | ((DCycle.bpwm[0] >> 2) & 0x30);
+}
 
 int8_t controller_work(void)
 {
@@ -3512,6 +3612,7 @@ int8_t controller_work(void)
 
 void init_ihcmon(void)
 {
+ uint16_t tmp;
  V.boot_code = 0;
  LATBbits.LATB2 = 0;
  if (RCON != 0b0011100)
@@ -3539,34 +3640,39 @@ void init_ihcmon(void)
  set_led_blink(0);
 
  T0CON = 0b10000101;
- ((void)(TMR0H=((26600)>>8),TMR0L=((26600)&0xFF)));
+ tmp = 26600 >> 8;
+ TMR0H = tmp;
+ tmp = 26600 & 0xFF;
+ TMR0L = tmp;
 
  T1CON = 0b10100101;
- ((void)(TMR1H=((0xf660)>>8),TMR1L=((0xf660)&0xFF)));
+ tmp = 0xf660 >> 8;
+ TMR1H = tmp;
+ tmp = 0xf660 & 0xFF;
+ TMR1L = tmp;
 
- T2CONbits.TMR2ON=0;
- PR2=65;
- T2CONbits.TMR2ON=1;
- CCP1CONbits.CCP1M=0;
+ CCP1CON |= 0b00001100;
+ T2CONbits.TMR2ON = 0;
+ PR2 = 65;
+ T2CONbits.TMR2ON = 1;
  V.pwm_volts = 255;
  SetDCPWM1(V.pwm_volts);
 
 
-
- TXSTA=0;
- RCSTA=0;
- PIE1bits.RCIE=1;
- PIE1bits.TXIE=0;
- TXSTAbits.SYNC=0;
- RCSTAbits.CREN=1;
- PIR1bits.TXIF=0;
- PIR1bits.RCIF=0;
+ TXSTA = 0;
+ RCSTA = 0;
+ PIE1bits.RCIE = 1;
+ PIE1bits.TXIE = 0;
+ TXSTAbits.SYNC = 0;
+ RCSTAbits.CREN = 1;
+ PIR1bits.TXIF = 0;
+ PIR1bits.RCIF = 0;
  BAUDCTLbits.BRG16 = 0;
  TXSTAbits.BRGH = 0;
  SPBRGH = 0;
  SPBRG = 64;
- TXSTAbits.TXEN=1;
- RCSTAbits.SPEN=1;
+ TXSTAbits.TXEN = 1;
+ RCSTAbits.SPEN = 1;
 
  INTCONbits.TMR0IE = 1;
  INTCON2bits.TMR0IP = 1;

@@ -560,10 +560,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 "79
 [; ;../crc.c: 79:  return req_length;
 [e ) _req_length ]
-[e $UE 5  ]
+[e $UE 6  ]
 "80
 [; ;../crc.c: 80: }
-[e :UE 5 ]
+[e :UE 6 ]
 }
 "85
 [; ;../crc.c: 85: uint16_t modbus_rtu_send_msg(void *cc_buffer, const void *modbus_cc_mode, uint16_t req_length)
@@ -586,10 +586,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 "91
 [; ;../crc.c: 91:  return modbus_rtu_send_msg_crc((volatile uint8_t *) cc_buffer, req_length);
 [e ) ( _modbus_rtu_send_msg_crc (2 , -> _cc_buffer `*Vuc _req_length ]
-[e $UE 6  ]
+[e $UE 7  ]
 "92
 [; ;../crc.c: 92: }
-[e :UE 6 ]
+[e :UE 7 ]
 }
 "94
 [; ;../crc.c: 94: uint16_t crc16(volatile uint8_t *buffer, uint16_t buffer_length)
@@ -618,8 +618,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _i `uc ~T0 @X0 1 a ]
 "101
 [; ;../crc.c: 101:  while (buffer_length--) {
-[e $U 8  ]
-[e :U 9 ]
+[e $U 9  ]
+[e :U 10 ]
 {
 "102
 [; ;../crc.c: 102:   i = crc_hi ^ *buffer++;
@@ -633,16 +633,16 @@ Version 4.0 HI-TECH Software Intermediate Code
 "105
 [; ;../crc.c: 105:  }
 }
-[e :U 8 ]
+[e :U 9 ]
 "101
 [; ;../crc.c: 101:  while (buffer_length--) {
-[e $ != -> -- _buffer_length -> -> 1 `i `us `ui -> -> 0 `i `ui 9  ]
-[e :U 10 ]
+[e $ != -> -- _buffer_length -> -> 1 `i `us `ui -> -> 0 `i `ui 10  ]
+[e :U 11 ]
 "107
 [; ;../crc.c: 107:  return((uint16_t) crc_hi << (uint16_t) 8 | (uint16_t) crc_lo);
 [e ) -> | << -> -> _crc_hi `us `ui -> -> -> 8 `i `us `ui -> -> _crc_lo `us `ui `us ]
-[e $UE 7  ]
+[e $UE 8  ]
 "108
 [; ;../crc.c: 108: }
-[e :UE 7 ]
+[e :UE 8 ]
 }

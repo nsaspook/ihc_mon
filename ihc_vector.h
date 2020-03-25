@@ -12,12 +12,8 @@
 extern "C" {
 #endif
 #include <xc.h>
-//#include <p18f1320.h>
-//#include <timers.h>
 #include <stdlib.h>
-///#include <usart.h>
 #include <stdio.h>
-//#include <EEP.h>
 #include "ibsmon.h"
 
 	extern volatile struct V_data V;

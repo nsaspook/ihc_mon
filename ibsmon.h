@@ -2,21 +2,7 @@
 #define PAT_H_INCLUDED
 //	hardware defines
 
-#ifdef INTTYPES
 #include <stdint.h>
-#else
-#define INTTYPES
-/*unsigned types*/
-typedef unsigned char uint8_t;
-typedef unsigned short int uint16_t;
-typedef unsigned long uint32_t;
-typedef unsigned long long uint64_t;
-/*signed types*/
-typedef signed char int8_t;
-typedef signed short int int16_t;
-typedef signed long int32_t;
-typedef signed long long int64_t;
-#endif
 
 typedef struct V_data { // ISR used, mainly for non-atomic mod problems
 	uint32_t clock_500hz;
@@ -51,6 +37,11 @@ typedef enum comm_type {
 	SEND,
 	RECV,
 } comm_type;
+
+union PWMDC {
+	unsigned int lpwm;
+	char bpwm[2];
+};
 
 #define TRUE	1
 #define FALSE	0
@@ -104,4 +95,6 @@ typedef enum comm_type {
 #define CC_FLOAT	205	// 3.50
 #define CC_LIMIT	230	// 4.00
 #define CC_OFFLINE	255	// 4.40
+
+void SetDCPWM1(uint16_t);
 #endif 
