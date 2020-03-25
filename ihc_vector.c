@@ -2,13 +2,10 @@
 
 static void led_blink(void);
 
-#pragma tmpdata ISRHtmpdata
-
-#pragma interrupt tm_handler nosave=section (".tmpdata")
-
-void tm_handler(void) // timer/serial functions are handled here
+void __interrupt() tm_handler(void) // timer/serial functions are handled here
 {
 	static uint8_t c_error = 0;
+	uint16_t tmp;
 
 	if (PIR1bits.RCIF) { // is data from host light link via RS-232 port
 		cc_stream_file = RCREG;
@@ -31,18 +28,22 @@ void tm_handler(void) // timer/serial functions are handled here
 
 	if (PIR1bits.TMR1IF) { //      Timer1 int handler
 		PIR1bits.TMR1IF = FALSE; //      clear int flag
-		WriteTimer1(SAMPLEFREQ);
+		tmp = SAMPLEFREQ >> 8;
+		TMR1H = tmp;
+		tmp = SAMPLEFREQ & 0xFF;
+		TMR1L = tmp;
 		V.clock_500hz++;
-		//		DEB = ~DEB;
 	}
 
 	if (INTCONbits.TMR0IF) { //      check timer0 irq time timer
 		INTCONbits.TMR0IF = FALSE; //      clear interrupt flag
-		WriteTimer0(TIMERFAST);
+		tmp = TIMERFAST >> 8;
+		TMR0H = tmp;
+		tmp = TIMERFAST & 0xFF;
+		TMR0L = tmp;
 		V.clock_2hz++;
 		V.clock_blinks++;
 		led_blink();
-		//		DEB = ~DEB;
 	}
 
 	if (PIR1bits.TMR2IF) { //      check timer0 irq time timer
@@ -54,7 +55,6 @@ void tm_handler(void) // timer/serial functions are handled here
 	}
 
 }
-#pragma	tmpdata
 
 void clear_2hz(void)
 {

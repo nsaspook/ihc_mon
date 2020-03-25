@@ -1,8 +1,7 @@
 // PIC18F1320 Configuration Bit Settings
 
 // 'C' source line config statements
-
-#include <p18f1320.h>
+#include <xc.h>
 
 // CONFIG1H
 #pragma config OSC = HSPLL      // Oscillator Selection bits (HS oscillator, PLL enabled (clock frequency = 4 x FOSC1))
@@ -62,44 +61,46 @@
  * 1.3 status led blinker code
  * 1.4 adjust pwm values for new board
  * 1.5 switch to High Voltage chip programming
+ * 1.6 convert to xc8 compiler
  */
 
-#include <p18f1320.h>
-#include <timers.h>
-#include <pwm.h>
+#include <stdint.h>
 #include <stdlib.h>
-#include <usart.h>
 #include <stdio.h>
-#include <EEP.h>
 #include <string.h>
+#include <pic18f1320.h>
 #include "ibsmon.h"
 #include "ihc_vector.h"
 #include "crc.h"
 
-void tm_handler(void);
+#define BusyUSART( ) (!TXSTAbits.TRMT)
+
 int8_t controller_work(void);
-uint8_t do_config(void);
 void init_ihcmon(void);
 uint8_t init_stream_params(void);
 
-#pragma udata
 uint16_t req_length = 0;
-const rom uint8_t modbus_cc_mode[] = {0x01, 0x03, 0x01, 0x20, 0x00, 0x01},
+const uint8_t modbus_cc_mode[] = {0x01, 0x03, 0x01, 0x20, 0x00, 0x01},
 re20a_mode[] = {0x01, 0x03, 0x02, 0x00, 0x02, 0x39, 0x85};
 volatile struct V_data V;
 volatile uint8_t cc_stream_file, cc_buffer[MAX_DATA]; // half-duplex so we can share the cc_buffer for TX and RX
-#pragma udata access ACCESSBANK
-near uint32_t crc_error;
+uint32_t crc_error;
 comm_type cstate = CLEAR;
-const rom uint8_t *build_date = __DATE__, *build_time = __TIME__, build_version[5] = "1.5";
+const char *build_date = __DATE__, *build_time = __TIME__, build_version[5] = "1.6";
 
-#pragma code tm_interrupt = 0x8
-
-void tm_int(void)
+void SetDCPWM1(uint16_t dutycycle)
 {
-	_asm goto tm_handler _endasm
+	union PWMDC DCycle;
+
+	// Save the dutycycle value in the union
+	DCycle.lpwm = dutycycle << 6;
+
+	// Write the high byte into CCPR1L
+	CCPR1L = DCycle.bpwm[1];
+
+	// Write the low byte into CCP1CON5:4
+	CCP1CON = (CCP1CON & 0xCF) | ((DCycle.bpwm[0] >> 2) & 0x30);
 }
-#pragma code
 
 int8_t controller_work(void)
 {
@@ -111,7 +112,7 @@ int8_t controller_work(void)
 		/*
 		 * command specific tx buffer setup
 		 */
-		req_length = modbus_rtu_send_msg((void*) cc_buffer, (const far rom void *) modbus_cc_mode, sizeof(modbus_cc_mode));
+		req_length = modbus_rtu_send_msg((void*) cc_buffer, (const void *) modbus_cc_mode, sizeof(modbus_cc_mode));
 		break;
 	case INIT:
 		if (get_2hz(FALSE) > QDELAY) {
@@ -207,25 +208,9 @@ int8_t controller_work(void)
 	return 0;
 }
 
-/*
- * maybe a future options function
- */
-uint8_t do_config(void)
-{
-	INTCONbits.GIEH = 0;
-	if (Read_b_eep(0) == '?') { // use default options
-		Write_b_eep(0, 'D'); // write into EEPROM
-	} else { // set options.
-		Write_b_eep(0, '?'); // write into EEPROM
-	}
-	Busy_eep();
-	INTCONbits.GIEH = 1;
-	V.config = FALSE;
-	return 0;
-}
-
 void init_ihcmon(void)
 {
+	uint16_t tmp;
 	V.boot_code = FALSE;
 	BOOT_FLAG = FALSE;
 	if (RCON != 0b0011100)
@@ -251,27 +236,41 @@ void init_ihcmon(void)
 	LED1 = OFF;
 	V.clock_blinks = 0;
 	set_led_blink(BOFF);
-	OpenTimer0(TIMER_INT_ON & T0_16BIT & T0_SOURCE_INT & T0_PS_1_64);
-	WriteTimer0(TIMERFAST);
-	OpenTimer1(TIMER_INT_ON & T1_16BIT_RW & T1_SOURCE_INT & T1_PS_1_4 & T1_OSC1EN_OFF & T1_SYNC_EXT_OFF);
-	WriteTimer1(SAMPLEFREQ);
+	//OpenTimer0(TIMER_INT_ON & T0_16BIT & T0_SOURCE_INT & T0_PS_1_64);
+	T0CON = 0b10000101;
+	tmp = TIMERFAST >> 8;
+	TMR0H = tmp;
+	tmp = TIMERFAST & 0xFF;
+	TMR0L = tmp;
+	//OpenTimer1(TIMER_INT_ON & T1_16BIT_RW & T1_SOURCE_INT & T1_PS_1_4 & T1_OSC1EN_OFF & T1_SYNC_EXT_OFF);
+	T1CON = 0b10100101;
+	tmp = SAMPLEFREQ >> 8;
+	TMR1H = tmp;
+	tmp = SAMPLEFREQ & 0xFF;
+	TMR1L = tmp;
 
-	OpenPWM1(PWMFREQ);
+	CCP1CON |= 0b00001100;
+	T2CONbits.TMR2ON = 0;
+	PR2 = PWMFREQ;
+	T2CONbits.TMR2ON = 1;
 	V.pwm_volts = CC_OFFLINE;
 	SetDCPWM1(V.pwm_volts);
-	SetOutputPWM1(SINGLE_OUT, PWM_MODE_1);
 
-	/* Light-link data input */
-	OpenUSART(USART_TX_INT_OFF &
-		USART_RX_INT_ON &
-		USART_ASYNCH_MODE &
-		USART_EIGHT_BIT &
-		USART_CONT_RX &
-		USART_BRGH_LOW, 64); // 40MHz osc HS/PLL 9600 baud
-	BAUDCTLbits.BRG16 = 0;
+	/* MODBUS data line UART1 */
+	TXSTA = 0;
+	RCSTA = 0;
+	PIE1bits.RCIE = 1;
+	PIE1bits.TXIE = 0;
+	TXSTAbits.SYNC = 0;
+	RCSTAbits.CREN = 1;
+	PIR1bits.TXIF = 0;
+	PIR1bits.RCIF = 0;
+	BAUDCTLbits.BRG16 = 0; // 40MHz osc HS/PLL 9600 baud
 	TXSTAbits.BRGH = 0;
 	SPBRGH = 0;
 	SPBRG = 64;
+	TXSTAbits.TXEN = 1;
+	RCSTAbits.SPEN = 1;
 
 	INTCONbits.TMR0IE = 1; // enable int
 	INTCON2bits.TMR0IP = 1; // make it high level
