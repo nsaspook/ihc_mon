@@ -3488,7 +3488,7 @@ volatile struct V_data V;
 volatile uint8_t cc_stream_file, cc_buffer[20];
 uint32_t crc_error;
 comm_type cstate = CLEAR;
-const char *build_date = "Mar 24 2020", *build_time = "19:08:04", build_version[5] = "1.6";
+const char *build_date = "Mar 24 2020", *build_time = "19:34:21", build_version[5] = "1.6";
 
 void SetDCPWM1(uint16_t dutycycle)
 {
