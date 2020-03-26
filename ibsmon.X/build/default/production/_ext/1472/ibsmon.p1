@@ -825,7 +825,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 . `E2221 0
 ]
 "95
-[; ;../ibsmon.c: 95: const char *build_date = "Mar 26 2020", *build_time = "10:14:23", build_version[5] = "1.7";
+[; ;../ibsmon.c: 95: const char *build_date = "Mar 26 2020", *build_time = "10:42:31", build_version[5] = "1.7";
 [v _build_date `*Cuc ~T0 @X0 1 e ]
 [i _build_date
 :s 1C
@@ -1600,5 +1600,5 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;../ibsmon.c: 349: }
 [e :UE 246 ]
 }
-[a 2C 49 48 58 49 52 58 50 51 0 ]
+[a 2C 49 48 58 52 50 58 51 49 0 ]
 [a 1C 77 97 114 32 50 54 32 50 48 50 48 0 ]
