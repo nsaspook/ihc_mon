@@ -9,6 +9,7 @@ typedef struct V_data { // ISR used, mainly for non-atomic mod problems
 	uint32_t clock_2hz;
 	uint8_t clock_blinks;
 	uint8_t num_blinks;
+	uint8_t blink_lock : 1;
 	uint8_t config : 1;
 	uint8_t stable : 1;
 	uint8_t boot_code : 1;
@@ -68,7 +69,8 @@ union PWMDC {
 #define MAX_DATA        20
 #define MAX_GLITCH      3
 #define MAX_PARAMS      5
-#define MAX_BLINKS	8
+#define MAX_BLINKS	10
+#define ERROR_BLINKS	MAX_BLINKS
 #define BLINK_SPACE	8
 
 #define IBSPORTA	TRISA

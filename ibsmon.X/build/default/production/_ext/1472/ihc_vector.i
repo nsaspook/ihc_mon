@@ -3310,6 +3310,7 @@ typedef struct V_data {
  uint32_t clock_2hz;
  uint8_t clock_blinks;
  uint8_t num_blinks;
+ uint8_t blink_lock : 1;
  uint8_t config : 1;
  uint8_t stable : 1;
  uint8_t boot_code : 1;
@@ -3350,7 +3351,7 @@ union PWMDC {
  unsigned int lpwm;
  char bpwm[2];
 };
-# 107 "../ibsmon.h"
+# 109 "../ibsmon.h"
 void SetDCPWM1(uint16_t);
 # 18 "../ihc_vector.h" 2
 
@@ -3472,11 +3473,13 @@ static void led_blink(void)
  if (V.num_blinks == 255) {
   LATBbits.LATB0 = 1;
   V.clock_blinks = 0;
+  V.blink_lock = 0;
   return;
  }
- if (!V.num_blinks || V.num_blinks > 8) {
+ if (!V.num_blinks || V.num_blinks > 10) {
   LATBbits.LATB0 = 0;
   V.clock_blinks = 0;
+  V.blink_lock = 0;
   return;
  }
 
@@ -3485,6 +3488,7 @@ static void led_blink(void)
   if ((8 + (V.num_blinks << 1)) <= V.clock_blinks) {
    V.clock_blinks = 0;
    LATBbits.LATB0 = 0;
+   V.blink_lock = 0;
   } else {
    LATBbits.LATB0 = ~LATBbits.LATB0;
   }
@@ -3496,10 +3500,14 @@ static void led_blink(void)
 
 void set_led_blink(uint8_t blinks)
 {
- if (blinks > 8 && (blinks != 255))
+ if (V.blink_lock)
+  return;
+
+ if (blinks > 10 && (blinks != 255))
   blinks = 0;
 
  INTCONbits.GIEH = 0;
+ V.blink_lock = 1;
  V.num_blinks = blinks;
  INTCONbits.GIEH = 1;
 }

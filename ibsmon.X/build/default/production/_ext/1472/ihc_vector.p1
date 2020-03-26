@@ -58,8 +58,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _cc_buffer `Vuc ~T0 @X0 -> 0 `x e ]
 "7 ../ibsmon.h
 [; ;../ibsmon.h: 7: typedef struct V_data {
-[s S182 `ul 1 `ul 1 `uc 1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 `uc 1 `uc 1 `uc 1 ]
-[n S182 V_data clock_500hz clock_2hz clock_blinks num_blinks config stable boot_code send_count recv_count pwm_volts ]
+[s S182 `ul 1 `ul 1 `uc 1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 `uc 1 `uc 1 `uc 1 ]
+[n S182 V_data clock_500hz clock_2hz clock_blinks num_blinks blink_lock config stable boot_code send_count recv_count pwm_volts ]
 "19 ../ihc_vector.h
 [; ;../ihc_vector.h: 19:  extern volatile struct V_data V;
 [v _V `VS182 ~T0 @X0 0 e ]
@@ -456,8 +456,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [f ]
 "7
 [; ;../ihc_vector.c: 7:  static uint8_t c_error = 0;
-[v F2080 `uc ~T0 @X0 1 s c_error ]
-[i F2080
+[v F2081 `uc ~T0 @X0 1 s c_error ]
+[i F2081
 -> -> 0 `i `uc
 ]
 "8
@@ -485,11 +485,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = . . _RCSTAbits 0 4 -> -> 1 `i `uc ]
 "16
 [; ;../ihc_vector.c: 16:    if (c_error++>3) {
-[e $ ! > -> ++ F2080 -> -> 1 `i `uc `i -> 3 `i 189  ]
+[e $ ! > -> ++ F2081 -> -> 1 `i `uc `i -> 3 `i 189  ]
 {
 "17
 [; ;../ihc_vector.c: 17:     c_error = 0;
-[e = F2080 -> -> 0 `i `uc ]
+[e = F2081 -> -> 0 `i `uc ]
 "18
 [; ;../ihc_vector.c: 18:    }
 }
@@ -502,13 +502,13 @@ Version 4.0 HI-TECH Software Intermediate Code
 {
 "23
 [; ;../ihc_vector.c: 23:    cc_buffer[V.recv_count] = cc_stream_file;
-[e = *U + &U _cc_buffer * -> . _V 8 `ux -> -> # *U &U _cc_buffer `ui `ux _cc_stream_file ]
+[e = *U + &U _cc_buffer * -> . _V 9 `ux -> -> # *U &U _cc_buffer `ui `ux _cc_stream_file ]
 "24
 [; ;../ihc_vector.c: 24:    if (++V.recv_count >= 20)
-[e $ ! >= -> =+ . _V 8 -> -> 1 `i `Vuc `i -> 20 `i 191  ]
+[e $ ! >= -> =+ . _V 9 -> -> 1 `i `Vuc `i -> 20 `i 191  ]
 "25
 [; ;../ihc_vector.c: 25:     V.recv_count = 0;
-[e = . _V 8 -> -> 0 `i `uc ]
+[e = . _V 9 -> -> 0 `i `uc ]
 [e :U 191 ]
 "26
 [; ;../ihc_vector.c: 26:   }
@@ -659,13 +659,13 @@ Version 4.0 HI-TECH Software Intermediate Code
 [f ]
 "75
 [; ;../ihc_vector.c: 75:  static uint32_t tmp;
-[v F2086 `ul ~T0 @X0 1 s tmp ]
+[v F2087 `ul ~T0 @X0 1 s tmp ]
 "77
 [; ;../ihc_vector.c: 77:  if (mode)
 [e $ ! != -> _mode `i -> 0 `i 199  ]
 "78
 [; ;../ihc_vector.c: 78:   return tmp;
-[e ) F2086 ]
+[e ) F2087 ]
 [e $UE 198  ]
 [e :U 199 ]
 "80
@@ -673,13 +673,13 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = . . _INTCONbits 2 6 -> -> 0 `i `uc ]
 "81
 [; ;../ihc_vector.c: 81:  tmp = V.clock_2hz;
-[e = F2086 . _V 1 ]
+[e = F2087 . _V 1 ]
 "82
 [; ;../ihc_vector.c: 82:  INTCONbits.GIEH = 1;
 [e = . . _INTCONbits 2 6 -> -> 1 `i `uc ]
 "83
 [; ;../ihc_vector.c: 83:  return tmp;
-[e ) F2086 ]
+[e ) F2087 ]
 [e $UE 198  ]
 "84
 [; ;../ihc_vector.c: 84: }
@@ -700,13 +700,13 @@ Version 4.0 HI-TECH Software Intermediate Code
 [f ]
 "88
 [; ;../ihc_vector.c: 88:  static uint32_t tmp;
-[v F2089 `ul ~T0 @X0 1 s tmp ]
+[v F2090 `ul ~T0 @X0 1 s tmp ]
 "90
 [; ;../ihc_vector.c: 90:  if (mode)
 [e $ ! != -> _mode `i -> 0 `i 201  ]
 "91
 [; ;../ihc_vector.c: 91:   return tmp;
-[e ) F2089 ]
+[e ) F2090 ]
 [e $UE 200  ]
 [e :U 201 ]
 "93
@@ -714,13 +714,13 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = . . _INTCONbits 2 6 -> -> 0 `i `uc ]
 "94
 [; ;../ihc_vector.c: 94:  tmp = V.clock_500hz;
-[e = F2089 . _V 0 ]
+[e = F2090 . _V 0 ]
 "95
 [; ;../ihc_vector.c: 95:  INTCONbits.GIEH = 1;
 [e = . . _INTCONbits 2 6 -> -> 1 `i `uc ]
 "96
 [; ;../ihc_vector.c: 96:  return tmp;
-[e ) F2089 ]
+[e ) F2090 ]
 [e $UE 200  ]
 "97
 [; ;../ihc_vector.c: 97: }
@@ -745,94 +745,113 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;../ihc_vector.c: 108:   V.clock_blinks = 0;
 [e = . _V 2 -> -> 0 `i `uc ]
 "109
-[; ;../ihc_vector.c: 109:   return;
-[e $UE 202  ]
+[; ;../ihc_vector.c: 109:   V.blink_lock = 0;
+[e = . _V 4 -> -> 0 `i `uc ]
 "110
-[; ;../ihc_vector.c: 110:  }
+[; ;../ihc_vector.c: 110:   return;
+[e $UE 202  ]
+"111
+[; ;../ihc_vector.c: 111:  }
 }
 [e :U 203 ]
-"111
-[; ;../ihc_vector.c: 111:  if (!V.num_blinks || V.num_blinks > 8) {
-[e $ ! || ! != -> . _V 3 `i -> 0 `i > -> . _V 3 `i -> 8 `i 204  ]
-{
 "112
-[; ;../ihc_vector.c: 112:   LATBbits.LATB0 = 0;
-[e = . . _LATBbits 0 0 -> -> 0 `i `uc ]
+[; ;../ihc_vector.c: 112:  if (!V.num_blinks || V.num_blinks > 10) {
+[e $ ! || ! != -> . _V 3 `i -> 0 `i > -> . _V 3 `i -> 10 `i 204  ]
+{
 "113
-[; ;../ihc_vector.c: 113:   V.clock_blinks = 0;
-[e = . _V 2 -> -> 0 `i `uc ]
+[; ;../ihc_vector.c: 113:   LATBbits.LATB0 = 0;
+[e = . . _LATBbits 0 0 -> -> 0 `i `uc ]
 "114
-[; ;../ihc_vector.c: 114:   return;
-[e $UE 202  ]
+[; ;../ihc_vector.c: 114:   V.clock_blinks = 0;
+[e = . _V 2 -> -> 0 `i `uc ]
 "115
-[; ;../ihc_vector.c: 115:  }
+[; ;../ihc_vector.c: 115:   V.blink_lock = 0;
+[e = . _V 4 -> -> 0 `i `uc ]
+"116
+[; ;../ihc_vector.c: 116:   return;
+[e $UE 202  ]
+"117
+[; ;../ihc_vector.c: 117:  }
 }
 [e :U 204 ]
-"118
-[; ;../ihc_vector.c: 118:  if (V.clock_blinks > 8) {
+"120
+[; ;../ihc_vector.c: 120:  if (V.clock_blinks > 8) {
 [e $ ! > -> . _V 2 `i -> 8 `i 205  ]
 {
-"119
-[; ;../ihc_vector.c: 119:   if ((8 + (V.num_blinks << 1)) <= V.clock_blinks) {
+"121
+[; ;../ihc_vector.c: 121:   if ((8 + (V.num_blinks << 1)) <= V.clock_blinks) {
 [e $ ! <= + -> 8 `i << -> . _V 3 `i -> 1 `i -> . _V 2 `i 206  ]
 {
-"120
-[; ;../ihc_vector.c: 120:    V.clock_blinks = 0;
-[e = . _V 2 -> -> 0 `i `uc ]
-"121
-[; ;../ihc_vector.c: 121:    LATBbits.LATB0 = 0;
-[e = . . _LATBbits 0 0 -> -> 0 `i `uc ]
 "122
-[; ;../ihc_vector.c: 122:   } else {
+[; ;../ihc_vector.c: 122:    V.clock_blinks = 0;
+[e = . _V 2 -> -> 0 `i `uc ]
+"123
+[; ;../ihc_vector.c: 123:    LATBbits.LATB0 = 0;
+[e = . . _LATBbits 0 0 -> -> 0 `i `uc ]
+"124
+[; ;../ihc_vector.c: 124:    V.blink_lock = 0;
+[e = . _V 4 -> -> 0 `i `uc ]
+"125
+[; ;../ihc_vector.c: 125:   } else {
 }
 [e $U 207  ]
 [e :U 206 ]
 {
-"123
-[; ;../ihc_vector.c: 123:    LATBbits.LATB0 = ~LATBbits.LATB0;
+"126
+[; ;../ihc_vector.c: 126:    LATBbits.LATB0 = ~LATBbits.LATB0;
 [e = . . _LATBbits 0 0 -> ~ -> . . _LATBbits 0 0 `i `uc ]
-"124
-[; ;../ihc_vector.c: 124:   }
+"127
+[; ;../ihc_vector.c: 127:   }
 }
 [e :U 207 ]
-"125
-[; ;../ihc_vector.c: 125:  }
+"128
+[; ;../ihc_vector.c: 128:  }
 }
 [e :U 205 ]
-"126
-[; ;../ihc_vector.c: 126: }
+"129
+[; ;../ihc_vector.c: 129: }
 [e :UE 202 ]
 }
-"131
-[; ;../ihc_vector.c: 131: void set_led_blink(uint8_t blinks)
+"134
+[; ;../ihc_vector.c: 134: void set_led_blink(uint8_t blinks)
 [v _set_led_blink `(v ~T0 @X0 1 ef1`uc ]
-"132
-[; ;../ihc_vector.c: 132: {
+"135
+[; ;../ihc_vector.c: 135: {
 {
 [e :U _set_led_blink ]
-"131
-[; ;../ihc_vector.c: 131: void set_led_blink(uint8_t blinks)
-[v _blinks `uc ~T0 @X0 1 r1 ]
-"132
-[; ;../ihc_vector.c: 132: {
-[f ]
-"133
-[; ;../ihc_vector.c: 133:  if (blinks > 8 && (blinks != 255))
-[e $ ! && > -> _blinks `i -> 8 `i != -> _blinks `i -> 255 `i 209  ]
 "134
-[; ;../ihc_vector.c: 134:   blinks = 0;
-[e = _blinks -> -> 0 `i `uc ]
-[e :U 209 ]
+[; ;../ihc_vector.c: 134: void set_led_blink(uint8_t blinks)
+[v _blinks `uc ~T0 @X0 1 r1 ]
+"135
+[; ;../ihc_vector.c: 135: {
+[f ]
 "136
-[; ;../ihc_vector.c: 136:  INTCONbits.GIEH = 0;
-[e = . . _INTCONbits 2 6 -> -> 0 `i `uc ]
+[; ;../ihc_vector.c: 136:  if (V.blink_lock)
+[e $ ! != -> . _V 4 `i -> 0 `i 209  ]
 "137
-[; ;../ihc_vector.c: 137:  V.num_blinks = blinks;
-[e = . _V 3 _blinks ]
-"138
-[; ;../ihc_vector.c: 138:  INTCONbits.GIEH = 1;
-[e = . . _INTCONbits 2 6 -> -> 1 `i `uc ]
+[; ;../ihc_vector.c: 137:   return;
+[e $UE 208  ]
+[e :U 209 ]
 "139
-[; ;../ihc_vector.c: 139: }
+[; ;../ihc_vector.c: 139:  if (blinks > 10 && (blinks != 255))
+[e $ ! && > -> _blinks `i -> 10 `i != -> _blinks `i -> 255 `i 210  ]
+"140
+[; ;../ihc_vector.c: 140:   blinks = 0;
+[e = _blinks -> -> 0 `i `uc ]
+[e :U 210 ]
+"142
+[; ;../ihc_vector.c: 142:  INTCONbits.GIEH = 0;
+[e = . . _INTCONbits 2 6 -> -> 0 `i `uc ]
+"143
+[; ;../ihc_vector.c: 143:  V.blink_lock = 1;
+[e = . _V 4 -> -> 1 `i `uc ]
+"144
+[; ;../ihc_vector.c: 144:  V.num_blinks = blinks;
+[e = . _V 3 _blinks ]
+"145
+[; ;../ihc_vector.c: 145:  INTCONbits.GIEH = 1;
+[e = . . _INTCONbits 2 6 -> -> 1 `i `uc ]
+"146
+[; ;../ihc_vector.c: 146: }
 [e :UE 208 ]
 }

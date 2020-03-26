@@ -177,6 +177,7 @@ typedef struct V_data {
  uint32_t clock_2hz;
  uint8_t clock_blinks;
  uint8_t num_blinks;
+ uint8_t blink_lock : 1;
  uint8_t config : 1;
  uint8_t stable : 1;
  uint8_t boot_code : 1;
@@ -217,7 +218,7 @@ union PWMDC {
  unsigned int lpwm;
  char bpwm[2];
 };
-# 107 "../ibsmon.h"
+# 109 "../ibsmon.h"
 void SetDCPWM1(uint16_t);
 # 16 "../crc.h" 2
 

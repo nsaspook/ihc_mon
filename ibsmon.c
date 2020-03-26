@@ -85,7 +85,9 @@ const uint8_t modbus_cc_mode[] = {0x01, 0x03, 0x01, 0x20, 0x00, 0x01},
 modbus_cc_error[] = {0x01, 0x03, 0x01, 0x21, 0x00, 0x02},
 re20a_mode[] = {0x01, 0x03, 0x02, 0x00, 0x02, 0x39, 0x85},
 re20a_error[] = {0x01, 0x03, 0x04, 0x00, 0x00, 0x00, 0x00, 0x39, 0x85};
-volatile struct V_data V;
+volatile struct V_data V = {
+	.blink_lock = 0,
+};
 volatile uint8_t cc_stream_file, cc_buffer[MAX_DATA]; // half-duplex so we can share the cc_buffer for TX and RX
 uint32_t crc_error;
 comm_type cstate = CLEAR;
@@ -121,10 +123,10 @@ int8_t controller_work(void)
 		 * command specific tx buffer setup
 		 */
 		switch (modbus_command) {
-		case G_ERROR:
+		case G_ERROR: // error code request
 			req_length = modbus_rtu_send_msg((void*) cc_buffer, (const void *) modbus_cc_error, sizeof(modbus_cc_error));
 			break;
-		case G_MODE:
+		case G_MODE: // operating mode request
 		default:
 			req_length = modbus_rtu_send_msg((void*) cc_buffer, (const void *) modbus_cc_mode, sizeof(modbus_cc_mode));
 			break;
@@ -166,7 +168,7 @@ int8_t controller_work(void)
 			 * check received response data for size and format for each command sent
 			 */
 			switch (modbus_command) {
-			case G_ERROR:
+			case G_ERROR: // check for controller error codes
 				req_length = sizeof(re20a_error);
 				if ((V.recv_count >= req_length) && (cc_buffer[0] == 0x01) && (cc_buffer[1] == 0x03)) {
 					uint16_t temp;
@@ -176,6 +178,7 @@ int8_t controller_work(void)
 						if ((temp = (cc_buffer[3] << 8) +(cc_buffer[4]&0xff))) {
 							NOP();
 							RE20A_ERROR = ON;
+							set_led_blink(ERROR_BLINKS);
 						} else {
 							RE20A_ERROR = OFF;
 						}
@@ -185,10 +188,11 @@ int8_t controller_work(void)
 					if (get_500hz(FALSE) > RDELAY) {
 						cstate = CLEAR;
 						RE20A_ERROR = OFF;
+						mcmd = G_MODE;
 					}
 				}
 				break;
-			case G_MODE:
+			case G_MODE: // check for current operating mode
 			default:
 				req_length = sizeof(re20a_mode);
 				if ((V.recv_count >= req_length) && (cc_buffer[0] == 0x01) && (cc_buffer[1] == 0x03)) {
@@ -241,6 +245,7 @@ int8_t controller_work(void)
 						cstate = CLEAR;
 						V.pwm_volts = CC_OFFLINE;
 						SetDCPWM1(V.pwm_volts);
+						mcmd = G_MODE;
 					}
 				}
 			}

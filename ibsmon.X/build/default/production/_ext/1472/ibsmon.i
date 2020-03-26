@@ -3417,6 +3417,7 @@ typedef struct V_data {
  uint32_t clock_2hz;
  uint8_t clock_blinks;
  uint8_t num_blinks;
+ uint8_t blink_lock : 1;
  uint8_t config : 1;
  uint8_t stable : 1;
  uint8_t boot_code : 1;
@@ -3457,7 +3458,7 @@ union PWMDC {
  unsigned int lpwm;
  char bpwm[2];
 };
-# 107 "../ibsmon.h"
+# 109 "../ibsmon.h"
 void SetDCPWM1(uint16_t);
 # 73 "../ibsmon.c" 2
 
@@ -3493,12 +3494,14 @@ const uint8_t modbus_cc_mode[] = {0x01, 0x03, 0x01, 0x20, 0x00, 0x01},
 modbus_cc_error[] = {0x01, 0x03, 0x01, 0x21, 0x00, 0x02},
 re20a_mode[] = {0x01, 0x03, 0x02, 0x00, 0x02, 0x39, 0x85},
 re20a_error[] = {0x01, 0x03, 0x04, 0x00, 0x00, 0x00, 0x00, 0x39, 0x85};
-volatile struct V_data V;
+volatile struct V_data V = {
+ .blink_lock = 0,
+};
 volatile uint8_t cc_stream_file, cc_buffer[20];
 uint32_t crc_error;
 comm_type cstate = CLEAR;
 cmd_type modbus_command = G_MODE;
-const char *build_date = "Mar 25 2020", *build_time = "15:34:26", build_version[5] = "1.7";
+const char *build_date = "Mar 26 2020", *build_time = "10:14:23", build_version[5] = "1.7";
 
 void SetDCPWM1(uint16_t dutycycle)
 {
@@ -3584,6 +3587,7 @@ int8_t controller_work(void)
       if ((temp = (cc_buffer[3] << 8) +(cc_buffer[4]&0xff))) {
        __nop();
        LATAbits.LATA2 = 1;
+       set_led_blink(10);
       } else {
        LATAbits.LATA2 = 0;
       }
@@ -3593,6 +3597,7 @@ int8_t controller_work(void)
      if (get_500hz(0) > 2000) {
       cstate = CLEAR;
       LATAbits.LATA2 = 0;
+      mcmd = G_MODE;
      }
     }
     break;
@@ -3649,6 +3654,7 @@ int8_t controller_work(void)
       cstate = CLEAR;
       V.pwm_volts = 255;
       SetDCPWM1(V.pwm_volts);
+      mcmd = G_MODE;
      }
     }
    }
