@@ -3122,7 +3122,7 @@ extern __attribute__((nonreentrant)) void _delay3(unsigned char);
 
 
 #pragma config EBTRB = OFF
-# 67 "../ibsmon.c"
+# 68 "../ibsmon.c"
 # 1 "/opt/microchip/xc8/v2.10/pic/include/c99/stdint.h" 1 3
 # 22 "/opt/microchip/xc8/v2.10/pic/include/c99/stdint.h" 3
 # 1 "/opt/microchip/xc8/v2.10/pic/include/c99/bits/alltypes.h" 1 3
@@ -3205,7 +3205,7 @@ typedef int32_t int_fast32_t;
 typedef uint32_t uint_fast16_t;
 typedef uint32_t uint_fast32_t;
 # 140 "/opt/microchip/xc8/v2.10/pic/include/c99/stdint.h" 2 3
-# 67 "../ibsmon.c" 2
+# 68 "../ibsmon.c" 2
 
 
 # 1 "/opt/microchip/xc8/v2.10/pic/include/c99/stdio.h" 1 3
@@ -3346,7 +3346,7 @@ char *ctermid(char *);
 
 
 char *tempnam(const char *, const char *);
-# 69 "../ibsmon.c" 2
+# 70 "../ibsmon.c" 2
 
 # 1 "/opt/microchip/xc8/v2.10/pic/include/c99/string.h" 1 3
 # 25 "/opt/microchip/xc8/v2.10/pic/include/c99/string.h" 3
@@ -3402,7 +3402,7 @@ size_t strxfrm_l (char *restrict, const char *restrict, size_t, locale_t);
 
 
 void *memccpy (void *restrict, const void *restrict, int, size_t);
-# 70 "../ibsmon.c" 2
+# 71 "../ibsmon.c" 2
 
 
 # 1 "../ibsmon.h" 1
@@ -3446,13 +3446,20 @@ typedef enum comm_type {
  RECV,
 } comm_type;
 
+typedef enum cmd_type {
+ G_MODE = 0,
+ G_ERROR,
+ G_AUX,
+ G_LAST,
+} cmd_type;
+
 union PWMDC {
  unsigned int lpwm;
  char bpwm[2];
 };
-# 99 "../ibsmon.h"
+# 107 "../ibsmon.h"
 void SetDCPWM1(uint16_t);
-# 72 "../ibsmon.c" 2
+# 73 "../ibsmon.c" 2
 
 # 1 "../ihc_vector.h" 1
 # 19 "../ihc_vector.h"
@@ -3466,13 +3473,13 @@ void SetDCPWM1(uint16_t);
  uint32_t get_500hz(uint8_t);
 
  void set_led_blink(uint8_t);
-# 73 "../ibsmon.c" 2
+# 74 "../ibsmon.c" 2
 
 # 1 "../crc.h" 1
 # 17 "../crc.h"
  uint16_t crc16(volatile uint8_t *, uint16_t);
  uint16_t modbus_rtu_send_msg(void *, const void *, uint16_t);
-# 74 "../ibsmon.c" 2
+# 75 "../ibsmon.c" 2
 
 
 
@@ -3483,12 +3490,15 @@ uint8_t init_stream_params(void);
 
 uint16_t req_length = 0;
 const uint8_t modbus_cc_mode[] = {0x01, 0x03, 0x01, 0x20, 0x00, 0x01},
-re20a_mode[] = {0x01, 0x03, 0x02, 0x00, 0x02, 0x39, 0x85};
+modbus_cc_error[] = {0x01, 0x03, 0x01, 0x21, 0x00, 0x02},
+re20a_mode[] = {0x01, 0x03, 0x02, 0x00, 0x02, 0x39, 0x85},
+re20a_error[] = {0x01, 0x03, 0x04, 0x00, 0x00, 0x00, 0x00, 0x39, 0x85};
 volatile struct V_data V;
 volatile uint8_t cc_stream_file, cc_buffer[20];
 uint32_t crc_error;
 comm_type cstate = CLEAR;
-const char *build_date = "Mar 24 2020", *build_time = "19:34:21", build_version[5] = "1.6";
+cmd_type modbus_command = G_MODE;
+const char *build_date = "Mar 25 2020", *build_time = "15:34:26", build_version[5] = "1.7";
 
 void SetDCPWM1(uint16_t dutycycle)
 {
@@ -3506,15 +3516,27 @@ void SetDCPWM1(uint16_t dutycycle)
 
 int8_t controller_work(void)
 {
+ static uint8_t mcmd = G_MODE;
 
  switch (cstate) {
  case CLEAR:
   clear_2hz();
   cstate = INIT;
+  modbus_command = mcmd++;
+  if (mcmd > G_LAST)
+   mcmd = G_MODE;
 
 
 
-  req_length = modbus_rtu_send_msg((void*) cc_buffer, (const void *) modbus_cc_mode, sizeof(modbus_cc_mode));
+  switch (modbus_command) {
+  case G_ERROR:
+   req_length = modbus_rtu_send_msg((void*) cc_buffer, (const void *) modbus_cc_error, sizeof(modbus_cc_error));
+   break;
+  case G_MODE:
+  default:
+   req_length = modbus_rtu_send_msg((void*) cc_buffer, (const void *) modbus_cc_mode, sizeof(modbus_cc_mode));
+   break;
+  }
   break;
  case INIT:
   if (get_2hz(0) > 1) {
@@ -3543,63 +3565,91 @@ int8_t controller_work(void)
   break;
  case RECV:
   if (get_500hz(0) > 3) {
+   uint16_t c_crc, c_crc_rec;
+
    LATAbits.LATA0 = 0;
    LATAbits.LATA1 = 0;
 
 
 
-   req_length = sizeof(re20a_mode);
-   if ((V.recv_count >= req_length) && (cc_buffer[0] == 0x01) && (cc_buffer[1] == 0x03)) {
-    uint8_t temp;
-    uint16_t c_crc, c_crc_rec;
-    static uint8_t volts = 255;
 
-    c_crc = crc16(cc_buffer, req_length - 2);
-    c_crc_rec = (uint16_t) ((uint16_t) cc_buffer[req_length - 2] << (uint16_t) 8) | ((uint16_t) cc_buffer[req_length - 1] & 0x00ff);
+   switch (modbus_command) {
+   case G_ERROR:
+    req_length = sizeof(re20a_error);
+    if ((V.recv_count >= req_length) && (cc_buffer[0] == 0x01) && (cc_buffer[1] == 0x03)) {
+     uint16_t temp;
+     c_crc = crc16(cc_buffer, req_length - 2);
+     c_crc_rec = (uint16_t) ((uint16_t) cc_buffer[req_length - 2] << (uint16_t) 8) | ((uint16_t) cc_buffer[req_length - 1] & 0x00ff);
+     if (c_crc == c_crc_rec) {
+      if ((temp = (cc_buffer[3] << 8) +(cc_buffer[4]&0xff))) {
+       __nop();
+       LATAbits.LATA2 = 1;
+      } else {
+       LATAbits.LATA2 = 0;
+      }
+     }
+     cstate = CLEAR;
+    } else {
+     if (get_500hz(0) > 2000) {
+      cstate = CLEAR;
+      LATAbits.LATA2 = 0;
+     }
+    }
+    break;
+   case G_MODE:
+   default:
+    req_length = sizeof(re20a_mode);
+    if ((V.recv_count >= req_length) && (cc_buffer[0] == 0x01) && (cc_buffer[1] == 0x03)) {
+     uint8_t temp;
+     static uint8_t volts = 255;
 
-    if (c_crc == c_crc_rec) {
-     if ((temp = cc_buffer[4])) {
-      set_led_blink(temp);
-      switch (temp) {
-      case 1:
-       volts = 92;
-       break;
-      case 2:
-       volts = 122;
-       break;
-      case 3:
-       volts = 150;
-       break;
-      case 4:
-       volts = 177;
-       break;
-      case 5:
-       volts = 205;
-       break;
-      case 6:
-       volts = 230;
-       break;
-      default:
-       volts = 92;
-       break;
+     c_crc = crc16(cc_buffer, req_length - 2);
+     c_crc_rec = (uint16_t) ((uint16_t) cc_buffer[req_length - 2] << (uint16_t) 8) | ((uint16_t) cc_buffer[req_length - 1] & 0x00ff);
+
+     if (c_crc == c_crc_rec) {
+      if ((temp = cc_buffer[4])) {
+       set_led_blink(temp);
+       switch (temp) {
+       case 1:
+        volts = 92;
+        break;
+       case 2:
+        volts = 122;
+        break;
+       case 3:
+        volts = 150;
+        break;
+       case 4:
+        volts = 177;
+        break;
+       case 5:
+        volts = 205;
+        break;
+       case 6:
+        volts = 230;
+        break;
+       default:
+        volts = 92;
+        break;
+       }
+      } else {
+       set_led_blink(255);
+       volts = 61;
       }
      } else {
-      set_led_blink(255);
-      volts = 61;
+      crc_error++;
+      set_led_blink(0);
      }
-    } else {
-     crc_error++;
-     set_led_blink(0);
-    }
-    V.pwm_volts = volts;
-    SetDCPWM1(V.pwm_volts);
-    cstate = CLEAR;
-   } else {
-    if (get_500hz(0) > 2000) {
-     set_led_blink(0);
-     cstate = CLEAR;
-     V.pwm_volts = 255;
+     V.pwm_volts = volts;
      SetDCPWM1(V.pwm_volts);
+     cstate = CLEAR;
+    } else {
+     if (get_500hz(0) > 2000) {
+      set_led_blink(0);
+      cstate = CLEAR;
+      V.pwm_volts = 255;
+      SetDCPWM1(V.pwm_volts);
+     }
     }
    }
   }
@@ -3636,6 +3686,7 @@ void init_ihcmon(void)
  INTCON2bits.RBPU = 0;
 
  LATBbits.LATB0 = 0;
+ LATAbits.LATA2 = 0;
  V.clock_blinks = 0;
  set_led_blink(0);
 

@@ -62,6 +62,7 @@
  * 1.4 adjust pwm values for new board
  * 1.5 switch to High Voltage chip programming
  * 1.6 convert to xc8 compiler
+ * 1.7 sequence mode and error modbus commands
  */
 
 #include <stdint.h>
@@ -81,12 +82,15 @@ uint8_t init_stream_params(void);
 
 uint16_t req_length = 0;
 const uint8_t modbus_cc_mode[] = {0x01, 0x03, 0x01, 0x20, 0x00, 0x01},
-re20a_mode[] = {0x01, 0x03, 0x02, 0x00, 0x02, 0x39, 0x85};
+modbus_cc_error[] = {0x01, 0x03, 0x01, 0x21, 0x00, 0x02},
+re20a_mode[] = {0x01, 0x03, 0x02, 0x00, 0x02, 0x39, 0x85},
+re20a_error[] = {0x01, 0x03, 0x04, 0x00, 0x00, 0x00, 0x00, 0x39, 0x85};
 volatile struct V_data V;
 volatile uint8_t cc_stream_file, cc_buffer[MAX_DATA]; // half-duplex so we can share the cc_buffer for TX and RX
 uint32_t crc_error;
 comm_type cstate = CLEAR;
-const char *build_date = __DATE__, *build_time = __TIME__, build_version[5] = "1.6";
+cmd_type modbus_command = G_MODE;
+const char *build_date = __DATE__, *build_time = __TIME__, build_version[5] = "1.7";
 
 void SetDCPWM1(uint16_t dutycycle)
 {
@@ -104,15 +108,27 @@ void SetDCPWM1(uint16_t dutycycle)
 
 int8_t controller_work(void)
 {
+	static uint8_t mcmd = G_MODE;
 
 	switch (cstate) {
 	case CLEAR:
 		clear_2hz();
 		cstate = INIT;
+		modbus_command = mcmd++;
+		if (mcmd > G_LAST)
+			mcmd = G_MODE;
 		/*
 		 * command specific tx buffer setup
 		 */
-		req_length = modbus_rtu_send_msg((void*) cc_buffer, (const void *) modbus_cc_mode, sizeof(modbus_cc_mode));
+		switch (modbus_command) {
+		case G_ERROR:
+			req_length = modbus_rtu_send_msg((void*) cc_buffer, (const void *) modbus_cc_error, sizeof(modbus_cc_error));
+			break;
+		case G_MODE:
+		default:
+			req_length = modbus_rtu_send_msg((void*) cc_buffer, (const void *) modbus_cc_mode, sizeof(modbus_cc_mode));
+			break;
+		}
 		break;
 	case INIT:
 		if (get_2hz(FALSE) > QDELAY) {
@@ -141,63 +157,91 @@ int8_t controller_work(void)
 		break;
 	case RECV:
 		if (get_500hz(FALSE) > TDELAY) {
+			uint16_t c_crc, c_crc_rec;
+
 			DE = 0;
 			RE_ = 0;
+
 			/*
 			 * check received response data for size and format for each command sent
 			 */
-			req_length = sizeof(re20a_mode);
-			if ((V.recv_count >= req_length) && (cc_buffer[0] == 0x01) && (cc_buffer[1] == 0x03)) {
-				uint8_t temp;
-				uint16_t c_crc, c_crc_rec;
-				static uint8_t volts = CC_OFFLINE;
+			switch (modbus_command) {
+			case G_ERROR:
+				req_length = sizeof(re20a_error);
+				if ((V.recv_count >= req_length) && (cc_buffer[0] == 0x01) && (cc_buffer[1] == 0x03)) {
+					uint16_t temp;
+					c_crc = crc16(cc_buffer, req_length - 2);
+					c_crc_rec = (uint16_t) ((uint16_t) cc_buffer[req_length - 2] << (uint16_t) 8) | ((uint16_t) cc_buffer[req_length - 1] & 0x00ff);
+					if (c_crc == c_crc_rec) {
+						if ((temp = (cc_buffer[3] << 8) +(cc_buffer[4]&0xff))) {
+							NOP();
+							RE20A_ERROR = ON;
+						} else {
+							RE20A_ERROR = OFF;
+						}
+					}
+					cstate = CLEAR;
+				} else {
+					if (get_500hz(FALSE) > RDELAY) {
+						cstate = CLEAR;
+						RE20A_ERROR = OFF;
+					}
+				}
+				break;
+			case G_MODE:
+			default:
+				req_length = sizeof(re20a_mode);
+				if ((V.recv_count >= req_length) && (cc_buffer[0] == 0x01) && (cc_buffer[1] == 0x03)) {
+					uint8_t temp;
+					static uint8_t volts = CC_OFFLINE;
 
-				c_crc = crc16(cc_buffer, req_length - 2);
-				c_crc_rec = (uint16_t) ((uint16_t) cc_buffer[req_length - 2] << (uint16_t) 8) | ((uint16_t) cc_buffer[req_length - 1] & 0x00ff);
+					c_crc = crc16(cc_buffer, req_length - 2);
+					c_crc_rec = (uint16_t) ((uint16_t) cc_buffer[req_length - 2] << (uint16_t) 8) | ((uint16_t) cc_buffer[req_length - 1] & 0x00ff);
 
-				if (c_crc == c_crc_rec) {
-					if ((temp = cc_buffer[4])) {
-						set_led_blink(temp);
-						switch (temp) {
-						case 1:
-							volts = CC_ACT;
-							break;
-						case 2:
-							volts = CC_MPPT;
-							break;
-						case 3:
-							volts = CC_EQUAL;
-							break;
-						case 4:
-							volts = CC_BOOST;
-							break;
-						case 5:
-							volts = CC_FLOAT;
-							break;
-						case 6:
-							volts = CC_LIMIT;
-							break;
-						default:
-							volts = CC_ACT;
-							break;
+					if (c_crc == c_crc_rec) {
+						if ((temp = cc_buffer[4])) {
+							set_led_blink(temp);
+							switch (temp) {
+							case 1:
+								volts = CC_ACT;
+								break;
+							case 2:
+								volts = CC_MPPT;
+								break;
+							case 3:
+								volts = CC_EQUAL;
+								break;
+							case 4:
+								volts = CC_BOOST;
+								break;
+							case 5:
+								volts = CC_FLOAT;
+								break;
+							case 6:
+								volts = CC_LIMIT;
+								break;
+							default:
+								volts = CC_ACT;
+								break;
+							}
+						} else {
+							set_led_blink(BON);
+							volts = CC_DEACT;
 						}
 					} else {
-						set_led_blink(BON);
-						volts = CC_DEACT;
+						crc_error++;
+						set_led_blink(BOFF);
 					}
-				} else {
-					crc_error++;
-					set_led_blink(BOFF);
-				}
-				V.pwm_volts = volts;
-				SetDCPWM1(V.pwm_volts);
-				cstate = CLEAR;
-			} else {
-				if (get_500hz(FALSE) > RDELAY) {
-					set_led_blink(BOFF);
-					cstate = CLEAR;
-					V.pwm_volts = CC_OFFLINE;
+					V.pwm_volts = volts;
 					SetDCPWM1(V.pwm_volts);
+					cstate = CLEAR;
+				} else {
+					if (get_500hz(FALSE) > RDELAY) {
+						set_led_blink(BOFF);
+						cstate = CLEAR;
+						V.pwm_volts = CC_OFFLINE;
+						SetDCPWM1(V.pwm_volts);
+					}
 				}
 			}
 		}
@@ -234,6 +278,7 @@ void init_ihcmon(void)
 	INTCON2bits.RBPU = 0; // enable weak pull-ups, mainly for receive serial when RS485 Rx transceiver is off.
 
 	LED1 = OFF;
+	RE20A_ERROR = OFF;
 	V.clock_blinks = 0;
 	set_led_blink(BOFF);
 	//OpenTimer0(TIMER_INT_ON & T0_16BIT & T0_SOURCE_INT & T0_PS_1_64);

@@ -3339,11 +3339,18 @@ typedef enum comm_type {
  RECV,
 } comm_type;
 
+typedef enum cmd_type {
+ G_MODE = 0,
+ G_ERROR,
+ G_AUX,
+ G_LAST,
+} cmd_type;
+
 union PWMDC {
  unsigned int lpwm;
  char bpwm[2];
 };
-# 99 "../ibsmon.h"
+# 107 "../ibsmon.h"
 void SetDCPWM1(uint16_t);
 # 18 "../ihc_vector.h" 2
 

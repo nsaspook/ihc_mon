@@ -38,6 +38,13 @@ typedef enum comm_type {
 	RECV,
 } comm_type;
 
+typedef enum cmd_type {
+	G_MODE = 0,
+	G_ERROR,
+	G_AUX,
+	G_LAST,
+} cmd_type;
+
 union PWMDC {
 	unsigned int lpwm;
 	char bpwm[2];
@@ -71,7 +78,7 @@ union PWMDC {
 
 #define DE		LATAbits.LATA0
 #define RE_		LATAbits.LATA1
-#define SIG3		LATAbits.LATA2
+#define RE20A_ERROR	LATAbits.LATA2
 #define SIG4		LATAbits.LATA3
 #define SIG5		LATAbits.LATA6
 #define LED1		LATBbits.LATB0
@@ -86,6 +93,7 @@ union PWMDC {
 #define TDELAY		3
 #define RDELAY		2000
 #define QDELAY		1
+#define TODELAY		4
 
 #define CC_DEACT	61	// 1.00 normal 61
 #define CC_ACT		92	// 1.50
