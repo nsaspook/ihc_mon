@@ -7,6 +7,8 @@
             <file>file:/old_os/mplabx/ihc_mon/ibsmon.c</file>
             <file>file:/old_os/mplabx/ihc_mon/ihc_vector.c</file>
         </group>
-        <group/>
+        <group>
+            <file>file:/fred/ibs_monitor/pat/ihc_vector.c</file>
+        </group>
     </open-files>
 </project-private>

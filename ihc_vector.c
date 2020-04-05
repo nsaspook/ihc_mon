@@ -72,7 +72,7 @@ void clear_500hz(void)
 
 uint32_t get_2hz(uint8_t mode)
 {
-	static uint32_t tmp;
+	static uint32_t tmp = 0;
 
 	if (mode)
 		return tmp;
@@ -85,7 +85,7 @@ uint32_t get_2hz(uint8_t mode)
 
 uint32_t get_500hz(uint8_t mode)
 {
-	static uint32_t tmp;
+	static uint32_t tmp = 0;
 
 	if (mode)
 		return tmp;

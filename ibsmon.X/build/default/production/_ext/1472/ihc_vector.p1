@@ -658,8 +658,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;../ihc_vector.c: 74: {
 [f ]
 "75
-[; ;../ihc_vector.c: 75:  static uint32_t tmp;
+[; ;../ihc_vector.c: 75:  static uint32_t tmp = 0;
 [v F2087 `ul ~T0 @X0 1 s tmp ]
+[i F2087
+-> -> -> 0 `i `l `ul
+]
 "77
 [; ;../ihc_vector.c: 77:  if (mode)
 [e $ ! != -> _mode `i -> 0 `i 199  ]
@@ -699,8 +702,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;../ihc_vector.c: 87: {
 [f ]
 "88
-[; ;../ihc_vector.c: 88:  static uint32_t tmp;
+[; ;../ihc_vector.c: 88:  static uint32_t tmp = 0;
 [v F2090 `ul ~T0 @X0 1 s tmp ]
+[i F2090
+-> -> -> 0 `i `l `ul
+]
 "90
 [; ;../ihc_vector.c: 90:  if (mode)
 [e $ ! != -> _mode `i -> 0 `i 201  ]
