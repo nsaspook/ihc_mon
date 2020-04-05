@@ -7,7 +7,7 @@ void __interrupt() tm_handler(void) // timer/serial functions are handled here
 	static uint8_t c_error = 0;
 	uint16_t tmp;
 
-	if (PIR1bits.RCIF) { // is data from host light link via RS-232 port
+	if (PIR1bits.RCIF) { // is data from RS485 port
 		cc_stream_file = RCREG;
 		if (RCSTAbits.OERR || RCSTAbits.FERR) {
 			cc_stream_file = 0x00; // nulls for data on errors
@@ -18,7 +18,7 @@ void __interrupt() tm_handler(void) // timer/serial functions are handled here
 			}
 		} else {
 			/*
-			 * process received data stream
+			 * process received charge controller data stream
 			 */
 			cc_buffer[V.recv_count] = cc_stream_file;
 			if (++V.recv_count >= MAX_DATA)
