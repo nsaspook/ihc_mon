@@ -3506,7 +3506,7 @@ volatile uint8_t cc_stream_file, cc_buffer[20];
 uint32_t crc_error;
 comm_type cstate = CLEAR;
 cmd_type modbus_command = G_MODE;
-const char *build_date = "Apr  5 2020", *build_time = "12:40:03", build_version[5] = "1.7";
+const char *build_date = "Apr  5 2020", *build_time = "17:46:37", build_version[5] = "1.7";
 
 void SetDCPWM1(uint16_t dutycycle)
 {
