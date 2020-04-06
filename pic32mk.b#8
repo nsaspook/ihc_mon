@@ -1304,6 +1304,48 @@ MELF 0.10 W</description>
 </package3d>
 </packages3d>
 </library>
+<library name="SamacSys_Parts">
+<description>&lt;b&gt;https://componentsearchengine.com&lt;/b&gt;&lt;p&gt;
+&lt;author&gt;Created by SamacSys&lt;/author&gt;</description>
+<packages>
+<package name="SOIC127P600X175-16N">
+<description>&lt;b&gt;R-16 (SOIC)&lt;/b&gt;&lt;br&gt;
+</description>
+<smd name="1" x="-2.712" y="4.445" dx="1.525" dy="0.65" layer="1"/>
+<smd name="2" x="-2.712" y="3.175" dx="1.525" dy="0.65" layer="1"/>
+<smd name="3" x="-2.712" y="1.905" dx="1.525" dy="0.65" layer="1"/>
+<smd name="4" x="-2.712" y="0.635" dx="1.525" dy="0.65" layer="1"/>
+<smd name="5" x="-2.712" y="-0.635" dx="1.525" dy="0.65" layer="1"/>
+<smd name="6" x="-2.712" y="-1.905" dx="1.525" dy="0.65" layer="1"/>
+<smd name="7" x="-2.712" y="-3.175" dx="1.525" dy="0.65" layer="1"/>
+<smd name="8" x="-2.712" y="-4.445" dx="1.525" dy="0.65" layer="1"/>
+<smd name="9" x="2.712" y="-4.445" dx="1.525" dy="0.65" layer="1"/>
+<smd name="10" x="2.712" y="-3.175" dx="1.525" dy="0.65" layer="1"/>
+<smd name="11" x="2.712" y="-1.905" dx="1.525" dy="0.65" layer="1"/>
+<smd name="12" x="2.712" y="-0.635" dx="1.525" dy="0.65" layer="1"/>
+<smd name="13" x="2.712" y="0.635" dx="1.525" dy="0.65" layer="1"/>
+<smd name="14" x="2.712" y="1.905" dx="1.525" dy="0.65" layer="1"/>
+<smd name="15" x="2.712" y="3.175" dx="1.525" dy="0.65" layer="1"/>
+<smd name="16" x="2.712" y="4.445" dx="1.525" dy="0.65" layer="1"/>
+<text x="0" y="0" size="1.27" layer="25" align="center">&gt;NAME</text>
+<text x="0" y="0" size="1.27" layer="27" align="center">&gt;VALUE</text>
+<wire x1="-3.725" y1="5.25" x2="3.725" y2="5.25" width="0.05" layer="51"/>
+<wire x1="3.725" y1="5.25" x2="3.725" y2="-5.25" width="0.05" layer="51"/>
+<wire x1="3.725" y1="-5.25" x2="-3.725" y2="-5.25" width="0.05" layer="51"/>
+<wire x1="-3.725" y1="-5.25" x2="-3.725" y2="5.25" width="0.05" layer="51"/>
+<wire x1="-1.95" y1="4.95" x2="1.95" y2="4.95" width="0.1" layer="51"/>
+<wire x1="1.95" y1="4.95" x2="1.95" y2="-4.95" width="0.1" layer="51"/>
+<wire x1="1.95" y1="-4.95" x2="-1.95" y2="-4.95" width="0.1" layer="51"/>
+<wire x1="-1.95" y1="-4.95" x2="-1.95" y2="4.95" width="0.1" layer="51"/>
+<wire x1="-1.95" y1="3.68" x2="-0.68" y2="4.95" width="0.1" layer="51"/>
+<wire x1="-1.6" y1="4.95" x2="1.6" y2="4.95" width="0.2" layer="21"/>
+<wire x1="1.6" y1="4.95" x2="1.6" y2="-4.95" width="0.2" layer="21"/>
+<wire x1="1.6" y1="-4.95" x2="-1.6" y2="-4.95" width="0.2" layer="21"/>
+<wire x1="-1.6" y1="-4.95" x2="-1.6" y2="4.95" width="0.2" layer="21"/>
+<wire x1="-3.475" y1="5.12" x2="-1.95" y2="5.12" width="0.2" layer="21"/>
+</package>
+</packages>
+</library>
 </libraries>
 <attributes>
 </attributes>
@@ -1527,12 +1569,21 @@ design rules under a new name.</description>
 <attribute name="SPICEPREFIX" value="C" x="2.54" y="-13.97" size="1.778" layer="27" display="off"/>
 <attribute name="VALUE" x="1.27" y="-16.51" size="1.27" layer="27"/>
 </element>
+<element name="IC2" library="SamacSys_Parts" package="SOIC127P600X175-16N" value="ADM3095EBRZ" x="-5.08" y="-8.89" smashed="yes">
+<attribute name="DESCRIPTION" value="Level 4 EMC Protected RS-485 Transceiver with Full +/-42 V Fault Protection" x="-5.08" y="-8.89" size="1.778" layer="27" display="off"/>
+<attribute name="HEIGHT" value="1.75mm" x="-5.08" y="-8.89" size="1.778" layer="27" display="off"/>
+<attribute name="MANUFACTURER_NAME" value="Analog Devices" x="-5.08" y="-8.89" size="1.778" layer="27" display="off"/>
+<attribute name="MANUFACTURER_PART_NUMBER" value="ADM3095EBRZ" x="-5.08" y="-8.89" size="1.778" layer="27" display="off"/>
+<attribute name="MOUSER_PART_NUMBER" value="584-ADM3095EBRZ" x="-5.08" y="-8.89" size="1.778" layer="27" display="off"/>
+<attribute name="MOUSER_PRICE-STOCK" value="https://www.mouser.com/Search/Refine.aspx?Keyword=584-ADM3095EBRZ" x="-5.08" y="-8.89" size="1.778" layer="27" display="off"/>
+<attribute name="NAME" x="-5.08" y="-8.89" size="1.27" layer="25" align="center"/>
+<attribute name="VALUE" x="-5.08" y="-8.89" size="1.27" layer="27" align="center"/>
+</element>
 </elements>
 <signals>
 <signal name="N$1">
 <contactref element="R1" pad="1"/>
 <contactref element="R2" pad="1"/>
-<contactref element="C1" pad="1"/>
 <contactref element="C1" pad="1"/>
 <wire x1="1.59" y1="-8.89" x2="1.59" y2="-13.97" width="0" layer="19" extent="1-1"/>
 <wire x1="1.59" y1="-3.81" x2="1.59" y2="-8.89" width="0" layer="19" extent="1-1"/>
@@ -1569,6 +1620,36 @@ design rules under a new name.</description>
 <wire x1="80.48" y1="42.792" x2="84.08" y2="42.792" width="0" layer="19" extent="1-1"/>
 <wire x1="74.542" y1="48.73" x2="80.48" y2="42.792" width="0" layer="19" extent="1-1"/>
 <wire x1="3.49" y1="-13.97" x2="74.542" y2="48.73" width="0" layer="19" extent="1-1"/>
+</signal>
+<signal name="GND_1">
+<contactref element="IC2" pad="1"/>
+</signal>
+<signal name="VCC">
+<contactref element="IC2" pad="2"/>
+</signal>
+<signal name="VIO">
+<contactref element="IC2" pad="3"/>
+</signal>
+<signal name="GND_2">
+<contactref element="IC2" pad="8"/>
+</signal>
+<signal name="GND_8">
+<contactref element="IC2" pad="16"/>
+</signal>
+<signal name="GND_7">
+<contactref element="IC2" pad="15"/>
+</signal>
+<signal name="GND_6">
+<contactref element="IC2" pad="13"/>
+</signal>
+<signal name="GND_5">
+<contactref element="IC2" pad="12"/>
+</signal>
+<signal name="GND_4">
+<contactref element="IC2" pad="10"/>
+</signal>
+<signal name="GND_3">
+<contactref element="IC2" pad="9"/>
 </signal>
 </signals>
 <mfgpreviewcolors>

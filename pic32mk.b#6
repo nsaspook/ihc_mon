@@ -1376,6 +1376,33 @@ MELF 0.10 W</description>
 </package3d>
 </packages3d>
 </library>
+<library name="B3W-9000-Y1N">
+<description>&lt;Illuminated Tactile Switches Illuminated Ylw LED White Cap&lt;/b&gt;&lt;p&gt;
+&lt;author&gt;Created by SamacSys&lt;/author&gt;</description>
+<packages>
+<package name="B3W-9_1-LED">
+<description>&lt;b&gt;B3W-9_1-LED&lt;/b&gt;&lt;br&gt;
+</description>
+<pad name="1" x="3.25" y="-2.25" drill="1.1" diameter="1.65"/>
+<pad name="2" x="-3.25" y="-2.25" drill="1.1" diameter="1.65"/>
+<pad name="3" x="3.25" y="2.25" drill="1.1" diameter="1.65"/>
+<pad name="4" x="-3.25" y="2.25" drill="1.1" diameter="1.65"/>
+<pad name="5" x="0" y="3.6" drill="1.1" diameter="1.65"/>
+<pad name="6" x="3.6" y="0" drill="1.1" diameter="1.65"/>
+<text x="-0.406990625" y="-0.0433" size="1.27" layer="25" align="center">&gt;NAME</text>
+<text x="-0.406990625" y="-0.0433" size="1.27" layer="27" align="center">&gt;VALUE</text>
+<wire x1="-5" y1="5" x2="5" y2="5" width="0.2" layer="51"/>
+<wire x1="5" y1="5" x2="5" y2="-5" width="0.2" layer="51"/>
+<wire x1="5" y1="-5" x2="-5" y2="-5" width="0.2" layer="51"/>
+<wire x1="-5" y1="-5" x2="-5" y2="5" width="0.2" layer="51"/>
+<wire x1="-5" y1="5" x2="-5" y2="-5" width="0.2" layer="21"/>
+<wire x1="-5" y1="-5" x2="5" y2="-5" width="0.2" layer="21"/>
+<wire x1="5" y1="-5" x2="5" y2="5" width="0.2" layer="21"/>
+<wire x1="5" y1="5" x2="-5" y2="5" width="0.2" layer="21"/>
+<circle x="5.623" y="-2.318" radius="0.045" width="0.2" layer="25"/>
+</package>
+</packages>
+</library>
 </libraries>
 <attributes>
 </attributes>
@@ -1613,6 +1640,20 @@ design rules under a new name.</description>
 <attribute name="NAME" x="-21.5992" y="-4.675" size="1.27" layer="25"/>
 <attribute name="POPULARITY" value="0" x="-17.78" y="-8.89" size="1.778" layer="27" display="off"/>
 <attribute name="VALUE" x="-21.8992" y="-14.383" size="1.27" layer="27"/>
+</element>
+<element name="S1" library="B3W-9000-Y1N" package="B3W-9_1-LED" value="B3W-9000-Y1N" x="-17.78" y="-20.32" smashed="yes">
+<attribute name="ALLIED_NUMBER" value="70176005" x="-17.78" y="-20.32" size="1.778" layer="27" display="off"/>
+<attribute name="ALLIED_PRICE-STOCK" value="https://www.alliedelec.com/omron-electronic-components-b3w-9000-y1n/70176005/" x="-17.78" y="-20.32" size="1.778" layer="27" display="off"/>
+<attribute name="DESCRIPTION" value="Illuminated Tactile Switches Illuminated Ylw LED White Cap" x="-17.78" y="-20.32" size="1.778" layer="27" display="off"/>
+<attribute name="HEIGHT" value="mm" x="-17.78" y="-20.32" size="1.778" layer="27" display="off"/>
+<attribute name="MANUFACTURER_NAME" value="Omron Electronics" x="-17.78" y="-20.32" size="1.778" layer="27" display="off"/>
+<attribute name="MANUFACTURER_PART_NUMBER" value="B3W-9000-Y1N" x="-17.78" y="-20.32" size="1.778" layer="27" display="off"/>
+<attribute name="MOUSER_PART_NUMBER" value="653-B3W-9000-Y1N" x="-17.78" y="-20.32" size="1.778" layer="27" display="off"/>
+<attribute name="MOUSER_PRICE-STOCK" value="https://www.mouser.com/Search/Refine.aspx?Keyword=653-B3W-9000-Y1N" x="-17.78" y="-20.32" size="1.778" layer="27" display="off"/>
+<attribute name="NAME" x="-18.186990625" y="-20.3633" size="1.27" layer="25" align="center"/>
+<attribute name="RS_PART_NUMBER" value="" x="-17.78" y="-20.32" size="1.778" layer="27" display="off"/>
+<attribute name="RS_PRICE-STOCK" value="" x="-17.78" y="-20.32" size="1.778" layer="27" display="off"/>
+<attribute name="VALUE" x="-18.186990625" y="-20.3633" size="1.27" layer="27" align="center"/>
 </element>
 </elements>
 <signals>
