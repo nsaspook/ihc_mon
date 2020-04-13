@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="9.6.0">
+<eagle version="9.6.1">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -10984,7 +10984,7 @@ W = angled&lt;p&gt;
 </plain>
 <instances>
 <instance part="IC1" gate="G$1" x="12.7" y="45.72" smashed="yes">
-<attribute name="NAME" x="156.21" y="104.14" size="1.778" layer="95" align="center-left"/>
+<attribute name="NAME" x="156.21" y="104.14" size="1.778" layer="91" align="center-left"/>
 <attribute name="VALUE" x="156.21" y="101.6" size="1.778" layer="96" align="center-left"/>
 </instance>
 <instance part="R1" gate="G$1" x="-30.48" y="15.24" smashed="yes">
@@ -11293,6 +11293,11 @@ W = angled&lt;p&gt;
 </instance>
 </instances>
 <busses>
+<bus name="DPMP1:IC1_RPB10/PWM3H/PMPD0/RB10,IC1_RPB11/PWM9H/PWM3L/PMPD1/RB11,IC1_RPB12/PWM2H/PMPD2/RB12,IC1_RPB13/PWM8H/PWM2L/CTPLS/PMPD3/RB13,IC1_RPB14/PWM1H/VBUSON1/PMPD6/RB14,IC1_RPB15/PWM7H/PWM1L/PMPD7/RB15,IC1_TCK/RPA7/PWM10H/PWM4L/PMPD5/RA7,IC1_TDO/PWM4H/PMPD4/RA10">
+<segment>
+<wire x1="50.8" y1="482.6" x2="73.66" y2="482.6" width="0.762" layer="92"/>
+</segment>
+</bus>
 </busses>
 <nets>
 <net name="N$1" class="0">
@@ -11466,7 +11471,6 @@ W = angled&lt;p&gt;
 <pinref part="C12" gate="G$1" pin="1"/>
 <pinref part="VDD17" gate="G$1" pin="VDD"/>
 <junction x="251.46" y="40.64"/>
-<pinref part="VDD17" gate="G$1" pin="VDD"/>
 </segment>
 <segment>
 <pinref part="OS2" gate="A" pin="CON"/>
@@ -11894,6 +11898,127 @@ W = angled&lt;p&gt;
 <wire x1="223.52" y1="45.72" x2="226.06" y2="45.72" width="0.1524" layer="91"/>
 </segment>
 </net>
+<net name="IC1_TCK/RPA7/PWM10H/PWM4L/PMPD5/RA7" class="0">
+<segment>
+<pinref part="IC1" gate="G$1" pin="TCK/RPA7/PWM10H/PWM4L/PMPD5/RA7"/>
+<wire x1="12.7" y1="40.64" x2="-50.8" y2="40.64" width="0.1524" layer="91"/>
+<label x="-48.26" y="40.64" size="1.778" layer="95"/>
+<junction x="12.7" y="40.64"/>
+</segment>
+<segment>
+<wire x1="53.34" y1="482.6" x2="-38.1" y2="396.24" width="0.1524" layer="91"/>
+<wire x1="-38.1" y1="396.24" x2="-38.1" y2="337.82" width="0.1524" layer="91"/>
+<label x="-38.1" y="340.36" size="1.778" layer="95" rot="R90"/>
+<pinref part="IC3" gate="G$1" pin="TCK/RPA7/PWM10H/PWM4L/PMPD5/RA7"/>
+<wire x1="10.16" y1="337.82" x2="-38.1" y2="337.82" width="0.1524" layer="91"/>
+<junction x="10.16" y="337.82"/>
+</segment>
+</net>
+<net name="IC1_RPB14/PWM1H/VBUSON1/PMPD6/RB14" class="0">
+<segment>
+<pinref part="IC1" gate="G$1" pin="RPB14/PWM1H/VBUSON1/PMPD6/RB14"/>
+<wire x1="12.7" y1="38.1" x2="-50.8" y2="38.1" width="0.1524" layer="91"/>
+<label x="-48.26" y="38.1" size="1.778" layer="95"/>
+<junction x="12.7" y="38.1"/>
+</segment>
+<segment>
+<wire x1="50.8" y1="482.6" x2="-45.72" y2="391.16" width="0.1524" layer="91"/>
+<wire x1="-45.72" y1="391.16" x2="-45.72" y2="335.28" width="0.1524" layer="91"/>
+<label x="-45.72" y="337.82" size="1.778" layer="95" rot="R90"/>
+<pinref part="IC3" gate="G$1" pin="RPB14/PWM1H/VBUSON1/PMPD6/RB14"/>
+<wire x1="10.16" y1="335.28" x2="-45.72" y2="335.28" width="0.1524" layer="91"/>
+<junction x="10.16" y="335.28"/>
+</segment>
+</net>
+<net name="IC1_RPB15/PWM7H/PWM1L/PMPD7/RB15" class="0">
+<segment>
+<pinref part="IC1" gate="G$1" pin="RPB15/PWM7H/PWM1L/PMPD7/RB15"/>
+<wire x1="12.7" y1="35.56" x2="-50.8" y2="35.56" width="0.1524" layer="91"/>
+<label x="-48.26" y="35.56" size="1.778" layer="95"/>
+<junction x="12.7" y="35.56"/>
+</segment>
+<segment>
+<wire x1="50.8" y1="482.6" x2="-50.8" y2="388.62" width="0.1524" layer="91"/>
+<wire x1="-50.8" y1="388.62" x2="-50.8" y2="332.74" width="0.1524" layer="91"/>
+<label x="-50.8" y="335.28" size="1.778" layer="95" rot="R90"/>
+<pinref part="IC3" gate="G$1" pin="RPB15/PWM7H/PWM1L/PMPD7/RB15"/>
+<wire x1="10.16" y1="332.74" x2="-50.8" y2="332.74" width="0.1524" layer="91"/>
+<junction x="10.16" y="332.74"/>
+</segment>
+</net>
+<net name="IC1_TDO/PWM4H/PMPD4/RA10" class="0">
+<segment>
+<pinref part="IC1" gate="G$1" pin="TDO/PWM4H/PMPD4/RA10"/>
+<wire x1="55.88" y1="104.14" x2="55.88" y2="167.64" width="0.1524" layer="91"/>
+<label x="55.88" y="162.56" size="1.778" layer="95" rot="R90" align="bottom-right"/>
+<junction x="55.88" y="104.14"/>
+</segment>
+<segment>
+<wire x1="53.34" y1="482.6" x2="53.34" y2="401.32" width="0.1524" layer="91"/>
+<label x="53.34" y="403.86" size="1.778" layer="95" rot="R90"/>
+<pinref part="IC3" gate="G$1" pin="TDO/PWM4H/PMPD4/RA10"/>
+<junction x="53.34" y="401.32"/>
+</segment>
+</net>
+<net name="IC1_RPB13/PWM8H/PWM2L/CTPLS/PMPD3/RB13" class="0">
+<segment>
+<pinref part="IC1" gate="G$1" pin="RPB13/PWM8H/PWM2L/CTPLS/PMPD3/RB13"/>
+<wire x1="58.42" y1="104.14" x2="58.42" y2="167.64" width="0.1524" layer="91"/>
+<label x="58.42" y="165.1" size="1.778" layer="95" rot="R90" align="bottom-right"/>
+<junction x="58.42" y="104.14"/>
+</segment>
+<segment>
+<wire x1="55.88" y1="482.6" x2="55.88" y2="401.32" width="0.1524" layer="91"/>
+<label x="55.88" y="403.86" size="1.778" layer="95" rot="R90"/>
+<pinref part="IC3" gate="G$1" pin="RPB13/PWM8H/PWM2L/CTPLS/PMPD3/RB13"/>
+<junction x="55.88" y="401.32"/>
+</segment>
+</net>
+<net name="IC1_RPB12/PWM2H/PMPD2/RB12" class="0">
+<segment>
+<pinref part="IC1" gate="G$1" pin="RPB12/PWM2H/PMPD2/RB12"/>
+<wire x1="60.96" y1="104.14" x2="60.96" y2="167.64" width="0.1524" layer="91"/>
+<label x="60.96" y="165.1" size="1.778" layer="95" rot="R90" align="bottom-right"/>
+<junction x="60.96" y="104.14"/>
+</segment>
+<segment>
+<wire x1="58.42" y1="482.6" x2="58.42" y2="447.04" width="0.1524" layer="91"/>
+<wire x1="58.42" y1="447.04" x2="58.42" y2="401.32" width="0.1524" layer="91"/>
+<label x="58.42" y="403.86" size="1.778" layer="95" rot="R90"/>
+<pinref part="IC3" gate="G$1" pin="RPB12/PWM2H/PMPD2/RB12"/>
+<junction x="58.42" y="401.32"/>
+</segment>
+</net>
+<net name="IC1_RPB11/PWM9H/PWM3L/PMPD1/RB11" class="0">
+<segment>
+<pinref part="IC1" gate="G$1" pin="RPB11/PWM9H/PWM3L/PMPD1/RB11"/>
+<wire x1="71.12" y1="104.14" x2="71.12" y2="167.64" width="0.1524" layer="91"/>
+<label x="71.12" y="165.1" size="1.778" layer="95" rot="R90" align="bottom-right"/>
+<junction x="71.12" y="104.14"/>
+</segment>
+<segment>
+<wire x1="71.12" y1="482.6" x2="68.58" y2="454.66" width="0.1524" layer="91"/>
+<wire x1="68.58" y1="454.66" x2="68.58" y2="401.32" width="0.1524" layer="91"/>
+<label x="68.58" y="403.86" size="1.778" layer="95" rot="R90"/>
+<pinref part="IC3" gate="G$1" pin="RPB11/PWM9H/PWM3L/PMPD1/RB11"/>
+<junction x="68.58" y="401.32"/>
+</segment>
+</net>
+<net name="IC1_RPB10/PWM3H/PMPD0/RB10" class="0">
+<segment>
+<pinref part="IC1" gate="G$1" pin="RPB10/PWM3H/PMPD0/RB10"/>
+<wire x1="73.66" y1="104.14" x2="73.66" y2="167.64" width="0.1524" layer="91"/>
+<label x="73.66" y="165.1" size="1.778" layer="95" rot="R90" align="bottom-right"/>
+<junction x="73.66" y="104.14"/>
+</segment>
+<segment>
+<wire x1="73.66" y1="482.6" x2="71.12" y2="447.04" width="0.1524" layer="91"/>
+<wire x1="71.12" y1="447.04" x2="71.12" y2="401.32" width="0.1524" layer="91"/>
+<label x="71.12" y="403.86" size="1.778" layer="95" rot="R90"/>
+<pinref part="IC3" gate="G$1" pin="RPB10/PWM3H/PMPD0/RB10"/>
+<junction x="71.12" y="401.32"/>
+</segment>
+</net>
 </nets>
 </sheet>
 </sheets>
@@ -11941,6 +12066,11 @@ Since Version 8.4, EAGLE supports properties for SPICE simulation.
 Probes in schematics and SPICE mapping objects found in parts and library devices
 will not be understood with this version. Update EAGLE to the latest version
 for full support of SPICE simulation. 
+</note>
+<note version="9.0" severity="warning">
+Since Version 9.0, EAGLE supports the align property for labels. 
+Labels in schematic will not be understood with this version. Update EAGLE to the latest version 
+for full support of labels. 
 </note>
 </compatibility>
 </eagle>
