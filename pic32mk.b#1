@@ -2543,27 +2543,43 @@ design rules under a new name.</description>
 </signal>
 <signal name="IC1_TCK/RPA7/PWM10H/PWM4L/PMPD5/RA7">
 <contactref element="IC1" pad="3"/>
+<contactref element="IC3" pad="3"/>
+<wire x1="74.542" y1="53.53" x2="74.542" y2="82.74" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="IC1_RPB14/PWM1H/VBUSON1/PMPD6/RB14">
 <contactref element="IC1" pad="4"/>
+<contactref element="IC3" pad="4"/>
+<wire x1="74.542" y1="53.13" x2="74.542" y2="82.34" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="IC1_RPB15/PWM7H/PWM1L/PMPD7/RB15">
 <contactref element="IC1" pad="5"/>
+<contactref element="IC3" pad="5"/>
+<wire x1="74.542" y1="52.73" x2="74.542" y2="81.94" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="IC1_TDO/PWM4H/PMPD4/RA10">
 <contactref element="IC1" pad="100"/>
+<contactref element="IC3" pad="100"/>
+<wire x1="76.48" y1="56.268" x2="76.48" y2="85.478" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="IC1_RPB13/PWM8H/PWM2L/CTPLS/PMPD3/RB13">
 <contactref element="IC1" pad="99"/>
+<contactref element="IC3" pad="99"/>
+<wire x1="76.88" y1="56.268" x2="76.88" y2="85.478" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="IC1_RPB12/PWM2H/PMPD2/RB12">
 <contactref element="IC1" pad="98"/>
+<contactref element="IC3" pad="98"/>
+<wire x1="77.28" y1="56.268" x2="77.28" y2="85.478" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="IC1_RPB11/PWM9H/PWM3L/PMPD1/RB11">
 <contactref element="IC1" pad="94"/>
+<contactref element="IC3" pad="94"/>
+<wire x1="78.88" y1="56.268" x2="78.88" y2="85.478" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="IC1_RPB10/PWM3H/PMPD0/RB10">
 <contactref element="IC1" pad="93"/>
+<contactref element="IC3" pad="93"/>
+<wire x1="79.28" y1="56.268" x2="79.28" y2="85.478" width="0" layer="19" extent="1-1"/>
 </signal>
 </signals>
 <mfgpreviewcolors>

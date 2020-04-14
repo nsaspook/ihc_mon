@@ -10972,6 +10972,11 @@ W = angled&lt;p&gt;
 <part name="SV2" library="con-lstb" library_urn="urn:adsk.eagle:library:162" deviceset="MA06-1" device="" package3d_urn="urn:adsk.eagle:package:8340/1" value="ICSP2"/>
 <part name="VSS28" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VSS" device=""/>
 <part name="+3V3" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+3V3" device=""/>
+<part name="OS2" library="IQD-Frequency-Products" library_urn="urn:adsk.eagle:library:90" deviceset="OSC-OE" device="-IQXO-793" package3d_urn="urn:adsk.eagle:package:3371/1"/>
+<part name="C12" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-US" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="0.1"/>
+<part name="VDD17" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VDD" device=""/>
+<part name="VDD18" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VDD" device=""/>
+<part name="VSS29" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VSS" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -11269,6 +11274,23 @@ W = angled&lt;p&gt;
 <instance part="+3V3" gate="G$1" x="-15.24" y="-83.82" smashed="yes">
 <attribute name="VALUE" x="-17.78" y="-88.9" size="1.778" layer="96" rot="R90"/>
 </instance>
+<instance part="OS2" gate="A" x="238.76" y="45.72" smashed="yes" rot="R180">
+<attribute name="NAME" x="246.38" y="37.465" size="1.778" layer="95" rot="R180"/>
+<attribute name="VALUE" x="246.38" y="55.88" size="1.778" layer="96" rot="R180"/>
+</instance>
+<instance part="C12" gate="G$1" x="251.46" y="43.18" smashed="yes" rot="R180">
+<attribute name="NAME" x="250.444" y="42.545" size="1.778" layer="95" rot="R180"/>
+<attribute name="VALUE" x="250.444" y="47.371" size="1.778" layer="96" rot="R180"/>
+</instance>
+<instance part="VDD17" gate="G$1" x="251.46" y="38.1" smashed="yes" rot="R180">
+<attribute name="VALUE" x="254" y="40.64" size="1.778" layer="96" rot="R270"/>
+</instance>
+<instance part="VDD18" gate="G$1" x="226.06" y="38.1" smashed="yes" rot="R180">
+<attribute name="VALUE" x="228.6" y="40.64" size="1.778" layer="96" rot="R270"/>
+</instance>
+<instance part="VSS29" gate="G$1" x="251.46" y="53.34" smashed="yes" rot="R180">
+<attribute name="VALUE" x="254" y="58.42" size="1.778" layer="96" rot="R270"/>
+</instance>
 </instances>
 <busses>
 </busses>
@@ -11438,6 +11460,18 @@ W = angled&lt;p&gt;
 <pinref part="C10" gate="G$1" pin="1"/>
 <junction x="-96.52" y="368.3"/>
 <wire x1="-96.52" y1="368.3" x2="-109.22" y2="368.3" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="OS2" gate="A" pin="VDD"/>
+<pinref part="C12" gate="G$1" pin="1"/>
+<pinref part="VDD17" gate="G$1" pin="VDD"/>
+<junction x="251.46" y="40.64"/>
+<pinref part="VDD17" gate="G$1" pin="VDD"/>
+</segment>
+<segment>
+<pinref part="OS2" gate="A" pin="CON"/>
+<pinref part="VDD18" gate="G$1" pin="VDD"/>
+<junction x="226.06" y="40.64"/>
 </segment>
 </net>
 <net name="VSS" class="1">
@@ -11644,6 +11678,14 @@ W = angled&lt;p&gt;
 <junction x="-15.24" y="-109.22"/>
 <junction x="-22.86" y="-101.6"/>
 </segment>
+<segment>
+<pinref part="OS2" gate="A" pin="VSS"/>
+<pinref part="VSS29" gate="G$1" pin="VSS"/>
+<pinref part="C12" gate="G$1" pin="2"/>
+<wire x1="251.46" y1="48.26" x2="251.46" y2="50.8" width="0.1524" layer="91"/>
+<junction x="251.46" y="48.26"/>
+<junction x="251.46" y="50.8"/>
+</segment>
 </net>
 <net name="+5V" class="1">
 <segment>
@@ -11836,6 +11878,20 @@ W = angled&lt;p&gt;
 <pinref part="IC1" gate="G$1" pin="PGEC1/OA1IN+/AN4/C1IN1+/C1IN3-/C2IN3-/RPB2/RB2"/>
 <wire x1="55.88" y1="-88.9" x2="55.88" y2="-93.98" width="0.1524" layer="91"/>
 <junction x="55.88" y="-88.9"/>
+</segment>
+</net>
+<net name="N$16" class="0">
+<segment>
+<pinref part="IC3" gate="G$1" pin="SOSCO/RPB8(4)/RB8(4)"/>
+<wire x1="157.48" y1="340.36" x2="223.52" y2="340.36" width="0.1524" layer="91"/>
+<wire x1="223.52" y1="340.36" x2="223.52" y2="45.72" width="0.1524" layer="91"/>
+<pinref part="IC1" gate="G$1" pin="SOSCO/RPB8(4)/RB8(4)"/>
+<wire x1="160.02" y1="43.18" x2="226.06" y2="43.18" width="0.1524" layer="91"/>
+<pinref part="OS2" gate="A" pin="OUT"/>
+<wire x1="226.06" y1="43.18" x2="226.06" y2="45.72" width="0.1524" layer="91"/>
+<junction x="160.02" y="43.18"/>
+<junction x="226.06" y="45.72"/>
+<wire x1="223.52" y1="45.72" x2="226.06" y2="45.72" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
