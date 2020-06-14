@@ -4,7 +4,7 @@ static void led_blink(void);
 
 void __interrupt() tm_handler(void) // timer/serial functions are handled here
 {
-	static uint8_t c_error = 0;
+	static uint8_t c_error = 0, tick60 = 0;
 	uint16_t tmp;
 
 	if (PIR1bits.RCIF) { // is data from RS485 port
@@ -33,6 +33,7 @@ void __interrupt() tm_handler(void) // timer/serial functions are handled here
 		tmp = SAMPLEFREQ & 0xFF;
 		TMR1L = tmp;
 		V.clock_500hz++;
+		LED0 = 0;
 	}
 
 	if (INTCONbits.TMR0IF) { //      check timer0 irq time timer
@@ -44,6 +45,15 @@ void __interrupt() tm_handler(void) // timer/serial functions are handled here
 		V.clock_2hz++;
 		V.clock_blinks++;
 		led_blink();
+		if (++tick60 > TICK60) {
+			tick60 = 0;
+			LED1 = 1;
+			PIR1bits.TMR1IF = FALSE; //      clear int flag
+			tmp = SAMPLEFREQ >> 8;
+			TMR1H = tmp;
+			tmp = SAMPLEFREQ & 0xFF;
+			TMR1L = tmp;
+		}
 	}
 
 	if (PIR1bits.TMR2IF) { //      check timer0 irq time timer

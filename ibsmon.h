@@ -59,9 +59,10 @@ union PWMDC {
 #define	LEDOFF	1
 #define BOFF	0
 #define BON	255
+#define TICK60	240
 
 #define	TIMEROFFSET	34268			// timer0 16bit counter value for 1 second to overflow
-#define	TIMERFAST	26600			// fast flash 2hz
+#define	TIMERFAST	26500			// fast flash 2hz
 #define	SAMPLEFREQ	0xf660			// timer1 500hz
 #define	PWMFREQ		65			// timer2 pwm
 #define PWMVOLTS	127
@@ -78,12 +79,14 @@ union PWMDC {
 #define IBSPORT_IOA	0b00001100		//
 #define IBSPORT_IOB	0b00010010		// RS-232 receive on B4
 
-#define DE		LATAbits.LATA0
-#define RE_		LATAbits.LATA1
+#define LED0		LATAbits.LATA2
+#define LED1		LATAbits.LATA1
+#define DE		LATAbits.LATA2
+#define RE_		LATAbits.LATA2
 #define RE20A_ERROR	LATAbits.LATA2
 #define SIG4		LATAbits.LATA3
 #define SIG5		LATAbits.LATA6
-#define LED1		LATBbits.LATB0
+//#define LED1		LATBbits.LATB0
 #define BOOT_FLAG  	LATBbits.LATB2 // debug
 #define ANA_SIG		LATBbits.LATB3
 

@@ -4,7 +4,7 @@
 #include <xc.h>
 
 // CONFIG1H
-#pragma config OSC = HS         // Oscillator Selection bits (HS oscillator,(clock frequency = FOSC1))
+#pragma config OSC = HSPLL         // Oscillator Selection bits (HS oscillator,(clock frequency = FOSC1))
 #pragma config FSCM = ON        // Fail-Safe Clock Monitor Enable bit (Fail-Safe Clock Monitor enabled)
 #pragma config IESO = ON        // Internal External Switchover bit (Internal External Switchover mode enabled)
 

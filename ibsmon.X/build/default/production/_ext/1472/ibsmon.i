@@ -3079,7 +3079,7 @@ extern __attribute__((nonreentrant)) void _delay3(unsigned char);
 
 
 
-#pragma config OSC = HS
+#pragma config OSC = HSPLL
 #pragma config FSCM = ON
 #pragma config IESO = ON
 
@@ -3458,7 +3458,7 @@ union PWMDC {
  unsigned int lpwm;
  char bpwm[2];
 };
-# 109 "../ibsmon.h"
+# 112 "../ibsmon.h"
 void SetDCPWM1(uint16_t);
 # 73 "../ibsmon.c" 2
 
@@ -3506,7 +3506,7 @@ volatile uint8_t cc_stream_file, cc_buffer[20];
 uint32_t crc_error;
 comm_type cstate = CLEAR;
 cmd_type modbus_command = G_MODE;
-const char *build_date = "Jun 13 2020", *build_time = "20:44:35", build_version[5] = "1.7";
+const char *build_date = "Jun 13 2020", *build_time = "22:13:38", build_version[5] = "1.7";
 
 void SetDCPWM1(uint16_t dutycycle)
 {
@@ -3551,9 +3551,9 @@ int8_t controller_work(void)
 
 
 
-   LATAbits.LATA1 = 1;
+   LATAbits.LATA2 = 1;
 
-   LATAbits.LATA0 = 1;
+   LATAbits.LATA2 = 1;
    V.send_count = 0;
    V.recv_count = 0;
    cstate = SEND;
@@ -3575,8 +3575,8 @@ int8_t controller_work(void)
   if (get_500hz(0) > 3) {
    uint16_t c_crc, c_crc_rec;
 
-   LATAbits.LATA0 = 0;
-   LATAbits.LATA1 = 0;
+   LATAbits.LATA2 = 0;
+   LATAbits.LATA2 = 0;
 
 
 
@@ -3696,15 +3696,15 @@ void init_ihcmon(void)
  TRISB = 0b00010010;
  INTCON2bits.RBPU = 0;
 
- LATBbits.LATB0 = 0;
+ LATAbits.LATA1 = 0;
  LATAbits.LATA2 = 0;
  V.clock_blinks = 0;
  set_led_blink(0);
 
  T0CON = 0b10000101;
- tmp = 26600 >> 8;
+ tmp = 26500 >> 8;
  TMR0H = tmp;
- tmp = 26600 & 0xFF;
+ tmp = 26500 & 0xFF;
  TMR0L = tmp;
 
  T1CON = 0b10100101;

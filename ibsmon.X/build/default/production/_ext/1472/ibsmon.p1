@@ -686,7 +686,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;/opt/microchip/xc8/v2.10/pic/include/pic18f1320.h: 4387: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
 "7 ../ibsmon.c
-[p x OSC = HS ]
+[p x OSC = HSPLL ]
 "8
 [p x FSCM = ON ]
 "9
@@ -881,7 +881,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 . `E2221 0
 ]
 "100
-[; ;../ibsmon.c: 100: const char *build_date = "Jun 13 2020", *build_time = "20:44:35", build_version[5] = "1.7";
+[; ;../ibsmon.c: 100: const char *build_date = "Jun 13 2020", *build_time = "22:13:38", build_version[5] = "1.7";
 [v _build_date `*Cuc ~T0 @X0 1 e ]
 [i _build_date
 :s 1C
@@ -1010,11 +1010,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $ ! > ( _get_2hz (1 -> -> 0 `i `uc -> -> -> 1 `i `l `ul 199  ]
 {
 "145
-[; ;../ibsmon.c: 145:    LATAbits.LATA1 = 1;
-[e = . . _LATAbits 0 1 -> -> 1 `i `uc ]
+[; ;../ibsmon.c: 145:    LATAbits.LATA2 = 1;
+[e = . . _LATAbits 0 2 -> -> 1 `i `uc ]
 "147
-[; ;../ibsmon.c: 147:    LATAbits.LATA0 = 1;
-[e = . . _LATAbits 0 0 -> -> 1 `i `uc ]
+[; ;../ibsmon.c: 147:    LATAbits.LATA2 = 1;
+[e = . . _LATAbits 0 2 -> -> 1 `i `uc ]
 "148
 [; ;../ibsmon.c: 148:    V.send_count = 0;
 [e = . _V 8 -> -> 0 `i `uc ]
@@ -1092,11 +1092,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _c_crc `us ~T0 @X0 1 a ]
 [v _c_crc_rec `us ~T0 @X0 1 a ]
 "169
-[; ;../ibsmon.c: 169:    LATAbits.LATA0 = 0;
-[e = . . _LATAbits 0 0 -> -> 0 `i `uc ]
+[; ;../ibsmon.c: 169:    LATAbits.LATA2 = 0;
+[e = . . _LATAbits 0 2 -> -> 0 `i `uc ]
 "170
-[; ;../ibsmon.c: 170:    LATAbits.LATA1 = 0;
-[e = . . _LATAbits 0 1 -> -> 0 `i `uc ]
+[; ;../ibsmon.c: 170:    LATAbits.LATA2 = 0;
+[e = . . _LATAbits 0 2 -> -> 0 `i `uc ]
 "175
 [; ;../ibsmon.c: 175:    switch (modbus_command) {
 [e $U 214  ]
@@ -1485,8 +1485,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;../ibsmon.c: 288:  INTCON2bits.RBPU = 0;
 [e = . . _INTCON2bits 2 3 -> -> 0 `i `uc ]
 "290
-[; ;../ibsmon.c: 290:  LATBbits.LATB0 = 0;
-[e = . . _LATBbits 0 0 -> -> 0 `i `uc ]
+[; ;../ibsmon.c: 290:  LATAbits.LATA1 = 0;
+[e = . . _LATAbits 0 1 -> -> 0 `i `uc ]
 "291
 [; ;../ibsmon.c: 291:  LATAbits.LATA2 = 0;
 [e = . . _LATAbits 0 2 -> -> 0 `i `uc ]
@@ -1500,14 +1500,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;../ibsmon.c: 295:  T0CON = 0b10000101;
 [e = _T0CON -> -> 133 `i `uc ]
 "296
-[; ;../ibsmon.c: 296:  tmp = 26600 >> 8;
-[e = _tmp -> >> -> 26600 `i -> 8 `i `us ]
+[; ;../ibsmon.c: 296:  tmp = 26500 >> 8;
+[e = _tmp -> >> -> 26500 `i -> 8 `i `us ]
 "297
 [; ;../ibsmon.c: 297:  TMR0H = tmp;
 [e = _TMR0H -> _tmp `uc ]
 "298
-[; ;../ibsmon.c: 298:  tmp = 26600 & 0xFF;
-[e = _tmp -> & -> 26600 `i -> 255 `i `us ]
+[; ;../ibsmon.c: 298:  tmp = 26500 & 0xFF;
+[e = _tmp -> & -> 26500 `i -> 255 `i `us ]
 "299
 [; ;../ibsmon.c: 299:  TMR0L = tmp;
 [e = _TMR0L -> _tmp `uc ]
@@ -1656,5 +1656,5 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;../ibsmon.c: 354: }
 [e :UE 246 ]
 }
-[a 2C 50 48 58 52 52 58 51 53 0 ]
+[a 2C 50 50 58 49 51 58 51 56 0 ]
 [a 1C 74 117 110 32 49 51 32 50 48 50 48 0 ]

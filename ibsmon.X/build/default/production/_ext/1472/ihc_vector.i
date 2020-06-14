@@ -3351,7 +3351,7 @@ union PWMDC {
  unsigned int lpwm;
  char bpwm[2];
 };
-# 109 "../ibsmon.h"
+# 112 "../ibsmon.h"
 void SetDCPWM1(uint16_t);
 # 18 "../ihc_vector.h" 2
 
@@ -3371,7 +3371,7 @@ static void led_blink(void);
 
 void __attribute__((picinterrupt(("")))) tm_handler(void)
 {
- static uint8_t c_error = 0;
+ static uint8_t c_error = 0, tick60 = 0;
  uint16_t tmp;
 
  if (PIR1bits.RCIF) {
@@ -3400,17 +3400,27 @@ void __attribute__((picinterrupt(("")))) tm_handler(void)
   tmp = 0xf660 & 0xFF;
   TMR1L = tmp;
   V.clock_500hz++;
+  LATAbits.LATA2 = 0;
  }
 
  if (INTCONbits.TMR0IF) {
   INTCONbits.TMR0IF = 0;
-  tmp = 26600 >> 8;
+  tmp = 26500 >> 8;
   TMR0H = tmp;
-  tmp = 26600 & 0xFF;
+  tmp = 26500 & 0xFF;
   TMR0L = tmp;
   V.clock_2hz++;
   V.clock_blinks++;
   led_blink();
+  if (++tick60 > 240) {
+   tick60 = 0;
+   LATAbits.LATA1 = 1;
+   PIR1bits.TMR1IF = 0;
+   tmp = 0xf660 >> 8;
+   TMR1H = tmp;
+   tmp = 0xf660 & 0xFF;
+   TMR1L = tmp;
+  }
  }
 
  if (PIR1bits.TMR2IF) {
@@ -3471,13 +3481,13 @@ static void led_blink(void)
 {
 
  if (V.num_blinks == 255) {
-  LATBbits.LATB0 = 1;
+  LATAbits.LATA1 = 1;
   V.clock_blinks = 0;
   V.blink_lock = 0;
   return;
  }
  if (!V.num_blinks || V.num_blinks > 10) {
-  LATBbits.LATB0 = 0;
+  LATAbits.LATA1 = 0;
   V.clock_blinks = 0;
   V.blink_lock = 0;
   return;
@@ -3487,10 +3497,10 @@ static void led_blink(void)
  if (V.clock_blinks > 8) {
   if ((8 + (V.num_blinks << 1)) <= V.clock_blinks) {
    V.clock_blinks = 0;
-   LATBbits.LATB0 = 0;
+   LATAbits.LATA1 = 0;
    V.blink_lock = 0;
   } else {
-   LATBbits.LATB0 = ~LATBbits.LATB0;
+   LATAbits.LATA1 = ~LATAbits.LATA1;
   }
  }
 }

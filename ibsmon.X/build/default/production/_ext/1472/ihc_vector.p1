@@ -69,6 +69,21 @@ Version 4.0 HI-TECH Software Intermediate Code
 "3189
 [; ;/opt/microchip/xc8/v2.10/pic/include/pic18f1320.h: 3189: extern volatile unsigned char TMR1L __attribute__((address(0xFCE)));
 [v _TMR1L `Vuc ~T0 @X0 0 e@4046 ]
+"498
+[; ;/opt/microchip/xc8/v2.10/pic/include/pic18f1320.h: 498:     struct {
+[s S23 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S23 . LATA0 LATA1 LATA2 LATA3 LATA4 . LATA6 LATA7 ]
+"508
+[; ;/opt/microchip/xc8/v2.10/pic/include/pic18f1320.h: 508:     struct {
+[s S24 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S24 . LA0 LA1 LA2 LA3 LA4 . LA6 LA7 ]
+"497
+[; ;/opt/microchip/xc8/v2.10/pic/include/pic18f1320.h: 497: typedef union {
+[u S22 `S23 1 `S24 1 ]
+[n S22 . . . ]
+"519
+[; ;/opt/microchip/xc8/v2.10/pic/include/pic18f1320.h: 519: extern volatile LATAbits_t LATAbits __attribute__((address(0xF89)));
+[v _LATAbits `VS22 ~T0 @X0 0 e@3977 ]
 "4038
 [; ;/opt/microchip/xc8/v2.10/pic/include/pic18f1320.h: 4038:     struct {
 [s S173 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
@@ -97,21 +112,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 "3 ../ihc_vector.c
 [; ;../ihc_vector.c: 3: static void led_blink(void);
 [v _led_blink `(v ~T0 @X0 0 sf ]
-"600 /opt/microchip/xc8/v2.10/pic/include/pic18f1320.h
-[; ;/opt/microchip/xc8/v2.10/pic/include/pic18f1320.h: 600:     struct {
-[s S26 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S26 . LATB0 LATB1 LATB2 LATB3 LATB4 LATB5 LATB6 LATB7 ]
-"610
-[; ;/opt/microchip/xc8/v2.10/pic/include/pic18f1320.h: 610:     struct {
-[s S27 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S27 . LB0 LB1 LB2 LB3 LB4 LB5 LB6 LB7 ]
-"599
-[; ;/opt/microchip/xc8/v2.10/pic/include/pic18f1320.h: 599: typedef union {
-[u S25 `S26 1 `S27 1 ]
-[n S25 . . . ]
-"621
-[; ;/opt/microchip/xc8/v2.10/pic/include/pic18f1320.h: 621: extern volatile LATBbits_t LATBbits __attribute__((address(0xF8A)));
-[v _LATBbits `VS25 ~T0 @X0 0 e@3978 ]
 "54 /opt/microchip/xc8/v2.10/pic/include/pic18f1320.h
 [; ;/opt/microchip/xc8/v2.10/pic/include/pic18f1320.h: 54: __asm("PORTA equ 0F80h");
 [; <" PORTA equ 0F80h ;# ">
@@ -455,9 +455,13 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U _tm_handler ]
 [f ]
 "7
-[; ;../ihc_vector.c: 7:  static uint8_t c_error = 0;
+[; ;../ihc_vector.c: 7:  static uint8_t c_error = 0, tick60 = 0;
 [v F2081 `uc ~T0 @X0 1 s c_error ]
 [i F2081
+-> -> 0 `i `uc
+]
+[v F2082 `uc ~T0 @X0 1 s tick60 ]
+[i F2082
 -> -> 0 `i `uc
 ]
 "8
@@ -541,323 +545,355 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;../ihc_vector.c: 35:   V.clock_500hz++;
 [e ++ . _V 0 -> -> 1 `i `Vul ]
 "36
-[; ;../ihc_vector.c: 36:  }
+[; ;../ihc_vector.c: 36:   LATAbits.LATA2 = 0;
+[e = . . _LATAbits 0 2 -> -> 0 `i `uc ]
+"37
+[; ;../ihc_vector.c: 37:  }
 }
 [e :U 192 ]
-"38
-[; ;../ihc_vector.c: 38:  if (INTCONbits.TMR0IF) {
+"39
+[; ;../ihc_vector.c: 39:  if (INTCONbits.TMR0IF) {
 [e $ ! != -> . . _INTCONbits 0 2 `i -> 0 `i 193  ]
 {
-"39
-[; ;../ihc_vector.c: 39:   INTCONbits.TMR0IF = 0;
-[e = . . _INTCONbits 0 2 -> -> 0 `i `uc ]
 "40
-[; ;../ihc_vector.c: 40:   tmp = 26600 >> 8;
-[e = _tmp -> >> -> 26600 `i -> 8 `i `us ]
+[; ;../ihc_vector.c: 40:   INTCONbits.TMR0IF = 0;
+[e = . . _INTCONbits 0 2 -> -> 0 `i `uc ]
 "41
-[; ;../ihc_vector.c: 41:   TMR0H = tmp;
-[e = _TMR0H -> _tmp `uc ]
+[; ;../ihc_vector.c: 41:   tmp = 26500 >> 8;
+[e = _tmp -> >> -> 26500 `i -> 8 `i `us ]
 "42
-[; ;../ihc_vector.c: 42:   tmp = 26600 & 0xFF;
-[e = _tmp -> & -> 26600 `i -> 255 `i `us ]
+[; ;../ihc_vector.c: 42:   TMR0H = tmp;
+[e = _TMR0H -> _tmp `uc ]
 "43
-[; ;../ihc_vector.c: 43:   TMR0L = tmp;
-[e = _TMR0L -> _tmp `uc ]
+[; ;../ihc_vector.c: 43:   tmp = 26500 & 0xFF;
+[e = _tmp -> & -> 26500 `i -> 255 `i `us ]
 "44
-[; ;../ihc_vector.c: 44:   V.clock_2hz++;
-[e ++ . _V 1 -> -> 1 `i `Vul ]
+[; ;../ihc_vector.c: 44:   TMR0L = tmp;
+[e = _TMR0L -> _tmp `uc ]
 "45
-[; ;../ihc_vector.c: 45:   V.clock_blinks++;
-[e ++ . _V 2 -> -> 1 `i `Vuc ]
+[; ;../ihc_vector.c: 45:   V.clock_2hz++;
+[e ++ . _V 1 -> -> 1 `i `Vul ]
 "46
-[; ;../ihc_vector.c: 46:   led_blink();
-[e ( _led_blink ..  ]
+[; ;../ihc_vector.c: 46:   V.clock_blinks++;
+[e ++ . _V 2 -> -> 1 `i `Vuc ]
 "47
-[; ;../ihc_vector.c: 47:  }
-}
-[e :U 193 ]
-"49
-[; ;../ihc_vector.c: 49:  if (PIR1bits.TMR2IF) {
-[e $ ! != -> . . _PIR1bits 0 1 `i -> 0 `i 194  ]
+[; ;../ihc_vector.c: 47:   led_blink();
+[e ( _led_blink ..  ]
+"48
+[; ;../ihc_vector.c: 48:   if (++tick60 > 240) {
+[e $ ! > -> =+ F2082 -> -> 1 `i `uc `i -> 240 `i 194  ]
 {
+"49
+[; ;../ihc_vector.c: 49:    tick60 = 0;
+[e = F2082 -> -> 0 `i `uc ]
 "50
-[; ;../ihc_vector.c: 50:   PIR1bits.TMR2IF = 0;
-[e = . . _PIR1bits 0 1 -> -> 0 `i `uc ]
+[; ;../ihc_vector.c: 50:    LATAbits.LATA1 = 1;
+[e = . . _LATAbits 0 1 -> -> 1 `i `uc ]
 "51
-[; ;../ihc_vector.c: 51:  }
+[; ;../ihc_vector.c: 51:    PIR1bits.TMR1IF = 0;
+[e = . . _PIR1bits 0 0 -> -> 0 `i `uc ]
+"52
+[; ;../ihc_vector.c: 52:    tmp = 0xf660 >> 8;
+[e = _tmp -> >> -> 63072 `ui -> 8 `i `us ]
+"53
+[; ;../ihc_vector.c: 53:    TMR1H = tmp;
+[e = _TMR1H -> _tmp `uc ]
+"54
+[; ;../ihc_vector.c: 54:    tmp = 0xf660 & 0xFF;
+[e = _tmp -> & -> 63072 `ui -> -> 255 `i `ui `us ]
+"55
+[; ;../ihc_vector.c: 55:    TMR1L = tmp;
+[e = _TMR1L -> _tmp `uc ]
+"56
+[; ;../ihc_vector.c: 56:   }
 }
 [e :U 194 ]
-"53
-[; ;../ihc_vector.c: 53:  if (PIR1bits.CCP1IF) {
-[e $ ! != -> . . _PIR1bits 0 2 `i -> 0 `i 195  ]
+"57
+[; ;../ihc_vector.c: 57:  }
+}
+[e :U 193 ]
+"59
+[; ;../ihc_vector.c: 59:  if (PIR1bits.TMR2IF) {
+[e $ ! != -> . . _PIR1bits 0 1 `i -> 0 `i 195  ]
 {
-"54
-[; ;../ihc_vector.c: 54:   PIR1bits.CCP1IF = 0;
-[e = . . _PIR1bits 0 2 -> -> 0 `i `uc ]
-"55
-[; ;../ihc_vector.c: 55:  }
+"60
+[; ;../ihc_vector.c: 60:   PIR1bits.TMR2IF = 0;
+[e = . . _PIR1bits 0 1 -> -> 0 `i `uc ]
+"61
+[; ;../ihc_vector.c: 61:  }
 }
 [e :U 195 ]
-"57
-[; ;../ihc_vector.c: 57: }
+"63
+[; ;../ihc_vector.c: 63:  if (PIR1bits.CCP1IF) {
+[e $ ! != -> . . _PIR1bits 0 2 `i -> 0 `i 196  ]
+{
+"64
+[; ;../ihc_vector.c: 64:   PIR1bits.CCP1IF = 0;
+[e = . . _PIR1bits 0 2 -> -> 0 `i `uc ]
+"65
+[; ;../ihc_vector.c: 65:  }
+}
+[e :U 196 ]
+"67
+[; ;../ihc_vector.c: 67: }
 [e :UE 186 ]
 }
-"59
-[; ;../ihc_vector.c: 59: void clear_2hz(void)
+"69
+[; ;../ihc_vector.c: 69: void clear_2hz(void)
 [v _clear_2hz `(v ~T0 @X0 1 ef ]
-"60
-[; ;../ihc_vector.c: 60: {
+"70
+[; ;../ihc_vector.c: 70: {
 {
 [e :U _clear_2hz ]
 [f ]
-"61
-[; ;../ihc_vector.c: 61:  INTCONbits.GIEH = 0;
+"71
+[; ;../ihc_vector.c: 71:  INTCONbits.GIEH = 0;
 [e = . . _INTCONbits 2 6 -> -> 0 `i `uc ]
-"62
-[; ;../ihc_vector.c: 62:  V.clock_2hz = 0;
+"72
+[; ;../ihc_vector.c: 72:  V.clock_2hz = 0;
 [e = . _V 1 -> -> -> 0 `i `l `ul ]
-"63
-[; ;../ihc_vector.c: 63:  INTCONbits.GIEH = 1;
+"73
+[; ;../ihc_vector.c: 73:  INTCONbits.GIEH = 1;
 [e = . . _INTCONbits 2 6 -> -> 1 `i `uc ]
-"64
-[; ;../ihc_vector.c: 64: }
-[e :UE 196 ]
+"74
+[; ;../ihc_vector.c: 74: }
+[e :UE 197 ]
 }
-"66
-[; ;../ihc_vector.c: 66: void clear_500hz(void)
+"76
+[; ;../ihc_vector.c: 76: void clear_500hz(void)
 [v _clear_500hz `(v ~T0 @X0 1 ef ]
-"67
-[; ;../ihc_vector.c: 67: {
+"77
+[; ;../ihc_vector.c: 77: {
 {
 [e :U _clear_500hz ]
 [f ]
-"68
-[; ;../ihc_vector.c: 68:  INTCONbits.GIEH = 0;
-[e = . . _INTCONbits 2 6 -> -> 0 `i `uc ]
-"69
-[; ;../ihc_vector.c: 69:  V.clock_500hz = 0;
-[e = . _V 0 -> -> -> 0 `i `l `ul ]
-"70
-[; ;../ihc_vector.c: 70:  INTCONbits.GIEH = 1;
-[e = . . _INTCONbits 2 6 -> -> 1 `i `uc ]
-"71
-[; ;../ihc_vector.c: 71: }
-[e :UE 197 ]
-}
-"73
-[; ;../ihc_vector.c: 73: uint32_t get_2hz(uint8_t mode)
-[v _get_2hz `(ul ~T0 @X0 1 ef1`uc ]
-"74
-[; ;../ihc_vector.c: 74: {
-{
-[e :U _get_2hz ]
-"73
-[; ;../ihc_vector.c: 73: uint32_t get_2hz(uint8_t mode)
-[v _mode `uc ~T0 @X0 1 r1 ]
-"74
-[; ;../ihc_vector.c: 74: {
-[f ]
-"75
-[; ;../ihc_vector.c: 75:  static uint32_t tmp = 0;
-[v F2087 `ul ~T0 @X0 1 s tmp ]
-[i F2087
--> -> -> 0 `i `l `ul
-]
-"77
-[; ;../ihc_vector.c: 77:  if (mode)
-[e $ ! != -> _mode `i -> 0 `i 199  ]
 "78
-[; ;../ihc_vector.c: 78:   return tmp;
-[e ) F2087 ]
-[e $UE 198  ]
-[e :U 199 ]
-"80
-[; ;../ihc_vector.c: 80:  INTCONbits.GIEH = 0;
+[; ;../ihc_vector.c: 78:  INTCONbits.GIEH = 0;
 [e = . . _INTCONbits 2 6 -> -> 0 `i `uc ]
-"81
-[; ;../ihc_vector.c: 81:  tmp = V.clock_2hz;
-[e = F2087 . _V 1 ]
-"82
-[; ;../ihc_vector.c: 82:  INTCONbits.GIEH = 1;
+"79
+[; ;../ihc_vector.c: 79:  V.clock_500hz = 0;
+[e = . _V 0 -> -> -> 0 `i `l `ul ]
+"80
+[; ;../ihc_vector.c: 80:  INTCONbits.GIEH = 1;
 [e = . . _INTCONbits 2 6 -> -> 1 `i `uc ]
-"83
-[; ;../ihc_vector.c: 83:  return tmp;
-[e ) F2087 ]
-[e $UE 198  ]
-"84
-[; ;../ihc_vector.c: 84: }
+"81
+[; ;../ihc_vector.c: 81: }
 [e :UE 198 ]
 }
-"86
-[; ;../ihc_vector.c: 86: uint32_t get_500hz(uint8_t mode)
-[v _get_500hz `(ul ~T0 @X0 1 ef1`uc ]
-"87
-[; ;../ihc_vector.c: 87: {
+"83
+[; ;../ihc_vector.c: 83: uint32_t get_2hz(uint8_t mode)
+[v _get_2hz `(ul ~T0 @X0 1 ef1`uc ]
+"84
+[; ;../ihc_vector.c: 84: {
 {
-[e :U _get_500hz ]
-"86
-[; ;../ihc_vector.c: 86: uint32_t get_500hz(uint8_t mode)
+[e :U _get_2hz ]
+"83
+[; ;../ihc_vector.c: 83: uint32_t get_2hz(uint8_t mode)
 [v _mode `uc ~T0 @X0 1 r1 ]
-"87
-[; ;../ihc_vector.c: 87: {
+"84
+[; ;../ihc_vector.c: 84: {
 [f ]
-"88
-[; ;../ihc_vector.c: 88:  static uint32_t tmp = 0;
-[v F2090 `ul ~T0 @X0 1 s tmp ]
-[i F2090
+"85
+[; ;../ihc_vector.c: 85:  static uint32_t tmp = 0;
+[v F2088 `ul ~T0 @X0 1 s tmp ]
+[i F2088
 -> -> -> 0 `i `l `ul
 ]
+"87
+[; ;../ihc_vector.c: 87:  if (mode)
+[e $ ! != -> _mode `i -> 0 `i 200  ]
+"88
+[; ;../ihc_vector.c: 88:   return tmp;
+[e ) F2088 ]
+[e $UE 199  ]
+[e :U 200 ]
 "90
-[; ;../ihc_vector.c: 90:  if (mode)
-[e $ ! != -> _mode `i -> 0 `i 201  ]
-"91
-[; ;../ihc_vector.c: 91:   return tmp;
-[e ) F2090 ]
-[e $UE 200  ]
-[e :U 201 ]
-"93
-[; ;../ihc_vector.c: 93:  INTCONbits.GIEH = 0;
+[; ;../ihc_vector.c: 90:  INTCONbits.GIEH = 0;
 [e = . . _INTCONbits 2 6 -> -> 0 `i `uc ]
-"94
-[; ;../ihc_vector.c: 94:  tmp = V.clock_500hz;
-[e = F2090 . _V 0 ]
-"95
-[; ;../ihc_vector.c: 95:  INTCONbits.GIEH = 1;
+"91
+[; ;../ihc_vector.c: 91:  tmp = V.clock_2hz;
+[e = F2088 . _V 1 ]
+"92
+[; ;../ihc_vector.c: 92:  INTCONbits.GIEH = 1;
 [e = . . _INTCONbits 2 6 -> -> 1 `i `uc ]
-"96
-[; ;../ihc_vector.c: 96:  return tmp;
-[e ) F2090 ]
-[e $UE 200  ]
-"97
-[; ;../ihc_vector.c: 97: }
-[e :UE 200 ]
+"93
+[; ;../ihc_vector.c: 93:  return tmp;
+[e ) F2088 ]
+[e $UE 199  ]
+"94
+[; ;../ihc_vector.c: 94: }
+[e :UE 199 ]
 }
+"96
+[; ;../ihc_vector.c: 96: uint32_t get_500hz(uint8_t mode)
+[v _get_500hz `(ul ~T0 @X0 1 ef1`uc ]
+"97
+[; ;../ihc_vector.c: 97: {
+{
+[e :U _get_500hz ]
+"96
+[; ;../ihc_vector.c: 96: uint32_t get_500hz(uint8_t mode)
+[v _mode `uc ~T0 @X0 1 r1 ]
+"97
+[; ;../ihc_vector.c: 97: {
+[f ]
+"98
+[; ;../ihc_vector.c: 98:  static uint32_t tmp = 0;
+[v F2091 `ul ~T0 @X0 1 s tmp ]
+[i F2091
+-> -> -> 0 `i `l `ul
+]
+"100
+[; ;../ihc_vector.c: 100:  if (mode)
+[e $ ! != -> _mode `i -> 0 `i 202  ]
+"101
+[; ;../ihc_vector.c: 101:   return tmp;
+[e ) F2091 ]
+[e $UE 201  ]
+[e :U 202 ]
 "103
-[; ;../ihc_vector.c: 103: static void led_blink(void)
-[v _led_blink `(v ~T0 @X0 1 sf ]
+[; ;../ihc_vector.c: 103:  INTCONbits.GIEH = 0;
+[e = . . _INTCONbits 2 6 -> -> 0 `i `uc ]
 "104
-[; ;../ihc_vector.c: 104: {
+[; ;../ihc_vector.c: 104:  tmp = V.clock_500hz;
+[e = F2091 . _V 0 ]
+"105
+[; ;../ihc_vector.c: 105:  INTCONbits.GIEH = 1;
+[e = . . _INTCONbits 2 6 -> -> 1 `i `uc ]
+"106
+[; ;../ihc_vector.c: 106:  return tmp;
+[e ) F2091 ]
+[e $UE 201  ]
+"107
+[; ;../ihc_vector.c: 107: }
+[e :UE 201 ]
+}
+"113
+[; ;../ihc_vector.c: 113: static void led_blink(void)
+[v _led_blink `(v ~T0 @X0 1 sf ]
+"114
+[; ;../ihc_vector.c: 114: {
 {
 [e :U _led_blink ]
 [f ]
-"106
-[; ;../ihc_vector.c: 106:  if (V.num_blinks == 255) {
-[e $ ! == -> . _V 3 `i -> 255 `i 203  ]
-{
-"107
-[; ;../ihc_vector.c: 107:   LATBbits.LATB0 = 1;
-[e = . . _LATBbits 0 0 -> -> 1 `i `uc ]
-"108
-[; ;../ihc_vector.c: 108:   V.clock_blinks = 0;
-[e = . _V 2 -> -> 0 `i `uc ]
-"109
-[; ;../ihc_vector.c: 109:   V.blink_lock = 0;
-[e = . _V 4 -> -> 0 `i `uc ]
-"110
-[; ;../ihc_vector.c: 110:   return;
-[e $UE 202  ]
-"111
-[; ;../ihc_vector.c: 111:  }
-}
-[e :U 203 ]
-"112
-[; ;../ihc_vector.c: 112:  if (!V.num_blinks || V.num_blinks > 10) {
-[e $ ! || ! != -> . _V 3 `i -> 0 `i > -> . _V 3 `i -> 10 `i 204  ]
-{
-"113
-[; ;../ihc_vector.c: 113:   LATBbits.LATB0 = 0;
-[e = . . _LATBbits 0 0 -> -> 0 `i `uc ]
-"114
-[; ;../ihc_vector.c: 114:   V.clock_blinks = 0;
-[e = . _V 2 -> -> 0 `i `uc ]
-"115
-[; ;../ihc_vector.c: 115:   V.blink_lock = 0;
-[e = . _V 4 -> -> 0 `i `uc ]
 "116
-[; ;../ihc_vector.c: 116:   return;
-[e $UE 202  ]
+[; ;../ihc_vector.c: 116:  if (V.num_blinks == 255) {
+[e $ ! == -> . _V 3 `i -> 255 `i 204  ]
+{
 "117
-[; ;../ihc_vector.c: 117:  }
+[; ;../ihc_vector.c: 117:   LATAbits.LATA1 = 1;
+[e = . . _LATAbits 0 1 -> -> 1 `i `uc ]
+"118
+[; ;../ihc_vector.c: 118:   V.clock_blinks = 0;
+[e = . _V 2 -> -> 0 `i `uc ]
+"119
+[; ;../ihc_vector.c: 119:   V.blink_lock = 0;
+[e = . _V 4 -> -> 0 `i `uc ]
+"120
+[; ;../ihc_vector.c: 120:   return;
+[e $UE 203  ]
+"121
+[; ;../ihc_vector.c: 121:  }
 }
 [e :U 204 ]
-"120
-[; ;../ihc_vector.c: 120:  if (V.clock_blinks > 8) {
-[e $ ! > -> . _V 2 `i -> 8 `i 205  ]
-{
-"121
-[; ;../ihc_vector.c: 121:   if ((8 + (V.num_blinks << 1)) <= V.clock_blinks) {
-[e $ ! <= + -> 8 `i << -> . _V 3 `i -> 1 `i -> . _V 2 `i 206  ]
-{
 "122
-[; ;../ihc_vector.c: 122:    V.clock_blinks = 0;
-[e = . _V 2 -> -> 0 `i `uc ]
-"123
-[; ;../ihc_vector.c: 123:    LATBbits.LATB0 = 0;
-[e = . . _LATBbits 0 0 -> -> 0 `i `uc ]
-"124
-[; ;../ihc_vector.c: 124:    V.blink_lock = 0;
-[e = . _V 4 -> -> 0 `i `uc ]
-"125
-[; ;../ihc_vector.c: 125:   } else {
-}
-[e $U 207  ]
-[e :U 206 ]
+[; ;../ihc_vector.c: 122:  if (!V.num_blinks || V.num_blinks > 10) {
+[e $ ! || ! != -> . _V 3 `i -> 0 `i > -> . _V 3 `i -> 10 `i 205  ]
 {
+"123
+[; ;../ihc_vector.c: 123:   LATAbits.LATA1 = 0;
+[e = . . _LATAbits 0 1 -> -> 0 `i `uc ]
+"124
+[; ;../ihc_vector.c: 124:   V.clock_blinks = 0;
+[e = . _V 2 -> -> 0 `i `uc ]
+"125
+[; ;../ihc_vector.c: 125:   V.blink_lock = 0;
+[e = . _V 4 -> -> 0 `i `uc ]
 "126
-[; ;../ihc_vector.c: 126:    LATBbits.LATB0 = ~LATBbits.LATB0;
-[e = . . _LATBbits 0 0 -> ~ -> . . _LATBbits 0 0 `i `uc ]
+[; ;../ihc_vector.c: 126:   return;
+[e $UE 203  ]
 "127
-[; ;../ihc_vector.c: 127:   }
-}
-[e :U 207 ]
-"128
-[; ;../ihc_vector.c: 128:  }
+[; ;../ihc_vector.c: 127:  }
 }
 [e :U 205 ]
-"129
-[; ;../ihc_vector.c: 129: }
-[e :UE 202 ]
-}
+"130
+[; ;../ihc_vector.c: 130:  if (V.clock_blinks > 8) {
+[e $ ! > -> . _V 2 `i -> 8 `i 206  ]
+{
+"131
+[; ;../ihc_vector.c: 131:   if ((8 + (V.num_blinks << 1)) <= V.clock_blinks) {
+[e $ ! <= + -> 8 `i << -> . _V 3 `i -> 1 `i -> . _V 2 `i 207  ]
+{
+"132
+[; ;../ihc_vector.c: 132:    V.clock_blinks = 0;
+[e = . _V 2 -> -> 0 `i `uc ]
+"133
+[; ;../ihc_vector.c: 133:    LATAbits.LATA1 = 0;
+[e = . . _LATAbits 0 1 -> -> 0 `i `uc ]
 "134
-[; ;../ihc_vector.c: 134: void set_led_blink(uint8_t blinks)
-[v _set_led_blink `(v ~T0 @X0 1 ef1`uc ]
+[; ;../ihc_vector.c: 134:    V.blink_lock = 0;
+[e = . _V 4 -> -> 0 `i `uc ]
 "135
-[; ;../ihc_vector.c: 135: {
+[; ;../ihc_vector.c: 135:   } else {
+}
+[e $U 208  ]
+[e :U 207 ]
+{
+"136
+[; ;../ihc_vector.c: 136:    LATAbits.LATA1 = ~LATAbits.LATA1;
+[e = . . _LATAbits 0 1 -> ~ -> . . _LATAbits 0 1 `i `uc ]
+"137
+[; ;../ihc_vector.c: 137:   }
+}
+[e :U 208 ]
+"138
+[; ;../ihc_vector.c: 138:  }
+}
+[e :U 206 ]
+"139
+[; ;../ihc_vector.c: 139: }
+[e :UE 203 ]
+}
+"144
+[; ;../ihc_vector.c: 144: void set_led_blink(uint8_t blinks)
+[v _set_led_blink `(v ~T0 @X0 1 ef1`uc ]
+"145
+[; ;../ihc_vector.c: 145: {
 {
 [e :U _set_led_blink ]
-"134
-[; ;../ihc_vector.c: 134: void set_led_blink(uint8_t blinks)
-[v _blinks `uc ~T0 @X0 1 r1 ]
-"135
-[; ;../ihc_vector.c: 135: {
-[f ]
-"136
-[; ;../ihc_vector.c: 136:  if (V.blink_lock)
-[e $ ! != -> . _V 4 `i -> 0 `i 209  ]
-"137
-[; ;../ihc_vector.c: 137:   return;
-[e $UE 208  ]
-[e :U 209 ]
-"139
-[; ;../ihc_vector.c: 139:  if (blinks > 10 && (blinks != 255))
-[e $ ! && > -> _blinks `i -> 10 `i != -> _blinks `i -> 255 `i 210  ]
-"140
-[; ;../ihc_vector.c: 140:   blinks = 0;
-[e = _blinks -> -> 0 `i `uc ]
-[e :U 210 ]
-"142
-[; ;../ihc_vector.c: 142:  INTCONbits.GIEH = 0;
-[e = . . _INTCONbits 2 6 -> -> 0 `i `uc ]
-"143
-[; ;../ihc_vector.c: 143:  V.blink_lock = 1;
-[e = . _V 4 -> -> 1 `i `uc ]
 "144
-[; ;../ihc_vector.c: 144:  V.num_blinks = blinks;
-[e = . _V 3 _blinks ]
+[; ;../ihc_vector.c: 144: void set_led_blink(uint8_t blinks)
+[v _blinks `uc ~T0 @X0 1 r1 ]
 "145
-[; ;../ihc_vector.c: 145:  INTCONbits.GIEH = 1;
-[e = . . _INTCONbits 2 6 -> -> 1 `i `uc ]
+[; ;../ihc_vector.c: 145: {
+[f ]
 "146
-[; ;../ihc_vector.c: 146: }
-[e :UE 208 ]
+[; ;../ihc_vector.c: 146:  if (V.blink_lock)
+[e $ ! != -> . _V 4 `i -> 0 `i 210  ]
+"147
+[; ;../ihc_vector.c: 147:   return;
+[e $UE 209  ]
+[e :U 210 ]
+"149
+[; ;../ihc_vector.c: 149:  if (blinks > 10 && (blinks != 255))
+[e $ ! && > -> _blinks `i -> 10 `i != -> _blinks `i -> 255 `i 211  ]
+"150
+[; ;../ihc_vector.c: 150:   blinks = 0;
+[e = _blinks -> -> 0 `i `uc ]
+[e :U 211 ]
+"152
+[; ;../ihc_vector.c: 152:  INTCONbits.GIEH = 0;
+[e = . . _INTCONbits 2 6 -> -> 0 `i `uc ]
+"153
+[; ;../ihc_vector.c: 153:  V.blink_lock = 1;
+[e = . _V 4 -> -> 1 `i `uc ]
+"154
+[; ;../ihc_vector.c: 154:  V.num_blinks = blinks;
+[e = . _V 3 _blinks ]
+"155
+[; ;../ihc_vector.c: 155:  INTCONbits.GIEH = 1;
+[e = . . _INTCONbits 2 6 -> -> 1 `i `uc ]
+"156
+[; ;../ihc_vector.c: 156: }
+[e :UE 209 ]
 }
