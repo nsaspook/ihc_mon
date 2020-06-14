@@ -3079,7 +3079,7 @@ extern __attribute__((nonreentrant)) void _delay3(unsigned char);
 
 
 
-#pragma config OSC = HSPLL
+#pragma config OSC = HS
 #pragma config FSCM = ON
 #pragma config IESO = ON
 
@@ -3506,7 +3506,7 @@ volatile uint8_t cc_stream_file, cc_buffer[20];
 uint32_t crc_error;
 comm_type cstate = CLEAR;
 cmd_type modbus_command = G_MODE;
-const char *build_date = "Apr 19 2020", *build_time = "15:28:49", build_version[5] = "1.7";
+const char *build_date = "Jun 13 2020", *build_time = "20:44:35", build_version[5] = "1.7";
 
 void SetDCPWM1(uint16_t dutycycle)
 {
