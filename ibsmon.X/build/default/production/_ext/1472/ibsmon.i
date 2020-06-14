@@ -3085,7 +3085,7 @@ extern __attribute__((nonreentrant)) void _delay3(unsigned char);
 
 
 #pragma config PWRT = OFF
-#pragma config BOR = ON
+#pragma config BOR = OFF
 
 
 
@@ -3096,12 +3096,12 @@ extern __attribute__((nonreentrant)) void _delay3(unsigned char);
 #pragma config MCLRE = ON
 
 
-#pragma config STVR = ON
-#pragma config LVP = OFF
+#pragma config STVR = OFF
+#pragma config LVP = ON
 
 
-#pragma config CP0 = ON
-#pragma config CP1 = ON
+#pragma config CP0 = OFF
+#pragma config CP1 = OFF
 
 
 #pragma config CPB = OFF
@@ -3122,7 +3122,13 @@ extern __attribute__((nonreentrant)) void _delay3(unsigned char);
 
 
 #pragma config EBTRB = OFF
-# 68 "../ibsmon.c"
+
+
+
+
+
+
+
 # 1 "/opt/microchip/xc8/v2.10/pic/include/c99/stdint.h" 1 3
 # 22 "/opt/microchip/xc8/v2.10/pic/include/c99/stdint.h" 3
 # 1 "/opt/microchip/xc8/v2.10/pic/include/c99/bits/alltypes.h" 1 3
@@ -3205,7 +3211,7 @@ typedef int32_t int_fast32_t;
 typedef uint32_t uint_fast16_t;
 typedef uint32_t uint_fast32_t;
 # 140 "/opt/microchip/xc8/v2.10/pic/include/c99/stdint.h" 2 3
-# 68 "../ibsmon.c" 2
+# 56 "../ibsmon.c" 2
 
 
 # 1 "/opt/microchip/xc8/v2.10/pic/include/c99/stdio.h" 1 3
@@ -3346,7 +3352,7 @@ char *ctermid(char *);
 
 
 char *tempnam(const char *, const char *);
-# 70 "../ibsmon.c" 2
+# 58 "../ibsmon.c" 2
 
 # 1 "/opt/microchip/xc8/v2.10/pic/include/c99/string.h" 1 3
 # 25 "/opt/microchip/xc8/v2.10/pic/include/c99/string.h" 3
@@ -3402,304 +3408,38 @@ size_t strxfrm_l (char *restrict, const char *restrict, size_t, locale_t);
 
 
 void *memccpy (void *restrict, const void *restrict, int, size_t);
-# 71 "../ibsmon.c" 2
+# 59 "../ibsmon.c" 2
 
 
 # 1 "../ibsmon.h" 1
-
-
-
-
-
-
-typedef struct V_data {
- uint32_t clock_500hz;
- uint32_t clock_2hz;
- uint8_t clock_blinks;
- uint8_t num_blinks;
- uint8_t blink_lock : 1;
- uint8_t config : 1;
- uint8_t stable : 1;
- uint8_t boot_code : 1;
- uint8_t send_count, recv_count, pwm_volts;
-} V_data;
-
-typedef struct OUTBITS2 {
- uint8_t b0 : 1;
- uint8_t b1 : 1;
- uint8_t b2 : 1;
- uint8_t b3 : 1;
- uint8_t b4 : 1;
- uint8_t b5 : 1;
- uint8_t b6 : 1;
- uint8_t b7 : 1;
-} OUTBITS_TYPE2;
-
-union Obits2 {
- uint8_t out_byte;
- OUTBITS_TYPE2 out_bits;
-};
-
-typedef enum comm_type {
- CLEAR,
- INIT,
- SEND,
- RECV,
-} comm_type;
-
-typedef enum cmd_type {
- G_MODE = 0,
- G_ERROR,
- G_AUX,
- G_LAST,
-} cmd_type;
-
-union PWMDC {
- unsigned int lpwm;
- char bpwm[2];
-};
-# 112 "../ibsmon.h"
-void SetDCPWM1(uint16_t);
-# 73 "../ibsmon.c" 2
+# 61 "../ibsmon.c" 2
 
 # 1 "../ihc_vector.h" 1
-# 19 "../ihc_vector.h"
- extern volatile struct V_data V;
- extern volatile uint8_t cc_stream_file, cc_stream_file_prev, cc_buffer[20];
- extern volatile uint16_t timer0_off, link_count;
-
- void clear_2hz(void);
- void clear_500hz(void);
- uint32_t get_2hz(uint8_t);
- uint32_t get_500hz(uint8_t);
-
- void set_led_blink(uint8_t);
-# 74 "../ibsmon.c" 2
-
-# 1 "../crc.h" 1
-# 17 "../crc.h"
- uint16_t crc16(volatile uint8_t *, uint16_t);
- uint16_t modbus_rtu_send_msg(void *, const void *, uint16_t);
-# 75 "../ibsmon.c" 2
+# 62 "../ibsmon.c" 2
 
 
 
-
-int8_t controller_work(void);
 void init_ihcmon(void);
-uint8_t init_stream_params(void);
-
-uint16_t req_length = 0;
-const uint8_t modbus_cc_mode[] = {0x01, 0x03, 0x01, 0x20, 0x00, 0x01},
-modbus_cc_error[] = {0x01, 0x03, 0x01, 0x21, 0x00, 0x02},
-modbus_cc_clear[] = {0x01, 0x79, 0x00, 0x00, 0x00, 0x01},
-modbus_cc_freset[] = {0x01, 0x78, 0x00, 0x00, 0x00, 0x01},
-re20a_mode[] = {0x01, 0x03, 0x02, 0x00, 0x02, 0x39, 0x85},
-re20a_error[] = {0x01, 0x03, 0x04, 0x00, 0x00, 0x00, 0x00, 0x39, 0x85},
-re20a_clear[] = {0x01, 0x79, 0x00, 0x00, 0x00, 0x01, 0x5d, 0xc0},
-re20a_freset[] = {0x01, 0x78, 0x00, 0x00, 0x00, 0x01, 0x60, 0x00};
-
-volatile struct V_data V = {
- .blink_lock = 0,
-};
-volatile uint8_t cc_stream_file, cc_buffer[20];
-uint32_t crc_error;
-comm_type cstate = CLEAR;
-cmd_type modbus_command = G_MODE;
-const char *build_date = "Jun 13 2020", *build_time = "22:13:38", build_version[5] = "1.7";
-
-void SetDCPWM1(uint16_t dutycycle)
-{
- union PWMDC DCycle;
 
 
- DCycle.lpwm = dutycycle << 6;
-
-
- CCPR1L = DCycle.bpwm[1];
-
-
- CCP1CON = (CCP1CON & 0xCF) | ((DCycle.bpwm[0] >> 2) & 0x30);
-}
-
-int8_t controller_work(void)
-{
- static uint8_t mcmd = G_MODE;
-
- switch (cstate) {
- case CLEAR:
-  clear_2hz();
-  cstate = INIT;
-  modbus_command = mcmd++;
-  if (mcmd > G_LAST)
-   mcmd = G_MODE;
-
-
-
-  switch (modbus_command) {
-  case G_ERROR:
-   req_length = modbus_rtu_send_msg((void*) cc_buffer, (const void *) modbus_cc_error, sizeof(modbus_cc_error));
-   break;
-  case G_MODE:
-  default:
-   req_length = modbus_rtu_send_msg((void*) cc_buffer, (const void *) modbus_cc_mode, sizeof(modbus_cc_mode));
-   break;
-  }
-  break;
- case INIT:
-  if (get_2hz(0) > 1) {
-
-
-
-   LATAbits.LATA2 = 1;
-
-   LATAbits.LATA2 = 1;
-   V.send_count = 0;
-   V.recv_count = 0;
-   cstate = SEND;
-   clear_500hz();
-  }
-  break;
- case SEND:
-  if (get_500hz(0) > 3) {
-   do {
-    while ((!TXSTAbits.TRMT));
-    TXREG = cc_buffer[V.send_count];
-   } while (++V.send_count < req_length);
-   while ((!TXSTAbits.TRMT));
-   cstate = RECV;
-   clear_500hz();
-  }
-  break;
- case RECV:
-  if (get_500hz(0) > 3) {
-   uint16_t c_crc, c_crc_rec;
-
-   LATAbits.LATA2 = 0;
-   LATAbits.LATA2 = 0;
-
-
-
-
-   switch (modbus_command) {
-   case G_ERROR:
-    req_length = sizeof(re20a_error);
-    if ((V.recv_count >= req_length) && (cc_buffer[0] == 0x01) && (cc_buffer[1] == 0x03)) {
-     uint16_t temp;
-     c_crc = crc16(cc_buffer, req_length - 2);
-     c_crc_rec = (uint16_t) ((uint16_t) cc_buffer[req_length - 2] << (uint16_t) 8) | ((uint16_t) cc_buffer[req_length - 1] & 0x00ff);
-     if (c_crc == c_crc_rec) {
-      if ((temp = (cc_buffer[3] << 8) +(cc_buffer[4]&0xff))) {
-       __nop();
-       LATAbits.LATA2 = 1;
-       set_led_blink(10);
-      } else {
-       LATAbits.LATA2 = 0;
-      }
-     }
-     cstate = CLEAR;
-    } else {
-     if (get_500hz(0) > 2000) {
-      cstate = CLEAR;
-      LATAbits.LATA2 = 0;
-      mcmd = G_MODE;
-     }
-    }
-    break;
-   case G_MODE:
-   default:
-    req_length = sizeof(re20a_mode);
-    if ((V.recv_count >= req_length) && (cc_buffer[0] == 0x01) && (cc_buffer[1] == 0x03)) {
-     uint8_t temp;
-     static uint8_t volts = 255;
-
-     c_crc = crc16(cc_buffer, req_length - 2);
-     c_crc_rec = (uint16_t) ((uint16_t) cc_buffer[req_length - 2] << (uint16_t) 8) | ((uint16_t) cc_buffer[req_length - 1] & 0x00ff);
-
-     if (c_crc == c_crc_rec) {
-      if ((temp = cc_buffer[4])) {
-       set_led_blink(temp);
-       switch (temp) {
-       case 1:
-        volts = 92;
-        break;
-       case 2:
-        volts = 122;
-        break;
-       case 3:
-        volts = 150;
-        break;
-       case 4:
-        volts = 177;
-        break;
-       case 5:
-        volts = 205;
-        break;
-       case 6:
-        volts = 230;
-        break;
-       default:
-        volts = 92;
-        break;
-       }
-      } else {
-       set_led_blink(255);
-       volts = 61;
-      }
-     } else {
-      crc_error++;
-      set_led_blink(0);
-     }
-     V.pwm_volts = volts;
-     SetDCPWM1(V.pwm_volts);
-     cstate = CLEAR;
-    } else {
-     if (get_500hz(0) > 2000) {
-      set_led_blink(0);
-      cstate = CLEAR;
-      V.pwm_volts = 255;
-      SetDCPWM1(V.pwm_volts);
-      mcmd = G_MODE;
-     }
-    }
-   }
-  }
-  break;
- default:
-  break;
- }
- return 0;
-}
+const char *build_date = "Jun 14 2020", *build_time = "16:12:33", build_version[5] = "1.7";
 
 void init_ihcmon(void)
 {
  uint16_t tmp;
- V.boot_code = 0;
- LATBbits.LATB2 = 0;
- if (RCON != 0b0011100)
-  V.boot_code = 1;
-
- if (STKPTRbits.STKFUL || STKPTRbits.STKUNF) {
-  V.boot_code = 1;
-  STKPTRbits.STKFUL = 0;
-  STKPTRbits.STKUNF = 0;
- }
-
- if (V.boot_code)
-  LATBbits.LATB2 = 1;
 
  ADCON1 = 0x7F;
+ INTCON = 0;
+ INTCON2 = 0;
+ PIE1 = 0;
 
  RCONbits.IPEN = 1;
 
- TRISA = 0b00001100;
- TRISB = 0b00010010;
- INTCON2bits.RBPU = 0;
+ TRISA = 0b00010000;
+ TRISB = 0b00000000;
+ LATA=0;
+ LATB=0;
 
- LATAbits.LATA1 = 0;
- LATAbits.LATA2 = 0;
- V.clock_blinks = 0;
- set_led_blink(0);
 
  T0CON = 0b10000101;
  tmp = 26500 >> 8;
@@ -3707,50 +3447,21 @@ void init_ihcmon(void)
  tmp = 26500 & 0xFF;
  TMR0L = tmp;
 
- T1CON = 0b10100101;
- tmp = 0xf660 >> 8;
+ T1CON = 0b1011101;
+ tmp = 00001 >> 8;
  TMR1H = tmp;
- tmp = 0xf660 & 0xFF;
+ tmp = 00001 & 0xFF;
  TMR1L = tmp;
 
- CCP1CON |= 0b00001100;
- T2CONbits.TMR2ON = 0;
- PR2 = 65;
- T2CONbits.TMR2ON = 1;
- V.pwm_volts = 255;
- SetDCPWM1(V.pwm_volts);
-
-
- TXSTA = 0;
- RCSTA = 0;
- PIE1bits.RCIE = 1;
- PIE1bits.TXIE = 0;
- TXSTAbits.SYNC = 0;
- RCSTAbits.CREN = 1;
- PIR1bits.TXIF = 0;
- PIR1bits.RCIF = 0;
- BAUDCTLbits.BRG16 = 0;
- TXSTAbits.BRGH = 0;
- SPBRGH = 0;
- SPBRG = 64;
- TXSTAbits.TXEN = 1;
- RCSTAbits.SPEN = 1;
 
  INTCONbits.TMR0IE = 1;
  INTCON2bits.TMR0IP = 1;
  PIE1bits.TMR1IE = 1;
  IPR1bits.TMR1IP = 1;
 
- init_stream_params();
 
-
+ INTCONbits.PEIE=1;
  INTCONbits.GIEH = 1;
-}
-
-uint8_t init_stream_params(void)
-{
- V.config = 0;
- return 0;
 }
 
 void main(void)
@@ -3758,6 +3469,6 @@ void main(void)
  init_ihcmon();
 
  while (1) {
-  controller_work();
+  __nop();
  }
 }

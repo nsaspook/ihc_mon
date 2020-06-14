@@ -3303,104 +3303,26 @@ typedef uint32_t uint_fast16_t;
 typedef uint32_t uint_fast32_t;
 # 140 "/opt/microchip/xc8/v2.10/pic/include/c99/stdint.h" 2 3
 # 5 "../ibsmon.h" 2
-
-
-typedef struct V_data {
- uint32_t clock_500hz;
- uint32_t clock_2hz;
- uint8_t clock_blinks;
- uint8_t num_blinks;
- uint8_t blink_lock : 1;
- uint8_t config : 1;
- uint8_t stable : 1;
- uint8_t boot_code : 1;
- uint8_t send_count, recv_count, pwm_volts;
-} V_data;
-
-typedef struct OUTBITS2 {
- uint8_t b0 : 1;
- uint8_t b1 : 1;
- uint8_t b2 : 1;
- uint8_t b3 : 1;
- uint8_t b4 : 1;
- uint8_t b5 : 1;
- uint8_t b6 : 1;
- uint8_t b7 : 1;
-} OUTBITS_TYPE2;
-
-union Obits2 {
- uint8_t out_byte;
- OUTBITS_TYPE2 out_bits;
-};
-
-typedef enum comm_type {
- CLEAR,
- INIT,
- SEND,
- RECV,
-} comm_type;
-
-typedef enum cmd_type {
- G_MODE = 0,
- G_ERROR,
- G_AUX,
- G_LAST,
-} cmd_type;
-
-union PWMDC {
- unsigned int lpwm;
- char bpwm[2];
-};
-# 112 "../ibsmon.h"
-void SetDCPWM1(uint16_t);
 # 18 "../ihc_vector.h" 2
-
- extern volatile struct V_data V;
- extern volatile uint8_t cc_stream_file, cc_stream_file_prev, cc_buffer[20];
- extern volatile uint16_t timer0_off, link_count;
-
- void clear_2hz(void);
- void clear_500hz(void);
- uint32_t get_2hz(uint8_t);
- uint32_t get_500hz(uint8_t);
-
- void set_led_blink(uint8_t);
 # 2 "../ihc_vector.c" 2
-
-static void led_blink(void);
 
 void __attribute__((picinterrupt(("")))) tm_handler(void)
 {
- static uint8_t c_error = 0, tick60 = 0;
+ static uint8_t tick60 = 0, tickwidth = 0;
  uint16_t tmp;
-
- if (PIR1bits.RCIF) {
-  cc_stream_file = RCREG;
-  if (RCSTAbits.OERR || RCSTAbits.FERR) {
-   cc_stream_file = 0x00;
-   RCSTAbits.CREN = 0;
-   RCSTAbits.CREN = 1;
-   if (c_error++>3) {
-    c_error = 0;
-   }
-  } else {
-
-
-
-   cc_buffer[V.recv_count] = cc_stream_file;
-   if (++V.recv_count >= 20)
-    V.recv_count = 0;
-  }
- }
 
  if (PIR1bits.TMR1IF) {
   PIR1bits.TMR1IF = 0;
-  tmp = 0xf660 >> 8;
+  tmp = 00001 >> 8;
   TMR1H = tmp;
-  tmp = 0xf660 & 0xFF;
+  tmp = 00001 & 0xFF;
   TMR1L = tmp;
-  V.clock_500hz++;
-  LATAbits.LATA2 = 0;
+  if (++tickwidth > 20) {
+   tickwidth = 0;
+   LATBbits.LATB3 = 0;
+   LATAbits.LATA2 = 1;
+   LATAbits.LATA1 = 0;
+  }
  }
 
  if (INTCONbits.TMR0IF) {
@@ -3409,115 +3331,18 @@ void __attribute__((picinterrupt(("")))) tm_handler(void)
   TMR0H = tmp;
   tmp = 26500 & 0xFF;
   TMR0L = tmp;
-  V.clock_2hz++;
-  V.clock_blinks++;
-  led_blink();
   if (++tick60 > 240) {
    tick60 = 0;
+   tickwidth = 0;
+   LATBbits.LATB3 = 1;
+   LATAbits.LATA2 = 0;
    LATAbits.LATA1 = 1;
    PIR1bits.TMR1IF = 0;
-   tmp = 0xf660 >> 8;
+   tmp = 00001 >> 8;
    TMR1H = tmp;
-   tmp = 0xf660 & 0xFF;
+   tmp = 00001 & 0xFF;
    TMR1L = tmp;
   }
+  LATBbits.LATB0 = ~LATBbits.LATB0;
  }
-
- if (PIR1bits.TMR2IF) {
-  PIR1bits.TMR2IF = 0;
- }
-
- if (PIR1bits.CCP1IF) {
-  PIR1bits.CCP1IF = 0;
- }
-
-}
-
-void clear_2hz(void)
-{
- INTCONbits.GIEH = 0;
- V.clock_2hz = 0;
- INTCONbits.GIEH = 1;
-}
-
-void clear_500hz(void)
-{
- INTCONbits.GIEH = 0;
- V.clock_500hz = 0;
- INTCONbits.GIEH = 1;
-}
-
-uint32_t get_2hz(uint8_t mode)
-{
- static uint32_t tmp = 0;
-
- if (mode)
-  return tmp;
-
- INTCONbits.GIEH = 0;
- tmp = V.clock_2hz;
- INTCONbits.GIEH = 1;
- return tmp;
-}
-
-uint32_t get_500hz(uint8_t mode)
-{
- static uint32_t tmp = 0;
-
- if (mode)
-  return tmp;
-
- INTCONbits.GIEH = 0;
- tmp = V.clock_500hz;
- INTCONbits.GIEH = 1;
- return tmp;
-}
-
-
-
-
-
-static void led_blink(void)
-{
-
- if (V.num_blinks == 255) {
-  LATAbits.LATA1 = 1;
-  V.clock_blinks = 0;
-  V.blink_lock = 0;
-  return;
- }
- if (!V.num_blinks || V.num_blinks > 10) {
-  LATAbits.LATA1 = 0;
-  V.clock_blinks = 0;
-  V.blink_lock = 0;
-  return;
- }
-
-
- if (V.clock_blinks > 8) {
-  if ((8 + (V.num_blinks << 1)) <= V.clock_blinks) {
-   V.clock_blinks = 0;
-   LATAbits.LATA1 = 0;
-   V.blink_lock = 0;
-  } else {
-   LATAbits.LATA1 = ~LATAbits.LATA1;
-  }
- }
-}
-
-
-
-
-void set_led_blink(uint8_t blinks)
-{
- if (V.blink_lock)
-  return;
-
- if (blinks > 10 && (blinks != 255))
-  blinks = 0;
-
- INTCONbits.GIEH = 0;
- V.blink_lock = 1;
- V.num_blinks = blinks;
- INTCONbits.GIEH = 1;
 }

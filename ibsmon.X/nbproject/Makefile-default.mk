@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=../ibsmon.c ../ihc_vector.c ../crc.c
+SOURCEFILES_QUOTED_IF_SPACED=../ibsmon.c ../ihc_vector.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/_ext/1472/ibsmon.p1 ${OBJECTDIR}/_ext/1472/ihc_vector.p1 ${OBJECTDIR}/_ext/1472/crc.p1
-POSSIBLE_DEPFILES=${OBJECTDIR}/_ext/1472/ibsmon.p1.d ${OBJECTDIR}/_ext/1472/ihc_vector.p1.d ${OBJECTDIR}/_ext/1472/crc.p1.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/_ext/1472/ibsmon.p1 ${OBJECTDIR}/_ext/1472/ihc_vector.p1
+POSSIBLE_DEPFILES=${OBJECTDIR}/_ext/1472/ibsmon.p1.d ${OBJECTDIR}/_ext/1472/ihc_vector.p1.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/_ext/1472/ibsmon.p1 ${OBJECTDIR}/_ext/1472/ihc_vector.p1 ${OBJECTDIR}/_ext/1472/crc.p1
+OBJECTFILES=${OBJECTDIR}/_ext/1472/ibsmon.p1 ${OBJECTDIR}/_ext/1472/ihc_vector.p1
 
 # Source Files
-SOURCEFILES=../ibsmon.c ../ihc_vector.c ../crc.c
+SOURCEFILES=../ibsmon.c ../ihc_vector.c
 
 
 
@@ -110,14 +110,6 @@ ${OBJECTDIR}/_ext/1472/ihc_vector.p1: ../ihc_vector.c  nbproject/Makefile-${CND_
 	@-${MV} ${OBJECTDIR}/_ext/1472/ihc_vector.d ${OBJECTDIR}/_ext/1472/ihc_vector.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/_ext/1472/ihc_vector.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/1472/crc.p1: ../crc.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/1472" 
-	@${RM} ${OBJECTDIR}/_ext/1472/crc.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/1472/crc.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1    -fno-short-double -fno-short-float -memi=wordwrite -O2 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/_ext/1472/crc.p1 ../crc.c 
-	@-${MV} ${OBJECTDIR}/_ext/1472/crc.d ${OBJECTDIR}/_ext/1472/crc.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/1472/crc.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
 else
 ${OBJECTDIR}/_ext/1472/ibsmon.p1: ../ibsmon.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1472" 
@@ -134,14 +126,6 @@ ${OBJECTDIR}/_ext/1472/ihc_vector.p1: ../ihc_vector.c  nbproject/Makefile-${CND_
 	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c    -fno-short-double -fno-short-float -memi=wordwrite -O2 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/_ext/1472/ihc_vector.p1 ../ihc_vector.c 
 	@-${MV} ${OBJECTDIR}/_ext/1472/ihc_vector.d ${OBJECTDIR}/_ext/1472/ihc_vector.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/_ext/1472/ihc_vector.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
-${OBJECTDIR}/_ext/1472/crc.p1: ../crc.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/1472" 
-	@${RM} ${OBJECTDIR}/_ext/1472/crc.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/1472/crc.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c    -fno-short-double -fno-short-float -memi=wordwrite -O2 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/_ext/1472/crc.p1 ../crc.c 
-	@-${MV} ${OBJECTDIR}/_ext/1472/crc.d ${OBJECTDIR}/_ext/1472/crc.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/1472/crc.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
 endif
 
