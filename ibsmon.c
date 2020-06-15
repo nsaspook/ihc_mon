@@ -57,6 +57,7 @@
 #include "ibsmon.h"
 
 void init_tick60(void);
+extern volatile uint8_t tw;
 
 const char *build_date = __DATE__, *build_time = __TIME__, build_version[5] = "1.0";
 
@@ -75,6 +76,7 @@ void init_tick60(void)
 	IBSPORTB = IBSPORT_IOB;
 	LATA = 0;
 	LATB = 0;
+	INTCON2bits.RBPU = false; // WSEL input pull-up
 
 	//OpenTimer0(TIMER_INT_ON & T0_16BIT & T0_SOURCE_INT & T0_PS_1_64);
 	T0CON = 0b10000101;
@@ -105,6 +107,10 @@ void main(void)
 	init_tick60();
 	/* Loop forever */
 	while (true) { // busy work
-		NOP();
+		if (WSEL) {
+			tw = TICKWIDTH;
+		} else {
+			tw = TICKWIDTH_LONG;
+		}
 	}
 }

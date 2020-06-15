@@ -58,6 +58,25 @@ Version 4.0 HI-TECH Software Intermediate Code
 "594
 [; ;/opt/microchip/xc8/v2.10/pic/include/pic18f1320.h: 594: extern volatile unsigned char LATB __attribute__((address(0xF8A)));
 [v _LATB `Vuc ~T0 @X0 0 e@3978 ]
+"3961
+[; ;/opt/microchip/xc8/v2.10/pic/include/pic18f1320.h: 3961:     struct {
+[s S169 :7 `uc 1 :1 `uc 1 ]
+[n S169 . . NOT_RBPU ]
+"3965
+[; ;/opt/microchip/xc8/v2.10/pic/include/pic18f1320.h: 3965:     struct {
+[s S170 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S170 . RBIP . TMR0IP . INTEDG2 INTEDG1 INTEDG0 nRBPU ]
+"3975
+[; ;/opt/microchip/xc8/v2.10/pic/include/pic18f1320.h: 3975:     struct {
+[s S171 :2 `uc 1 :1 `uc 1 :4 `uc 1 :1 `uc 1 ]
+[n S171 . . T0IP . RBPU ]
+"3960
+[; ;/opt/microchip/xc8/v2.10/pic/include/pic18f1320.h: 3960: typedef union {
+[u S168 `S169 1 `S170 1 `S171 1 ]
+[n S168 . . . . ]
+"3982
+[; ;/opt/microchip/xc8/v2.10/pic/include/pic18f1320.h: 3982: extern volatile INTCON2bits_t INTCON2bits __attribute__((address(0xFF1)));
+[v _INTCON2bits `VS168 ~T0 @X0 0 e@4081 ]
 "3507
 [; ;/opt/microchip/xc8/v2.10/pic/include/pic18f1320.h: 3507: extern volatile unsigned char T0CON __attribute__((address(0xFD5)));
 [v _T0CON `Vuc ~T0 @X0 0 e@4053 ]
@@ -95,25 +114,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 "4068
 [; ;/opt/microchip/xc8/v2.10/pic/include/pic18f1320.h: 4068: extern volatile INTCONbits_t INTCONbits __attribute__((address(0xFF2)));
 [v _INTCONbits `VS172 ~T0 @X0 0 e@4082 ]
-"3961
-[; ;/opt/microchip/xc8/v2.10/pic/include/pic18f1320.h: 3961:     struct {
-[s S169 :7 `uc 1 :1 `uc 1 ]
-[n S169 . . NOT_RBPU ]
-"3965
-[; ;/opt/microchip/xc8/v2.10/pic/include/pic18f1320.h: 3965:     struct {
-[s S170 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S170 . RBIP . TMR0IP . INTEDG2 INTEDG1 INTEDG0 nRBPU ]
-"3975
-[; ;/opt/microchip/xc8/v2.10/pic/include/pic18f1320.h: 3975:     struct {
-[s S171 :2 `uc 1 :1 `uc 1 :4 `uc 1 :1 `uc 1 ]
-[n S171 . . T0IP . RBPU ]
-"3960
-[; ;/opt/microchip/xc8/v2.10/pic/include/pic18f1320.h: 3960: typedef union {
-[u S168 `S169 1 `S170 1 `S171 1 ]
-[n S168 . . . . ]
-"3982
-[; ;/opt/microchip/xc8/v2.10/pic/include/pic18f1320.h: 3982: extern volatile INTCON2bits_t INTCON2bits __attribute__((address(0xFF1)));
-[v _INTCON2bits `VS168 ~T0 @X0 0 e@4081 ]
 "1194
 [; ;/opt/microchip/xc8/v2.10/pic/include/pic18f1320.h: 1194:     struct {
 [s S44 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
@@ -145,9 +145,48 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;/opt/microchip/xc8/v2.10/pic/include/pic18f1320.h: 1341: extern volatile IPR1bits_t IPR1bits __attribute__((address(0xF9F)));
 [v _IPR1bits `VS49 ~T0 @X0 0 e@3999 ]
 [p mainexit ]
-"50 /opt/microchip/xc8/v2.10/pic/include/pic18.h
-[v ___nop `(v ~T0 @X0 0 ef ]
-[p i ___nop ]
+"250
+[; ;/opt/microchip/xc8/v2.10/pic/include/pic18f1320.h: 250:     struct {
+[s S14 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S14 . RB0 RB1 RB2 RB3 RB4 RB5 RB6 RB7 ]
+"260
+[; ;/opt/microchip/xc8/v2.10/pic/include/pic18f1320.h: 260:     struct {
+[s S15 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S15 . AN4 AN5 . CCP1 AN6 PGM PGC PGD ]
+"270
+[; ;/opt/microchip/xc8/v2.10/pic/include/pic18f1320.h: 270:     struct {
+[s S16 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S16 . INT0 INT1 INT2 . KBI0 KBI1 KBI2 KBI3 ]
+"280
+[; ;/opt/microchip/xc8/v2.10/pic/include/pic18f1320.h: 280:     struct {
+[s S17 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S17 . . CK P1B P1A DT . P1C P1D ]
+"290
+[; ;/opt/microchip/xc8/v2.10/pic/include/pic18f1320.h: 290:     struct {
+[s S18 :1 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S18 . . TX . RX . T1OSO T1OSI ]
+"299
+[; ;/opt/microchip/xc8/v2.10/pic/include/pic18f1320.h: 299:     struct {
+[s S19 :6 `uc 1 :1 `uc 1 ]
+[n S19 . . T13CKI ]
+"303
+[; ;/opt/microchip/xc8/v2.10/pic/include/pic18f1320.h: 303:     struct {
+[s S20 :6 `uc 1 :1 `uc 1 ]
+[n S20 . . T1CKI ]
+"307
+[; ;/opt/microchip/xc8/v2.10/pic/include/pic18f1320.h: 307:     struct {
+[s S21 :3 `uc 1 :1 `uc 1 ]
+[n S21 . . CCP2_PA2 ]
+"249
+[; ;/opt/microchip/xc8/v2.10/pic/include/pic18f1320.h: 249: typedef union {
+[u S13 `S14 1 `S15 1 `S16 1 `S17 1 `S18 1 `S19 1 `S20 1 `S21 1 ]
+[n S13 . . . . . . . . . ]
+"312
+[; ;/opt/microchip/xc8/v2.10/pic/include/pic18f1320.h: 312: extern volatile PORTBbits_t PORTBbits __attribute__((address(0xF81)));
+[v _PORTBbits `VS13 ~T0 @X0 0 e@3969 ]
+"60 ../ibsmon.c
+[; ;../ibsmon.c: 60: extern volatile uint8_t tw;
+[v _tw `Vuc ~T0 @X0 0 e ]
 "54 /opt/microchip/xc8/v2.10/pic/include/pic18f1320.h
 [; ;/opt/microchip/xc8/v2.10/pic/include/pic18f1320.h: 54: __asm("PORTA equ 0F80h");
 [; <" PORTA equ 0F80h ;# ">
@@ -525,8 +564,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [p x EBTR1 = OFF ]
 "49
 [p x EBTRB = OFF ]
-"61
-[; ;../ibsmon.c: 61: const char *build_date = "Jun 14 2020", *build_time = "21:01:55", build_version[5] = "1.0";
+"62
+[; ;../ibsmon.c: 62: const char *build_date = "Jun 15 2020", *build_time = "10:33:51", build_version[5] = "1.0";
 [v _build_date `*Cuc ~T0 @X0 1 e ]
 [i _build_date
 :s 1C
@@ -544,124 +583,144 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> 0 `c
 ..
 ]
-"63
-[; ;../ibsmon.c: 63: void init_tick60(void)
-[v _init_tick60 `(v ~T0 @X0 1 ef ]
 "64
-[; ;../ibsmon.c: 64: {
+[; ;../ibsmon.c: 64: void init_tick60(void)
+[v _init_tick60 `(v ~T0 @X0 1 ef ]
+"65
+[; ;../ibsmon.c: 65: {
 {
 [e :U _init_tick60 ]
 [f ]
-"65
-[; ;../ibsmon.c: 65:  uint16_t tmp;
+"66
+[; ;../ibsmon.c: 66:  uint16_t tmp;
 [v _tmp `us ~T0 @X0 1 a ]
-"67
-[; ;../ibsmon.c: 67:  ADCON1 = 0x7F;
-[e = _ADCON1 -> -> 127 `i `uc ]
 "68
-[; ;../ibsmon.c: 68:  INTCON = 0;
-[e = _INTCON -> -> 0 `i `uc ]
+[; ;../ibsmon.c: 68:  ADCON1 = 0x7F;
+[e = _ADCON1 -> -> 127 `i `uc ]
 "69
-[; ;../ibsmon.c: 69:  INTCON2 = 0;
-[e = _INTCON2 -> -> 0 `i `uc ]
+[; ;../ibsmon.c: 69:  INTCON = 0;
+[e = _INTCON -> -> 0 `i `uc ]
 "70
-[; ;../ibsmon.c: 70:  PIE1 = 0;
+[; ;../ibsmon.c: 70:  INTCON2 = 0;
+[e = _INTCON2 -> -> 0 `i `uc ]
+"71
+[; ;../ibsmon.c: 71:  PIE1 = 0;
 [e = _PIE1 -> -> 0 `i `uc ]
-"72
-[; ;../ibsmon.c: 72:  RCONbits.IPEN = 1;
+"73
+[; ;../ibsmon.c: 73:  RCONbits.IPEN = 1;
 [e = . . _RCONbits 5 6 -> -> 1 `i `uc ]
-"74
-[; ;../ibsmon.c: 74:  TRISA = 0b00010000;
-[e = _TRISA -> -> 16 `i `uc ]
 "75
-[; ;../ibsmon.c: 75:  TRISB = 0b00000000;
-[e = _TRISB -> -> 0 `i `uc ]
+[; ;../ibsmon.c: 75:  TRISA = 0b00010000;
+[e = _TRISA -> -> 16 `i `uc ]
 "76
-[; ;../ibsmon.c: 76:  LATA = 0;
-[e = _LATA -> -> 0 `i `uc ]
+[; ;../ibsmon.c: 76:  TRISB = 0b00010000;
+[e = _TRISB -> -> 16 `i `uc ]
 "77
-[; ;../ibsmon.c: 77:  LATB = 0;
+[; ;../ibsmon.c: 77:  LATA = 0;
+[e = _LATA -> -> 0 `i `uc ]
+"78
+[; ;../ibsmon.c: 78:  LATB = 0;
 [e = _LATB -> -> 0 `i `uc ]
-"80
-[; ;../ibsmon.c: 80:  T0CON = 0b10000101;
-[e = _T0CON -> -> 133 `i `uc ]
-"81
-[; ;../ibsmon.c: 81:  tmp = 26500 >> 8;
-[e = _tmp -> >> -> 26500 `i -> 8 `i `us ]
+"79
+[; ;../ibsmon.c: 79:  INTCON2bits.RBPU = 0;
+[e = . . _INTCON2bits 2 3 -> -> 0 `i `uc ]
 "82
-[; ;../ibsmon.c: 82:  TMR0H = tmp;
-[e = _TMR0H -> _tmp `uc ]
+[; ;../ibsmon.c: 82:  T0CON = 0b10000101;
+[e = _T0CON -> -> 133 `i `uc ]
 "83
-[; ;../ibsmon.c: 83:  tmp = 26500 & 0xFF;
-[e = _tmp -> & -> 26500 `i -> 255 `i `us ]
+[; ;../ibsmon.c: 83:  tmp = 26636 >> 8;
+[e = _tmp -> >> -> 26636 `i -> 8 `i `us ]
 "84
-[; ;../ibsmon.c: 84:  TMR0L = tmp;
-[e = _TMR0L -> _tmp `uc ]
+[; ;../ibsmon.c: 84:  TMR0H = tmp;
+[e = _TMR0H -> _tmp `uc ]
+"85
+[; ;../ibsmon.c: 85:  tmp = 26636 & 0xFF;
+[e = _tmp -> & -> 26636 `i -> 255 `i `us ]
 "86
-[; ;../ibsmon.c: 86:  T1CON = 0b1011101;
-[e = _T1CON -> -> 93 `i `uc ]
-"87
-[; ;../ibsmon.c: 87:  tmp = 00001 >> 8;
-[e = _tmp -> >> -> 1 `i -> 8 `i `us ]
+[; ;../ibsmon.c: 86:  TMR0L = tmp;
+[e = _TMR0L -> _tmp `uc ]
 "88
-[; ;../ibsmon.c: 88:  TMR1H = tmp;
-[e = _TMR1H -> _tmp `uc ]
+[; ;../ibsmon.c: 88:  T1CON = 0b1011101;
+[e = _T1CON -> -> 93 `i `uc ]
 "89
-[; ;../ibsmon.c: 89:  tmp = 00001 & 0xFF;
-[e = _tmp -> & -> 1 `i -> 255 `i `us ]
+[; ;../ibsmon.c: 89:  tmp = 00001 >> 8;
+[e = _tmp -> >> -> 1 `i -> 8 `i `us ]
 "90
-[; ;../ibsmon.c: 90:  TMR1L = tmp;
+[; ;../ibsmon.c: 90:  TMR1H = tmp;
+[e = _TMR1H -> _tmp `uc ]
+"91
+[; ;../ibsmon.c: 91:  tmp = 00001 & 0xFF;
+[e = _tmp -> & -> 1 `i -> 255 `i `us ]
+"92
+[; ;../ibsmon.c: 92:  TMR1L = tmp;
 [e = _TMR1L -> _tmp `uc ]
-"93
-[; ;../ibsmon.c: 93:  INTCONbits.TMR0IE = 1;
-[e = . . _INTCONbits 0 5 -> -> 1 `i `uc ]
-"94
-[; ;../ibsmon.c: 94:  INTCON2bits.TMR0IP = 1;
-[e = . . _INTCON2bits 1 2 -> -> 1 `i `uc ]
 "95
-[; ;../ibsmon.c: 95:  PIE1bits.TMR1IE = 1;
-[e = . . _PIE1bits 0 0 -> -> 1 `i `uc ]
+[; ;../ibsmon.c: 95:  INTCONbits.TMR0IE = 1;
+[e = . . _INTCONbits 0 5 -> -> 1 `i `uc ]
 "96
-[; ;../ibsmon.c: 96:  IPR1bits.TMR1IP = 1;
+[; ;../ibsmon.c: 96:  INTCON2bits.TMR0IP = 1;
+[e = . . _INTCON2bits 1 2 -> -> 1 `i `uc ]
+"97
+[; ;../ibsmon.c: 97:  PIE1bits.TMR1IE = 1;
+[e = . . _PIE1bits 0 0 -> -> 1 `i `uc ]
+"98
+[; ;../ibsmon.c: 98:  IPR1bits.TMR1IP = 1;
 [e = . . _IPR1bits 0 0 -> -> 1 `i `uc ]
-"99
-[; ;../ibsmon.c: 99:  INTCONbits.PEIE = 1;
-[e = . . _INTCONbits 1 6 -> -> 1 `i `uc ]
-"100
-[; ;../ibsmon.c: 100:  INTCONbits.GIEH = 1;
-[e = . . _INTCONbits 2 6 -> -> 1 `i `uc ]
 "101
-[; ;../ibsmon.c: 101: }
+[; ;../ibsmon.c: 101:  INTCONbits.PEIE = 1;
+[e = . . _INTCONbits 1 6 -> -> 1 `i `uc ]
+"102
+[; ;../ibsmon.c: 102:  INTCONbits.GIEH = 1;
+[e = . . _INTCONbits 2 6 -> -> 1 `i `uc ]
+"103
+[; ;../ibsmon.c: 103: }
 [e :UE 183 ]
 }
 [v $root$_main `(v ~T0 @X0 0 e ]
-"103
-[; ;../ibsmon.c: 103: void main(void)
+"105
+[; ;../ibsmon.c: 105: void main(void)
 [v _main `(v ~T0 @X0 1 ef ]
-"104
-[; ;../ibsmon.c: 104: {
+"106
+[; ;../ibsmon.c: 106: {
 {
 [e :U _main ]
 [f ]
-"105
-[; ;../ibsmon.c: 105:  init_tick60();
-[e ( _init_tick60 ..  ]
 "107
-[; ;../ibsmon.c: 107:  while (1) {
+[; ;../ibsmon.c: 107:  init_tick60();
+[e ( _init_tick60 ..  ]
+"109
+[; ;../ibsmon.c: 109:  while (1) {
 [e :U 186 ]
 {
-"108
-[; ;../ibsmon.c: 108:   __nop();
-[e ( ___nop ..  ]
-"109
-[; ;../ibsmon.c: 109:  }
+"110
+[; ;../ibsmon.c: 110:   if (PORTBbits.RB4) {
+[e $ ! != -> . . _PORTBbits 0 4 `i -> 0 `i 188  ]
+{
+"111
+[; ;../ibsmon.c: 111:    tw = 18;
+[e = _tw -> -> 18 `i `uc ]
+"112
+[; ;../ibsmon.c: 112:   } else {
+}
+[e $U 189  ]
+[e :U 188 ]
+{
+"113
+[; ;../ibsmon.c: 113:    tw = 72;
+[e = _tw -> -> 72 `i `uc ]
+"114
+[; ;../ibsmon.c: 114:   }
+}
+[e :U 189 ]
+"115
+[; ;../ibsmon.c: 115:  }
 }
 [e :U 185 ]
 [e $U 186  ]
 [e :U 187 ]
-"110
-[; ;../ibsmon.c: 110: }
+"116
+[; ;../ibsmon.c: 116: }
 [e :UE 184 ]
 }
-[a 2C 50 49 58 48 49 58 53 53 0 ]
-[a 1C 74 117 110 32 49 52 32 50 48 50 48 0 ]
+[a 2C 49 48 58 51 51 58 53 49 0 ]
+[a 1C 74 117 110 32 49 53 32 50 48 50 48 0 ]

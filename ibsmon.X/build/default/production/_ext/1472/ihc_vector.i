@@ -3372,6 +3372,8 @@ void *memccpy (void *restrict, const void *restrict, int, size_t);
 # 19 "../ihc_vector.h" 2
 # 2 "../ihc_vector.c" 2
 
+volatile uint8_t tw;
+
 void __attribute__((picinterrupt(("")))) tm_handler(void)
 {
  static uint8_t tick60 = 0, tickwidth = 0;
@@ -3383,7 +3385,7 @@ void __attribute__((picinterrupt(("")))) tm_handler(void)
   TMR1H = tmp;
   tmp = 00001 & 0xFF;
   TMR1L = tmp;
-  if (++tickwidth > 20) {
+  if (++tickwidth > tw) {
    tickwidth = 0;
    LATBbits.LATB3 = 0;
    LATAbits.LATA2 = 1;
@@ -3393,9 +3395,9 @@ void __attribute__((picinterrupt(("")))) tm_handler(void)
 
  if (INTCONbits.TMR0IF) {
   INTCONbits.TMR0IF = 0;
-  tmp = 26500 >> 8;
+  tmp = 26636 >> 8;
   TMR0H = tmp;
-  tmp = 26500 & 0xFF;
+  tmp = 26636 & 0xFF;
   TMR0L = tmp;
   if (++tick60 > 240) {
    tick60 = 0;

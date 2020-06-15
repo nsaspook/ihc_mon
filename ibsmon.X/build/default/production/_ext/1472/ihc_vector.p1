@@ -410,139 +410,142 @@ Version 4.0 HI-TECH Software Intermediate Code
 "4387
 [; ;/opt/microchip/xc8/v2.10/pic/include/pic18f1320.h: 4387: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
-[v $root$_tm_handler `(v ~T0 @X0 0 e ]
 "3 ../ihc_vector.c
-[; ;../ihc_vector.c: 3: void __attribute__((picinterrupt(("")))) tm_handler(void)
+[; ;../ihc_vector.c: 3: volatile uint8_t tw;
+[v _tw `Vuc ~T0 @X0 1 e ]
+[v $root$_tm_handler `(v ~T0 @X0 0 e ]
+"5
+[; ;../ihc_vector.c: 5: void __attribute__((picinterrupt(("")))) tm_handler(void)
 [v _tm_handler `(v ~T16 @X0 1 ef ]
-"4
-[; ;../ihc_vector.c: 4: {
+"6
+[; ;../ihc_vector.c: 6: {
 {
 [e :U _tm_handler ]
 [f ]
-"5
-[; ;../ihc_vector.c: 5:  static uint8_t tick60 = 0, tickwidth = 0;
-[v F2190 `uc ~T0 @X0 1 s tick60 ]
-[i F2190
--> -> 0 `i `uc
-]
-[v F2191 `uc ~T0 @X0 1 s tickwidth ]
+"7
+[; ;../ihc_vector.c: 7:  static uint8_t tick60 = 0, tickwidth = 0;
+[v F2191 `uc ~T0 @X0 1 s tick60 ]
 [i F2191
 -> -> 0 `i `uc
 ]
-"6
-[; ;../ihc_vector.c: 6:  uint16_t tmp;
-[v _tmp `us ~T0 @X0 1 a ]
+[v F2192 `uc ~T0 @X0 1 s tickwidth ]
+[i F2192
+-> -> 0 `i `uc
+]
 "8
-[; ;../ihc_vector.c: 8:  if (PIR1bits.TMR1IF) {
+[; ;../ihc_vector.c: 8:  uint16_t tmp;
+[v _tmp `us ~T0 @X0 1 a ]
+"10
+[; ;../ihc_vector.c: 10:  if (PIR1bits.TMR1IF) {
 [e $ ! != -> . . _PIR1bits 0 0 `i -> 0 `i 184  ]
 {
-"9
-[; ;../ihc_vector.c: 9:   PIR1bits.TMR1IF = 0;
-[e = . . _PIR1bits 0 0 -> -> 0 `i `uc ]
-"10
-[; ;../ihc_vector.c: 10:   tmp = 00001 >> 8;
-[e = _tmp -> >> -> 1 `i -> 8 `i `us ]
 "11
-[; ;../ihc_vector.c: 11:   TMR1H = tmp;
-[e = _TMR1H -> _tmp `uc ]
+[; ;../ihc_vector.c: 11:   PIR1bits.TMR1IF = 0;
+[e = . . _PIR1bits 0 0 -> -> 0 `i `uc ]
 "12
-[; ;../ihc_vector.c: 12:   tmp = 00001 & 0xFF;
-[e = _tmp -> & -> 1 `i -> 255 `i `us ]
+[; ;../ihc_vector.c: 12:   tmp = 00001 >> 8;
+[e = _tmp -> >> -> 1 `i -> 8 `i `us ]
 "13
-[; ;../ihc_vector.c: 13:   TMR1L = tmp;
-[e = _TMR1L -> _tmp `uc ]
+[; ;../ihc_vector.c: 13:   TMR1H = tmp;
+[e = _TMR1H -> _tmp `uc ]
 "14
-[; ;../ihc_vector.c: 14:   if (++tickwidth > 20) {
-[e $ ! > -> =+ F2191 -> -> 1 `i `uc `i -> 20 `i 185  ]
-{
+[; ;../ihc_vector.c: 14:   tmp = 00001 & 0xFF;
+[e = _tmp -> & -> 1 `i -> 255 `i `us ]
 "15
-[; ;../ihc_vector.c: 15:    tickwidth = 0;
-[e = F2191 -> -> 0 `i `uc ]
+[; ;../ihc_vector.c: 15:   TMR1L = tmp;
+[e = _TMR1L -> _tmp `uc ]
 "16
-[; ;../ihc_vector.c: 16:    LATBbits.LATB3 = 0;
-[e = . . _LATBbits 0 3 -> -> 0 `i `uc ]
+[; ;../ihc_vector.c: 16:   if (++tickwidth > tw) {
+[e $ ! > -> =+ F2192 -> -> 1 `i `uc `i -> _tw `i 185  ]
+{
 "17
-[; ;../ihc_vector.c: 17:    LATAbits.LATA2 = 1;
-[e = . . _LATAbits 0 2 -> -> 1 `i `uc ]
+[; ;../ihc_vector.c: 17:    tickwidth = 0;
+[e = F2192 -> -> 0 `i `uc ]
 "18
-[; ;../ihc_vector.c: 18:    LATAbits.LATA1 = 0;
-[e = . . _LATAbits 0 1 -> -> 0 `i `uc ]
+[; ;../ihc_vector.c: 18:    LATBbits.LATB3 = 0;
+[e = . . _LATBbits 0 3 -> -> 0 `i `uc ]
 "19
-[; ;../ihc_vector.c: 19:   }
+[; ;../ihc_vector.c: 19:    LATAbits.LATA2 = 1;
+[e = . . _LATAbits 0 2 -> -> 1 `i `uc ]
+"20
+[; ;../ihc_vector.c: 20:    LATAbits.LATA1 = 0;
+[e = . . _LATAbits 0 1 -> -> 0 `i `uc ]
+"21
+[; ;../ihc_vector.c: 21:   }
 }
 [e :U 185 ]
-"20
-[; ;../ihc_vector.c: 20:  }
+"22
+[; ;../ihc_vector.c: 22:  }
 }
 [e :U 184 ]
-"22
-[; ;../ihc_vector.c: 22:  if (INTCONbits.TMR0IF) {
+"24
+[; ;../ihc_vector.c: 24:  if (INTCONbits.TMR0IF) {
 [e $ ! != -> . . _INTCONbits 0 2 `i -> 0 `i 186  ]
 {
-"23
-[; ;../ihc_vector.c: 23:   INTCONbits.TMR0IF = 0;
-[e = . . _INTCONbits 0 2 -> -> 0 `i `uc ]
-"24
-[; ;../ihc_vector.c: 24:   tmp = 26500 >> 8;
-[e = _tmp -> >> -> 26500 `i -> 8 `i `us ]
 "25
-[; ;../ihc_vector.c: 25:   TMR0H = tmp;
-[e = _TMR0H -> _tmp `uc ]
+[; ;../ihc_vector.c: 25:   INTCONbits.TMR0IF = 0;
+[e = . . _INTCONbits 0 2 -> -> 0 `i `uc ]
 "26
-[; ;../ihc_vector.c: 26:   tmp = 26500 & 0xFF;
-[e = _tmp -> & -> 26500 `i -> 255 `i `us ]
+[; ;../ihc_vector.c: 26:   tmp = 26636 >> 8;
+[e = _tmp -> >> -> 26636 `i -> 8 `i `us ]
 "27
-[; ;../ihc_vector.c: 27:   TMR0L = tmp;
-[e = _TMR0L -> _tmp `uc ]
+[; ;../ihc_vector.c: 27:   TMR0H = tmp;
+[e = _TMR0H -> _tmp `uc ]
 "28
-[; ;../ihc_vector.c: 28:   if (++tick60 > 240) {
-[e $ ! > -> =+ F2190 -> -> 1 `i `uc `i -> 240 `i 187  ]
-{
+[; ;../ihc_vector.c: 28:   tmp = 26636 & 0xFF;
+[e = _tmp -> & -> 26636 `i -> 255 `i `us ]
 "29
-[; ;../ihc_vector.c: 29:    tick60 = 0;
-[e = F2190 -> -> 0 `i `uc ]
+[; ;../ihc_vector.c: 29:   TMR0L = tmp;
+[e = _TMR0L -> _tmp `uc ]
 "30
-[; ;../ihc_vector.c: 30:    tickwidth = 0;
-[e = F2191 -> -> 0 `i `uc ]
+[; ;../ihc_vector.c: 30:   if (++tick60 > 240) {
+[e $ ! > -> =+ F2191 -> -> 1 `i `uc `i -> 240 `i 187  ]
+{
 "31
-[; ;../ihc_vector.c: 31:    LATBbits.LATB3 = 1;
-[e = . . _LATBbits 0 3 -> -> 1 `i `uc ]
+[; ;../ihc_vector.c: 31:    tick60 = 0;
+[e = F2191 -> -> 0 `i `uc ]
 "32
-[; ;../ihc_vector.c: 32:    LATAbits.LATA2 = 0;
-[e = . . _LATAbits 0 2 -> -> 0 `i `uc ]
+[; ;../ihc_vector.c: 32:    tickwidth = 0;
+[e = F2192 -> -> 0 `i `uc ]
 "33
-[; ;../ihc_vector.c: 33:    LATAbits.LATA1 = 1;
-[e = . . _LATAbits 0 1 -> -> 1 `i `uc ]
+[; ;../ihc_vector.c: 33:    LATBbits.LATB3 = 1;
+[e = . . _LATBbits 0 3 -> -> 1 `i `uc ]
 "34
-[; ;../ihc_vector.c: 34:    LATBbits.LATB2 = ~LATBbits.LATB2;
-[e = . . _LATBbits 0 2 -> ~ -> . . _LATBbits 0 2 `i `uc ]
+[; ;../ihc_vector.c: 34:    LATAbits.LATA2 = 0;
+[e = . . _LATAbits 0 2 -> -> 0 `i `uc ]
 "35
-[; ;../ihc_vector.c: 35:    PIR1bits.TMR1IF = 0;
-[e = . . _PIR1bits 0 0 -> -> 0 `i `uc ]
+[; ;../ihc_vector.c: 35:    LATAbits.LATA1 = 1;
+[e = . . _LATAbits 0 1 -> -> 1 `i `uc ]
 "36
-[; ;../ihc_vector.c: 36:    tmp = 00001 >> 8;
-[e = _tmp -> >> -> 1 `i -> 8 `i `us ]
+[; ;../ihc_vector.c: 36:    LATBbits.LATB2 = ~LATBbits.LATB2;
+[e = . . _LATBbits 0 2 -> ~ -> . . _LATBbits 0 2 `i `uc ]
 "37
-[; ;../ihc_vector.c: 37:    TMR1H = tmp;
-[e = _TMR1H -> _tmp `uc ]
+[; ;../ihc_vector.c: 37:    PIR1bits.TMR1IF = 0;
+[e = . . _PIR1bits 0 0 -> -> 0 `i `uc ]
 "38
-[; ;../ihc_vector.c: 38:    tmp = 00001 & 0xFF;
-[e = _tmp -> & -> 1 `i -> 255 `i `us ]
+[; ;../ihc_vector.c: 38:    tmp = 00001 >> 8;
+[e = _tmp -> >> -> 1 `i -> 8 `i `us ]
 "39
-[; ;../ihc_vector.c: 39:    TMR1L = tmp;
-[e = _TMR1L -> _tmp `uc ]
+[; ;../ihc_vector.c: 39:    TMR1H = tmp;
+[e = _TMR1H -> _tmp `uc ]
 "40
-[; ;../ihc_vector.c: 40:   }
+[; ;../ihc_vector.c: 40:    tmp = 00001 & 0xFF;
+[e = _tmp -> & -> 1 `i -> 255 `i `us ]
+"41
+[; ;../ihc_vector.c: 41:    TMR1L = tmp;
+[e = _TMR1L -> _tmp `uc ]
+"42
+[; ;../ihc_vector.c: 42:   }
 }
 [e :U 187 ]
-"41
-[; ;../ihc_vector.c: 41:   LATBbits.LATB0 = ~LATBbits.LATB0;
+"43
+[; ;../ihc_vector.c: 43:   LATBbits.LATB0 = ~LATBbits.LATB0;
 [e = . . _LATBbits 0 0 -> ~ -> . . _LATBbits 0 0 `i `uc ]
-"42
-[; ;../ihc_vector.c: 42:  }
+"44
+[; ;../ihc_vector.c: 44:  }
 }
 [e :U 186 ]
-"43
-[; ;../ihc_vector.c: 43: }
+"45
+[; ;../ihc_vector.c: 45: }
 [e :UE 183 ]
 }

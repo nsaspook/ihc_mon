@@ -12,22 +12,22 @@
 #include "ihc_vector.h"
 
 #define TICK60		240 // 240 for 60 seconds
-#define TICKWIDTH	20 // 20 for about 250ms
+#define TICKWIDTH	18 // 19 for about 250ms
+#define TICKWIDTH_LONG	72
 
-#define	TIMERFAST	26500			// tick timer, fine tune this to calibrate 60 second ticks
-#define	SAMPLEFREQ	00001			// tick duration
-
-
+#define	TIMERFAST	26636	// tick timer, fine tune this to calibrate 60 second ticks, 26636 = 119.99926 seconds
+#define	SAMPLEFREQ	00001	// tick duration time block
 
 #define IBSPORTA	TRISA
 #define IBSPORTB	TRISB
 #define IBSPORT_IOA	0b00010000		//
-#define IBSPORT_IOB	0b00000000		//
+#define IBSPORT_IOB	0b00010000		//
 
 #define LED0		LATAbits.LATA2		// pin 6 pulse signal
 #define LED1		LATAbits.LATA1		// pin 2 pulse signal
 #define ANA_SIG		LATBbits.LATB3		// pulse coupled through 22uf cap, short across cap for ttl level pulse
 #define LED		LATBbits.LATB0		// onboard led flasher
 #define CLOCK		LATBbits.LATB2		// calibration clock output
+#define WSEL		PORTBbits.RB4		// pulse width selection bit
 
 #endif 

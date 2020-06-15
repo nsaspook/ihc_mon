@@ -3430,8 +3430,9 @@ void *memccpy (void *restrict, const void *restrict, int, size_t);
 
 
 void init_tick60(void);
+extern volatile uint8_t tw;
 
-const char *build_date = "Jun 14 2020", *build_time = "21:01:55", build_version[5] = "1.0";
+const char *build_date = "Jun 15 2020", *build_time = "10:33:51", build_version[5] = "1.0";
 
 void init_tick60(void)
 {
@@ -3445,15 +3446,16 @@ void init_tick60(void)
  RCONbits.IPEN = 1;
 
  TRISA = 0b00010000;
- TRISB = 0b00000000;
+ TRISB = 0b00010000;
  LATA = 0;
  LATB = 0;
+ INTCON2bits.RBPU = 0;
 
 
  T0CON = 0b10000101;
- tmp = 26500 >> 8;
+ tmp = 26636 >> 8;
  TMR0H = tmp;
- tmp = 26500 & 0xFF;
+ tmp = 26636 & 0xFF;
  TMR0L = tmp;
 
  T1CON = 0b1011101;
@@ -3478,6 +3480,10 @@ void main(void)
  init_tick60();
 
  while (1) {
-  __nop();
+  if (PORTBbits.RB4) {
+   tw = 18;
+  } else {
+   tw = 72;
+  }
  }
 }

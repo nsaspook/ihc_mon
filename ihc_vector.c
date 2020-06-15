@@ -1,5 +1,7 @@
 #include "ihc_vector.h"
 
+volatile uint8_t tw;
+
 void __interrupt() tm_handler(void) // timer functions are handled here
 {
 	static uint8_t tick60 = 0, tickwidth = 0;
@@ -11,7 +13,7 @@ void __interrupt() tm_handler(void) // timer functions are handled here
 		TMR1H = tmp;
 		tmp = SAMPLEFREQ & 0xFF;
 		TMR1L = tmp;
-		if (++tickwidth > TICKWIDTH) { // pulse width timer trigger
+		if (++tickwidth > tw) { // pulse width timer trigger
 			tickwidth = 0;
 			ANA_SIG = 0;
 			LED0 = 1;
