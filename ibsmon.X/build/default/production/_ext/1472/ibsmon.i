@@ -3129,6 +3129,12 @@ extern __attribute__((nonreentrant)) void _delay3(unsigned char);
 
 
 
+
+# 1 "../ibsmon.h" 1
+
+
+
+
 # 1 "/opt/microchip/xc8/v2.10/pic/include/c99/stdint.h" 1 3
 # 22 "/opt/microchip/xc8/v2.10/pic/include/c99/stdint.h" 3
 # 1 "/opt/microchip/xc8/v2.10/pic/include/c99/bits/alltypes.h" 1 3
@@ -3211,7 +3217,8 @@ typedef int32_t int_fast32_t;
 typedef uint32_t uint_fast16_t;
 typedef uint32_t uint_fast32_t;
 # 140 "/opt/microchip/xc8/v2.10/pic/include/c99/stdint.h" 2 3
-# 56 "../ibsmon.c" 2
+# 5 "../ibsmon.h" 2
+
 
 
 # 1 "/opt/microchip/xc8/v2.10/pic/include/c99/stdio.h" 1 3
@@ -3352,7 +3359,7 @@ char *ctermid(char *);
 
 
 char *tempnam(const char *, const char *);
-# 58 "../ibsmon.c" 2
+# 8 "../ibsmon.h" 2
 
 # 1 "/opt/microchip/xc8/v2.10/pic/include/c99/string.h" 1 3
 # 25 "/opt/microchip/xc8/v2.10/pic/include/c99/string.h" 3
@@ -3408,23 +3415,25 @@ size_t strxfrm_l (char *restrict, const char *restrict, size_t, locale_t);
 
 
 void *memccpy (void *restrict, const void *restrict, int, size_t);
-# 59 "../ibsmon.c" 2
+# 9 "../ibsmon.h" 2
 
+# 1 "/opt/microchip/xc8/v2.10/pic/include/c99/stdbool.h" 1 3
+# 10 "../ibsmon.h" 2
 
-# 1 "../ibsmon.h" 1
-# 61 "../ibsmon.c" 2
 
 # 1 "../ihc_vector.h" 1
-# 62 "../ibsmon.c" 2
+# 18 "../ihc_vector.h"
+# 1 "../ibsmon.h" 1
+# 19 "../ihc_vector.h" 2
+# 12 "../ibsmon.h" 2
+# 57 "../ibsmon.c" 2
 
 
+void init_tick60(void);
 
-void init_ihcmon(void);
+const char *build_date = "Jun 14 2020", *build_time = "21:01:55", build_version[5] = "1.0";
 
-
-const char *build_date = "Jun 14 2020", *build_time = "17:14:35", build_version[5] = "1.7";
-
-void init_ihcmon(void)
+void init_tick60(void)
 {
  uint16_t tmp;
 
@@ -3437,8 +3446,8 @@ void init_ihcmon(void)
 
  TRISA = 0b00010000;
  TRISB = 0b00000000;
- LATA=0;
- LATB=0;
+ LATA = 0;
+ LATB = 0;
 
 
  T0CON = 0b10000101;
@@ -3460,13 +3469,13 @@ void init_ihcmon(void)
  IPR1bits.TMR1IP = 1;
 
 
- INTCONbits.PEIE=1;
+ INTCONbits.PEIE = 1;
  INTCONbits.GIEH = 1;
 }
 
 void main(void)
 {
- init_ihcmon();
+ init_tick60();
 
  while (1) {
   __nop();

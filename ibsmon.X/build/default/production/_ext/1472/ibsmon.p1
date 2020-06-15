@@ -525,8 +525,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [p x EBTR1 = OFF ]
 "49
 [p x EBTRB = OFF ]
-"68
-[; ;../ibsmon.c: 68: const char *build_date = "Jun 14 2020", *build_time = "17:14:35", build_version[5] = "1.7";
+"61
+[; ;../ibsmon.c: 61: const char *build_date = "Jun 14 2020", *build_time = "21:01:55", build_version[5] = "1.0";
 [v _build_date `*Cuc ~T0 @X0 1 e ]
 [i _build_date
 :s 1C
@@ -540,128 +540,128 @@ Version 4.0 HI-TECH Software Intermediate Code
 :U ..
 -> 49 `c
 -> 46 `c
--> 55 `c
+-> 48 `c
 -> 0 `c
 ..
 ]
-"70
-[; ;../ibsmon.c: 70: void init_ihcmon(void)
-[v _init_ihcmon `(v ~T0 @X0 1 ef ]
-"71
-[; ;../ibsmon.c: 71: {
+"63
+[; ;../ibsmon.c: 63: void init_tick60(void)
+[v _init_tick60 `(v ~T0 @X0 1 ef ]
+"64
+[; ;../ibsmon.c: 64: {
 {
-[e :U _init_ihcmon ]
+[e :U _init_tick60 ]
 [f ]
-"72
-[; ;../ibsmon.c: 72:  uint16_t tmp;
+"65
+[; ;../ibsmon.c: 65:  uint16_t tmp;
 [v _tmp `us ~T0 @X0 1 a ]
-"74
-[; ;../ibsmon.c: 74:  ADCON1 = 0x7F;
+"67
+[; ;../ibsmon.c: 67:  ADCON1 = 0x7F;
 [e = _ADCON1 -> -> 127 `i `uc ]
-"75
-[; ;../ibsmon.c: 75:  INTCON = 0;
+"68
+[; ;../ibsmon.c: 68:  INTCON = 0;
 [e = _INTCON -> -> 0 `i `uc ]
-"76
-[; ;../ibsmon.c: 76:  INTCON2 = 0;
+"69
+[; ;../ibsmon.c: 69:  INTCON2 = 0;
 [e = _INTCON2 -> -> 0 `i `uc ]
-"77
-[; ;../ibsmon.c: 77:  PIE1 = 0;
+"70
+[; ;../ibsmon.c: 70:  PIE1 = 0;
 [e = _PIE1 -> -> 0 `i `uc ]
-"79
-[; ;../ibsmon.c: 79:  RCONbits.IPEN = 1;
+"72
+[; ;../ibsmon.c: 72:  RCONbits.IPEN = 1;
 [e = . . _RCONbits 5 6 -> -> 1 `i `uc ]
-"81
-[; ;../ibsmon.c: 81:  TRISA = 0b00010000;
+"74
+[; ;../ibsmon.c: 74:  TRISA = 0b00010000;
 [e = _TRISA -> -> 16 `i `uc ]
-"82
-[; ;../ibsmon.c: 82:  TRISB = 0b00000000;
+"75
+[; ;../ibsmon.c: 75:  TRISB = 0b00000000;
 [e = _TRISB -> -> 0 `i `uc ]
-"83
-[; ;../ibsmon.c: 83:  LATA=0;
+"76
+[; ;../ibsmon.c: 76:  LATA = 0;
 [e = _LATA -> -> 0 `i `uc ]
-"84
-[; ;../ibsmon.c: 84:  LATB=0;
+"77
+[; ;../ibsmon.c: 77:  LATB = 0;
 [e = _LATB -> -> 0 `i `uc ]
-"87
-[; ;../ibsmon.c: 87:  T0CON = 0b10000101;
+"80
+[; ;../ibsmon.c: 80:  T0CON = 0b10000101;
 [e = _T0CON -> -> 133 `i `uc ]
-"88
-[; ;../ibsmon.c: 88:  tmp = 26500 >> 8;
+"81
+[; ;../ibsmon.c: 81:  tmp = 26500 >> 8;
 [e = _tmp -> >> -> 26500 `i -> 8 `i `us ]
-"89
-[; ;../ibsmon.c: 89:  TMR0H = tmp;
+"82
+[; ;../ibsmon.c: 82:  TMR0H = tmp;
 [e = _TMR0H -> _tmp `uc ]
-"90
-[; ;../ibsmon.c: 90:  tmp = 26500 & 0xFF;
+"83
+[; ;../ibsmon.c: 83:  tmp = 26500 & 0xFF;
 [e = _tmp -> & -> 26500 `i -> 255 `i `us ]
-"91
-[; ;../ibsmon.c: 91:  TMR0L = tmp;
+"84
+[; ;../ibsmon.c: 84:  TMR0L = tmp;
 [e = _TMR0L -> _tmp `uc ]
-"93
-[; ;../ibsmon.c: 93:  T1CON = 0b1011101;
+"86
+[; ;../ibsmon.c: 86:  T1CON = 0b1011101;
 [e = _T1CON -> -> 93 `i `uc ]
-"94
-[; ;../ibsmon.c: 94:  tmp = 00001 >> 8;
+"87
+[; ;../ibsmon.c: 87:  tmp = 00001 >> 8;
 [e = _tmp -> >> -> 1 `i -> 8 `i `us ]
-"95
-[; ;../ibsmon.c: 95:  TMR1H = tmp;
+"88
+[; ;../ibsmon.c: 88:  TMR1H = tmp;
 [e = _TMR1H -> _tmp `uc ]
-"96
-[; ;../ibsmon.c: 96:  tmp = 00001 & 0xFF;
+"89
+[; ;../ibsmon.c: 89:  tmp = 00001 & 0xFF;
 [e = _tmp -> & -> 1 `i -> 255 `i `us ]
-"97
-[; ;../ibsmon.c: 97:  TMR1L = tmp;
+"90
+[; ;../ibsmon.c: 90:  TMR1L = tmp;
 [e = _TMR1L -> _tmp `uc ]
-"100
-[; ;../ibsmon.c: 100:  INTCONbits.TMR0IE = 1;
+"93
+[; ;../ibsmon.c: 93:  INTCONbits.TMR0IE = 1;
 [e = . . _INTCONbits 0 5 -> -> 1 `i `uc ]
-"101
-[; ;../ibsmon.c: 101:  INTCON2bits.TMR0IP = 1;
+"94
+[; ;../ibsmon.c: 94:  INTCON2bits.TMR0IP = 1;
 [e = . . _INTCON2bits 1 2 -> -> 1 `i `uc ]
-"102
-[; ;../ibsmon.c: 102:  PIE1bits.TMR1IE = 1;
+"95
+[; ;../ibsmon.c: 95:  PIE1bits.TMR1IE = 1;
 [e = . . _PIE1bits 0 0 -> -> 1 `i `uc ]
-"103
-[; ;../ibsmon.c: 103:  IPR1bits.TMR1IP = 1;
+"96
+[; ;../ibsmon.c: 96:  IPR1bits.TMR1IP = 1;
 [e = . . _IPR1bits 0 0 -> -> 1 `i `uc ]
-"106
-[; ;../ibsmon.c: 106:  INTCONbits.PEIE=1;
+"99
+[; ;../ibsmon.c: 99:  INTCONbits.PEIE = 1;
 [e = . . _INTCONbits 1 6 -> -> 1 `i `uc ]
-"107
-[; ;../ibsmon.c: 107:  INTCONbits.GIEH = 1;
+"100
+[; ;../ibsmon.c: 100:  INTCONbits.GIEH = 1;
 [e = . . _INTCONbits 2 6 -> -> 1 `i `uc ]
-"108
-[; ;../ibsmon.c: 108: }
+"101
+[; ;../ibsmon.c: 101: }
 [e :UE 183 ]
 }
 [v $root$_main `(v ~T0 @X0 0 e ]
-"110
-[; ;../ibsmon.c: 110: void main(void)
+"103
+[; ;../ibsmon.c: 103: void main(void)
 [v _main `(v ~T0 @X0 1 ef ]
-"111
-[; ;../ibsmon.c: 111: {
+"104
+[; ;../ibsmon.c: 104: {
 {
 [e :U _main ]
 [f ]
-"112
-[; ;../ibsmon.c: 112:  init_ihcmon();
-[e ( _init_ihcmon ..  ]
-"114
-[; ;../ibsmon.c: 114:  while (1) {
+"105
+[; ;../ibsmon.c: 105:  init_tick60();
+[e ( _init_tick60 ..  ]
+"107
+[; ;../ibsmon.c: 107:  while (1) {
 [e :U 186 ]
 {
-"115
-[; ;../ibsmon.c: 115:   __nop();
+"108
+[; ;../ibsmon.c: 108:   __nop();
 [e ( ___nop ..  ]
-"116
-[; ;../ibsmon.c: 116:  }
+"109
+[; ;../ibsmon.c: 109:  }
 }
 [e :U 185 ]
 [e $U 186  ]
 [e :U 187 ]
-"117
-[; ;../ibsmon.c: 117: }
+"110
+[; ;../ibsmon.c: 110: }
 [e :UE 184 ]
 }
-[a 2C 49 55 58 49 52 58 51 53 0 ]
+[a 2C 50 49 58 48 49 58 53 53 0 ]
 [a 1C 74 117 110 32 49 52 32 50 48 50 48 0 ]

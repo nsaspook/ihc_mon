@@ -4,7 +4,7 @@
 #include <xc.h>
 
 // CONFIG1H
-#pragma config OSC = HSPLL         // Oscillator Selection bits (HS oscillator,(clock frequency = FOSC1))
+#pragma config OSC = HSPLL         // Oscillator Selection bits (HS oscillator,(clock frequency = FOSC1 * 4))
 #pragma config FSCM = ON        // Fail-Safe Clock Monitor Enable bit (Fail-Safe Clock Monitor enabled)
 #pragma config IESO = ON        // Internal External Switchover bit (Internal External Switchover mode enabled)
 
@@ -51,23 +51,16 @@
 
 /*
  * 60 second timer pulse
+ * 1.0
  */
 
-#include <stdint.h>
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
-#include <pic18f1320.h>
 #include "ibsmon.h"
-#include "ihc_vector.h"
 
+void init_tick60(void);
 
-void init_ihcmon(void);
+const char *build_date = __DATE__, *build_time = __TIME__, build_version[5] = "1.0";
 
-
-const char *build_date = __DATE__, *build_time = __TIME__, build_version[5] = "1.7";
-
-void init_ihcmon(void)
+void init_tick60(void)
 {
 	uint16_t tmp;
 
@@ -80,8 +73,8 @@ void init_ihcmon(void)
 	/* define I/O ports */
 	IBSPORTA = IBSPORT_IOA;
 	IBSPORTB = IBSPORT_IOB;
-	LATA=0;
-	LATB=0;
+	LATA = 0;
+	LATB = 0;
 
 	//OpenTimer0(TIMER_INT_ON & T0_16BIT & T0_SOURCE_INT & T0_PS_1_64);
 	T0CON = 0b10000101;
@@ -103,15 +96,15 @@ void init_ihcmon(void)
 	IPR1bits.TMR1IP = 1; // make it high level
 
 	/* Enable all high priority interrupts */
-	INTCONbits.PEIE=1;
+	INTCONbits.PEIE = 1;
 	INTCONbits.GIEH = 1;
 }
 
 void main(void)
 {
-	init_ihcmon();
+	init_tick60();
 	/* Loop forever */
-	while (TRUE) { // busy work
+	while (true) { // busy work
 		NOP();
 	}
 }
