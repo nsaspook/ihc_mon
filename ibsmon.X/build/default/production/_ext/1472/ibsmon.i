@@ -3422,7 +3422,7 @@ void *memccpy (void *restrict, const void *restrict, int, size_t);
 void init_ihcmon(void);
 
 
-const char *build_date = "Jun 14 2020", *build_time = "16:12:33", build_version[5] = "1.7";
+const char *build_date = "Jun 14 2020", *build_time = "17:14:35", build_version[5] = "1.7";
 
 void init_ihcmon(void)
 {

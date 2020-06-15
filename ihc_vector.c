@@ -31,6 +31,7 @@ void __interrupt() tm_handler(void) // timer/serial functions are handled here
 			ANA_SIG = 1;
 			LED0 = 0;
 			LED1 = 1;
+			CLOCK=~CLOCK; 
 			PIR1bits.TMR1IF = FALSE; //      clear int flag
 			tmp = SAMPLEFREQ >> 8;
 			TMR1H = tmp;

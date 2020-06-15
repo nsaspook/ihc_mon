@@ -514,32 +514,35 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;../ihc_vector.c: 33:    LATAbits.LATA1 = 1;
 [e = . . _LATAbits 0 1 -> -> 1 `i `uc ]
 "34
-[; ;../ihc_vector.c: 34:    PIR1bits.TMR1IF = 0;
-[e = . . _PIR1bits 0 0 -> -> 0 `i `uc ]
+[; ;../ihc_vector.c: 34:    LATBbits.LATB2=~LATBbits.LATB2;
+[e = . . _LATBbits 0 2 -> ~ -> . . _LATBbits 0 2 `i `uc ]
 "35
-[; ;../ihc_vector.c: 35:    tmp = 00001 >> 8;
-[e = _tmp -> >> -> 1 `i -> 8 `i `us ]
+[; ;../ihc_vector.c: 35:    PIR1bits.TMR1IF = 0;
+[e = . . _PIR1bits 0 0 -> -> 0 `i `uc ]
 "36
-[; ;../ihc_vector.c: 36:    TMR1H = tmp;
-[e = _TMR1H -> _tmp `uc ]
+[; ;../ihc_vector.c: 36:    tmp = 00001 >> 8;
+[e = _tmp -> >> -> 1 `i -> 8 `i `us ]
 "37
-[; ;../ihc_vector.c: 37:    tmp = 00001 & 0xFF;
-[e = _tmp -> & -> 1 `i -> 255 `i `us ]
+[; ;../ihc_vector.c: 37:    TMR1H = tmp;
+[e = _TMR1H -> _tmp `uc ]
 "38
-[; ;../ihc_vector.c: 38:    TMR1L = tmp;
-[e = _TMR1L -> _tmp `uc ]
+[; ;../ihc_vector.c: 38:    tmp = 00001 & 0xFF;
+[e = _tmp -> & -> 1 `i -> 255 `i `us ]
 "39
-[; ;../ihc_vector.c: 39:   }
+[; ;../ihc_vector.c: 39:    TMR1L = tmp;
+[e = _TMR1L -> _tmp `uc ]
+"40
+[; ;../ihc_vector.c: 40:   }
 }
 [e :U 186 ]
-"40
-[; ;../ihc_vector.c: 40:   LATBbits.LATB0 = ~LATBbits.LATB0;
-[e = . . _LATBbits 0 0 -> ~ -> . . _LATBbits 0 0 `i `uc ]
 "41
-[; ;../ihc_vector.c: 41:  }
+[; ;../ihc_vector.c: 41:   LATBbits.LATB0 = ~LATBbits.LATB0;
+[e = . . _LATBbits 0 0 -> ~ -> . . _LATBbits 0 0 `i `uc ]
+"42
+[; ;../ihc_vector.c: 42:  }
 }
 [e :U 185 ]
-"42
-[; ;../ihc_vector.c: 42: }
+"43
+[; ;../ihc_vector.c: 43: }
 [e :UE 182 ]
 }

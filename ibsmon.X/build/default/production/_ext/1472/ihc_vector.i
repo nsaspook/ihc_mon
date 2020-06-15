@@ -3337,6 +3337,7 @@ void __attribute__((picinterrupt(("")))) tm_handler(void)
    LATBbits.LATB3 = 1;
    LATAbits.LATA2 = 0;
    LATAbits.LATA1 = 1;
+   LATBbits.LATB2=~LATBbits.LATB2;
    PIR1bits.TMR1IF = 0;
    tmp = 00001 >> 8;
    TMR1H = tmp;
