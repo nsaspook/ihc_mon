@@ -94,7 +94,7 @@ MP_PROCESSOR_OPTION=18F1320
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: compile
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
-${OBJECTDIR}/_ext/1472/ibsmon.p1: ../ibsmon.c  nbproject/Makefile-${CND_CONF}.mk
+${OBJECTDIR}/_ext/1472/ibsmon.p1: ../ibsmon.c  nbproject/Makefile-${CND_CONF}.mk 
 	@${MKDIR} "${OBJECTDIR}/_ext/1472" 
 	@${RM} ${OBJECTDIR}/_ext/1472/ibsmon.p1.d 
 	@${RM} ${OBJECTDIR}/_ext/1472/ibsmon.p1 
@@ -102,7 +102,7 @@ ${OBJECTDIR}/_ext/1472/ibsmon.p1: ../ibsmon.c  nbproject/Makefile-${CND_CONF}.mk
 	@-${MV} ${OBJECTDIR}/_ext/1472/ibsmon.d ${OBJECTDIR}/_ext/1472/ibsmon.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/_ext/1472/ibsmon.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/1472/ihc_vector.p1: ../ihc_vector.c  nbproject/Makefile-${CND_CONF}.mk
+${OBJECTDIR}/_ext/1472/ihc_vector.p1: ../ihc_vector.c  nbproject/Makefile-${CND_CONF}.mk 
 	@${MKDIR} "${OBJECTDIR}/_ext/1472" 
 	@${RM} ${OBJECTDIR}/_ext/1472/ihc_vector.p1.d 
 	@${RM} ${OBJECTDIR}/_ext/1472/ihc_vector.p1 
@@ -110,7 +110,7 @@ ${OBJECTDIR}/_ext/1472/ihc_vector.p1: ../ihc_vector.c  nbproject/Makefile-${CND_
 	@-${MV} ${OBJECTDIR}/_ext/1472/ihc_vector.d ${OBJECTDIR}/_ext/1472/ihc_vector.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/_ext/1472/ihc_vector.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/1472/crc.p1: ../crc.c  nbproject/Makefile-${CND_CONF}.mk
+${OBJECTDIR}/_ext/1472/crc.p1: ../crc.c  nbproject/Makefile-${CND_CONF}.mk 
 	@${MKDIR} "${OBJECTDIR}/_ext/1472" 
 	@${RM} ${OBJECTDIR}/_ext/1472/crc.p1.d 
 	@${RM} ${OBJECTDIR}/_ext/1472/crc.p1 
@@ -119,7 +119,7 @@ ${OBJECTDIR}/_ext/1472/crc.p1: ../crc.c  nbproject/Makefile-${CND_CONF}.mk
 	@${FIXDEPS} ${OBJECTDIR}/_ext/1472/crc.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
 else
-${OBJECTDIR}/_ext/1472/ibsmon.p1: ../ibsmon.c  nbproject/Makefile-${CND_CONF}.mk
+${OBJECTDIR}/_ext/1472/ibsmon.p1: ../ibsmon.c  nbproject/Makefile-${CND_CONF}.mk 
 	@${MKDIR} "${OBJECTDIR}/_ext/1472" 
 	@${RM} ${OBJECTDIR}/_ext/1472/ibsmon.p1.d 
 	@${RM} ${OBJECTDIR}/_ext/1472/ibsmon.p1 
@@ -127,7 +127,7 @@ ${OBJECTDIR}/_ext/1472/ibsmon.p1: ../ibsmon.c  nbproject/Makefile-${CND_CONF}.mk
 	@-${MV} ${OBJECTDIR}/_ext/1472/ibsmon.d ${OBJECTDIR}/_ext/1472/ibsmon.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/_ext/1472/ibsmon.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/1472/ihc_vector.p1: ../ihc_vector.c  nbproject/Makefile-${CND_CONF}.mk
+${OBJECTDIR}/_ext/1472/ihc_vector.p1: ../ihc_vector.c  nbproject/Makefile-${CND_CONF}.mk 
 	@${MKDIR} "${OBJECTDIR}/_ext/1472" 
 	@${RM} ${OBJECTDIR}/_ext/1472/ihc_vector.p1.d 
 	@${RM} ${OBJECTDIR}/_ext/1472/ihc_vector.p1 
@@ -135,7 +135,7 @@ ${OBJECTDIR}/_ext/1472/ihc_vector.p1: ../ihc_vector.c  nbproject/Makefile-${CND_
 	@-${MV} ${OBJECTDIR}/_ext/1472/ihc_vector.d ${OBJECTDIR}/_ext/1472/ihc_vector.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/_ext/1472/ihc_vector.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/1472/crc.p1: ../crc.c  nbproject/Makefile-${CND_CONF}.mk
+${OBJECTDIR}/_ext/1472/crc.p1: ../crc.c  nbproject/Makefile-${CND_CONF}.mk 
 	@${MKDIR} "${OBJECTDIR}/_ext/1472" 
 	@${RM} ${OBJECTDIR}/_ext/1472/crc.p1.d 
 	@${RM} ${OBJECTDIR}/_ext/1472/crc.p1 

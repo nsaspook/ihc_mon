@@ -9,6 +9,7 @@
         </group>
         <group>
             <file>file:/root/ihc_mon/ibsmon.c</file>
+            <file>file:/root/ihc_mon/ihc_vector.c</file>
         </group>
     </open-files>
 </project-private>
