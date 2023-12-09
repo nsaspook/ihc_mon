@@ -55,7 +55,7 @@
  *	nsaspook@nsaspook.com
  * cpu clock 10mhz external
  * Version
- * 1.0 Rover Elite SR485 controller status monitor
+ * 1.0 Rover Elite RS485 controller status monitor
  * 1.1 for rev 1.1 PCB
  * 1.2 full CRC for TX and RX
  * 1.3 status led blinker code
@@ -63,6 +63,7 @@
  * 1.5 switch to High Voltage chip programming
  * 1.6 convert to xc8 compiler
  * 1.7 sequence mode and error modbus commands
+ * 1.8 text cleanup
  */
 
 #include <stdint.h>
@@ -75,6 +76,8 @@
 #include "crc.h"
 
 #define BusyUSART( ) (!TXSTAbits.TRMT)
+#define SLAVE_ID	0x01
+#define SLAVE_CMD	0x03
 
 int8_t controller_work(void);
 void init_ihcmon(void);
@@ -97,7 +100,7 @@ volatile uint8_t cc_stream_file, cc_buffer[MAX_DATA]; // half-duplex so we can s
 uint32_t crc_error;
 comm_type cstate = CLEAR;
 cmd_type modbus_command = G_MODE;
-const char *build_date = __DATE__, *build_time = __TIME__, build_version[5] = "1.7";
+const char *build_date = __DATE__, *build_time = __TIME__, build_version[5] = "1.8";
 
 void SetDCPWM1(uint16_t dutycycle)
 {
@@ -175,7 +178,7 @@ int8_t controller_work(void)
 			switch (modbus_command) {
 			case G_ERROR: // check for controller error codes
 				req_length = sizeof(re20a_error);
-				if ((V.recv_count >= req_length) && (cc_buffer[0] == 0x01) && (cc_buffer[1] == 0x03)) {
+				if ((V.recv_count >= req_length) && (cc_buffer[0] == SLAVE_ID) && (cc_buffer[1] == SLAVE_CMD)) {
 					uint16_t temp;
 					c_crc = crc16(cc_buffer, req_length - 2);
 					c_crc_rec = (uint16_t) ((uint16_t) cc_buffer[req_length - 2] << (uint16_t) 8) | ((uint16_t) cc_buffer[req_length - 1] & 0x00ff);
@@ -200,7 +203,7 @@ int8_t controller_work(void)
 			case G_MODE: // check for current operating mode
 			default:
 				req_length = sizeof(re20a_mode);
-				if ((V.recv_count >= req_length) && (cc_buffer[0] == 0x01) && (cc_buffer[1] == 0x03)) {
+				if ((V.recv_count >= req_length) && (cc_buffer[0] == SLAVE_ID) && (cc_buffer[1] == SLAVE_CMD)) {
 					uint8_t temp;
 					static uint8_t volts = CC_OFFLINE;
 
