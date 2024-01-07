@@ -70,6 +70,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#include <stdbool.h>
 #include <pic18f1320.h>
 #include "ibsmon.h"
 #include "ihc_vector.h"
@@ -85,10 +86,12 @@ uint8_t init_stream_params(void);
 
 uint16_t req_length = 0;
 const uint8_t modbus_cc_mode[] = {0x01, 0x03, 0x01, 0x20, 0x00, 0x01},
+modbus_cc_volts[] = {0x01, 0x03, 0x01, 0x01, 0x00, 0x01},
 modbus_cc_error[] = {0x01, 0x03, 0x01, 0x21, 0x00, 0x02},
 modbus_cc_clear[] = {0x01, 0x79, 0x00, 0x00, 0x00, 0x01},
 modbus_cc_freset[] = {0x01, 0x78, 0x00, 0x00, 0x00, 0x01},
 re20a_mode[] = {0x01, 0x03, 0x02, 0x00, 0x02, 0x39, 0x85},
+re20a_volts[] = {0x01, 0x03, 0x02, 0x00, 0xFB, 0xF8, 0x67},
 re20a_error[] = {0x01, 0x03, 0x04, 0x00, 0x00, 0x00, 0x00, 0x39, 0x85},
 re20a_clear[] = {0x01, 0x79, 0x00, 0x00, 0x00, 0x01, 0x5d, 0xc0},
 re20a_freset[] = {0x01, 0x78, 0x00, 0x00, 0x00, 0x01, 0x60, 0x00};
@@ -133,6 +136,9 @@ int8_t controller_work(void)
 		switch (modbus_command) {
 		case G_ERROR: // error code request
 			req_length = modbus_rtu_send_msg((void*) cc_buffer, (const void *) modbus_cc_error, sizeof(modbus_cc_error));
+			break;
+		case G_VOLTS: // error code request
+			req_length = modbus_rtu_send_msg((void*) cc_buffer, (const void *) modbus_cc_volts, sizeof(modbus_cc_volts));
 			break;
 		case G_MODE: // operating mode request
 		default:
@@ -200,6 +206,29 @@ int8_t controller_work(void)
 					}
 				}
 				break;
+			case G_VOLTS: // check for controller BATTERY VOLTAGE
+				req_length = sizeof(re20a_volts);
+				if ((V.recv_count >= req_length) && (cc_buffer[0] == SLAVE_ID) && (cc_buffer[1] == SLAVE_CMD)) {
+					uint16_t temp;
+					c_crc = crc16(cc_buffer, req_length - 2);
+					c_crc_rec = (uint16_t) ((uint16_t) cc_buffer[req_length - 2] << (uint16_t) 8) | ((uint16_t) cc_buffer[req_length - 1] & 0x00ff);
+					if (c_crc == c_crc_rec) {
+						if ((temp = (cc_buffer[3] << 8) +(cc_buffer[4]&0xff))) {
+							if (temp < (uint16_t) BATLOWVOLTS) {
+								FLOAT = true; // BATTERY UNDERVOLT, TRY TO RECHARGE
+							}
+						} else {
+						}
+					}
+					cstate = CLEAR;
+				} else {
+					if (get_500hz(FALSE) > RDELAY) {
+						cstate = CLEAR;
+						RE20A_ERROR = OFF;
+						mcmd = G_MODE;
+					}
+				}
+				break;
 			case G_MODE: // check for current operating mode
 			default:
 				req_length = sizeof(re20a_mode);
@@ -216,29 +245,37 @@ int8_t controller_work(void)
 							switch (temp) {
 							case 1:
 								volts = CC_ACT;
+								FLOAT = true;
 								break;
 							case 2:
 								volts = CC_MPPT;
+								FLOAT = true;
 								break;
 							case 3:
 								volts = CC_EQUAL;
+								FLOAT = true;
 								break;
 							case 4:
 								volts = CC_BOOST;
+								FLOAT = true;
 								break;
 							case 5:
 								volts = CC_FLOAT;
+								FLOAT = false; // open-drain pulls sensor voltage low
 								break;
 							case 6:
 								volts = CC_LIMIT;
+								FLOAT = true;
 								break;
 							default:
 								volts = CC_ACT;
+								FLOAT = true;
 								break;
 							}
 						} else {
 							set_led_blink(BON);
 							volts = CC_DEACT;
+							FLOAT = true;
 						}
 					} else {
 						crc_error++;
@@ -252,6 +289,7 @@ int8_t controller_work(void)
 						set_led_blink(BOFF);
 						cstate = CLEAR;
 						V.pwm_volts = CC_OFFLINE;
+						FLOAT = true;
 						SetDCPWM1(V.pwm_volts);
 						mcmd = G_MODE;
 					}
@@ -336,6 +374,7 @@ void init_ihcmon(void)
 	IPR1bits.TMR1IP = 1; // make it high level
 
 	init_stream_params();
+	FLOAT = false;
 
 	/* Enable all high priority interrupts */
 	INTCONbits.GIEH = 1;

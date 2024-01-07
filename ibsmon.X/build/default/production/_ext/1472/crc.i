@@ -216,6 +216,7 @@ typedef enum cmd_type {
  G_MODE = 0,
  G_ERROR,
  G_AUX,
+ G_VOLTS,
  G_LAST,
 } cmd_type;
 
@@ -223,7 +224,7 @@ union PWMDC {
  unsigned int lpwm;
  char bpwm[2];
 };
-# 109 "../ibsmon.h"
+# 112 "../ibsmon.h"
 void SetDCPWM1(uint16_t);
 # 16 "../crc.h" 2
 

@@ -456,8 +456,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [f ]
 "7
 [; ;../ihc_vector.c: 7:  static uint8_t c_error = 0;
-[v F2106 `uc ~T0 @X0 1 s c_error ]
-[i F2106
+[v F2107 `uc ~T0 @X0 1 s c_error ]
+[i F2107
 -> -> 0 `i `uc
 ]
 "8
@@ -485,11 +485,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = . . _RCSTAbits 0 4 -> -> 1 `i `uc ]
 "16
 [; ;../ihc_vector.c: 16:    if (c_error++>3) {
-[e $ ! > -> ++ F2106 -> -> 1 `i `uc `i -> 3 `i 189  ]
+[e $ ! > -> ++ F2107 -> -> 1 `i `uc `i -> 3 `i 189  ]
 {
 "17
 [; ;../ihc_vector.c: 17:     c_error = 0;
-[e = F2106 -> -> 0 `i `uc ]
+[e = F2107 -> -> 0 `i `uc ]
 "18
 [; ;../ihc_vector.c: 18:    }
 }
@@ -659,8 +659,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [f ]
 "75
 [; ;../ihc_vector.c: 75:  static uint32_t tmp = 0;
-[v F2112 `ul ~T0 @X0 1 s tmp ]
-[i F2112
+[v F2113 `ul ~T0 @X0 1 s tmp ]
+[i F2113
 -> -> -> 0 `i `l `ul
 ]
 "77
@@ -668,7 +668,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $ ! != -> _mode `i -> 0 `i 199  ]
 "78
 [; ;../ihc_vector.c: 78:   return tmp;
-[e ) F2112 ]
+[e ) F2113 ]
 [e $UE 198  ]
 [e :U 199 ]
 "80
@@ -676,13 +676,13 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = . . _INTCONbits 2 6 -> -> 0 `i `uc ]
 "81
 [; ;../ihc_vector.c: 81:  tmp = V.clock_2hz;
-[e = F2112 . _V 1 ]
+[e = F2113 . _V 1 ]
 "82
 [; ;../ihc_vector.c: 82:  INTCONbits.GIEH = 1;
 [e = . . _INTCONbits 2 6 -> -> 1 `i `uc ]
 "83
 [; ;../ihc_vector.c: 83:  return tmp;
-[e ) F2112 ]
+[e ) F2113 ]
 [e $UE 198  ]
 "84
 [; ;../ihc_vector.c: 84: }
@@ -703,8 +703,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [f ]
 "88
 [; ;../ihc_vector.c: 88:  static uint32_t tmp = 0;
-[v F2115 `ul ~T0 @X0 1 s tmp ]
-[i F2115
+[v F2116 `ul ~T0 @X0 1 s tmp ]
+[i F2116
 -> -> -> 0 `i `l `ul
 ]
 "90
@@ -712,7 +712,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $ ! != -> _mode `i -> 0 `i 201  ]
 "91
 [; ;../ihc_vector.c: 91:   return tmp;
-[e ) F2115 ]
+[e ) F2116 ]
 [e $UE 200  ]
 [e :U 201 ]
 "93
@@ -720,13 +720,13 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = . . _INTCONbits 2 6 -> -> 0 `i `uc ]
 "94
 [; ;../ihc_vector.c: 94:  tmp = V.clock_500hz;
-[e = F2115 . _V 0 ]
+[e = F2116 . _V 0 ]
 "95
 [; ;../ihc_vector.c: 95:  INTCONbits.GIEH = 1;
 [e = . . _INTCONbits 2 6 -> -> 1 `i `uc ]
 "96
 [; ;../ihc_vector.c: 96:  return tmp;
-[e ) F2115 ]
+[e ) F2116 ]
 [e $UE 200  ]
 "97
 [; ;../ihc_vector.c: 97: }

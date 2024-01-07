@@ -43,6 +43,7 @@ typedef enum cmd_type {
 	G_MODE = 0,
 	G_ERROR,
 	G_AUX,
+	G_VOLTS,
 	G_LAST,
 } cmd_type;
 
@@ -65,6 +66,7 @@ union PWMDC {
 #define	SAMPLEFREQ	0xf660			// timer1 500hz
 #define	PWMFREQ		65			// timer2 pwm
 #define PWMVOLTS	127
+#define BATLOWVOLTS	2200
 
 #define MAX_DATA        20
 #define MAX_GLITCH      3
@@ -82,6 +84,7 @@ union PWMDC {
 #define RE_		LATAbits.LATA1
 #define RE20A_ERROR	LATAbits.LATA2
 #define SIG4		LATAbits.LATA3
+#define FLOAT		LATAbits.LATA4
 #define SIG5		LATAbits.LATA6
 #define LED1		LATBbits.LATB0
 #define BOOT_FLAG  	LATBbits.LATB2 // debug

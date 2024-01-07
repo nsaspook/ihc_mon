@@ -3,16 +3,16 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;../ibsmon.h: 7: typedef struct V_data {
 [s S183 `ul 1 `ul 1 `uc 1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 `uc 1 `uc 1 `uc 1 ]
 [n S183 V_data clock_500hz clock_2hz clock_blinks num_blinks blink_lock config stable boot_code send_count recv_count pwm_volts ]
-"101 ../ibsmon.c
-[; ;../ibsmon.c: 101: comm_type cstate = CLEAR;
+"104 ../ibsmon.c
+[; ;../ibsmon.c: 104: comm_type cstate = CLEAR;
 [c E2240 0 1 2 3 .. ]
 [n E2240 comm_type CLEAR INIT SEND RECV  ]
-"102
-[; ;../ibsmon.c: 102: cmd_type modbus_command = G_MODE;
-[c E2246 0 1 2 3 .. ]
-[n E2246 cmd_type G_MODE G_ERROR G_AUX G_LAST  ]
-"49 ../ibsmon.h
-[; ;../ibsmon.h: 49: union PWMDC {
+"105
+[; ;../ibsmon.c: 105: cmd_type modbus_command = G_MODE;
+[c E2246 0 1 2 3 4 .. ]
+[n E2246 cmd_type G_MODE G_ERROR G_AUX G_VOLTS G_LAST  ]
+"50 ../ibsmon.h
+[; ;../ibsmon.h: 50: union PWMDC {
 [u S186 `ui 1 `uc -> 2 `i ]
 [n S186 PWMDC lpwm bpwm ]
 "2558 /root/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8/pic/include/proc/pic18f1320.h
@@ -348,8 +348,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "1341
 [; ;/root/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8/pic/include/proc/pic18f1320.h: 1341: extern volatile IPR1bits_t IPR1bits __attribute__((address(0xF9F)));
 [v _IPR1bits `VS49 ~T0 @X0 0 e@3999 ]
-"84 ../ibsmon.c
-[; ;../ibsmon.c: 84: uint8_t init_stream_params(void);
+"85 ../ibsmon.c
+[; ;../ibsmon.c: 85: uint8_t init_stream_params(void);
 [v _init_stream_params `(uc ~T0 @X0 0 ef ]
 [p mainexit ]
 "54 /root/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8/pic/include/proc/pic18f1320.h
@@ -729,14 +729,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 [p x EBTR1  =  OFF       ]
 "49
 [p x EBTRB  =  OFF       ]
-"86
-[; ;../ibsmon.c: 86: uint16_t req_length = 0;
+"87
+[; ;../ibsmon.c: 87: uint16_t req_length = 0;
 [v _req_length `us ~T0 @X0 1 e ]
 [i _req_length
 -> -> 0 `i `us
 ]
-"87
-[; ;../ibsmon.c: 87: const uint8_t modbus_cc_mode[] = {0x01, 0x03, 0x01, 0x20, 0x00, 0x01},
+"88
+[; ;../ibsmon.c: 88: const uint8_t modbus_cc_mode[] = {0x01, 0x03, 0x01, 0x20, 0x00, 0x01},
 [v _modbus_cc_mode `Cuc ~T0 @X0 -> 6 `i e ]
 [i _modbus_cc_mode
 :U ..
@@ -748,8 +748,21 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> -> 1 `i `uc
 ..
 ]
-"88
-[; ;../ibsmon.c: 88: modbus_cc_error[] = {0x01, 0x03, 0x01, 0x21, 0x00, 0x02},
+"89
+[; ;../ibsmon.c: 89: modbus_cc_volts[] = {0x01, 0x03, 0x01, 0x01, 0x00, 0x01},
+[v _modbus_cc_volts `Cuc ~T0 @X0 -> 6 `i e ]
+[i _modbus_cc_volts
+:U ..
+-> -> 1 `i `uc
+-> -> 3 `i `uc
+-> -> 1 `i `uc
+-> -> 1 `i `uc
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+..
+]
+"90
+[; ;../ibsmon.c: 90: modbus_cc_error[] = {0x01, 0x03, 0x01, 0x21, 0x00, 0x02},
 [v _modbus_cc_error `Cuc ~T0 @X0 -> 6 `i e ]
 [i _modbus_cc_error
 :U ..
@@ -761,8 +774,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> -> 2 `i `uc
 ..
 ]
-"89
-[; ;../ibsmon.c: 89: modbus_cc_clear[] = {0x01, 0x79, 0x00, 0x00, 0x00, 0x01},
+"91
+[; ;../ibsmon.c: 91: modbus_cc_clear[] = {0x01, 0x79, 0x00, 0x00, 0x00, 0x01},
 [v _modbus_cc_clear `Cuc ~T0 @X0 -> 6 `i e ]
 [i _modbus_cc_clear
 :U ..
@@ -774,8 +787,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> -> 1 `i `uc
 ..
 ]
-"90
-[; ;../ibsmon.c: 90: modbus_cc_freset[] = {0x01, 0x78, 0x00, 0x00, 0x00, 0x01},
+"92
+[; ;../ibsmon.c: 92: modbus_cc_freset[] = {0x01, 0x78, 0x00, 0x00, 0x00, 0x01},
 [v _modbus_cc_freset `Cuc ~T0 @X0 -> 6 `i e ]
 [i _modbus_cc_freset
 :U ..
@@ -787,8 +800,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> -> 1 `i `uc
 ..
 ]
-"91
-[; ;../ibsmon.c: 91: re20a_mode[] = {0x01, 0x03, 0x02, 0x00, 0x02, 0x39, 0x85},
+"93
+[; ;../ibsmon.c: 93: re20a_mode[] = {0x01, 0x03, 0x02, 0x00, 0x02, 0x39, 0x85},
 [v _re20a_mode `Cuc ~T0 @X0 -> 7 `i e ]
 [i _re20a_mode
 :U ..
@@ -801,8 +814,22 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> -> 133 `i `uc
 ..
 ]
-"92
-[; ;../ibsmon.c: 92: re20a_error[] = {0x01, 0x03, 0x04, 0x00, 0x00, 0x00, 0x00, 0x39, 0x85},
+"94
+[; ;../ibsmon.c: 94: re20a_volts[] = {0x01, 0x03, 0x02, 0x00, 0xFB, 0xF8, 0x67},
+[v _re20a_volts `Cuc ~T0 @X0 -> 7 `i e ]
+[i _re20a_volts
+:U ..
+-> -> 1 `i `uc
+-> -> 3 `i `uc
+-> -> 2 `i `uc
+-> -> 0 `i `uc
+-> -> 251 `i `uc
+-> -> 248 `i `uc
+-> -> 103 `i `uc
+..
+]
+"95
+[; ;../ibsmon.c: 95: re20a_error[] = {0x01, 0x03, 0x04, 0x00, 0x00, 0x00, 0x00, 0x39, 0x85},
 [v _re20a_error `Cuc ~T0 @X0 -> 9 `i e ]
 [i _re20a_error
 :U ..
@@ -817,8 +844,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> -> 133 `i `uc
 ..
 ]
-"93
-[; ;../ibsmon.c: 93: re20a_clear[] = {0x01, 0x79, 0x00, 0x00, 0x00, 0x01, 0x5d, 0xc0},
+"96
+[; ;../ibsmon.c: 96: re20a_clear[] = {0x01, 0x79, 0x00, 0x00, 0x00, 0x01, 0x5d, 0xc0},
 [v _re20a_clear `Cuc ~T0 @X0 -> 8 `i e ]
 [i _re20a_clear
 :U ..
@@ -832,8 +859,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> -> 192 `i `uc
 ..
 ]
-"94
-[; ;../ibsmon.c: 94: re20a_freset[] = {0x01, 0x78, 0x00, 0x00, 0x00, 0x01, 0x60, 0x00};
+"97
+[; ;../ibsmon.c: 97: re20a_freset[] = {0x01, 0x78, 0x00, 0x00, 0x00, 0x01, 0x60, 0x00};
 [v _re20a_freset `Cuc ~T0 @X0 -> 8 `i e ]
 [i _re20a_freset
 :U ..
@@ -847,8 +874,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> -> 0 `i `uc
 ..
 ]
-"96
-[; ;../ibsmon.c: 96: volatile struct V_data V = {
+"99
+[; ;../ibsmon.c: 99: volatile struct V_data V = {
 [v _V `VS183 ~T0 @X0 1 e ]
 [i _V
 :U ..
@@ -861,27 +888,27 @@ Version 4.0 HI-TECH Software Intermediate Code
 ..
 ..
 ]
-"99
-[; ;../ibsmon.c: 99: volatile uint8_t cc_stream_file, cc_buffer[20];
+"102
+[; ;../ibsmon.c: 102: volatile uint8_t cc_stream_file, cc_buffer[20];
 [v _cc_stream_file `Vuc ~T0 @X0 1 e ]
 [v _cc_buffer `Vuc ~T0 @X0 -> 20 `i e ]
-"100
-[; ;../ibsmon.c: 100: uint32_t crc_error;
+"103
+[; ;../ibsmon.c: 103: uint32_t crc_error;
 [v _crc_error `ul ~T0 @X0 1 e ]
-"101
-[; ;../ibsmon.c: 101: comm_type cstate = CLEAR;
+"104
+[; ;../ibsmon.c: 104: comm_type cstate = CLEAR;
 [v _cstate `E2240 ~T0 @X0 1 e ]
 [i _cstate
 . `E2240 0
 ]
-"102
-[; ;../ibsmon.c: 102: cmd_type modbus_command = G_MODE;
+"105
+[; ;../ibsmon.c: 105: cmd_type modbus_command = G_MODE;
 [v _modbus_command `E2246 ~T0 @X0 1 e ]
 [i _modbus_command
 . `E2246 0
 ]
-"103
-[; ;../ibsmon.c: 103: const char *build_date = "Dec  9 2023", *build_time = "08:32:23", build_version[5] = "1.8";
+"106
+[; ;../ibsmon.c: 106: const char *build_date = "Jan  6 2024", *build_time = "20:24:11", build_version[5] = "1.8";
 [v _build_date `*Cuc ~T0 @X0 1 e ]
 [i _build_date
 :s 1C
@@ -899,762 +926,888 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> 0 `c
 ..
 ]
-"105
-[; ;../ibsmon.c: 105: void SetDCPWM1(uint16_t dutycycle)
+"108
+[; ;../ibsmon.c: 108: void SetDCPWM1(uint16_t dutycycle)
 [v _SetDCPWM1 `(v ~T0 @X0 1 ef1`us ]
-"106
-[; ;../ibsmon.c: 106: {
+"109
+[; ;../ibsmon.c: 109: {
 {
 [e :U _SetDCPWM1 ]
-"105
-[; ;../ibsmon.c: 105: void SetDCPWM1(uint16_t dutycycle)
+"108
+[; ;../ibsmon.c: 108: void SetDCPWM1(uint16_t dutycycle)
 [v _dutycycle `us ~T0 @X0 1 r1 ]
-"106
-[; ;../ibsmon.c: 106: {
+"109
+[; ;../ibsmon.c: 109: {
 [f ]
-"107
-[; ;../ibsmon.c: 107:  union PWMDC DCycle;
-[v _DCycle `S186 ~T0 @X0 1 a ]
 "110
-[; ;../ibsmon.c: 110:  DCycle.lpwm = dutycycle << 6;
-[e = . _DCycle 0 << -> _dutycycle `ui -> 6 `i ]
+[; ;../ibsmon.c: 110:  union PWMDC DCycle;
+[v _DCycle `S186 ~T0 @X0 1 a ]
 "113
-[; ;../ibsmon.c: 113:  CCPR1L = DCycle.bpwm[1];
-[e = _CCPR1L -> *U + &U . _DCycle 1 * -> -> -> 1 `i `ui `ux -> -> # *U &U . _DCycle 1 `ui `ux `uc ]
+[; ;../ibsmon.c: 113:  DCycle.lpwm = dutycycle << 6;
+[e = . _DCycle 0 << -> _dutycycle `ui -> 6 `i ]
 "116
-[; ;../ibsmon.c: 116:  CCP1CON = (CCP1CON & 0xCF) | ((DCycle.bpwm[0] >> 2) & 0x30);
+[; ;../ibsmon.c: 116:  CCPR1L = DCycle.bpwm[1];
+[e = _CCPR1L -> *U + &U . _DCycle 1 * -> -> -> 1 `i `ui `ux -> -> # *U &U . _DCycle 1 `ui `ux `uc ]
+"119
+[; ;../ibsmon.c: 119:  CCP1CON = (CCP1CON & 0xCF) | ((DCycle.bpwm[0] >> 2) & 0x30);
 [e = _CCP1CON -> | & -> _CCP1CON `i -> 207 `i & >> -> *U + &U . _DCycle 1 * -> -> -> 0 `i `ui `ux -> -> # *U &U . _DCycle 1 `ui `ux `i -> 2 `i -> 48 `i `uc ]
-"117
-[; ;../ibsmon.c: 117: }
+"120
+[; ;../ibsmon.c: 120: }
 [e :UE 187 ]
 }
-"119
-[; ;../ibsmon.c: 119: int8_t controller_work(void)
+"122
+[; ;../ibsmon.c: 122: int8_t controller_work(void)
 [v _controller_work `(c ~T0 @X0 1 ef ]
-"120
-[; ;../ibsmon.c: 120: {
+"123
+[; ;../ibsmon.c: 123: {
 {
 [e :U _controller_work ]
 [f ]
-"121
-[; ;../ibsmon.c: 121:  static uint8_t mcmd = G_MODE;
-[v F2303 `uc ~T0 @X0 1 s mcmd ]
-[i F2303
+"124
+[; ;../ibsmon.c: 124:  static uint8_t mcmd = G_MODE;
+[v F2306 `uc ~T0 @X0 1 s mcmd ]
+[i F2306
 -> . `E2246 0 `uc
 ]
-"123
-[; ;../ibsmon.c: 123:  switch (cstate) {
+"126
+[; ;../ibsmon.c: 126:  switch (cstate) {
 [e $U 190  ]
 {
-"124
-[; ;../ibsmon.c: 124:  case CLEAR:
-[e :U 191 ]
-"125
-[; ;../ibsmon.c: 125:   clear_2hz();
-[e ( _clear_2hz ..  ]
-"126
-[; ;../ibsmon.c: 126:   cstate = INIT;
-[e = _cstate . `E2240 1 ]
 "127
-[; ;../ibsmon.c: 127:   modbus_command = mcmd++;
-[e = _modbus_command -> ++ F2303 -> -> 1 `i `uc `E2246 ]
+[; ;../ibsmon.c: 127:  case CLEAR:
+[e :U 191 ]
 "128
-[; ;../ibsmon.c: 128:   if (mcmd > G_LAST)
-[e $ ! > -> F2303 `i -> . `E2246 3 `i 192  ]
+[; ;../ibsmon.c: 128:   clear_2hz();
+[e ( _clear_2hz ..  ]
 "129
-[; ;../ibsmon.c: 129:    mcmd = G_MODE;
-[e = F2303 -> . `E2246 0 `uc ]
+[; ;../ibsmon.c: 129:   cstate = INIT;
+[e = _cstate . `E2240 1 ]
+"130
+[; ;../ibsmon.c: 130:   modbus_command = mcmd++;
+[e = _modbus_command -> ++ F2306 -> -> 1 `i `uc `E2246 ]
+"131
+[; ;../ibsmon.c: 131:   if (mcmd > G_LAST)
+[e $ ! > -> F2306 `i -> . `E2246 4 `i 192  ]
+"132
+[; ;../ibsmon.c: 132:    mcmd = G_MODE;
+[e = F2306 -> . `E2246 0 `uc ]
 [e :U 192 ]
-"133
-[; ;../ibsmon.c: 133:   switch (modbus_command) {
+"136
+[; ;../ibsmon.c: 136:   switch (modbus_command) {
 [e $U 194  ]
 {
-"134
-[; ;../ibsmon.c: 134:   case G_ERROR:
-[e :U 195 ]
-"135
-[; ;../ibsmon.c: 135:    req_length = modbus_rtu_send_msg((void*) cc_buffer, (const void *) modbus_cc_error, sizeof(modbus_cc_error));
-[e = _req_length ( _modbus_rtu_send_msg (3 , , -> &U _cc_buffer `*v -> &U _modbus_cc_error `*Cv -> -> # _modbus_cc_error `ui `us ]
-"136
-[; ;../ibsmon.c: 136:    break;
-[e $U 193  ]
 "137
-[; ;../ibsmon.c: 137:   case G_MODE:
-[e :U 196 ]
+[; ;../ibsmon.c: 137:   case G_ERROR:
+[e :U 195 ]
 "138
-[; ;../ibsmon.c: 138:   default:
-[e :U 197 ]
+[; ;../ibsmon.c: 138:    req_length = modbus_rtu_send_msg((void*) cc_buffer, (const void *) modbus_cc_error, sizeof(modbus_cc_error));
+[e = _req_length ( _modbus_rtu_send_msg (3 , , -> &U _cc_buffer `*v -> &U _modbus_cc_error `*Cv -> -> # _modbus_cc_error `ui `us ]
 "139
-[; ;../ibsmon.c: 139:    req_length = modbus_rtu_send_msg((void*) cc_buffer, (const void *) modbus_cc_mode, sizeof(modbus_cc_mode));
-[e = _req_length ( _modbus_rtu_send_msg (3 , , -> &U _cc_buffer `*v -> &U _modbus_cc_mode `*Cv -> -> # _modbus_cc_mode `ui `us ]
-"140
-[; ;../ibsmon.c: 140:    break;
+[; ;../ibsmon.c: 139:    break;
 [e $U 193  ]
+"140
+[; ;../ibsmon.c: 140:   case G_VOLTS:
+[e :U 196 ]
 "141
-[; ;../ibsmon.c: 141:   }
+[; ;../ibsmon.c: 141:    req_length = modbus_rtu_send_msg((void*) cc_buffer, (const void *) modbus_cc_volts, sizeof(modbus_cc_volts));
+[e = _req_length ( _modbus_rtu_send_msg (3 , , -> &U _cc_buffer `*v -> &U _modbus_cc_volts `*Cv -> -> # _modbus_cc_volts `ui `us ]
+"142
+[; ;../ibsmon.c: 142:    break;
+[e $U 193  ]
+"143
+[; ;../ibsmon.c: 143:   case G_MODE:
+[e :U 197 ]
+"144
+[; ;../ibsmon.c: 144:   default:
+[e :U 198 ]
+"145
+[; ;../ibsmon.c: 145:    req_length = modbus_rtu_send_msg((void*) cc_buffer, (const void *) modbus_cc_mode, sizeof(modbus_cc_mode));
+[e = _req_length ( _modbus_rtu_send_msg (3 , , -> &U _cc_buffer `*v -> &U _modbus_cc_mode `*Cv -> -> # _modbus_cc_mode `ui `us ]
+"146
+[; ;../ibsmon.c: 146:    break;
+[e $U 193  ]
+"147
+[; ;../ibsmon.c: 147:   }
 }
 [e $U 193  ]
 [e :U 194 ]
 [e [\ -> _modbus_command `ui , $ -> . `E2246 1 `ui 195
- , $ -> . `E2246 0 `ui 196
- 197 ]
+ , $ -> . `E2246 3 `ui 196
+ , $ -> . `E2246 0 `ui 197
+ 198 ]
 [e :U 193 ]
-"142
-[; ;../ibsmon.c: 142:   break;
-[e $U 189  ]
-"143
-[; ;../ibsmon.c: 143:  case INIT:
-[e :U 198 ]
-"144
-[; ;../ibsmon.c: 144:   if (get_2hz(0) > 1) {
-[e $ ! > ( _get_2hz (1 -> -> 0 `i `uc -> -> -> 1 `i `l `ul 199  ]
-{
 "148
-[; ;../ibsmon.c: 148:    LATAbits.LATA1 = 1;
-[e = . . _LATAbits 0 1 -> -> 1 `i `uc ]
-"150
-[; ;../ibsmon.c: 150:    LATAbits.LATA0 = 1;
-[e = . . _LATAbits 0 0 -> -> 1 `i `uc ]
-"151
-[; ;../ibsmon.c: 151:    V.send_count = 0;
-[e = . _V 8 -> -> 0 `i `uc ]
-"152
-[; ;../ibsmon.c: 152:    V.recv_count = 0;
-[e = . _V 9 -> -> 0 `i `uc ]
-"153
-[; ;../ibsmon.c: 153:    cstate = SEND;
-[e = _cstate . `E2240 2 ]
-"154
-[; ;../ibsmon.c: 154:    clear_500hz();
-[e ( _clear_500hz ..  ]
-"155
-[; ;../ibsmon.c: 155:   }
-}
+[; ;../ibsmon.c: 148:   break;
+[e $U 189  ]
+"149
+[; ;../ibsmon.c: 149:  case INIT:
 [e :U 199 ]
+"150
+[; ;../ibsmon.c: 150:   if (get_2hz(0) > 1) {
+[e $ ! > ( _get_2hz (1 -> -> 0 `i `uc -> -> -> 1 `i `l `ul 200  ]
+{
+"154
+[; ;../ibsmon.c: 154:    LATAbits.LATA1 = 1;
+[e = . . _LATAbits 0 1 -> -> 1 `i `uc ]
 "156
-[; ;../ibsmon.c: 156:   break;
-[e $U 189  ]
+[; ;../ibsmon.c: 156:    LATAbits.LATA0 = 1;
+[e = . . _LATAbits 0 0 -> -> 1 `i `uc ]
 "157
-[; ;../ibsmon.c: 157:  case SEND:
-[e :U 200 ]
+[; ;../ibsmon.c: 157:    V.send_count = 0;
+[e = . _V 8 -> -> 0 `i `uc ]
 "158
-[; ;../ibsmon.c: 158:   if (get_500hz(0) > 3) {
-[e $ ! > ( _get_500hz (1 -> -> 0 `i `uc -> -> -> 3 `i `l `ul 201  ]
-{
+[; ;../ibsmon.c: 158:    V.recv_count = 0;
+[e = . _V 9 -> -> 0 `i `uc ]
 "159
-[; ;../ibsmon.c: 159:    do {
-[e :U 204 ]
-{
+[; ;../ibsmon.c: 159:    cstate = SEND;
+[e = _cstate . `E2240 2 ]
 "160
-[; ;../ibsmon.c: 160:     while ((!TXSTAbits.TRMT));
-[e $U 205  ]
-[e :U 206 ]
-[e :U 205 ]
-[e $ ! != -> . . _TXSTAbits 0 1 `i -> 0 `i 206  ]
-[e :U 207 ]
-"161
-[; ;../ibsmon.c: 161:     TXREG = cc_buffer[V.send_count];
-[e = _TXREG *U + &U _cc_buffer * -> . _V 8 `ux -> -> # *U &U _cc_buffer `ui `ux ]
-"162
-[; ;../ibsmon.c: 162:    } while (++V.send_count < req_length);
-}
-[e $ < -> =+ . _V 8 -> -> 1 `i `Vuc `ui -> _req_length `ui 204  ]
-[e :U 203 ]
-"163
-[; ;../ibsmon.c: 163:    while ((!TXSTAbits.TRMT));
-[e $U 208  ]
-[e :U 209 ]
-[e :U 208 ]
-[e $ ! != -> . . _TXSTAbits 0 1 `i -> 0 `i 209  ]
-[e :U 210 ]
-"164
-[; ;../ibsmon.c: 164:    cstate = RECV;
-[e = _cstate . `E2240 3 ]
-"165
-[; ;../ibsmon.c: 165:    clear_500hz();
+[; ;../ibsmon.c: 160:    clear_500hz();
 [e ( _clear_500hz ..  ]
-"166
-[; ;../ibsmon.c: 166:   }
+"161
+[; ;../ibsmon.c: 161:   }
 }
-[e :U 201 ]
-"167
-[; ;../ibsmon.c: 167:   break;
+[e :U 200 ]
+"162
+[; ;../ibsmon.c: 162:   break;
 [e $U 189  ]
-"168
-[; ;../ibsmon.c: 168:  case RECV:
-[e :U 211 ]
-"169
-[; ;../ibsmon.c: 169:   if (get_500hz(0) > 3) {
-[e $ ! > ( _get_500hz (1 -> -> 0 `i `uc -> -> -> 3 `i `l `ul 212  ]
+"163
+[; ;../ibsmon.c: 163:  case SEND:
+[e :U 201 ]
+"164
+[; ;../ibsmon.c: 164:   if (get_500hz(0) > 3) {
+[e $ ! > ( _get_500hz (1 -> -> 0 `i `uc -> -> -> 3 `i `l `ul 202  ]
 {
+"165
+[; ;../ibsmon.c: 165:    do {
+[e :U 205 ]
+{
+"166
+[; ;../ibsmon.c: 166:     while ((!TXSTAbits.TRMT));
+[e $U 206  ]
+[e :U 207 ]
+[e :U 206 ]
+[e $ ! != -> . . _TXSTAbits 0 1 `i -> 0 `i 207  ]
+[e :U 208 ]
+"167
+[; ;../ibsmon.c: 167:     TXREG = cc_buffer[V.send_count];
+[e = _TXREG *U + &U _cc_buffer * -> . _V 8 `ux -> -> # *U &U _cc_buffer `ui `ux ]
+"168
+[; ;../ibsmon.c: 168:    } while (++V.send_count < req_length);
+}
+[e $ < -> =+ . _V 8 -> -> 1 `i `Vuc `ui -> _req_length `ui 205  ]
+[e :U 204 ]
+"169
+[; ;../ibsmon.c: 169:    while ((!TXSTAbits.TRMT));
+[e $U 209  ]
+[e :U 210 ]
+[e :U 209 ]
+[e $ ! != -> . . _TXSTAbits 0 1 `i -> 0 `i 210  ]
+[e :U 211 ]
 "170
-[; ;../ibsmon.c: 170:    uint16_t c_crc, c_crc_rec;
+[; ;../ibsmon.c: 170:    cstate = RECV;
+[e = _cstate . `E2240 3 ]
+"171
+[; ;../ibsmon.c: 171:    clear_500hz();
+[e ( _clear_500hz ..  ]
+"172
+[; ;../ibsmon.c: 172:   }
+}
+[e :U 202 ]
+"173
+[; ;../ibsmon.c: 173:   break;
+[e $U 189  ]
+"174
+[; ;../ibsmon.c: 174:  case RECV:
+[e :U 212 ]
+"175
+[; ;../ibsmon.c: 175:   if (get_500hz(0) > 3) {
+[e $ ! > ( _get_500hz (1 -> -> 0 `i `uc -> -> -> 3 `i `l `ul 213  ]
+{
+"176
+[; ;../ibsmon.c: 176:    uint16_t c_crc, c_crc_rec;
 [v _c_crc `us ~T0 @X0 1 a ]
 [v _c_crc_rec `us ~T0 @X0 1 a ]
-"172
-[; ;../ibsmon.c: 172:    LATAbits.LATA0 = 0;
-[e = . . _LATAbits 0 0 -> -> 0 `i `uc ]
-"173
-[; ;../ibsmon.c: 173:    LATAbits.LATA1 = 0;
-[e = . . _LATAbits 0 1 -> -> 0 `i `uc ]
 "178
-[; ;../ibsmon.c: 178:    switch (modbus_command) {
-[e $U 214  ]
-{
+[; ;../ibsmon.c: 178:    LATAbits.LATA0 = 0;
+[e = . . _LATAbits 0 0 -> -> 0 `i `uc ]
 "179
-[; ;../ibsmon.c: 179:    case G_ERROR:
-[e :U 215 ]
-"180
-[; ;../ibsmon.c: 180:     req_length = sizeof(re20a_error);
-[e = _req_length -> -> # _re20a_error `ui `us ]
-"181
-[; ;../ibsmon.c: 181:     if ((V.recv_count >= req_length) && (cc_buffer[0] == 0x01) && (cc_buffer[1] == 0x03)) {
-[e $ ! && && >= -> . _V 9 `ui -> _req_length `ui == -> *U + &U _cc_buffer * -> -> -> 0 `i `ui `ux -> -> # *U &U _cc_buffer `ui `ux `i -> 1 `i == -> *U + &U _cc_buffer * -> -> -> 1 `i `ui `ux -> -> # *U &U _cc_buffer `ui `ux `i -> 3 `i 216  ]
-{
-"182
-[; ;../ibsmon.c: 182:      uint16_t temp;
-[v _temp `us ~T0 @X0 1 a ]
-"183
-[; ;../ibsmon.c: 183:      c_crc = crc16(cc_buffer, req_length - 2);
-[e = _c_crc ( _crc16 (2 , &U _cc_buffer -> - -> _req_length `ui -> -> 2 `i `ui `us ]
+[; ;../ibsmon.c: 179:    LATAbits.LATA1 = 0;
+[e = . . _LATAbits 0 1 -> -> 0 `i `uc ]
 "184
-[; ;../ibsmon.c: 184:      c_crc_rec = (uint16_t) ((uint16_t) cc_buffer[req_length - 2] << (uint16_t) 8) | ((uint16_t) cc_buffer[req_length - 1] & 0x00ff);
-[e = _c_crc_rec -> | -> -> << -> -> *U + &U _cc_buffer * -> - -> _req_length `ui -> -> 2 `i `ui `ux -> -> # *U &U _cc_buffer `ui `ux `us `ui -> -> -> 8 `i `us `ui `us `ui & -> -> *U + &U _cc_buffer * -> - -> _req_length `ui -> -> 1 `i `ui `ux -> -> # *U &U _cc_buffer `ui `ux `us `ui -> -> 255 `i `ui `us ]
+[; ;../ibsmon.c: 184:    switch (modbus_command) {
+[e $U 215  ]
+{
 "185
-[; ;../ibsmon.c: 185:      if (c_crc == c_crc_rec) {
-[e $ ! == -> _c_crc `ui -> _c_crc_rec `ui 217  ]
-{
+[; ;../ibsmon.c: 185:    case G_ERROR:
+[e :U 216 ]
 "186
-[; ;../ibsmon.c: 186:       if ((temp = (cc_buffer[3] << 8) +(cc_buffer[4]&0xff))) {
-[e $ ! != -> = _temp -> + << -> *U + &U _cc_buffer * -> -> -> 3 `i `ui `ux -> -> # *U &U _cc_buffer `ui `ux `i -> 8 `i & -> *U + &U _cc_buffer * -> -> -> 4 `i `ui `ux -> -> # *U &U _cc_buffer `ui `ux `i -> 255 `i `us `ui -> -> 0 `i `ui 218  ]
-{
+[; ;../ibsmon.c: 186:     req_length = sizeof(re20a_error);
+[e = _req_length -> -> # _re20a_error `ui `us ]
 "187
-[; ;../ibsmon.c: 187:        __nop();
-[e ( ___nop ..  ]
-"188
-[; ;../ibsmon.c: 188:        LATAbits.LATA2 = 1;
-[e = . . _LATAbits 0 2 -> -> 1 `i `uc ]
-"189
-[; ;../ibsmon.c: 189:        set_led_blink(10);
-[e ( _set_led_blink (1 -> -> 10 `i `uc ]
-"190
-[; ;../ibsmon.c: 190:       } else {
-}
-[e $U 219  ]
-[e :U 218 ]
+[; ;../ibsmon.c: 187:     if ((V.recv_count >= req_length) && (cc_buffer[0] == 0x01) && (cc_buffer[1] == 0x03)) {
+[e $ ! && && >= -> . _V 9 `ui -> _req_length `ui == -> *U + &U _cc_buffer * -> -> -> 0 `i `ui `ux -> -> # *U &U _cc_buffer `ui `ux `i -> 1 `i == -> *U + &U _cc_buffer * -> -> -> 1 `i `ui `ux -> -> # *U &U _cc_buffer `ui `ux `i -> 3 `i 217  ]
 {
+"188
+[; ;../ibsmon.c: 188:      uint16_t temp;
+[v _temp `us ~T0 @X0 1 a ]
+"189
+[; ;../ibsmon.c: 189:      c_crc = crc16(cc_buffer, req_length - 2);
+[e = _c_crc ( _crc16 (2 , &U _cc_buffer -> - -> _req_length `ui -> -> 2 `i `ui `us ]
+"190
+[; ;../ibsmon.c: 190:      c_crc_rec = (uint16_t) ((uint16_t) cc_buffer[req_length - 2] << (uint16_t) 8) | ((uint16_t) cc_buffer[req_length - 1] & 0x00ff);
+[e = _c_crc_rec -> | -> -> << -> -> *U + &U _cc_buffer * -> - -> _req_length `ui -> -> 2 `i `ui `ux -> -> # *U &U _cc_buffer `ui `ux `us `ui -> -> -> 8 `i `us `ui `us `ui & -> -> *U + &U _cc_buffer * -> - -> _req_length `ui -> -> 1 `i `ui `ux -> -> # *U &U _cc_buffer `ui `ux `us `ui -> -> 255 `i `ui `us ]
 "191
-[; ;../ibsmon.c: 191:        LATAbits.LATA2 = 0;
-[e = . . _LATAbits 0 2 -> -> 0 `i `uc ]
+[; ;../ibsmon.c: 191:      if (c_crc == c_crc_rec) {
+[e $ ! == -> _c_crc `ui -> _c_crc_rec `ui 218  ]
+{
 "192
-[; ;../ibsmon.c: 192:       }
-}
-[e :U 219 ]
+[; ;../ibsmon.c: 192:       if ((temp = (cc_buffer[3] << 8) +(cc_buffer[4]&0xff))) {
+[e $ ! != -> = _temp -> + << -> *U + &U _cc_buffer * -> -> -> 3 `i `ui `ux -> -> # *U &U _cc_buffer `ui `ux `i -> 8 `i & -> *U + &U _cc_buffer * -> -> -> 4 `i `ui `ux -> -> # *U &U _cc_buffer `ui `ux `i -> 255 `i `us `ui -> -> 0 `i `ui 219  ]
+{
 "193
-[; ;../ibsmon.c: 193:      }
-}
-[e :U 217 ]
+[; ;../ibsmon.c: 193:        __nop();
+[e ( ___nop ..  ]
 "194
-[; ;../ibsmon.c: 194:      cstate = CLEAR;
-[e = _cstate . `E2240 0 ]
+[; ;../ibsmon.c: 194:        LATAbits.LATA2 = 1;
+[e = . . _LATAbits 0 2 -> -> 1 `i `uc ]
 "195
-[; ;../ibsmon.c: 195:     } else {
+[; ;../ibsmon.c: 195:        set_led_blink(10);
+[e ( _set_led_blink (1 -> -> 10 `i `uc ]
+"196
+[; ;../ibsmon.c: 196:       } else {
 }
 [e $U 220  ]
-[e :U 216 ]
-{
-"196
-[; ;../ibsmon.c: 196:      if (get_500hz(0) > 2000) {
-[e $ ! > ( _get_500hz (1 -> -> 0 `i `uc -> -> -> 2000 `i `l `ul 221  ]
+[e :U 219 ]
 {
 "197
-[; ;../ibsmon.c: 197:       cstate = CLEAR;
-[e = _cstate . `E2240 0 ]
-"198
-[; ;../ibsmon.c: 198:       LATAbits.LATA2 = 0;
+[; ;../ibsmon.c: 197:        LATAbits.LATA2 = 0;
 [e = . . _LATAbits 0 2 -> -> 0 `i `uc ]
-"199
-[; ;../ibsmon.c: 199:       mcmd = G_MODE;
-[e = F2303 -> . `E2246 0 `uc ]
-"200
-[; ;../ibsmon.c: 200:      }
-}
-[e :U 221 ]
-"201
-[; ;../ibsmon.c: 201:     }
+"198
+[; ;../ibsmon.c: 198:       }
 }
 [e :U 220 ]
+"199
+[; ;../ibsmon.c: 199:      }
+}
+[e :U 218 ]
+"200
+[; ;../ibsmon.c: 200:      cstate = CLEAR;
+[e = _cstate . `E2240 0 ]
+"201
+[; ;../ibsmon.c: 201:     } else {
+}
+[e $U 221  ]
+[e :U 217 ]
+{
 "202
-[; ;../ibsmon.c: 202:     break;
-[e $U 213  ]
+[; ;../ibsmon.c: 202:      if (get_500hz(0) > 2000) {
+[e $ ! > ( _get_500hz (1 -> -> 0 `i `uc -> -> -> 2000 `i `l `ul 222  ]
+{
 "203
-[; ;../ibsmon.c: 203:    case G_MODE:
-[e :U 222 ]
+[; ;../ibsmon.c: 203:       cstate = CLEAR;
+[e = _cstate . `E2240 0 ]
 "204
-[; ;../ibsmon.c: 204:    default:
-[e :U 223 ]
+[; ;../ibsmon.c: 204:       LATAbits.LATA2 = 0;
+[e = . . _LATAbits 0 2 -> -> 0 `i `uc ]
 "205
-[; ;../ibsmon.c: 205:     req_length = sizeof(re20a_mode);
-[e = _req_length -> -> # _re20a_mode `ui `us ]
+[; ;../ibsmon.c: 205:       mcmd = G_MODE;
+[e = F2306 -> . `E2246 0 `uc ]
 "206
-[; ;../ibsmon.c: 206:     if ((V.recv_count >= req_length) && (cc_buffer[0] == 0x01) && (cc_buffer[1] == 0x03)) {
+[; ;../ibsmon.c: 206:      }
+}
+[e :U 222 ]
+"207
+[; ;../ibsmon.c: 207:     }
+}
+[e :U 221 ]
+"208
+[; ;../ibsmon.c: 208:     break;
+[e $U 214  ]
+"209
+[; ;../ibsmon.c: 209:    case G_VOLTS:
+[e :U 223 ]
+"210
+[; ;../ibsmon.c: 210:     req_length = sizeof(re20a_volts);
+[e = _req_length -> -> # _re20a_volts `ui `us ]
+"211
+[; ;../ibsmon.c: 211:     if ((V.recv_count >= req_length) && (cc_buffer[0] == 0x01) && (cc_buffer[1] == 0x03)) {
 [e $ ! && && >= -> . _V 9 `ui -> _req_length `ui == -> *U + &U _cc_buffer * -> -> -> 0 `i `ui `ux -> -> # *U &U _cc_buffer `ui `ux `i -> 1 `i == -> *U + &U _cc_buffer * -> -> -> 1 `i `ui `ux -> -> # *U &U _cc_buffer `ui `ux `i -> 3 `i 224  ]
 {
-"207
-[; ;../ibsmon.c: 207:      uint8_t temp;
-[v _temp `uc ~T0 @X0 1 a ]
-"208
-[; ;../ibsmon.c: 208:      static uint8_t volts = 255;
-[v F2308 `uc ~T0 @X0 1 s volts ]
-[i F2308
--> -> 255 `i `uc
-]
-"210
-[; ;../ibsmon.c: 210:      c_crc = crc16(cc_buffer, req_length - 2);
-[e = _c_crc ( _crc16 (2 , &U _cc_buffer -> - -> _req_length `ui -> -> 2 `i `ui `us ]
-"211
-[; ;../ibsmon.c: 211:      c_crc_rec = (uint16_t) ((uint16_t) cc_buffer[req_length - 2] << (uint16_t) 8) | ((uint16_t) cc_buffer[req_length - 1] & 0x00ff);
-[e = _c_crc_rec -> | -> -> << -> -> *U + &U _cc_buffer * -> - -> _req_length `ui -> -> 2 `i `ui `ux -> -> # *U &U _cc_buffer `ui `ux `us `ui -> -> -> 8 `i `us `ui `us `ui & -> -> *U + &U _cc_buffer * -> - -> _req_length `ui -> -> 1 `i `ui `ux -> -> # *U &U _cc_buffer `ui `ux `us `ui -> -> 255 `i `ui `us ]
+"212
+[; ;../ibsmon.c: 212:      uint16_t temp;
+[v _temp `us ~T0 @X0 1 a ]
 "213
-[; ;../ibsmon.c: 213:      if (c_crc == c_crc_rec) {
+[; ;../ibsmon.c: 213:      c_crc = crc16(cc_buffer, req_length - 2);
+[e = _c_crc ( _crc16 (2 , &U _cc_buffer -> - -> _req_length `ui -> -> 2 `i `ui `us ]
+"214
+[; ;../ibsmon.c: 214:      c_crc_rec = (uint16_t) ((uint16_t) cc_buffer[req_length - 2] << (uint16_t) 8) | ((uint16_t) cc_buffer[req_length - 1] & 0x00ff);
+[e = _c_crc_rec -> | -> -> << -> -> *U + &U _cc_buffer * -> - -> _req_length `ui -> -> 2 `i `ui `ux -> -> # *U &U _cc_buffer `ui `ux `us `ui -> -> -> 8 `i `us `ui `us `ui & -> -> *U + &U _cc_buffer * -> - -> _req_length `ui -> -> 1 `i `ui `ux -> -> # *U &U _cc_buffer `ui `ux `us `ui -> -> 255 `i `ui `us ]
+"215
+[; ;../ibsmon.c: 215:      if (c_crc == c_crc_rec) {
 [e $ ! == -> _c_crc `ui -> _c_crc_rec `ui 225  ]
 {
-"214
-[; ;../ibsmon.c: 214:       if ((temp = cc_buffer[4])) {
-[e $ ! != -> = _temp *U + &U _cc_buffer * -> -> -> 4 `i `ui `ux -> -> # *U &U _cc_buffer `ui `ux `i -> 0 `i 226  ]
-{
-"215
-[; ;../ibsmon.c: 215:        set_led_blink(temp);
-[e ( _set_led_blink (1 _temp ]
 "216
-[; ;../ibsmon.c: 216:        switch (temp) {
-[e $U 228  ]
+[; ;../ibsmon.c: 216:       if ((temp = (cc_buffer[3] << 8) +(cc_buffer[4]&0xff))) {
+[e $ ! != -> = _temp -> + << -> *U + &U _cc_buffer * -> -> -> 3 `i `ui `ux -> -> # *U &U _cc_buffer `ui `ux `i -> 8 `i & -> *U + &U _cc_buffer * -> -> -> 4 `i `ui `ux -> -> # *U &U _cc_buffer `ui `ux `i -> 255 `i `us `ui -> -> 0 `i `ui 226  ]
 {
 "217
-[; ;../ibsmon.c: 217:        case 1:
-[e :U 229 ]
+[; ;../ibsmon.c: 217:        if (temp < (uint16_t) 2200) {
+[e $ ! < -> _temp `ui -> -> -> 2200 `i `us `ui 227  ]
+{
 "218
-[; ;../ibsmon.c: 218:         volts = 92;
-[e = F2308 -> -> 92 `i `uc ]
+[; ;../ibsmon.c: 218:         LATAbits.LATA4 = 1;
+[e = . . _LATAbits 0 4 -> -> 1 `i `uc ]
 "219
-[; ;../ibsmon.c: 219:         break;
-[e $U 227  ]
-"220
-[; ;../ibsmon.c: 220:        case 2:
-[e :U 230 ]
-"221
-[; ;../ibsmon.c: 221:         volts = 122;
-[e = F2308 -> -> 122 `i `uc ]
-"222
-[; ;../ibsmon.c: 222:         break;
-[e $U 227  ]
-"223
-[; ;../ibsmon.c: 223:        case 3:
-[e :U 231 ]
-"224
-[; ;../ibsmon.c: 224:         volts = 150;
-[e = F2308 -> -> 150 `i `uc ]
-"225
-[; ;../ibsmon.c: 225:         break;
-[e $U 227  ]
-"226
-[; ;../ibsmon.c: 226:        case 4:
-[e :U 232 ]
-"227
-[; ;../ibsmon.c: 227:         volts = 177;
-[e = F2308 -> -> 177 `i `uc ]
-"228
-[; ;../ibsmon.c: 228:         break;
-[e $U 227  ]
-"229
-[; ;../ibsmon.c: 229:        case 5:
-[e :U 233 ]
-"230
-[; ;../ibsmon.c: 230:         volts = 205;
-[e = F2308 -> -> 205 `i `uc ]
-"231
-[; ;../ibsmon.c: 231:         break;
-[e $U 227  ]
-"232
-[; ;../ibsmon.c: 232:        case 6:
-[e :U 234 ]
-"233
-[; ;../ibsmon.c: 233:         volts = 230;
-[e = F2308 -> -> 230 `i `uc ]
-"234
-[; ;../ibsmon.c: 234:         break;
-[e $U 227  ]
-"235
-[; ;../ibsmon.c: 235:        default:
-[e :U 235 ]
-"236
-[; ;../ibsmon.c: 236:         volts = 92;
-[e = F2308 -> -> 92 `i `uc ]
-"237
-[; ;../ibsmon.c: 237:         break;
-[e $U 227  ]
-"238
-[; ;../ibsmon.c: 238:        }
+[; ;../ibsmon.c: 219:        }
 }
-[e $U 227  ]
-[e :U 228 ]
-[e [\ -> _temp `i , $ -> 1 `i 229
- , $ -> 2 `i 230
- , $ -> 3 `i 231
- , $ -> 4 `i 232
- , $ -> 5 `i 233
- , $ -> 6 `i 234
- 235 ]
 [e :U 227 ]
-"239
-[; ;../ibsmon.c: 239:       } else {
+"220
+[; ;../ibsmon.c: 220:       } else {
 }
-[e $U 236  ]
+[e $U 228  ]
 [e :U 226 ]
 {
-"240
-[; ;../ibsmon.c: 240:        set_led_blink(255);
-[e ( _set_led_blink (1 -> -> 255 `i `uc ]
-"241
-[; ;../ibsmon.c: 241:        volts = 61;
-[e = F2308 -> -> 61 `i `uc ]
-"242
-[; ;../ibsmon.c: 242:       }
+"221
+[; ;../ibsmon.c: 221:       }
 }
-[e :U 236 ]
-"243
-[; ;../ibsmon.c: 243:      } else {
+[e :U 228 ]
+"222
+[; ;../ibsmon.c: 222:      }
 }
-[e $U 237  ]
 [e :U 225 ]
-{
-"244
-[; ;../ibsmon.c: 244:       crc_error++;
-[e ++ _crc_error -> -> -> 1 `i `l `ul ]
-"245
-[; ;../ibsmon.c: 245:       set_led_blink(0);
-[e ( _set_led_blink (1 -> -> 0 `i `uc ]
-"246
-[; ;../ibsmon.c: 246:      }
-}
-[e :U 237 ]
-"247
-[; ;../ibsmon.c: 247:      V.pwm_volts = volts;
-[e = . _V 10 F2308 ]
-"248
-[; ;../ibsmon.c: 248:      SetDCPWM1(V.pwm_volts);
-[e ( _SetDCPWM1 (1 -> . _V 10 `us ]
-"249
-[; ;../ibsmon.c: 249:      cstate = CLEAR;
+"223
+[; ;../ibsmon.c: 223:      cstate = CLEAR;
 [e = _cstate . `E2240 0 ]
-"250
-[; ;../ibsmon.c: 250:     } else {
+"224
+[; ;../ibsmon.c: 224:     } else {
 }
-[e $U 238  ]
+[e $U 229  ]
 [e :U 224 ]
 {
-"251
-[; ;../ibsmon.c: 251:      if (get_500hz(0) > 2000) {
-[e $ ! > ( _get_500hz (1 -> -> 0 `i `uc -> -> -> 2000 `i `l `ul 239  ]
+"225
+[; ;../ibsmon.c: 225:      if (get_500hz(0) > 2000) {
+[e $ ! > ( _get_500hz (1 -> -> 0 `i `uc -> -> -> 2000 `i `l `ul 230  ]
 {
-"252
-[; ;../ibsmon.c: 252:       set_led_blink(0);
-[e ( _set_led_blink (1 -> -> 0 `i `uc ]
-"253
-[; ;../ibsmon.c: 253:       cstate = CLEAR;
+"226
+[; ;../ibsmon.c: 226:       cstate = CLEAR;
 [e = _cstate . `E2240 0 ]
-"254
-[; ;../ibsmon.c: 254:       V.pwm_volts = 255;
-[e = . _V 10 -> -> 255 `i `uc ]
-"255
-[; ;../ibsmon.c: 255:       SetDCPWM1(V.pwm_volts);
-[e ( _SetDCPWM1 (1 -> . _V 10 `us ]
-"256
-[; ;../ibsmon.c: 256:       mcmd = G_MODE;
-[e = F2303 -> . `E2246 0 `uc ]
-"257
-[; ;../ibsmon.c: 257:      }
+"227
+[; ;../ibsmon.c: 227:       LATAbits.LATA2 = 0;
+[e = . . _LATAbits 0 2 -> -> 0 `i `uc ]
+"228
+[; ;../ibsmon.c: 228:       mcmd = G_MODE;
+[e = F2306 -> . `E2246 0 `uc ]
+"229
+[; ;../ibsmon.c: 229:      }
 }
-[e :U 239 ]
-"258
-[; ;../ibsmon.c: 258:     }
+[e :U 230 ]
+"230
+[; ;../ibsmon.c: 230:     }
 }
+[e :U 229 ]
+"231
+[; ;../ibsmon.c: 231:     break;
+[e $U 214  ]
+"232
+[; ;../ibsmon.c: 232:    case G_MODE:
+[e :U 231 ]
+"233
+[; ;../ibsmon.c: 233:    default:
+[e :U 232 ]
+"234
+[; ;../ibsmon.c: 234:     req_length = sizeof(re20a_mode);
+[e = _req_length -> -> # _re20a_mode `ui `us ]
+"235
+[; ;../ibsmon.c: 235:     if ((V.recv_count >= req_length) && (cc_buffer[0] == 0x01) && (cc_buffer[1] == 0x03)) {
+[e $ ! && && >= -> . _V 9 `ui -> _req_length `ui == -> *U + &U _cc_buffer * -> -> -> 0 `i `ui `ux -> -> # *U &U _cc_buffer `ui `ux `i -> 1 `i == -> *U + &U _cc_buffer * -> -> -> 1 `i `ui `ux -> -> # *U &U _cc_buffer `ui `ux `i -> 3 `i 233  ]
+{
+"236
+[; ;../ibsmon.c: 236:      uint8_t temp;
+[v _temp `uc ~T0 @X0 1 a ]
+"237
+[; ;../ibsmon.c: 237:      static uint8_t volts = 255;
+[v F2312 `uc ~T0 @X0 1 s volts ]
+[i F2312
+-> -> 255 `i `uc
+]
+"239
+[; ;../ibsmon.c: 239:      c_crc = crc16(cc_buffer, req_length - 2);
+[e = _c_crc ( _crc16 (2 , &U _cc_buffer -> - -> _req_length `ui -> -> 2 `i `ui `us ]
+"240
+[; ;../ibsmon.c: 240:      c_crc_rec = (uint16_t) ((uint16_t) cc_buffer[req_length - 2] << (uint16_t) 8) | ((uint16_t) cc_buffer[req_length - 1] & 0x00ff);
+[e = _c_crc_rec -> | -> -> << -> -> *U + &U _cc_buffer * -> - -> _req_length `ui -> -> 2 `i `ui `ux -> -> # *U &U _cc_buffer `ui `ux `us `ui -> -> -> 8 `i `us `ui `us `ui & -> -> *U + &U _cc_buffer * -> - -> _req_length `ui -> -> 1 `i `ui `ux -> -> # *U &U _cc_buffer `ui `ux `us `ui -> -> 255 `i `ui `us ]
+"242
+[; ;../ibsmon.c: 242:      if (c_crc == c_crc_rec) {
+[e $ ! == -> _c_crc `ui -> _c_crc_rec `ui 234  ]
+{
+"243
+[; ;../ibsmon.c: 243:       if ((temp = cc_buffer[4])) {
+[e $ ! != -> = _temp *U + &U _cc_buffer * -> -> -> 4 `i `ui `ux -> -> # *U &U _cc_buffer `ui `ux `i -> 0 `i 235  ]
+{
+"244
+[; ;../ibsmon.c: 244:        set_led_blink(temp);
+[e ( _set_led_blink (1 _temp ]
+"245
+[; ;../ibsmon.c: 245:        switch (temp) {
+[e $U 237  ]
+{
+"246
+[; ;../ibsmon.c: 246:        case 1:
 [e :U 238 ]
-"259
-[; ;../ibsmon.c: 259:    }
-}
-[e $U 213  ]
-[e :U 214 ]
-[e [\ -> _modbus_command `ui , $ -> . `E2246 1 `ui 215
- , $ -> . `E2246 0 `ui 222
- 223 ]
-[e :U 213 ]
-"260
-[; ;../ibsmon.c: 260:   }
-}
-[e :U 212 ]
-"261
-[; ;../ibsmon.c: 261:   break;
-[e $U 189  ]
-"262
-[; ;../ibsmon.c: 262:  default:
+"247
+[; ;../ibsmon.c: 247:         volts = 92;
+[e = F2312 -> -> 92 `i `uc ]
+"248
+[; ;../ibsmon.c: 248:         LATAbits.LATA4 = 1;
+[e = . . _LATAbits 0 4 -> -> 1 `i `uc ]
+"249
+[; ;../ibsmon.c: 249:         break;
+[e $U 236  ]
+"250
+[; ;../ibsmon.c: 250:        case 2:
+[e :U 239 ]
+"251
+[; ;../ibsmon.c: 251:         volts = 122;
+[e = F2312 -> -> 122 `i `uc ]
+"252
+[; ;../ibsmon.c: 252:         LATAbits.LATA4 = 1;
+[e = . . _LATAbits 0 4 -> -> 1 `i `uc ]
+"253
+[; ;../ibsmon.c: 253:         break;
+[e $U 236  ]
+"254
+[; ;../ibsmon.c: 254:        case 3:
 [e :U 240 ]
+"255
+[; ;../ibsmon.c: 255:         volts = 150;
+[e = F2312 -> -> 150 `i `uc ]
+"256
+[; ;../ibsmon.c: 256:         LATAbits.LATA4 = 1;
+[e = . . _LATAbits 0 4 -> -> 1 `i `uc ]
+"257
+[; ;../ibsmon.c: 257:         break;
+[e $U 236  ]
+"258
+[; ;../ibsmon.c: 258:        case 4:
+[e :U 241 ]
+"259
+[; ;../ibsmon.c: 259:         volts = 177;
+[e = F2312 -> -> 177 `i `uc ]
+"260
+[; ;../ibsmon.c: 260:         LATAbits.LATA4 = 1;
+[e = . . _LATAbits 0 4 -> -> 1 `i `uc ]
+"261
+[; ;../ibsmon.c: 261:         break;
+[e $U 236  ]
+"262
+[; ;../ibsmon.c: 262:        case 5:
+[e :U 242 ]
 "263
-[; ;../ibsmon.c: 263:   break;
-[e $U 189  ]
+[; ;../ibsmon.c: 263:         volts = 205;
+[e = F2312 -> -> 205 `i `uc ]
 "264
-[; ;../ibsmon.c: 264:  }
+[; ;../ibsmon.c: 264:         LATAbits.LATA4 = 0;
+[e = . . _LATAbits 0 4 -> -> 0 `i `uc ]
+"265
+[; ;../ibsmon.c: 265:         break;
+[e $U 236  ]
+"266
+[; ;../ibsmon.c: 266:        case 6:
+[e :U 243 ]
+"267
+[; ;../ibsmon.c: 267:         volts = 230;
+[e = F2312 -> -> 230 `i `uc ]
+"268
+[; ;../ibsmon.c: 268:         LATAbits.LATA4 = 1;
+[e = . . _LATAbits 0 4 -> -> 1 `i `uc ]
+"269
+[; ;../ibsmon.c: 269:         break;
+[e $U 236  ]
+"270
+[; ;../ibsmon.c: 270:        default:
+[e :U 244 ]
+"271
+[; ;../ibsmon.c: 271:         volts = 92;
+[e = F2312 -> -> 92 `i `uc ]
+"272
+[; ;../ibsmon.c: 272:         LATAbits.LATA4 = 1;
+[e = . . _LATAbits 0 4 -> -> 1 `i `uc ]
+"273
+[; ;../ibsmon.c: 273:         break;
+[e $U 236  ]
+"274
+[; ;../ibsmon.c: 274:        }
+}
+[e $U 236  ]
+[e :U 237 ]
+[e [\ -> _temp `i , $ -> 1 `i 238
+ , $ -> 2 `i 239
+ , $ -> 3 `i 240
+ , $ -> 4 `i 241
+ , $ -> 5 `i 242
+ , $ -> 6 `i 243
+ 244 ]
+[e :U 236 ]
+"275
+[; ;../ibsmon.c: 275:       } else {
+}
+[e $U 245  ]
+[e :U 235 ]
+{
+"276
+[; ;../ibsmon.c: 276:        set_led_blink(255);
+[e ( _set_led_blink (1 -> -> 255 `i `uc ]
+"277
+[; ;../ibsmon.c: 277:        volts = 61;
+[e = F2312 -> -> 61 `i `uc ]
+"278
+[; ;../ibsmon.c: 278:        LATAbits.LATA4 = 1;
+[e = . . _LATAbits 0 4 -> -> 1 `i `uc ]
+"279
+[; ;../ibsmon.c: 279:       }
+}
+[e :U 245 ]
+"280
+[; ;../ibsmon.c: 280:      } else {
+}
+[e $U 246  ]
+[e :U 234 ]
+{
+"281
+[; ;../ibsmon.c: 281:       crc_error++;
+[e ++ _crc_error -> -> -> 1 `i `l `ul ]
+"282
+[; ;../ibsmon.c: 282:       set_led_blink(0);
+[e ( _set_led_blink (1 -> -> 0 `i `uc ]
+"283
+[; ;../ibsmon.c: 283:      }
+}
+[e :U 246 ]
+"284
+[; ;../ibsmon.c: 284:      V.pwm_volts = volts;
+[e = . _V 10 F2312 ]
+"285
+[; ;../ibsmon.c: 285:      SetDCPWM1(V.pwm_volts);
+[e ( _SetDCPWM1 (1 -> . _V 10 `us ]
+"286
+[; ;../ibsmon.c: 286:      cstate = CLEAR;
+[e = _cstate . `E2240 0 ]
+"287
+[; ;../ibsmon.c: 287:     } else {
+}
+[e $U 247  ]
+[e :U 233 ]
+{
+"288
+[; ;../ibsmon.c: 288:      if (get_500hz(0) > 2000) {
+[e $ ! > ( _get_500hz (1 -> -> 0 `i `uc -> -> -> 2000 `i `l `ul 248  ]
+{
+"289
+[; ;../ibsmon.c: 289:       set_led_blink(0);
+[e ( _set_led_blink (1 -> -> 0 `i `uc ]
+"290
+[; ;../ibsmon.c: 290:       cstate = CLEAR;
+[e = _cstate . `E2240 0 ]
+"291
+[; ;../ibsmon.c: 291:       V.pwm_volts = 255;
+[e = . _V 10 -> -> 255 `i `uc ]
+"292
+[; ;../ibsmon.c: 292:       LATAbits.LATA4 = 1;
+[e = . . _LATAbits 0 4 -> -> 1 `i `uc ]
+"293
+[; ;../ibsmon.c: 293:       SetDCPWM1(V.pwm_volts);
+[e ( _SetDCPWM1 (1 -> . _V 10 `us ]
+"294
+[; ;../ibsmon.c: 294:       mcmd = G_MODE;
+[e = F2306 -> . `E2246 0 `uc ]
+"295
+[; ;../ibsmon.c: 295:      }
+}
+[e :U 248 ]
+"296
+[; ;../ibsmon.c: 296:     }
+}
+[e :U 247 ]
+"297
+[; ;../ibsmon.c: 297:    }
+}
+[e $U 214  ]
+[e :U 215 ]
+[e [\ -> _modbus_command `ui , $ -> . `E2246 1 `ui 216
+ , $ -> . `E2246 3 `ui 223
+ , $ -> . `E2246 0 `ui 231
+ 232 ]
+[e :U 214 ]
+"298
+[; ;../ibsmon.c: 298:   }
+}
+[e :U 213 ]
+"299
+[; ;../ibsmon.c: 299:   break;
+[e $U 189  ]
+"300
+[; ;../ibsmon.c: 300:  default:
+[e :U 249 ]
+"301
+[; ;../ibsmon.c: 301:   break;
+[e $U 189  ]
+"302
+[; ;../ibsmon.c: 302:  }
 }
 [e $U 189  ]
 [e :U 190 ]
 [e [\ -> _cstate `ui , $ -> . `E2240 0 `ui 191
- , $ -> . `E2240 1 `ui 198
- , $ -> . `E2240 2 `ui 200
- , $ -> . `E2240 3 `ui 211
- 240 ]
+ , $ -> . `E2240 1 `ui 199
+ , $ -> . `E2240 2 `ui 201
+ , $ -> . `E2240 3 `ui 212
+ 249 ]
 [e :U 189 ]
-"265
-[; ;../ibsmon.c: 265:  return 0;
+"303
+[; ;../ibsmon.c: 303:  return 0;
 [e ) -> -> 0 `i `c ]
 [e $UE 188  ]
-"266
-[; ;../ibsmon.c: 266: }
+"304
+[; ;../ibsmon.c: 304: }
 [e :UE 188 ]
 }
-"268
-[; ;../ibsmon.c: 268: void init_ihcmon(void)
+"306
+[; ;../ibsmon.c: 306: void init_ihcmon(void)
 [v _init_ihcmon `(v ~T0 @X0 1 ef ]
-"269
-[; ;../ibsmon.c: 269: {
+"307
+[; ;../ibsmon.c: 307: {
 {
 [e :U _init_ihcmon ]
 [f ]
-"270
-[; ;../ibsmon.c: 270:  uint16_t tmp;
-[v _tmp `us ~T0 @X0 1 a ]
-"271
-[; ;../ibsmon.c: 271:  V.boot_code = 0;
-[e = . _V 7 -> -> 0 `i `uc ]
-"272
-[; ;../ibsmon.c: 272:  LATBbits.LATB2 = 0;
-[e = . . _LATBbits 0 2 -> -> 0 `i `uc ]
-"273
-[; ;../ibsmon.c: 273:  if (RCON != 0b0011100)
-[e $ ! != -> _RCON `i -> 28 `i 242  ]
-"274
-[; ;../ibsmon.c: 274:   V.boot_code = 1;
-[e = . _V 7 -> -> 1 `i `uc ]
-[e :U 242 ]
-"276
-[; ;../ibsmon.c: 276:  if (STKPTRbits.STKFUL || STKPTRbits.STKUNF) {
-[e $ ! || != -> . . _STKPTRbits 0 3 `i -> 0 `i != -> . . _STKPTRbits 0 2 `i -> 0 `i 243  ]
-{
-"277
-[; ;../ibsmon.c: 277:   V.boot_code = 1;
-[e = . _V 7 -> -> 1 `i `uc ]
-"278
-[; ;../ibsmon.c: 278:   STKPTRbits.STKFUL = 0;
-[e = . . _STKPTRbits 0 3 -> -> 0 `i `uc ]
-"279
-[; ;../ibsmon.c: 279:   STKPTRbits.STKUNF = 0;
-[e = . . _STKPTRbits 0 2 -> -> 0 `i `uc ]
-"280
-[; ;../ibsmon.c: 280:  }
-}
-[e :U 243 ]
-"282
-[; ;../ibsmon.c: 282:  if (V.boot_code)
-[e $ ! != -> . _V 7 `i -> 0 `i 244  ]
-"283
-[; ;../ibsmon.c: 283:   LATBbits.LATB2 = 1;
-[e = . . _LATBbits 0 2 -> -> 1 `i `uc ]
-[e :U 244 ]
-"285
-[; ;../ibsmon.c: 285:  ADCON1 = 0x7F;
-[e = _ADCON1 -> -> 127 `i `uc ]
-"287
-[; ;../ibsmon.c: 287:  RCONbits.IPEN = 1;
-[e = . . _RCONbits 5 6 -> -> 1 `i `uc ]
-"289
-[; ;../ibsmon.c: 289:  TRISA = 0b00001100;
-[e = _TRISA -> -> 12 `i `uc ]
-"290
-[; ;../ibsmon.c: 290:  TRISB = 0b00010010;
-[e = _TRISB -> -> 18 `i `uc ]
-"291
-[; ;../ibsmon.c: 291:  INTCON2bits.RBPU = 0;
-[e = . . _INTCON2bits 2 3 -> -> 0 `i `uc ]
-"293
-[; ;../ibsmon.c: 293:  LATBbits.LATB0 = 0;
-[e = . . _LATBbits 0 0 -> -> 0 `i `uc ]
-"294
-[; ;../ibsmon.c: 294:  LATAbits.LATA2 = 0;
-[e = . . _LATAbits 0 2 -> -> 0 `i `uc ]
-"295
-[; ;../ibsmon.c: 295:  V.clock_blinks = 0;
-[e = . _V 2 -> -> 0 `i `uc ]
-"296
-[; ;../ibsmon.c: 296:  set_led_blink(0);
-[e ( _set_led_blink (1 -> -> 0 `i `uc ]
-"298
-[; ;../ibsmon.c: 298:  T0CON = 0b10000101;
-[e = _T0CON -> -> 133 `i `uc ]
-"299
-[; ;../ibsmon.c: 299:  tmp = 26600 >> 8;
-[e = _tmp -> >> -> 26600 `i -> 8 `i `us ]
-"300
-[; ;../ibsmon.c: 300:  TMR0H = tmp;
-[e = _TMR0H -> _tmp `uc ]
-"301
-[; ;../ibsmon.c: 301:  tmp = 26600 & 0xFF;
-[e = _tmp -> & -> 26600 `i -> 255 `i `us ]
-"302
-[; ;../ibsmon.c: 302:  TMR0L = tmp;
-[e = _TMR0L -> _tmp `uc ]
-"304
-[; ;../ibsmon.c: 304:  T1CON = 0b10100101;
-[e = _T1CON -> -> 165 `i `uc ]
-"305
-[; ;../ibsmon.c: 305:  tmp = 0xf660 >> 8;
-[e = _tmp -> >> -> 63072 `ui -> 8 `i `us ]
-"306
-[; ;../ibsmon.c: 306:  TMR1H = tmp;
-[e = _TMR1H -> _tmp `uc ]
-"307
-[; ;../ibsmon.c: 307:  tmp = 0xf660 & 0xFF;
-[e = _tmp -> & -> 63072 `ui -> -> 255 `i `ui `us ]
 "308
-[; ;../ibsmon.c: 308:  TMR1L = tmp;
-[e = _TMR1L -> _tmp `uc ]
+[; ;../ibsmon.c: 308:  uint16_t tmp;
+[v _tmp `us ~T0 @X0 1 a ]
+"309
+[; ;../ibsmon.c: 309:  V.boot_code = 0;
+[e = . _V 7 -> -> 0 `i `uc ]
 "310
-[; ;../ibsmon.c: 310:  CCP1CON |= 0b00001100;
-[e =| _CCP1CON -> -> 12 `i `Vuc ]
+[; ;../ibsmon.c: 310:  LATBbits.LATB2 = 0;
+[e = . . _LATBbits 0 2 -> -> 0 `i `uc ]
 "311
-[; ;../ibsmon.c: 311:  T2CONbits.TMR2ON = 0;
-[e = . . _T2CONbits 0 1 -> -> 0 `i `uc ]
+[; ;../ibsmon.c: 311:  if (RCON != 0b0011100)
+[e $ ! != -> _RCON `i -> 28 `i 251  ]
 "312
-[; ;../ibsmon.c: 312:  PR2 = 65;
-[e = _PR2 -> -> 65 `i `uc ]
-"313
-[; ;../ibsmon.c: 313:  T2CONbits.TMR2ON = 1;
-[e = . . _T2CONbits 0 1 -> -> 1 `i `uc ]
+[; ;../ibsmon.c: 312:   V.boot_code = 1;
+[e = . _V 7 -> -> 1 `i `uc ]
+[e :U 251 ]
 "314
-[; ;../ibsmon.c: 314:  V.pwm_volts = 255;
-[e = . _V 10 -> -> 255 `i `uc ]
+[; ;../ibsmon.c: 314:  if (STKPTRbits.STKFUL || STKPTRbits.STKUNF) {
+[e $ ! || != -> . . _STKPTRbits 0 3 `i -> 0 `i != -> . . _STKPTRbits 0 2 `i -> 0 `i 252  ]
+{
 "315
-[; ;../ibsmon.c: 315:  SetDCPWM1(V.pwm_volts);
-[e ( _SetDCPWM1 (1 -> . _V 10 `us ]
+[; ;../ibsmon.c: 315:   V.boot_code = 1;
+[e = . _V 7 -> -> 1 `i `uc ]
+"316
+[; ;../ibsmon.c: 316:   STKPTRbits.STKFUL = 0;
+[e = . . _STKPTRbits 0 3 -> -> 0 `i `uc ]
+"317
+[; ;../ibsmon.c: 317:   STKPTRbits.STKUNF = 0;
+[e = . . _STKPTRbits 0 2 -> -> 0 `i `uc ]
 "318
-[; ;../ibsmon.c: 318:  TXSTA = 0;
-[e = _TXSTA -> -> 0 `i `uc ]
-"319
-[; ;../ibsmon.c: 319:  RCSTA = 0;
-[e = _RCSTA -> -> 0 `i `uc ]
-"320
-[; ;../ibsmon.c: 320:  PIE1bits.RCIE = 1;
-[e = . . _PIE1bits 0 5 -> -> 1 `i `uc ]
-"321
-[; ;../ibsmon.c: 321:  PIE1bits.TXIE = 0;
-[e = . . _PIE1bits 0 4 -> -> 0 `i `uc ]
-"322
-[; ;../ibsmon.c: 322:  TXSTAbits.SYNC = 0;
-[e = . . _TXSTAbits 0 4 -> -> 0 `i `uc ]
-"323
-[; ;../ibsmon.c: 323:  RCSTAbits.CREN = 1;
-[e = . . _RCSTAbits 0 4 -> -> 1 `i `uc ]
-"324
-[; ;../ibsmon.c: 324:  PIR1bits.TXIF = 0;
-[e = . . _PIR1bits 0 4 -> -> 0 `i `uc ]
-"325
-[; ;../ibsmon.c: 325:  PIR1bits.RCIF = 0;
-[e = . . _PIR1bits 0 5 -> -> 0 `i `uc ]
-"326
-[; ;../ibsmon.c: 326:  BAUDCTLbits.BRG16 = 0;
-[e = . . _BAUDCTLbits 0 3 -> -> 0 `i `uc ]
-"327
-[; ;../ibsmon.c: 327:  TXSTAbits.BRGH = 0;
-[e = . . _TXSTAbits 0 2 -> -> 0 `i `uc ]
-"328
-[; ;../ibsmon.c: 328:  SPBRGH = 0;
-[e = _SPBRGH -> -> 0 `i `uc ]
-"329
-[; ;../ibsmon.c: 329:  SPBRG = 64;
-[e = _SPBRG -> -> 64 `i `uc ]
-"330
-[; ;../ibsmon.c: 330:  TXSTAbits.TXEN = 1;
-[e = . . _TXSTAbits 0 5 -> -> 1 `i `uc ]
-"331
-[; ;../ibsmon.c: 331:  RCSTAbits.SPEN = 1;
-[e = . . _RCSTAbits 0 7 -> -> 1 `i `uc ]
-"333
-[; ;../ibsmon.c: 333:  INTCONbits.TMR0IE = 1;
-[e = . . _INTCONbits 0 5 -> -> 1 `i `uc ]
-"334
-[; ;../ibsmon.c: 334:  INTCON2bits.TMR0IP = 1;
-[e = . . _INTCON2bits 1 2 -> -> 1 `i `uc ]
-"335
-[; ;../ibsmon.c: 335:  PIE1bits.TMR1IE = 1;
-[e = . . _PIE1bits 0 0 -> -> 1 `i `uc ]
-"336
-[; ;../ibsmon.c: 336:  IPR1bits.TMR1IP = 1;
-[e = . . _IPR1bits 0 0 -> -> 1 `i `uc ]
-"338
-[; ;../ibsmon.c: 338:  init_stream_params();
-[e ( _init_stream_params ..  ]
-"341
-[; ;../ibsmon.c: 341:  INTCONbits.GIEH = 1;
-[e = . . _INTCONbits 2 6 -> -> 1 `i `uc ]
-"342
-[; ;../ibsmon.c: 342: }
-[e :UE 241 ]
+[; ;../ibsmon.c: 318:  }
 }
+[e :U 252 ]
+"320
+[; ;../ibsmon.c: 320:  if (V.boot_code)
+[e $ ! != -> . _V 7 `i -> 0 `i 253  ]
+"321
+[; ;../ibsmon.c: 321:   LATBbits.LATB2 = 1;
+[e = . . _LATBbits 0 2 -> -> 1 `i `uc ]
+[e :U 253 ]
+"323
+[; ;../ibsmon.c: 323:  ADCON1 = 0x7F;
+[e = _ADCON1 -> -> 127 `i `uc ]
+"325
+[; ;../ibsmon.c: 325:  RCONbits.IPEN = 1;
+[e = . . _RCONbits 5 6 -> -> 1 `i `uc ]
+"327
+[; ;../ibsmon.c: 327:  TRISA = 0b00001100;
+[e = _TRISA -> -> 12 `i `uc ]
+"328
+[; ;../ibsmon.c: 328:  TRISB = 0b00010010;
+[e = _TRISB -> -> 18 `i `uc ]
+"329
+[; ;../ibsmon.c: 329:  INTCON2bits.RBPU = 0;
+[e = . . _INTCON2bits 2 3 -> -> 0 `i `uc ]
+"331
+[; ;../ibsmon.c: 331:  LATBbits.LATB0 = 0;
+[e = . . _LATBbits 0 0 -> -> 0 `i `uc ]
+"332
+[; ;../ibsmon.c: 332:  LATAbits.LATA2 = 0;
+[e = . . _LATAbits 0 2 -> -> 0 `i `uc ]
+"333
+[; ;../ibsmon.c: 333:  V.clock_blinks = 0;
+[e = . _V 2 -> -> 0 `i `uc ]
+"334
+[; ;../ibsmon.c: 334:  set_led_blink(0);
+[e ( _set_led_blink (1 -> -> 0 `i `uc ]
+"336
+[; ;../ibsmon.c: 336:  T0CON = 0b10000101;
+[e = _T0CON -> -> 133 `i `uc ]
+"337
+[; ;../ibsmon.c: 337:  tmp = 26600 >> 8;
+[e = _tmp -> >> -> 26600 `i -> 8 `i `us ]
+"338
+[; ;../ibsmon.c: 338:  TMR0H = tmp;
+[e = _TMR0H -> _tmp `uc ]
+"339
+[; ;../ibsmon.c: 339:  tmp = 26600 & 0xFF;
+[e = _tmp -> & -> 26600 `i -> 255 `i `us ]
+"340
+[; ;../ibsmon.c: 340:  TMR0L = tmp;
+[e = _TMR0L -> _tmp `uc ]
+"342
+[; ;../ibsmon.c: 342:  T1CON = 0b10100101;
+[e = _T1CON -> -> 165 `i `uc ]
+"343
+[; ;../ibsmon.c: 343:  tmp = 0xf660 >> 8;
+[e = _tmp -> >> -> 63072 `ui -> 8 `i `us ]
 "344
-[; ;../ibsmon.c: 344: uint8_t init_stream_params(void)
-[v _init_stream_params `(uc ~T0 @X0 1 ef ]
+[; ;../ibsmon.c: 344:  TMR1H = tmp;
+[e = _TMR1H -> _tmp `uc ]
 "345
-[; ;../ibsmon.c: 345: {
+[; ;../ibsmon.c: 345:  tmp = 0xf660 & 0xFF;
+[e = _tmp -> & -> 63072 `ui -> -> 255 `i `ui `us ]
+"346
+[; ;../ibsmon.c: 346:  TMR1L = tmp;
+[e = _TMR1L -> _tmp `uc ]
+"348
+[; ;../ibsmon.c: 348:  CCP1CON |= 0b00001100;
+[e =| _CCP1CON -> -> 12 `i `Vuc ]
+"349
+[; ;../ibsmon.c: 349:  T2CONbits.TMR2ON = 0;
+[e = . . _T2CONbits 0 1 -> -> 0 `i `uc ]
+"350
+[; ;../ibsmon.c: 350:  PR2 = 65;
+[e = _PR2 -> -> 65 `i `uc ]
+"351
+[; ;../ibsmon.c: 351:  T2CONbits.TMR2ON = 1;
+[e = . . _T2CONbits 0 1 -> -> 1 `i `uc ]
+"352
+[; ;../ibsmon.c: 352:  V.pwm_volts = 255;
+[e = . _V 10 -> -> 255 `i `uc ]
+"353
+[; ;../ibsmon.c: 353:  SetDCPWM1(V.pwm_volts);
+[e ( _SetDCPWM1 (1 -> . _V 10 `us ]
+"356
+[; ;../ibsmon.c: 356:  TXSTA = 0;
+[e = _TXSTA -> -> 0 `i `uc ]
+"357
+[; ;../ibsmon.c: 357:  RCSTA = 0;
+[e = _RCSTA -> -> 0 `i `uc ]
+"358
+[; ;../ibsmon.c: 358:  PIE1bits.RCIE = 1;
+[e = . . _PIE1bits 0 5 -> -> 1 `i `uc ]
+"359
+[; ;../ibsmon.c: 359:  PIE1bits.TXIE = 0;
+[e = . . _PIE1bits 0 4 -> -> 0 `i `uc ]
+"360
+[; ;../ibsmon.c: 360:  TXSTAbits.SYNC = 0;
+[e = . . _TXSTAbits 0 4 -> -> 0 `i `uc ]
+"361
+[; ;../ibsmon.c: 361:  RCSTAbits.CREN = 1;
+[e = . . _RCSTAbits 0 4 -> -> 1 `i `uc ]
+"362
+[; ;../ibsmon.c: 362:  PIR1bits.TXIF = 0;
+[e = . . _PIR1bits 0 4 -> -> 0 `i `uc ]
+"363
+[; ;../ibsmon.c: 363:  PIR1bits.RCIF = 0;
+[e = . . _PIR1bits 0 5 -> -> 0 `i `uc ]
+"364
+[; ;../ibsmon.c: 364:  BAUDCTLbits.BRG16 = 0;
+[e = . . _BAUDCTLbits 0 3 -> -> 0 `i `uc ]
+"365
+[; ;../ibsmon.c: 365:  TXSTAbits.BRGH = 0;
+[e = . . _TXSTAbits 0 2 -> -> 0 `i `uc ]
+"366
+[; ;../ibsmon.c: 366:  SPBRGH = 0;
+[e = _SPBRGH -> -> 0 `i `uc ]
+"367
+[; ;../ibsmon.c: 367:  SPBRG = 64;
+[e = _SPBRG -> -> 64 `i `uc ]
+"368
+[; ;../ibsmon.c: 368:  TXSTAbits.TXEN = 1;
+[e = . . _TXSTAbits 0 5 -> -> 1 `i `uc ]
+"369
+[; ;../ibsmon.c: 369:  RCSTAbits.SPEN = 1;
+[e = . . _RCSTAbits 0 7 -> -> 1 `i `uc ]
+"371
+[; ;../ibsmon.c: 371:  INTCONbits.TMR0IE = 1;
+[e = . . _INTCONbits 0 5 -> -> 1 `i `uc ]
+"372
+[; ;../ibsmon.c: 372:  INTCON2bits.TMR0IP = 1;
+[e = . . _INTCON2bits 1 2 -> -> 1 `i `uc ]
+"373
+[; ;../ibsmon.c: 373:  PIE1bits.TMR1IE = 1;
+[e = . . _PIE1bits 0 0 -> -> 1 `i `uc ]
+"374
+[; ;../ibsmon.c: 374:  IPR1bits.TMR1IP = 1;
+[e = . . _IPR1bits 0 0 -> -> 1 `i `uc ]
+"376
+[; ;../ibsmon.c: 376:  init_stream_params();
+[e ( _init_stream_params ..  ]
+"377
+[; ;../ibsmon.c: 377:  LATAbits.LATA4 = 0;
+[e = . . _LATAbits 0 4 -> -> 0 `i `uc ]
+"380
+[; ;../ibsmon.c: 380:  INTCONbits.GIEH = 1;
+[e = . . _INTCONbits 2 6 -> -> 1 `i `uc ]
+"381
+[; ;../ibsmon.c: 381: }
+[e :UE 250 ]
+}
+"383
+[; ;../ibsmon.c: 383: uint8_t init_stream_params(void)
+[v _init_stream_params `(uc ~T0 @X0 1 ef ]
+"384
+[; ;../ibsmon.c: 384: {
 {
 [e :U _init_stream_params ]
 [f ]
-"346
-[; ;../ibsmon.c: 346:  V.config = 0;
+"385
+[; ;../ibsmon.c: 385:  V.config = 0;
 [e = . _V 5 -> -> 0 `i `uc ]
-"347
-[; ;../ibsmon.c: 347:  return 0;
+"386
+[; ;../ibsmon.c: 386:  return 0;
 [e ) -> -> 0 `i `uc ]
-[e $UE 245  ]
-"348
-[; ;../ibsmon.c: 348: }
-[e :UE 245 ]
+[e $UE 254  ]
+"387
+[; ;../ibsmon.c: 387: }
+[e :UE 254 ]
 }
 [v $root$_main `(v ~T0 @X0 0 e ]
-"350
-[; ;../ibsmon.c: 350: void main(void)
+"389
+[; ;../ibsmon.c: 389: void main(void)
 [v _main `(v ~T0 @X0 1 ef ]
-"351
-[; ;../ibsmon.c: 351: {
+"390
+[; ;../ibsmon.c: 390: {
 {
 [e :U _main ]
 [f ]
-"352
-[; ;../ibsmon.c: 352:  init_ihcmon();
+"391
+[; ;../ibsmon.c: 391:  init_ihcmon();
 [e ( _init_ihcmon ..  ]
-"354
-[; ;../ibsmon.c: 354:  while (1) {
-[e :U 248 ]
+"393
+[; ;../ibsmon.c: 393:  while (1) {
+[e :U 257 ]
 {
-"355
-[; ;../ibsmon.c: 355:   controller_work();
+"394
+[; ;../ibsmon.c: 394:   controller_work();
 [e ( _controller_work ..  ]
-"356
-[; ;../ibsmon.c: 356:  }
+"395
+[; ;../ibsmon.c: 395:  }
 }
-[e :U 247 ]
-[e $U 248  ]
-[e :U 249 ]
-"357
-[; ;../ibsmon.c: 357: }
-[e :UE 246 ]
+[e :U 256 ]
+[e $U 257  ]
+[e :U 258 ]
+"396
+[; ;../ibsmon.c: 396: }
+[e :UE 255 ]
 }
-[a 2C 48 56 58 51 50 58 50 51 0 ]
-[a 1C 68 101 99 32 32 57 32 50 48 50 51 0 ]
+[a 1C 74 97 110 32 32 54 32 50 48 50 52 0 ]
+[a 2C 50 48 58 50 52 58 49 49 0 ]

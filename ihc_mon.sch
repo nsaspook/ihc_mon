@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="9.5.2">
+<eagle version="9.6.2">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -11620,6 +11620,7 @@ SMD chip inductor</description>
 <wire x1="116.84" y1="25.4" x2="111.76" y2="25.4" width="0.1524" layer="91"/>
 <pinref part="VSS3" gate="G$1" pin="VSS"/>
 <junction x="116.84" y="25.4"/>
+<junction x="111.76" y="25.4"/>
 </segment>
 <segment>
 <pinref part="VSS5" gate="G$1" pin="VSS"/>
@@ -11859,6 +11860,7 @@ SMD chip inductor</description>
 <pinref part="R3" gate="G$1" pin="1"/>
 <wire x1="93.98" y1="43.18" x2="93.98" y2="58.42" width="0.1524" layer="91"/>
 <junction x="93.98" y="58.42"/>
+<junction x="76.2" y="43.18"/>
 </segment>
 </net>
 <net name="N$17" class="0">
